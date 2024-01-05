@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Cinzel:wght@400;600&&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  --color-primary-bg: #0b1824;
+  --color-secundary-bg: #142230;
+  --color-primary: #396db1;
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background: linear-gradient(to top, var(--color-primary-bg), var(--color-secundary-bg));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,24 +22,30 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #ffffff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #ffffff;
 }
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-size: 50vw;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
 }
 
 button {
@@ -42,7 +55,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-primary);
+  color: white;
   cursor: pointer;
   transition: border-color 0.25s;
 }
