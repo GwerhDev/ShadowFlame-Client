@@ -3,39 +3,30 @@ import { useStore } from '../../middlewares/store/index';
 import { useRouter } from 'vue-router';
 import { onMounted, computed } from 'vue';
 import { getUserToken } from '../../helpers';
+import { API_URL } from '../../middlewares/misc/const';
 
 const store: any = useStore();
 const router: any = useRouter();
 const currentUser: any = computed(() => store.currentUser);
 
-let email = "";
-let password = "";
-let token = getUserToken();
+let token: string = getUserToken() || "";
+let urlLogin: string = API_URL + "/login-bnet" || "";
 
 onMounted(() => {
   if (!currentUser?.value.error && token) {
-    router.push('/account/settings/' + token);
+    router.push('/');
   }
 });
 
-async function handleInnerLogin(e: any) {
-  e.preventDefault();
-  const formData: any = { email, password };
-  try {
-    const path: any = await store.handleLogin(formData);
-    router.push(path);
-  } catch (error) {
-    console.error(error)
-  }
-}
 </script>
 
 <template>
   <form class="login-form">
-    <input type="text" placeholder="Correo electrónico o teléfono">
-    <input type="password" placeholder="Contraseña">
-    <button type="button" @click="handleInnerLogin">Iniciar sesión</button>
+    <a class="button" :href="urlLogin">Entrar</a>
   </form>
+  <div class="d-flex justify-content-center align-items-center w-100 mt-1">
+    <div class="divider"></div>
+  </div>
 </template>
 
 <style scoped lang="scss" src="./LoginForm.scss"/>

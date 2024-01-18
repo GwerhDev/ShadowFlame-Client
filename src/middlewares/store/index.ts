@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
-import { getUserData, loginInner, signupInner, updateUserData } from '../services';
+import { getUserData, signupInner, updateUserData } from '../services';
 import { setUserToken } from '../../helpers';
+import { API_URL } from '../misc/const';
 
 interface storeState {
   currentUser: any,
@@ -26,11 +27,8 @@ export const useStore = defineStore('store', {
       this.userToken = userToken;
       return url;
     },
-    async handleLogin(data: any) {
-      const userToken = await loginInner(data);
-      setUserToken(userToken);
-      const url = '/account/settings/' + userToken;
-      this.userToken = userToken;
+    handleLogin() {
+      const url: string = API_URL + '/login-bnet'
       return url;
     },
     async handleUserData(token: any) {

@@ -7,13 +7,14 @@ import LoginForm from '../components/LoginForm.vue';
   <div>
     <img src="../../assets/diabloimmortal-logo.png" alt="">
     <h1>The Flame</h1>
-    <p>
+    <p class="read-the-docs">
       Habla alfombra y entra.
     </p>
-  
-    <LoginForm/>
-  
-    <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app" target="_blank">Gwerh</a>.</p>
+
+    <LoginForm />
+
+    <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app"
+        target="_blank">Gwerh</a>.</p>
   </div>
 </template>
 

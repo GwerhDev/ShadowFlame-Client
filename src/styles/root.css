@@ -7,8 +7,8 @@
   font-weight: 400;
 
   --color-primary-bg: #0b1824;
-  --color-secundary-bg: #142230;
-  --color-primary: #396db1;
+  --color-secundary-bg: #1c1e26;
+  --color-primary: #0074e0;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -48,8 +48,9 @@ h1 {
   font-weight: 600;
 }
 
-button {
-  border-radius: 8px;
+button,
+.button {
+  border-radius: 5px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -60,11 +61,14 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+button:hover,
+.button:hover {
   border-color: #646cff;
 }
 button:focus,
-button:focus-visible {
+button:focus-visible,
+.button:focus,
+.button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
