@@ -14,7 +14,7 @@ let urlLogin: string = API_URL + "/login-bnet" || "";
 
 onMounted(() => {
   if (!currentUser?.value.error && token) {
-    router.push('/');
+    router.push('/home');
   }
 });
 
