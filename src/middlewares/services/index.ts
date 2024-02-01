@@ -1,6 +1,7 @@
 import axios from "axios"
 import { API_URL } from "../misc/const"
 import { error } from "../misc/errors";
+import { options } from "../../helpers";
 
 export const signupGoogle: any = async (formData: any) => {
   const response: any = await axios.post(API_URL + "/signup-google", formData)
@@ -41,4 +42,15 @@ export const updateUserData: any = async (formData: any, id: any, token: any) =>
                                    .then(response => response.data)
                                    .catch(() => { return { error: error.api.loadItemById } });
   return response;
+}
+
+export const getUsers: any = async () => {
+  const response: any = await axios.get(API_URL + "/admin/users", options())
+                                   .then(response => response.data)
+  return response;
+}
+
+export const updateUser: any = async (id: string, formData: any) => {
+  await axios.patch(API_URL + "/admin/users/" + id, formData, options())
+  return;
 }

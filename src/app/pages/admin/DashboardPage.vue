@@ -1,13 +1,18 @@
 <script setup lang="ts">
-
+import DashboardComponent from '../../components/admin/DashboardComponent.vue';
 </script>
 
 <template>
-
+  <div class="container">
+    <DashboardComponent></DashboardComponent>
+  </div>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
+.container {
+  width: 100vw;
+  margin-top: 7rem;
+  padding: 0;
 }
+
 </style>

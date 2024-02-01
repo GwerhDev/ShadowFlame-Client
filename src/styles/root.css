@@ -7,7 +7,7 @@
   font-weight: 400;
 
   --color-primary-bg: #15171E;
-  --color-secundary-bg: #1c1e26;
+  --color-secondary-bg: #1c1e26;
   --color-primary: #0074e0;
   --color-primary-light: #69a9e4;
   --color-red-action: #7B2917;
@@ -36,10 +36,9 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  place-items: center;
+  width: 100vw;
   min-width: 320px;
   min-height: 100vh;
-  background-size: 50vw;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -86,13 +85,10 @@ button:focus-visible,
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
-
-
 
 @media (prefers-color-scheme: light) {
   :root {
