@@ -92,6 +92,8 @@ button:focus-visible,
   text-align: center;
 }
 
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -104,3 +106,35 @@ button:focus-visible,
     background-color: #f9f9f9;
   }
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(168deg, rgb(72, 72, 72) 20%, var(--color-primary-bg) 120%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(168deg, rgb(41, 23, 23) 20%, var(--color-red-action) 120%);
+  border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(168deg, var(--color-red-action) 20%, var(--color-red-action-hover) 120%);
+}
+
+.loader {
+  width: 100%;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-size: 30px;
+  padding-bottom: 8px;
+  background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
+  animation: l2 2s linear infinite;
+}
+.loader:before {
+  content:"Cargando..."
+}
+@keyframes l2 {to{background-size: 100% 3px}}

@@ -17,6 +17,9 @@
       </div>
       <div class="right-section"></div>
     </section>
+    <section class="second-section">
+      <h1>Salva a Richter</h1>
+    </section>
   </main>
 </template>
 
@@ -26,8 +29,9 @@
     left: 0;
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+    overflow-x: hidden;
     position: absolute;
     background-size: cover;
     background-position: center;
@@ -43,6 +47,18 @@
     align-items: flex-start;
     padding-left: 1.1rem;
     padding-right: 1.1rem;
+    background: linear-gradient(to bottom, transparent 1%, black 90%);
+  }
+
+  .second-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    background-color: black;
   }
 
   .left-section {
