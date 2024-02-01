@@ -55,3 +55,11 @@
 .register-message-container {
   max-width: 450px;
 }
+
+.action-button {
+  background-color: var(--color-red-action);
+}
+
+.action-button:hover {
+  background-color: var(--color-red-action-hover);
+}

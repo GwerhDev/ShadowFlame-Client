@@ -1,9 +1,12 @@
 <style scoped lang="scss" src="./NavComponent.scss"/>
 <script setup lang="ts">
+import { useStore } from '../../middlewares/store';
 import AccountButton from './AccountButton.vue';
 import NavMenuComponent from './NavMenuComponent.vue';
 import UserMenuComponent from './UserMenuComponent.vue';
+import DashboardButton from './admin/DashboardButton.vue'
 
+const store: any = useStore();
 </script>
 
 <template>
@@ -18,6 +21,9 @@ import UserMenuComponent from './UserMenuComponent.vue';
         </span>
         <span class="account-container">
           <AccountButton></AccountButton>
+        </span>
+        <span class="dashboard-container" v-if="store.currentUser?.userData?.role === 'admin'">
+          <DashboardButton></DashboardButton>
         </span>
       </div>
       <UserMenuComponent></UserMenuComponent>
