@@ -6,6 +6,7 @@ import AlreadyRegisteredPage from '../pages/AlreadyRegisteredPage.vue';
 import RegisterSuccessPage from '../pages/RegisterSuccessPage.vue';
 import RegisterErrorPage from '../pages/RegisterErrorPage.vue';
 import UserNotFoundPage from '../pages/UserNotFoundPage.vue';
+import UserPendingPage from '../pages/UserPendingPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -32,6 +33,11 @@ const routes: RouteRecordRaw[] = [
     path: '/login/user-not-found',
     name: 'UserNotFoundPage',
     component: UserNotFoundPage
+  },
+  {
+    path: '/login/user-pending-approve',
+    name: 'UserPendingPage',
+    component: UserPendingPage
   },
   {
     path: '/signup/register-error',
