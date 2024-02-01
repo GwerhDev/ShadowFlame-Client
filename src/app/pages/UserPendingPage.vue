@@ -8,7 +8,7 @@ import BackButton from '../components/BackButton.vue';
     <img src="../../assets/diabloimmortal-logo.png" alt="">
     <h1>Cuenta pendiente de aprobación</h1>
     <p class="read-the-docs">
-      El usuario no se encuentra registrado en nuestra plataforma y pendiente de aprobación. 
+      El usuario ya se encuentra registrado en nuestra plataforma y pendiente de aprobación. 
     </p>
 
     <BackButton></BackButton>
