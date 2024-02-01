@@ -7,8 +7,18 @@ import RegisterSuccessPage from '../pages/RegisterSuccessPage.vue';
 import RegisterErrorPage from '../pages/RegisterErrorPage.vue';
 import UserNotFoundPage from '../pages/UserNotFoundPage.vue';
 import UserPendingPage from '../pages/UserPendingPage.vue';
+import TasksPage from '../pages/TasksPage.vue';
+import GuidesPage from '../pages/GuidesPage.vue';
+import GalleryPage from '../pages/GalleryPage.vue';
+import CalendarPage from '../pages/CalendarPage.vue';
+import DashboardPage from '../pages/admin/DashboardPage.vue';
 
 const routes: RouteRecordRaw[] = [
+  {
+    path: '/dashboard',
+    name: 'DashboardPage',
+    component: DashboardPage
+  },
   {
     path: '/',
     name: 'HomePage',
@@ -48,6 +58,26 @@ const routes: RouteRecordRaw[] = [
     path: '/auth/:token',
     name: 'AuthPage',
     component: AuthPage
+  },
+  {
+    path: '/tasks',
+    name: 'TasksPage',
+    component: TasksPage
+  },
+  {
+    path: '/calendar',
+    name: 'CalendarPage',
+    component: CalendarPage
+  },
+  {
+    path: '/guides',
+    name: 'GuidesPage',
+    component: GuidesPage
+  },
+  {
+    path: '/gallery',
+    name: 'GalleryPage',
+    component: GalleryPage
   },
 ]
 
