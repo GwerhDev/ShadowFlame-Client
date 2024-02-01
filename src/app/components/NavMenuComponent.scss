@@ -1,9 +1,8 @@
 ul {
   display: flex;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: .01rem;
   list-style: none;
-  font-weight: bolder;
   font-size: 18px;
   width: 100%;
 }
@@ -26,6 +25,7 @@ ul {
     outline: none;
     cursor: pointer;
   }
+
   p {
     font-weight: bolder;
     font-size: 18px;
