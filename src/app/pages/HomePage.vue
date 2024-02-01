@@ -58,7 +58,7 @@
     align-items: center;
     padding-left: 1.1rem;
     padding-right: 1.1rem;
-    background-color: black;
+    background: linear-gradient(to bottom, black 20%, var(--color-secundary-bg) 100%);
   }
 
   .left-section {
