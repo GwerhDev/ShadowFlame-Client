@@ -9,7 +9,7 @@
  
 <template>
   <router-view/>
-  <template v-if="$route.path !== '/' && !$route.path.startsWith('/auth')">
+  <template v-if="$route.path !== '/login' && !$route.path.startsWith('/auth')">
     <nav-component/> 
   </template>
 </template>

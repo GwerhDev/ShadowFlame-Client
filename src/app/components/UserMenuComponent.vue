@@ -3,9 +3,12 @@
 import { useRouter } from 'vue-router';
 import { useStore } from '../../middlewares/store';
 import { $d } from '../../functions';
+import { API_URL } from '../../middlewares/misc/const';
 
 const store: any = useStore();
 const router: any = useRouter();
+
+let urlLogin: string = API_URL + "/login-bnet" || "";
 
 document.addEventListener('mouseup', function (e) {
   const container = $d('#user-menu-container');
@@ -20,26 +23,42 @@ document.addEventListener('mouseup', function (e) {
 function handleLogout() {
   store.logout();
   router.push('/');
-}
+};
 
 </script>
 
 <template>
   <div class="container" id="user-menu-container">
-    <span class="user-data">
+    <span class="user-data" v-if="store.currentUser?.userData">
       <p class="battletag"><span>{{ store.currentUser?.userData?.username }}</span>#{{
         store.currentUser?.userData?.discriminator }}</p>
       <p class="role">{{ store.currentUser?.userData?.role }}</p>
     </span>
+    <span class="user-data" v-else>
+      <a class="button justify-content-center align-items-center d-flex g-1 mb1" :href="urlLogin">
+        <img src="../../assets/svg/blizz-icon.svg" alt="" height="25px">
+        Iniciar sesión
+      </a>
+    </span>
     <ul>
-      <li>
+      <li v-if="!store.currentUser?.userData">
+        <img src="../../assets/svg/edit-icon.svg" alt="">
+        Registrarme
+      </li>
+
+      <li v-if="store.currentUser?.userData">
         <img src="../../assets/svg/settings-icon.svg" alt="">
         Ajustes de tu cuenta
       </li>
-      
-      <li @click="handleLogout">
+
+      <li @click="handleLogout" v-if="store.currentUser?.userData">
         <img src="../../assets/svg/logout-icon.svg" alt="">
         Cerrar sesión
+      </li>
+
+      <li>
+        <img src="../../assets/svg/support-icon.svg" alt="">
+        Asistencia
       </li>
     </ul>
   </div>

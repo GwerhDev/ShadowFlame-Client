@@ -11,7 +11,7 @@ const userToken: any = route.params.token;
 
 await store.handleUserData(userToken);
 
-router.push("/home");
+router.push("/");
 
 </script>
 

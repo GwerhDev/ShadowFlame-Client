@@ -1,24 +1,24 @@
 import { RouteRecordRaw, createRouter, createWebHashHistory } from 'vue-router';
-import LandingPage from '../pages/LandingPage.vue';
+import LoginPage from '../pages/LoginPage.vue';
 import AuthPage from '../pages/AuthPage.vue';
 import HomePage from '../pages/HomePage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'LandingPage',
-    component: LandingPage
+    name: 'HomePage',
+    component: HomePage
+  },
+  {
+    path: '/login',
+    name: 'LoginPage',
+    component: LoginPage
   },
   {
     path: '/auth/:token',
     name: 'AuthPage',
     component: AuthPage
   },
-  {
-    path: '/home',
-    name: 'HomePage',
-    component: HomePage
-  }
 ]
 
 const router = createRouter({
