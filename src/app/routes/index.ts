@@ -1,7 +1,10 @@
 import { RouteRecordRaw, createRouter, createWebHashHistory } from 'vue-router';
-import LoginPage from '../pages/LoginPage.vue';
+import SignupPage from '../pages/SignupPage.vue';
 import AuthPage from '../pages/AuthPage.vue';
 import HomePage from '../pages/HomePage.vue';
+import AlreadyRegisteredPage from '../pages/AlreadyRegisteredPage.vue';
+import RegisterSuccessPage from '../pages/RegisterSuccessPage.vue';
+import RegisterErrorPage from '../pages/RegisterErrorPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -10,9 +13,24 @@ const routes: RouteRecordRaw[] = [
     component: HomePage
   },
   {
-    path: '/login',
-    name: 'LoginPage',
-    component: LoginPage
+    path: '/signup',
+    name: 'SignupPage',
+    component: SignupPage
+  },
+  {
+    path: '/signup/already-registered',
+    name: 'AlreadyRegisteredPage',
+    component: AlreadyRegisteredPage
+  },
+  {
+    path: '/signup/register-success',
+    name: 'RegisterSuccessPage',
+    component: RegisterSuccessPage
+  },
+  {
+    path: '/signup/register-error',
+    name: 'RegisterErrorPage',
+    component: RegisterErrorPage
   },
   {
     path: '/auth/:token',

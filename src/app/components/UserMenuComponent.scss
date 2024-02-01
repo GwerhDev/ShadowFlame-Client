@@ -1,16 +1,26 @@
 .container {
   background-color: rgb(27, 26, 24);
-  padding: 1rem;
   margin-top: .3rem;
   border-radius: 7px;
-  min-width: 230px;
+  min-width: 280px;
   flex-direction: column;
+  overflow: hidden;
+  
+  .inner-container {
+    padding: .7rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 
   span {
     display: flex;
     flex-direction: column;
     text-align: left;
     gap: 5px;
+
+    a {
+      font-size: 18px;
+    }
 
     p {
       padding: 0;
@@ -37,7 +47,6 @@
     padding: 0;
     list-style: none;
 
-
     li {
       text-align: left;
       padding: .6rem;
@@ -53,4 +62,8 @@
       }
     }
   }
+}
+
+.darker-menu {
+  background-color: rgb(0, 0, 0);
 }

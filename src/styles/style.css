@@ -51,3 +51,7 @@
 #user-menu-container {
   display: none;
 }
+
+.register-message-container {
+  max-width: 450px;
+}
