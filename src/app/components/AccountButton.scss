@@ -8,13 +8,19 @@
   padding-right: 1.1rem;
   background-color: transparent;
   border: none;
+
   &:hover, &:focus {
     background-color: rgba(255, 255, 255, 0.13);
     border: none;
     outline: none;
   }
+
   p {
     font-weight: bolder;
     font-size: 18px;
+  }
+
+  img {
+    opacity: .5;
   }
 }
