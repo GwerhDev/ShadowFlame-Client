@@ -132,6 +132,7 @@ button:focus-visible,
   background: linear-gradient(currentColor 0 0) 0 100%/0% 3px no-repeat;
   animation: l2 2s linear infinite;
 }
+
 .loader:before {
   content:"Cargando..."
 }

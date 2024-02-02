@@ -30,6 +30,11 @@ async function handleUpdate(user: any) {
   editionActive.value = false;
 };
 
+async function handleDeleteUser(id: string) {
+  await store.handleDeleteUser(id);
+  await store.handleGetUsers();
+};
+
 function handleCancel() {
   editionActive.value = false;
   deleteActive.value = false;
@@ -37,12 +42,6 @@ function handleCancel() {
 
 function handleDelete() {
   deleteActive.value = true;
-};
-
-function handleDeleteUser(id: string) {
-  console.log(id)
-  store.handleDeleteUser(id);
-  store.handleGetUsers();
 };
 
 function handleStatus($event: any) {

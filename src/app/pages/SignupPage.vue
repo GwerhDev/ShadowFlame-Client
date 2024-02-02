@@ -22,4 +22,5 @@ import SignupForm from '../components/SignupForm.vue';
 .read-the-docs {
   color: #888;
 }
+
 </style>
