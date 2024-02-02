@@ -19,35 +19,6 @@
       &:hover {
         background-color: var(--color-primary);
       }
-
-      img {
-        padding: 1rem;
-      }
-
-      span {
-        width: 100%;
-        gap: 1rem;
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-      }
-
-      .buttons-container {
-        max-width: 100px;
-      }
     }
-  }
-}
-
-button {
-  background-color: white;
-  color: black;
-}
-
-select {
-  max-width: 100px;
-  height: 28px;
-  &:hover {
-    cursor: pointer;
   }
 }

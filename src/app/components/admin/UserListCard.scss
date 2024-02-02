@@ -1,0 +1,41 @@
+img {
+  padding: 1rem;
+}
+
+span {
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.buttons-container {
+  max-width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+button {
+  background-color: white;
+  color: black;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+select {
+  max-width: 100px;
+  height: 28px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.list-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
