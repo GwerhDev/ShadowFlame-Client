@@ -19,6 +19,9 @@
 
       li {
         background: none;
+        padding: .3rem;
+        padding-left: 1.3rem;
+        padding-right: 1.3rem;
 
         &:hover {
           background: none;
@@ -28,7 +31,6 @@
 
     li {
       display: flex;
-      padding: 1rem;
       border-radius: 9px;
       background-color: var(--color-secondary-bg);
       justify-content: space-evenly;

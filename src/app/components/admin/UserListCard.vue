@@ -70,14 +70,14 @@ function handleRole($event: any) {
     </span>
     <ul class="buttons-container">
       <button @click="handleUpdate(user)">
-        guardar
+        actualizar
       </button>
       <button @click="handleCancel">
         cancelar
       </button>
     </ul>
   </div>
-  <div class="list-container" v-if="!editionActive && deleteActive">
+  <div class="list-container red-bg" v-if="!editionActive && deleteActive">
     <img src="../../../assets/svg/profile-icon.svg" alt="">
     <span>
       <p>{{ user.battletag }}</p>
@@ -102,10 +102,10 @@ function handleRole($event: any) {
     </span>
     <ul class="buttons-container">
       <button @click="handleEdit">
-        editar
+        <img src="../../../assets/svg/edit-icon.svg" alt="" width="18px">
       </button>
       <button @click="handleDelete">
-        eliminar
+        <img src="../../../assets/svg/delete-icon.svg" alt="" width="22px">
       </button>
     </ul>
   </div>
