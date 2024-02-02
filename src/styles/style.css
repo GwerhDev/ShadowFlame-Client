@@ -68,3 +68,40 @@
 .action-button:hover {
   background-color: var(--color-red-action-hover);
 }
+
+.header-container {
+  background-color: #111111;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px rgba(255,255,255,.15);
+}
+
+.header-bg {
+  height: 600px;
+  width: 100%;
+  max-width: 2500px;
+  background-image: url(../assets/png/header.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  color: antiquewhite;
+  text-shadow: 0 0 8px black;
+}
+
+.section-title {
+  margin-top: 10rem;
+  width: 100%;
+  text-align: left;
+  padding-left: 1.3rem;
+}
+
+.red-shadow-fx {
+  background-image: url(../assets/png/red-shadow-fx.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 100vw;
+}

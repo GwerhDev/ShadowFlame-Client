@@ -3,11 +3,15 @@
 </script>
 
 <template>
-
+  <div class="header-container">
+    <div class="header-bg">
+      <span class="section-title"><h1>Guías</h1></span>
+    </div>
+  </div>
+  <main class="main-container red-shadow-fx">
+  </main>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
-}
 </style>
+
