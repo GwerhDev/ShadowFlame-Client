@@ -90,13 +90,6 @@
   text-shadow: 0 0 8px black;
 }
 
-.section-title {
-  margin-top: 10rem;
-  width: 100%;
-  text-align: left;
-  padding-left: 1.3rem;
-}
-
 .red-shadow-fx {
   background-image: url(../assets/png/red-shadow-fx.png);
   background-size: contain;

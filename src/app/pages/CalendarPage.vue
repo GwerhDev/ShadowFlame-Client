@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import TitleComponent from '../components/utils/TitleComponent.vue';
+
 
 </script>
 
 <template>
   <div class="header-container">
     <div class="header-bg">
-      <span class="section-title"><h1>Calendario</h1></span>
+      <TitleComponent :title="'Calendario'"></TitleComponent>
     </div>
   </div>
   <main class="main-container red-shadow-fx">

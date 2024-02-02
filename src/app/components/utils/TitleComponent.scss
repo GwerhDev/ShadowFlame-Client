@@ -1,0 +1,22 @@
+.section-title {
+  padding: 0;
+  width: 100%;
+  margin-top: 10rem;
+  text-align: left;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+
+  .title-container {
+    display: flex;
+    align-items: center;  
+    
+    span {
+      padding-right: 1.3rem;    
+      width: 120px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
