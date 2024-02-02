@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="right-section"></div>
-    </section>
+    </section> 
     <section class="second-section">
       <h1>Salva a Sanctuary</h1>
     </section>
