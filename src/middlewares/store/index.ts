@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { getUserData, getUsers, signupInner, updateUser, updateUserData } from '../services';
+import { deleteUser, getUserData, getUsers, signupInner, updateUser, updateUserData } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 
@@ -55,7 +55,12 @@ export const useStore = defineStore('store', {
 
     async handleUpdateUser(id: string, formData: any) {
       await updateUser(id, formData);
-    }
+    },
+
+    async handleDeleteUser(id: string) {
+      await deleteUser(id);
+    },
+
   }
   
 });

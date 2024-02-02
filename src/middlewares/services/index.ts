@@ -54,3 +54,8 @@ export const updateUser: any = async (id: string, formData: any) => {
   await axios.patch(API_URL + "/admin/users/" + id, formData, options())
   return;
 }
+
+export const deleteUser: any = async (id: string) => {
+  await axios.delete(API_URL + "/admin/users/" + id, options())
+  return;
+}
