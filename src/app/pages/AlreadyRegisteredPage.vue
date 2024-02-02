@@ -14,7 +14,7 @@ let urlLogin: string = API_URL + "/login-bnet" || "";
       El usuario ya se encuentra registrado en nuestra plataforma. 
     </p>
 
-    <a class="button justify-content-center align-items-center d-flex g-1" :href="urlLogin">
+    <a class="button justify-content-center align-items-center d-flex g-1 w-100" :href="urlLogin">
       <img src="../../assets/svg/blizz-icon.svg" alt="" height="25px">
       Iniciar sesión
     </a>

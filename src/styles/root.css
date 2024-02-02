@@ -41,6 +41,9 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-position: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
