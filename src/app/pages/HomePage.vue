@@ -18,10 +18,10 @@
       <div class="right-section"></div>
     </section>
     <section class="second-section">
-      <h1>Salva a Richter</h1>
+      <h1>Salva a Sanctuary</h1>
     </section>
     <section class="third-section">
-      <h1>... y a Sanctuary</h1>
+      <h1>... y a Richter</h1>
     </section>
   </main>
 </template>

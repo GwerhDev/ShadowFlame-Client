@@ -15,6 +15,13 @@ onMounted(async () => {
 <template>
   <div class="ul-container">
     <ul>
+      <nav>
+        <li>#</li>
+        <li>username</li>
+        <li>role</li>
+        <li>status</li>
+        <li>actions</li>
+      </nav>
       <li v-for="user in store.users" :key="user._id">
         <UserListCard :user="user"></UserListCard>
       </li>
