@@ -6,12 +6,8 @@
   <main>
     <section class="first-section">
       <div class="left-section">
-        <img class="di-logo" src="../../assets/avif/di-logo.avif" alt="">
+        <img class="di-logo" src="../../assets/png/theflame-logo.png" alt="">
         <div class="warband">
-          <span class="title-container">
-            <h1 class="title">The Flame</h1>
-            <p>cofradía</p>
-          </span>
           <h3 class="subtitle">"No está muerto todo lo que yace eternamente; y con extraños, incluso la muerte puede morir."</h3>
         </div>
       </div>
@@ -89,18 +85,6 @@
 
   .di-logo{
     width: 500px;
-  }
-
-  .title-container {
-    gap: 0;
-    padding: 0;
-    margin: 0;
-    font-family: 'Cinzel', serif;
-  }
-
-  .title {
-    margin-bottom: -20px;
-    color: antiquewhite;
   }
 
   .subtitle {

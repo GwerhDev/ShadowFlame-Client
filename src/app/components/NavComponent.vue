@@ -14,7 +14,7 @@ const store: any = useStore();
     <nav>
       <div class="section-container">
         <span class="logo-container">
-          <img src="../../assets/diabloimmortal-logo.png" alt="" height="60px">
+          <img src="../../assets/png/theflame-logo.png" alt="" width="120px">
         </span>
         <span class="nav-menu-container">
           <NavMenuComponent></NavMenuComponent>
