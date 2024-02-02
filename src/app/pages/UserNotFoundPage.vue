@@ -14,7 +14,7 @@ let urlSignup: string = API_URL + "/signup-bnet" || "";
       El usuario no se encuentra registrado en nuestra plataforma. 
     </p>
 
-    <a class="button justify-content-center align-items-center d-flex g-1" :href="urlSignup">
+    <a class="button justify-content-center align-items-center d-flex g-1 w-100" :href="urlSignup">
       <img src="../../assets/svg/blizz-icon.svg" alt="" height="25px">
       Registrarme
     </a>
