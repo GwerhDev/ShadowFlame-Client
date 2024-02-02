@@ -20,6 +20,9 @@
     <section class="second-section">
       <h1>Salva a Richter</h1>
     </section>
+    <section class="third-section">
+      <h1>Rock n Roll</h1>
+    </section>
   </main>
 </template>
 
@@ -51,7 +54,7 @@
   }
 
   .second-section {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,6 +62,17 @@
     padding-left: 1.1rem;
     padding-right: 1.1rem;
     background: linear-gradient(to bottom, black 20%, var(--color-secondary-bg) 100%);
+  }
+
+  .third-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    background: linear-gradient(to bottom, var(--color-secondary-bg) 30%, var(--color-red-action) 300%);
   }
 
   .left-section {

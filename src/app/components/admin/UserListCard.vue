@@ -4,9 +4,9 @@ import { useStore } from '../../../middlewares/store';
 import { Ref, onMounted, ref } from 'vue';
 
 const store: any = useStore();
-const editionActive: any = ref(false);
 const role: Ref<string> = ref('');
 const status: Ref<string> = ref('');
+const editionActive: any = ref(false);
 
 defineProps(['user']);
 
