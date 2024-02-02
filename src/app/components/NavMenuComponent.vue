@@ -8,6 +8,7 @@ const store: any = useStore();
 
 <template>
   <ul>
+    <a href='https://diabloimmortal.blizzard.com/es-es/' target="_blank"><img src="../../assets/svg/diablo-icon.svg" alt=""></a>
     <router-link to='/'><li class="nav-button">Inicio</li></router-link>
     <router-link v-if="store.currentUser?.userData" to='/tasks'><li class="nav-button">Mis Tareas</li></router-link>
     <router-link v-if="store.currentUser?.userData" to='/calendar'><li class="nav-button">Calendario</li></router-link>
