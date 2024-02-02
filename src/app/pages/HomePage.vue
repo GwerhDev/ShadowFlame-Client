@@ -21,7 +21,7 @@
       <h1>Salva a Richter</h1>
     </section>
     <section class="third-section">
-      <h1>Rock n Roll</h1>
+      <h1>... y a Sanctuary</h1>
     </section>
   </main>
 </template>
