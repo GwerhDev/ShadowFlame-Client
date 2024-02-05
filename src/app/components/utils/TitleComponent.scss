@@ -42,7 +42,12 @@
           padding: 0;
         }
       }
-
     }
+  }
+}
+
+@media (max-width: 900px) {
+  .section-title {
+    margin-top: 1.9rem;
   }
 }
