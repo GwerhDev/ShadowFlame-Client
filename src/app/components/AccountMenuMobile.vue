@@ -44,8 +44,10 @@ function handleLogout() {
     </div>
     <div class="inner-container">
       <span class="user-data" v-if="store.currentUser?.userData">
-        <p class="battletag"><span>{{ store.currentUser?.userData?.username }}</span>#{{
-          store.currentUser?.userData?.discriminator }}</p>
+        <p class="battletag">
+          <span>{{ store.currentUser?.userData?.username }}</span>
+          #{{store.currentUser?.userData?.discriminator }}
+        </p>
         <p class="role">{{ store.currentUser?.userData?.role }}</p>
       </span>
       <span v-else>
