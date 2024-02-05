@@ -12,9 +12,12 @@ function handleButton() {
 </script>
 
 <template>
-  <button class="nav-button" @click="handleButton">
-    <img src="../../assets/svg/profile-icon.svg" alt="">
-    <p>{{ store.currentUser?.userData?.username || "Cuenta"}}</p>
-    <img src="../../assets/svg/open-menu-icon.svg" alt="" width="12px">
-  </button>
+  <span class="account-container">
+    <button class="nav-button" @click="handleButton">
+      <span></span>
+      <img src="../../assets/svg/profile-icon.svg" alt="">
+      <p>{{ store.currentUser?.userData?.username || "Cuenta" }}</p>
+      <img src="../../assets/svg/open-menu-icon.svg" alt="" width="12px">
+    </button>
+  </span>
 </template>
