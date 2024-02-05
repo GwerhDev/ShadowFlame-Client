@@ -8,6 +8,7 @@
   background-color: #1C1917;
   display: none;
   flex-direction: column;
+  overflow-y: auto;
 
   .top-menu {
     height: 78px;
@@ -92,7 +93,6 @@ ul {
     }
   }
 }
-
 
 .darker-menu {
   background-color: rgb(0, 0, 0);

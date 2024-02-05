@@ -11,14 +11,11 @@ import DashboardButton from './admin/DashboardButton.vue';
 <template>
   <nav class="nav-web">
     <div class="section-container">
-      <LogoComponent></LogoComponent>
-
-      <NavMenuComponent></NavMenuComponent>
-
-      <AccountButton></AccountButton>
-      
-      <DashboardButton></DashboardButton>
+      <LogoComponent />
+      <NavMenuComponent />
+      <AccountButton />
+      <DashboardButton />
     </div>
-    <UserMenuComponent></UserMenuComponent>
+    <UserMenuComponent />
   </nav>
 </template>

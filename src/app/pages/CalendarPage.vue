@@ -14,6 +14,5 @@ import TitleComponent from '../components/utils/TitleComponent.vue';
   </main>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
 

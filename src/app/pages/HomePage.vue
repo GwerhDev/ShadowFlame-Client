@@ -93,18 +93,22 @@ main {
   font-weight: 400;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1100px) {
   .first-section {
     align-items: center;
+  }
 
-    .di-logo {
-      max-width: 350px;
-    }
+  .di-logo {
+    max-width: 420px;
   }
 
   .left-section {
     width: 100%;
     max-width: 400px;
+  }
+
+  .subtitle {
+    font-size: 15px;
   }
 }
 </style>

@@ -24,16 +24,6 @@ document.addEventListener('mouseup', function (e) {
   return;
 });
 
-document.addEventListener('mouseup', function (e) {
-  const container = $d('#account-menu-mobile');
-  if (!container?.contains(e.target)) {
-    return (
-      $d('#account-menu-mobile').style.display = 'none'
-    )
-  }
-  return;
-});
-
 function handleSignup() {
   $d('#account-menu-mobile').style.display = 'none'
   router.push('/signup');

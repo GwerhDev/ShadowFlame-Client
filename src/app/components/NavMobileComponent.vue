@@ -10,14 +10,10 @@ import AccountMobileButton from './AccountMobileButton.vue'
 <template>
   <nav class="nav-mobile">
     <div class="section-container">
-      <BurgerMenu></BurgerMenu>
-
-      <LogoComponent></LogoComponent>
-
-      <AccountMobileButton></AccountMobileButton>
+      <BurgerMenu />
+      <LogoComponent />
+      <AccountMobileButton />
     </div>
-
-    <UserMenuComponent></UserMenuComponent>
-    
+    <UserMenuComponent />
   </nav>
 </template>

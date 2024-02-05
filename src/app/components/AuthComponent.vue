@@ -15,7 +15,7 @@ if(userToken === error.notFound) {
 } else {
   await store.handleUserData(userToken);
   router.push("/");
-}
+};
 
 </script>
 
