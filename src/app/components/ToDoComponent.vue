@@ -2,18 +2,30 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import ToDoCard from "./ToDoCard.vue";
+import ToDoCompletedCard from "./ToDoCompletedCard.vue";
 import { useStore } from '../../middlewares/store';
 import { onMounted } from 'vue';
 import diabloIcon from "../../assets/svg/diablo-icon.svg";
 
 const store: any = useStore();
-const isButtonDisabled = ref(false);
+
 const title = ref("");
-const emit = defineEmits(['added']);
+const isButtonDisabled = ref(true);
+
+const optionList: string[] = [
+  "Asamblea de las sombras",
+  "Mazmorras aleatorias",
+  "Recolectar escencia de monstruo",
+]
 
 onMounted(async () => {
   await store.handleGetTask()
 });
+
+function handleInput() {
+  if (title.value.length) isButtonDisabled.value = false;
+  else isButtonDisabled.value = true;
+};
 
 async function addTodo() {
   isButtonDisabled.value = true;
@@ -44,16 +56,20 @@ async function addTodo() {
         <h1>Mis Tareas</h1>
       </span>
       <form @submit.prevent="addTodo">
-        <input type="text" list="options" placeholder="Escribe una tarea" v-model="title" />
+        <input type="text" list="options" placeholder="Escribe una tarea" v-model="title" @input="handleInput"/>
         <datalist id="options">
-          <option value="Asamblea de las sombras"></option>
-          <option value="Mazmorras aleatorias"></option>
-          <option value="Recolectar escencia de monstruo"></option>
+          <option v-for="option of optionList" :value="option"></option>
         </datalist>
-        <button class="add-button" type="submit" :disabled="isButtonDisabled">+</button>
+        <button class="add-button" type="submit" :disabled="isButtonDisabled">
+          +
+        </button>
       </form>
       <ul>
-        <ToDoCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" />
+        <ToDoCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item"/>
+      </ul>
+      <div class="divider"></div>
+      <ul>
+        <ToDoCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item"/>
       </ul>
     </div>
   </div>

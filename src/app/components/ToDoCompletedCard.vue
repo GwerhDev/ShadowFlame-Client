@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./ToDoCard.scss"/>
+<style scoped lang="scss" src="./ToDoCompletedCard.scss"/>
 <script setup lang="ts">
 import { useStore } from '../../middlewares/store';
 
@@ -23,7 +23,7 @@ async function handleDeleteButton() {
 </script>
 
 <template>
-  <li v-if="!props.todo.completed">
+  <li v-if="props.todo.completed">
     <input type="checkbox" :checked="props.todo.completed" @change="handleCheckButton" />
     <p>{{ props.todo.title }}</p>
     <button @click="handleDeleteButton">x</button>

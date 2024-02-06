@@ -47,9 +47,10 @@
 
         &:disabled {
           background-color: rgb(148, 148, 148);
+          outline: none;
+          border-color: transparent;
           cursor: progress;
         }
-
       }
     }
 

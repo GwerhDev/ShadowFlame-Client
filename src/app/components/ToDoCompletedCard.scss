@@ -6,6 +6,7 @@ li {
   padding: .5rem;
   border-radius: 5px;
   gap: 1rem;
+  color: rgb(139, 212, 139);
 
   &:hover {
     background-color: var(--color-primary-bg);
@@ -18,6 +19,7 @@ li {
     margin: 0;
     display: flex;
     align-items: center;
+    text-decoration: line-through;
   }
 
   button {
