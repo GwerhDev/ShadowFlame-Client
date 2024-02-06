@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import { $display } from '../../functions';
 
-
 function handleButton() {
   $display("#nav-menu-mobile");
 };

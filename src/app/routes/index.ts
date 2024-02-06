@@ -10,7 +10,6 @@ import UserPendingPage from '../pages/UserPendingPage.vue';
 import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
-import CalendarPage from '../pages/CalendarPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
 
 const routes: RouteRecordRaw[] = [
@@ -63,11 +62,6 @@ const routes: RouteRecordRaw[] = [
     path: '/tasks',
     name: 'TasksPage',
     component: TasksPage
-  },
-  {
-    path: '/calendar',
-    name: 'CalendarPage',
-    component: CalendarPage
   },
   {
     path: '/guides',

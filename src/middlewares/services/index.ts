@@ -59,3 +59,20 @@ export const deleteUser: any = async (id: string) => {
   await axios.delete(API_URL + "/admin/users/" + id, options())
   return;
 }
+
+export const getTasks: any = async () => {
+  const response: any = await axios.get(API_URL + "/tasks/", options())
+                                   .then(response => response.data)
+  return response;
+}
+
+export const createTask: any = async (formData: any) => {
+  const response: any = await axios.post(API_URL + "/tasks/create", formData, options())
+                                   .then(response => response.data)
+  return response;
+}
+
+export const deleteTask: any = async (id: string) => {
+  const response: any = await axios.delete(API_URL + "/tasks/delete/" + id, options())
+  return response;
+}

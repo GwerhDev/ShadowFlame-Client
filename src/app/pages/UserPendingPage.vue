@@ -11,7 +11,7 @@ import BackButton from '../components/BackButton.vue';
       El usuario ya se encuentra registrado en nuestra plataforma y pendiente de aprobación. 
     </p>
 
-    <BackButton></BackButton>
+    <BackButton />
 
     <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app"
         target="_blank">Gwerh</a>.</p>

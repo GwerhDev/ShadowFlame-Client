@@ -6,7 +6,7 @@ import TitleComponent from '../components/utils/TitleComponent.vue';
 <template>
   <div class="header-container">
     <div class="header-bg">
-      <TitleComponent :title="'Galería'"></TitleComponent>
+      <TitleComponent :title="'Galería'" />
     </div>
   </div>
   <main class="main-container red-shadow-fx">

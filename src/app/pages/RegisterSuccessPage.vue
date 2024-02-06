@@ -19,7 +19,7 @@ let urlLogin: string = API_URL + "/login-bnet" || "";
       Iniciar sesión
     </a>
 
-    <BackButton></BackButton>
+    <BackButton />
 
     <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app"
         target="_blank">Gwerh</a>.</p>

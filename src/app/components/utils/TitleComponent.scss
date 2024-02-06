@@ -25,21 +25,31 @@
   .section-title {
     text-align: center;
     padding: 0;
+    margin: 0;
     margin-top: 5rem;
-
+    
     .title-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 0;
+      margin: 0;
+      gap: 1rem;
 
       h1 {
         font-size: 35px;
       }
-
+      
       span {
+        width: auto;
+        height: auto;
         padding: 0;
+        margin: 0;
 
         img {
           width: 40px;
           padding: 0;
+          margin: 0;
         }
       }
     }
@@ -48,6 +58,7 @@
 
 @media (max-width: 900px) {
   .section-title {
-    margin-top: 1.9rem;
+    margin-top: 2.5rem;
+    margin-left: 0;
   }
 }

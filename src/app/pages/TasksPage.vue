@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import TitleComponent from "../components/utils/TitleComponent.vue"
+import ToDoComponent from '../components/ToDoComponent.vue';
 
 </script>
 
 <template>
-  <div class="header-container">
-    <div class="header-bg">
-      <TitleComponent :title="'Mis Tareas'"></TitleComponent>
-    </div>
-  </div>
   <main class="main-container red-shadow-fx">
+    <ToDoComponent />
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
 

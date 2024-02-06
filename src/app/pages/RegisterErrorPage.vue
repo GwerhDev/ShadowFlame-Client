@@ -11,7 +11,7 @@ import BackButton from '../components/BackButton.vue';
       Ha ocurrido un error al crear tu cuenta. Intente más tarde. 
     </p>
 
-    <BackButton></BackButton>
+    <BackButton />
 
     <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app"
         target="_blank">Gwerh</a>.</p>

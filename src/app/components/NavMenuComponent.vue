@@ -24,9 +24,6 @@ function handleClick() {
       <router-link class="router-li" v-if="store.currentUser?.userData" to='/tasks' @click="handleClick">
         <li class="nav-button">Mis Tareas</li>
       </router-link>
-      <router-link class="router-li" v-if="store.currentUser?.userData" to='/calendar' @click="handleClick">
-        <li class="nav-button">Calendario</li>
-      </router-link>
       <router-link class="router-li" v-if="store.currentUser?.userData" to='/guides' @click="handleClick">
         <li class="nav-button">Guías</li>
       </router-link>

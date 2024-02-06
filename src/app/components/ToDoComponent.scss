@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+
+  .todo-container {
+    margin-top: 8rem;
+    background-color: var(--color-secondary-bg);
+    padding: 1rem;
+    width: 50%;
+    min-width: 380px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 0 4px rgba(255,255,255,.15);
+    
+    form {
+      width: 100%;
+      display: flex;
+      
+      input {
+        padding: .5rem;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-bottom: solid 1px rgba(255,255,255,.15);
+
+        &:focus {
+          outline: none;
+        }
+      }
+  
+      button {
+        padding: .5rem;
+
+        &:disabled {
+          background-color: rgb(148, 148, 148);
+          cursor: progress;
+        }
+
+      }
+    }
+    ul {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: .5rem;
+    }
+  }
+}

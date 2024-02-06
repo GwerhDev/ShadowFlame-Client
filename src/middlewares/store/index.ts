@@ -1,17 +1,25 @@
 import { defineStore } from 'pinia';
-import { deleteUser, getUserData, getUsers, signupInner, updateUser, updateUserData } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 
 interface storeState {
-  currentUser: any,
+  currentUser: {
+    logged: boolean,
+    userData: any,
+    tasks: any,
+  },
   userToken: string,
-  users: any
+  users: any,
 }
 
 export const useStore = defineStore('store', {
   state: (): storeState => ({
-    currentUser: {},
+    currentUser: {
+      logged: false,
+      userData: {},
+      tasks: {}
+    },
     userToken: '',
     users: {}
   }),
@@ -19,7 +27,11 @@ export const useStore = defineStore('store', {
   actions: {
     logout() {
       localStorage.clear();
-      this.currentUser = {};
+      this.currentUser = {
+        logged: false,
+        userData: {},
+        tasks: {}
+      };
       this.userToken = '';
     },
     async handleRegister(data: any) {
@@ -61,6 +73,33 @@ export const useStore = defineStore('store', {
       await deleteUser(id);
     },
 
+    async handleGetTask() {
+      try {
+        const response: any = await getTasks();
+        this.currentUser.tasks = response;
+        return;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleCreateTask(formData: any) {
+      try {
+        const response: any = await createTask(formData);
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleDeleteTask(id: string) {
+      try {
+        const response: any = await deleteTask(id);
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
   }
   
 });
