@@ -17,11 +17,11 @@ export const useStore = defineStore('store', {
   state: (): storeState => ({
     currentUser: {
       logged: false,
-      userData: {},
-      tasks: {}
+      userData: null,
+      tasks: null
     },
     userToken: '',
-    users: {}
+    users: null
   }),
 
   actions: {
@@ -29,7 +29,7 @@ export const useStore = defineStore('store', {
       localStorage.clear();
       this.currentUser = {
         logged: false,
-        userData: {},
+        userData: null,
         tasks: {}
       };
       this.userToken = '';
