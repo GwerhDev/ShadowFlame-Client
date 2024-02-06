@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 
@@ -86,6 +86,15 @@ export const useStore = defineStore('store', {
     async handleCreateTask(formData: any) {
       try {
         const response: any = await createTask(formData);
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleUpdateTask(id: string, formData: any) {
+      try {
+        const response: any = await updateTask(id, formData);
         return response;
       } catch (error) {
         console.error(error);

@@ -23,6 +23,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+input[type="checkbox"] {
+  width: 35px;
+  border-radius: none;
+}
+
 a {
   font-weight: 500;
   color: #ffffff;
