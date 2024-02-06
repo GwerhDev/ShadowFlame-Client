@@ -1,10 +1,37 @@
 <style scoped lang="scss" src="./ToDoCard.scss"/>
 <script setup lang="ts">
 import { useStore } from '../../middlewares/store';
+import { ref } from 'vue'
 
 const store: any = useStore();
-
 const props: any = defineProps({ todo: Object });
+
+const editionActive: any = ref(false);
+const deleteConfirmationActive: any = ref(false);
+const editedTitle: any = ref("");
+const isInputDisabled: any = ref("");
+
+function handleActivateEditionButton() {
+  isInputDisabled.value = false;
+  editionActive.value = true;
+  editedTitle.value = props.todo.title;
+};
+
+function handleEditedTidleInput(e: any) {
+  editedTitle.value = e.target.value;
+};
+
+function cancelEdit() {
+  editionActive.value = false;
+};
+
+function cancelDelete() {
+  deleteConfirmationActive.value = false;
+};
+
+function handleDeleteButton() {
+  deleteConfirmationActive.value = true;
+};
 
 async function handleCheckButton() {
   const formData: any = {
@@ -15,7 +42,19 @@ async function handleCheckButton() {
   await store.handleGetTask();
 };
 
-async function handleDeleteButton() {
+async function updateEdit() {
+  isInputDisabled.value = true;
+
+  const formData: any = {
+    title: editedTitle.value,
+  };
+
+  await store.handleUpdateTask(props.todo._id, formData);
+  await store.handleGetTask();
+  editionActive.value = false;
+};
+
+async function handleDeleteTaskConfirmation() {
   await store.handleDeleteTask(props.todo._id);
   await store.handleGetTask();
 };
@@ -23,9 +62,40 @@ async function handleDeleteButton() {
 </script>
 
 <template>
-  <li v-if="!props.todo.completed">
-    <input type="checkbox" :checked="props.todo.completed" @change="handleCheckButton" />
+  <li v-if="!props.todo.completed && !editionActive && !deleteConfirmationActive">
+    <input type="checkbox" :checked="props.todo.completed" @change="handleCheckButton"/>
     <p>{{ props.todo.title }}</p>
-    <button @click="handleDeleteButton">x</button>
+    <span>
+      <button @click="handleActivateEditionButton">
+        <img src="../../assets/svg/edit-icon.svg" alt="">
+      </button>
+      <button @click="handleDeleteButton">
+        <img src="../../assets/svg/delete-icon.svg" alt="">
+      </button>
+    </span>
+  </li>
+  <li v-if="!props.todo.completed && editionActive && !deleteConfirmationActive">
+    <input type="checkbox" :checked="props.todo.completed" disabled/>
+    <input class="edit-input" :value="props.todo.title" type="text" @input="handleEditedTidleInput">
+    <span>
+      <button @click="updateEdit">
+        ✔️
+      </button>
+      <button @click="cancelEdit">
+        ❌
+      </button>
+    </span>
+  </li>
+  <li v-if="!props.todo.completed && deleteConfirmationActive">
+    <input type="checkbox" :checked="props.todo.completed" disabled/>
+    <p>{{ props.todo.title }}</p>
+    <span>
+      <button @click="handleDeleteTaskConfirmation">
+        ✔️
+      </button>
+      <button @click="cancelDelete">
+        ❌
+      </button>
+    </span>
   </li>
 </template>
