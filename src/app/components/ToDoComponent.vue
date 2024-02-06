@@ -61,7 +61,7 @@ async function addTodo() {
           <option v-for="option of optionList" :value="option"></option>
         </datalist>
         <button class="add-button" type="submit" :disabled="isButtonDisabled">
-          +
+          <p>+</p>
         </button>
       </form>
       <ul>
