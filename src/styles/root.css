@@ -7,7 +7,9 @@
   font-weight: 400;
 
   --color-primary-bg: #15171E;
+  --color-primary-bg-transparency: #15171ec9;
   --color-secondary-bg: #1c1e26;
+  --color-secondary-bg-transparency: #1c1e26b4;
   --color-primary: #0074e0;
   --color-primary-light: #69a9e4;
   --color-red-action: #7B2917;

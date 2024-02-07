@@ -11,7 +11,8 @@
     width: 100%;
     margin-top: 8rem;
     padding: 1rem;
-    background-color: var(--color-secondary-bg);
+    background-color: var(--color-secondary-bg-transparency);
+    backdrop-filter: blur(10px);
     max-width: 2500px;
     border-radius: 5px;
     color: white;
