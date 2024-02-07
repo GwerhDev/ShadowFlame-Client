@@ -53,13 +53,17 @@ li {
     span {
 
       button {
+        padding: 0;
         padding: auto;
         display: flex;
         justify-content: center;
         background-color: var(--color-primary-bg);
+        height: 40px;
+        width: 50px;
 
         img {
-          width: 18px;
+          width: 15px;
+          padding: 0;
         }
       }
     }
