@@ -22,6 +22,7 @@
       border-radius: 8px;
       text-align: left;
       padding: 1rem;
+      margin: 0;
     }
 
     form {
@@ -54,6 +55,16 @@
           border-color: transparent;
           cursor: not-allowed;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .container {
+    .inner-container {
+      .chatbox-container {
+        margin-left: 2rem;
       }
     }
   }
