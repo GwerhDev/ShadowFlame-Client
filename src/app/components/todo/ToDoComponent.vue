@@ -6,17 +6,12 @@ import ToDoCompletedCard from "./ToDoCompletedCard.vue";
 import { useStore } from '../../../middlewares/store';
 import { onMounted } from 'vue';
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
+import { optionTodoList } from "../../../helpers/lists";
 
 const store: any = useStore();
 
 const title = ref("");
 const isButtonDisabled = ref(true);
-
-const optionList: string[] = [
-  "Asamblea de las sombras",
-  "Mazmorras aleatorias",
-  "Recolectar escencia de monstruo",
-]
 
 onMounted(async () => {
   await store.handleGetTask()
@@ -58,7 +53,7 @@ async function addTodo() {
       <form @submit.prevent="addTodo">
         <input type="text" list="options" placeholder="Escribe una tarea" v-model="title" @input="handleInput"/>
         <datalist id="options">
-          <option v-for="option of optionList" :value="option"></option>
+          <option v-for="option of optionTodoList" :value="option"></option>
         </datalist>
         <button class="add-button" type="submit" :disabled="isButtonDisabled">
           <p>+</p>
