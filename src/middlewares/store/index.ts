@@ -73,9 +73,9 @@ export const useStore = defineStore('store', {
       await deleteUser(id);
     },
 
-    async handleGetTask() {
+    async handleGetTask(date: Date) {
       try {
-        const response: any = await getTasks();
+        const response: any = await getTasks(date);
         this.currentUser.tasks = response;
         return;
       } catch (error) {

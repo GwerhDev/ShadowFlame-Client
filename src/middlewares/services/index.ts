@@ -60,8 +60,8 @@ export const deleteUser: any = async (id: string) => {
   return;
 }
 
-export const getTasks: any = async () => {
-  const response: any = await axios.get(API_URL + "/tasks/", options())
+export const getTasks: any = async (date: Date) => {
+  const response: any = await axios.post(API_URL + "/tasks/", { date }, options())
                                    .then(response => response.data)
   return response;
 }

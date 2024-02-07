@@ -1,15 +1,15 @@
 <style scoped lang="scss" src="./ToDoCard.scss"/>
 <script setup lang="ts">
 import { useStore } from '../../../middlewares/store';
-import { ref } from 'vue'
+import { Ref, ref } from 'vue'
 
 const store: any = useStore();
-const props: any = defineProps({ todo: Object });
+const props: any = defineProps({ todo: Object, date: String });
 
-const editionActive: any = ref(false);
-const deleteConfirmationActive: any = ref(false);
-const editedTitle: any = ref("");
-const isInputDisabled: any = ref("");
+const editionActive: Ref = ref(false);
+const deleteConfirmationActive: Ref = ref(false);
+const editedTitle: Ref = ref("");
+const isInputDisabled: Ref = ref("");
 
 function handleActivateEditionButton() {
   isInputDisabled.value = false;
@@ -39,7 +39,7 @@ async function handleCheckButton() {
   };
 
   await store.handleUpdateTask(props.todo._id, formData);
-  await store.handleGetTask();
+  await store.handleGetTask(props.date);
 };
 
 async function updateEdit() {
@@ -50,13 +50,13 @@ async function updateEdit() {
   };
 
   await store.handleUpdateTask(props.todo._id, formData);
-  await store.handleGetTask();
+  await store.handleGetTask(props.date);
   editionActive.value = false;
 };
 
 async function handleDeleteTaskConfirmation() {
   await store.handleDeleteTask(props.todo._id);
-  await store.handleGetTask();
+  await store.handleGetTask(props.date);
 };
 
 </script>

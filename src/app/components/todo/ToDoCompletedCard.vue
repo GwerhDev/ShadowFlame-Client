@@ -1,11 +1,11 @@
 <style scoped lang="scss" src="./ToDoCompletedCard.scss"/>
 <script setup lang="ts">
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 import { useStore } from '../../../middlewares/store';
 
 const store: any = useStore();
-const props: any = defineProps({ todo: Object });
-const deleteConfirmationActive: any = ref(false);
+const props: any = defineProps({ todo: Object, date: String });
+const deleteConfirmationActive: Ref = ref(false);
 
 function handleDeleteButton() {
   deleteConfirmationActive.value = true;
@@ -21,12 +21,12 @@ async function handleCheckButton() {
   };
 
   await store.handleUpdateTask(props.todo._id, formData);
-  await store.handleGetTask();
+  await store.handleGetTask(props.date);
 };
 
 async function handleDeleteTaskConfirmation() {
   await store.handleDeleteTask(props.todo._id);
-  await store.handleGetTask();
+  await store.handleGetTask(props.date);
 };
 
 </script>
