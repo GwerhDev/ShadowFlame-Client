@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router';
 import { onMounted, computed } from 'vue';
 import { getUserToken } from '../../helpers';
 import { API_URL } from '../../middlewares/misc/const';
-import BackButton from './BackButton.vue';
+import BackButton from '../utils/BackButton.vue';
 
 const store: any = useStore();
 const router: any = useRouter();

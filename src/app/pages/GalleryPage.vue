@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TitleComponent from '../components/utils/TitleComponent.vue';
+import TitleComponent from '../utils/TitleComponent.vue';
 
 </script>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ToDoComponent from '../components/todo/ToDoComponent.vue';
+import ToDoComponent from '../components/Tasks/ToDoComponent.vue';
 </script>
 
 <template>
