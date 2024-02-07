@@ -113,6 +113,14 @@ button:focus-visible,
   padding: 0;
   text-align: center;
 }
+@media (max-width: 1100px) {
+  input[type="date"] {
+    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
 
 @media (prefers-color-scheme: light) {
   :root {
