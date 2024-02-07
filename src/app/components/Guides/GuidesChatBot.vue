@@ -1,12 +1,26 @@
 <style scoped lang="scss" src="./GuidesChatBot.scss"/>
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
+import { useStore } from '../../../middlewares/store';
 
-const isButtonDisabled: Ref = ref(true);
+
+const store: any = useStore();
 const query: Ref = ref("");
+const answer: Ref = ref("Hazme una pregunta");
+const isButtonDisabled: Ref = ref(true);
+const isInputDisabled: Ref = ref(false);
 
 async function handleSubmit() {
-  query.value = "";
+  try {
+    isInputDisabled.value = true;
+    isButtonDisabled.value = true;
+    answer.value = await store.handleChatbotQuery({ query: query.value });
+    query.value = "";
+    console.log(answer.value);
+    isInputDisabled.value = false;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function handleInput(e: any) {
@@ -24,10 +38,10 @@ function handleInput(e: any) {
   <section class="container">
     <div class="inner-container">
       <div class="chatbox-container">
-
+        <p>{{ answer }}</p>
       </div>
       <form @submit.prevent="handleSubmit">
-        <input :value="query" type="text" @input="handleInput">
+        <input :value="query" type="text" @input="handleInput" :disabled="isInputDisabled">
         <button :disabled="isButtonDisabled">
           <img src="../../../assets/svg/bot-icon.svg" alt="">
         </button>

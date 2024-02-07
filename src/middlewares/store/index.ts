@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 
@@ -104,6 +104,15 @@ export const useStore = defineStore('store', {
     async handleDeleteTask(id: string) {
       try {
         const response: any = await deleteTask(id);
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleChatbotQuery(formData: any) {
+      try {
+        const response: any = await chatbotQuery(formData);
         return response;
       } catch (error) {
         console.error(error);

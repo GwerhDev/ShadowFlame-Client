@@ -82,3 +82,9 @@ export const deleteTask: any = async (id: string) => {
   const response: any = await axios.delete(API_URL + "/tasks/delete/" + id, options())
   return response;
 }
+
+export const chatbotQuery: any = async (formData: any) => {
+  const response: any = await axios.post(API_URL + "/chatbot", formData, options())
+                                    .then(response => response.data)
+  return response;
+}
