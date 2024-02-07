@@ -5,13 +5,13 @@ import { Ref, ref } from 'vue';
 const isButtonDisabled: Ref = ref(true);
 const query: Ref = ref("");
 
-function handleSubmit() {
+async function handleSubmit() {
   query.value = "";
 }
 
 function handleInput(e: any) {
   query.value = e.target.value
-  if(query.value.length) {
+  if (query.value.length) {
     isButtonDisabled.value = false;
   } else {
     isButtonDisabled.value = true;
