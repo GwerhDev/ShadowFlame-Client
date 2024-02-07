@@ -28,6 +28,23 @@ input[type="checkbox"] {
   border-radius: none;
 }
 
+input[type="date"] {
+  height: 30px;
+  font-family: 'Cinzel', serif;
+  background-color: #15171E;
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
 a {
   font-weight: 500;
   color: #ffffff;

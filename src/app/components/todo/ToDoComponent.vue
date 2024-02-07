@@ -84,7 +84,6 @@ async function addTodo() {
           <ul v-if="store.currentUser.tasks?.length">
             <ToDoCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
           </ul>
-          <div v-if="store.currentUser.tasks?.length" class="divider"></div>
           <ul v-if="store.currentUser.tasks?.length">
             <ToDoCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
           </ul>
