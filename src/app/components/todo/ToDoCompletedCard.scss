@@ -20,6 +20,8 @@ li {
     display: flex;
     align-items: center;
     text-decoration: line-through;
+    text-wrap: nowrap;
+    overflow-x: auto;
   }
 
   span {
