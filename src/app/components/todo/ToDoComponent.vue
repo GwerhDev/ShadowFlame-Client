@@ -63,8 +63,9 @@ async function addTodo() {
         <img :src="diabloIcon" alt="icon" />
         <h1>Mis Tareas</h1>
       </span>
-
-      <input :value="date" type="date" @input="handleDate" />
+      <div class="filter-container">
+        <input :value="date" type="date" @input="handleDate" />
+      </div>
 
       <div class="section-container">
         <section class="menu-section">
@@ -72,8 +73,8 @@ async function addTodo() {
         </section>
         <section class="todolist-section">
           <form @submit.prevent="addTodo">
-            <input type="text" list="options" placeholder="Agregarla una tarea a tu lista" v-model="title"
-              @input="handleInput" />
+            <input type="text" list="options" placeholder="Agregarla una tarea a tu lista" v-model="title" @input="handleInput" />
+            
             <datalist id="options">
               <option v-for="option of optionTodoList" :value="option"></option>
             </datalist>

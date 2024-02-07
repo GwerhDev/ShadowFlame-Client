@@ -35,6 +35,9 @@ input[type="date"] {
   padding: 1rem;
   border-radius: 8px;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:focus {
     outline: none;
