@@ -6,7 +6,6 @@ li {
   padding: .5rem;
   border-radius: 5px;
   gap: 1rem;
-  color: rgb(139, 212, 139);
 
   &:hover {
     background-color: var(--color-primary-bg);
@@ -19,7 +18,8 @@ li {
     margin: 0;
     display: flex;
     align-items: center;
-    text-decoration: line-through;
+    text-wrap: nowrap;
+    overflow-x: auto;
   }
 
   span {
@@ -54,6 +54,9 @@ li {
 
       button {
         padding: auto;
+        display: flex;
+        justify-content: center;
+        background-color: var(--color-primary-bg);
 
         img {
           width: 18px;
@@ -61,4 +64,8 @@ li {
       }
     }
   }
+}
+
+.edit-input {
+  width: 100%;
 }

@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./ToDoCard.scss"/>
 <script setup lang="ts">
-import { useStore } from '../../middlewares/store';
+import { useStore } from '../../../middlewares/store';
 import { ref } from 'vue'
 
 const store: any = useStore();
@@ -67,10 +67,10 @@ async function handleDeleteTaskConfirmation() {
     <p>{{ props.todo.title }}</p>
     <span>
       <button @click="handleActivateEditionButton">
-        <img src="../../assets/svg/edit-icon.svg" alt="">
+        <img src="../../../assets/svg/edit-icon.svg" alt="">
       </button>
       <button @click="handleDeleteButton">
-        <img src="../../assets/svg/delete-icon.svg" alt="">
+        <img src="../../../assets/svg/delete-icon.svg" alt="">
       </button>
     </span>
   </li>

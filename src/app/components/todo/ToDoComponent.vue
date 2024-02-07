@@ -3,9 +3,9 @@
 import { ref } from "vue";
 import ToDoCard from "./ToDoCard.vue";
 import ToDoCompletedCard from "./ToDoCompletedCard.vue";
-import { useStore } from '../../middlewares/store';
+import { useStore } from '../../../middlewares/store';
 import { onMounted } from 'vue';
-import diabloIcon from "../../assets/svg/diablo-icon.svg";
+import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
 const store: any = useStore();
 
