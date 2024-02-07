@@ -1,12 +1,12 @@
 <style scoped lang="scss" src="./ToDoComponent.scss"/>
 <script setup lang="ts">
-import { ref } from "vue";
-import ToDoCard from "./ToDoCard.vue";
-import ToDoCompletedCard from "./ToDoCompletedCard.vue";
+import { ref, onMounted } from "vue";
 import { useStore } from '../../../middlewares/store';
-import { onMounted } from 'vue';
-import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import { optionTodoList } from "../../../helpers/lists";
+import ToDoCard from "./ToDoCard.vue";
+import ToDoLateralMenu from "./ToDoLateralMenu.vue";
+import ToDoCompletedCard from "./ToDoCompletedCard.vue";
+import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
 const store: any = useStore();
 
@@ -50,22 +50,29 @@ async function addTodo() {
         <img :src="diabloIcon" alt="icon" />
         <h1>Mis Tareas</h1>
       </span>
-      <form @submit.prevent="addTodo">
-        <input type="text" list="options" placeholder="Escribe una tarea" v-model="title" @input="handleInput"/>
-        <datalist id="options">
-          <option v-for="option of optionTodoList" :value="option"></option>
-        </datalist>
-        <button class="add-button" type="submit" :disabled="isButtonDisabled">
-          <p>+</p>
-        </button>
-      </form>
-      <ul>
-        <ToDoCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item"/>
-      </ul>
-      <div class="divider"></div>
-      <ul>
-        <ToDoCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item"/>
-      </ul>
+      <div class="section-container">
+        <section class="menu-section">
+          <ToDoLateralMenu />
+        </section>
+        <section class="todolist-section">
+          <form @submit.prevent="addTodo">
+            <input type="text" list="options" placeholder="Escribe una tarea" v-model="title" @input="handleInput" />
+            <datalist id="options">
+              <option v-for="option of optionTodoList" :value="option"></option>
+            </datalist>
+            <button class="add-button" type="submit" :disabled="isButtonDisabled">
+              <p>+</p>
+            </button>
+          </form>
+          <ul>
+            <ToDoCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" />
+          </ul>
+          <div class="divider"></div>
+          <ul>
+            <ToDoCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" />
+          </ul>
+        </section>
+      </div>
     </div>
   </div>
 </template>

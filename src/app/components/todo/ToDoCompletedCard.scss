@@ -19,9 +19,8 @@ li {
     margin: 0;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     text-decoration: line-through;
-    text-wrap: nowrap;
-    overflow-x: auto;
   }
 
   span {
@@ -51,7 +50,7 @@ li {
 
 @media (max-width: 1100px) {
   li {
-
+    max-width: 100%;
     span {
 
       button {

@@ -12,11 +12,19 @@ import ToDoComponent from '../components/todo/ToDoComponent.vue';
 
 <style scoped>
 .div-container {
-  padding-left: 1.3rem;
-  padding-right: 1.3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 1100px) {
+  .div-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }
 </style>
 
