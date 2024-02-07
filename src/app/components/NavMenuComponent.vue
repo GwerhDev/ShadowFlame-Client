@@ -1,13 +1,13 @@
 <style scoped lang="scss" src="./NavMenuComponent.scss"/>
 <script setup lang="ts">
-import { $display } from '../../functions';
+import { $d } from '../../functions';
 import { useStore } from '../../middlewares/store';
 import DashboardButton from './admin/DashboardButton.vue';
 
 const store: any = useStore();
 
 function handleClick() {
-  $display('#nav-menu-mobile')
+  $d('#nav-menu-mobile').style.display = 'none';
 };
 
 </script>
