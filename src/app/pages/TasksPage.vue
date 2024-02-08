@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import ToDoComponent from '../components/Tasks/ToDoComponent.vue';
+import TasksComponent from '../components/Tasks/TasksComponent.vue';
 </script>
 
 <template>
   <main class="main-container red-shadow-fx">
     <div class="div-container">
-      <ToDoComponent />
+      <TasksComponent />
     </div>
   </main>
 </template>

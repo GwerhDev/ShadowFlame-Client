@@ -1,12 +1,13 @@
-<style scoped lang="scss" src="./ToDoComponent.scss"/>
+<style scoped lang="scss" src="./TasksComponent.scss"/>
 <script setup lang="ts">
 import { ref, onMounted, Ref } from "vue";
 import { useStore } from '../../../middlewares/store';
 import { optionTodoList } from "../../../helpers/lists";
-import ToDoCard from "./ToDoCard.vue";
-import ToDoLateralMenu from "./ToDoLateralMenu.vue";
-import ToDoCompletedCard from "./ToDoCompletedCard.vue";
+import TasksCard from "./TasksCard.vue";
+import TasksLateralMenu from "./TasksLateralMenu.vue";
+import TasksCompletedCard from "./TasksCompletedCard.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
+import DeniedAccess from "../../utils/DeniedAccess.vue";
 
 const store: any = useStore();
 const title: Ref = ref("");
@@ -64,14 +65,14 @@ async function addTodo() {
         <h1>Mis Tareas</h1>
       </span>
       <div class="filter-container">
-        <input :value="date" type="date" @input="handleDate" />
+        <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged"/>
       </div>
 
       <div class="section-container">
         <section class="menu-section">
-          <ToDoLateralMenu />
+          <TasksLateralMenu :logged="store.currentUser.logged" />
         </section>
-        <section class="todolist-section">
+        <section class="todolist-section" v-if="store.currentUser.logged">
           <form @submit.prevent="addTodo">
             <input type="text" list="options" placeholder="Agregarla una tarea a tu lista" v-model="title" @input="handleInput" />
             
@@ -83,12 +84,15 @@ async function addTodo() {
             </button>
           </form>
           <ul v-if="store.currentUser.tasks?.length">
-            <ToDoCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
+            <TasksCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
           </ul>
           <ul v-if="store.currentUser.tasks?.length">
-            <ToDoCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
+            <TasksCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
           </ul>
           <ul v-if="!store.currentUser.tasks?.length">{{ message }}</ul>
+        </section>
+        <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
+          <DeniedAccess />
         </section>
       </div>
     </div>

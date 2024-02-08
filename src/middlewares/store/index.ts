@@ -2,16 +2,8 @@ import { defineStore } from 'pinia';
 import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
+import { storeState } from '../../interfaces/storeState';
 
-interface storeState {
-  currentUser: {
-    logged: boolean,
-    userData: any,
-    tasks: any,
-  },
-  userToken: string,
-  users: any,
-}
 
 export const useStore = defineStore('store', {
   state: (): storeState => ({
@@ -34,6 +26,7 @@ export const useStore = defineStore('store', {
       };
       this.userToken = '';
     },
+
     async handleRegister(data: any) {
       const userToken = await signupInner(data);
       setUserToken(userToken);
@@ -41,10 +34,12 @@ export const useStore = defineStore('store', {
       this.userToken = userToken;
       return url;
     },
+
     handleLogin() {
       const url: string = API_URL + '/login-bnet'
       return url;
     },
+
     async handleUserData(token: any) {
       try {
         this.currentUser = await getUserData(token);
@@ -54,6 +49,7 @@ export const useStore = defineStore('store', {
         console.error(error);
       }
     },
+    
     async handleUpdateUserData(formData: any, id: any, token: any) {
       await updateUserData(formData, id, token);
       this.currentUser = await getUserData(token);

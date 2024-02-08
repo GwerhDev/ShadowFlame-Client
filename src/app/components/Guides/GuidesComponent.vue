@@ -3,6 +3,10 @@
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import GuidesChatBot from "./GuidesChatBot.vue";
 import GuidesLateralMenu from "./GuidesLateralMenu.vue";
+import { useStore } from '../../../middlewares/store';
+import DeniedAccess from "../../utils/DeniedAccess.vue";
+
+const store: any = useStore();
 
 </script>
 
@@ -14,13 +18,15 @@ import GuidesLateralMenu from "./GuidesLateralMenu.vue";
         <h1>Guías</h1>
       </span>
 
-
       <div class="section-container">
         <section class="menu-section">
-          <GuidesLateralMenu />
+          <GuidesLateralMenu :logged="store.currentUser.logged" />
         </section>
-        <section class="chatbox-section">
+        <section class="chatbox-section" v-if="store.currentUser.logged">
           <GuidesChatBot />
+        </section>
+        <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
+          <DeniedAccess />
         </section>
       </div>
     </div>

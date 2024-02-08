@@ -1,13 +1,15 @@
 <style scoped lang="scss" src="./GuidesLateralMenu.scss"/>
 <script setup lang="ts">
+const props: any = defineProps({ logged: Boolean });
+
 </script>
 
 <template>
   <div class="container">
     <ul>
       <li>
-        <button>
-          <img src="../../../assets/svg/bot-icon.svg" alt="" /> 
+        <button :disabled="!props.logged">
+          <img src="../../../assets/svg/bot-icon.svg" alt="" />
           <span>ChatBot</span>
           <span></span>
         </button>

@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./ToDoCard.scss"/>
+<style scoped lang="scss" src="./TasksCard.scss"/>
 <script setup lang="ts">
 import { useStore } from '../../../middlewares/store';
 import { Ref, ref } from 'vue'

@@ -1,10 +1,7 @@
 <style scoped lang="scss" src="./NavMenuComponent.scss"/>
 <script setup lang="ts">
 import { $d } from '../../functions';
-import { useStore } from '../../middlewares/store';
 import DashboardButton from './admin/DashboardButton.vue';
-
-const store: any = useStore();
 
 function handleClick() {
   $d('#nav-menu-mobile').style.display = 'none';
@@ -21,10 +18,10 @@ function handleClick() {
       <router-link class="router-li" to='/' @click="handleClick">
         <li class="nav-button">Inicio</li>
       </router-link>
-      <router-link class="router-li" v-if="store.currentUser?.userData" to='/tasks' @click="handleClick">
+      <router-link class="router-li" to='/tasks' @click="handleClick">
         <li class="nav-button">Mis Tareas</li>
       </router-link>
-      <router-link class="router-li" v-if="store.currentUser?.userData" to='/guides' @click="handleClick">
+      <router-link class="router-li" to='/guides' @click="handleClick">
         <li class="nav-button">Guías</li>
       </router-link>
       <router-link class="router-li" to='/gallery' @click="handleClick">

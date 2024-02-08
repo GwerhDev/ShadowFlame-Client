@@ -1,0 +1,22 @@
+.container {
+  flex-direction: column;
+  padding: 5rem;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  a {
+    max-width: 350px;
+  }
+
+  span {
+    display: flex;
+    gap: 1rem;
+    text-wrap: nowrap;
+
+    a {
+      gap: .4rem;
+    }
+  }
+}

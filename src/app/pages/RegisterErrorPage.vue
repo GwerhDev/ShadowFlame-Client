@@ -8,13 +8,13 @@ import BackButton from '../utils/BackButton.vue';
     <img src="../../assets/diabloimmortal-logo.png" alt="">
     <h1>Error</h1>
     <p class="read-the-docs">
-      Ha ocurrido un error al crear tu cuenta. Intente más tarde. 
+      Ha ocurrido un error al crear tu cuenta. Intente más tarde.
     </p>
 
     <BackButton />
 
-    <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app"
-        target="_blank">Gwerh</a>.</p>
+    <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app" target="_blank">Gwerh</a>.
+    </p>
   </div>
 </template>
 
@@ -26,5 +26,4 @@ import BackButton from '../utils/BackButton.vue';
 .button {
   margin-bottom: .5rem;
 }
-
 </style>
