@@ -16,7 +16,7 @@ nav {
   max-width: 2500px;
 
   .section-container {
-    background-color: rgba(52, 46, 41, 0.95);
+    background-color: var(--nav-color-primary);
     backdrop-filter: blur(10px);
     width: 100%;
     height: 56px;

@@ -58,7 +58,7 @@ async function addTask() {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-tasks-component">
     <div class="tasks-container">
       <span class="mb-3 mt-1">
         <img :src="diabloIcon" alt="icon" />

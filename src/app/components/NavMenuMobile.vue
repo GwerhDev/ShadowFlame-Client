@@ -27,7 +27,7 @@ document.addEventListener('mouseup', function (e) {
       </span>
       <img src="" alt="" />
     </div>
-    <img src="../../assets/avif/di-logo-960.avif" alt="">
+    <img class="menu-logo" src="../../assets/avif/di-logo-960.avif" alt="">
     <NavMenuComponent />
   </div>
 

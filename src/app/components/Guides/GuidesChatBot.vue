@@ -6,17 +6,19 @@ import { useStore } from '../../../middlewares/store';
 
 const store: any = useStore();
 const query: Ref = ref("");
-const answer: Ref = ref("Hazme una pregunta");
+const question: Ref = ref("");
+const answer: Ref = ref("");
 const isButtonDisabled: Ref = ref(true);
 const isInputDisabled: Ref = ref(false);
 
 async function handleSubmit() {
   try {
+    question.value = query.value;
+    query.value = "";
     isInputDisabled.value = true;
     isButtonDisabled.value = true;
-    answer.value = await store.handleChatbotQuery({ query: query.value });
-    query.value = "";
-    console.log(answer.value);
+    answer.value = "Escribiendo..."
+    answer.value = await store.handleChatbotQuery({ query: question.value });
     isInputDisabled.value = false;
   } catch (error) {
     console.log(error);
@@ -38,14 +40,24 @@ function handleInput(e: any) {
   <section class="container-chatbox">
     <div class="inner-container">
       <div class="chatbox-container">
-        <p>{{ answer }}</p>
+        <span v-if="question">
+          <div class="question"><p>{{ question }}</p><img src="../../../assets/svg/profile-icon.svg" alt=""></div>
+          <div class="answer"><img src="../../../assets/svg/bot-icon.svg" alt=""><p>{{ answer }}</p></div>
+        </span>
+        <div class="chatbot-presentation" v-else>
+          <h1>ChatBot</h1>
+          <img src="../../../assets/svg/bot-icon.svg" alt="" height="50%">
+          <p>Hazme una pregunta</p>
+        </div>
       </div>
-      <form @submit.prevent="handleSubmit">
-        <input :value="query" type="text" @input="handleInput" :disabled="isInputDisabled">
-        <button :disabled="isButtonDisabled">
-          <img src="../../../assets/svg/bot-icon.svg" alt="">
-        </button>
-      </form>
+      <div class="form-container">
+        <form @submit.prevent="handleSubmit">
+          <input :value="query" type="text" @input="handleInput" :disabled="isInputDisabled">
+          <button :disabled="isButtonDisabled">
+            <img src="../../../assets/svg/bot-icon.svg" alt="">
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 </template>

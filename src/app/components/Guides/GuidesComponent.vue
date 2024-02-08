@@ -11,7 +11,7 @@ const store: any = useStore();
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-guides-component">
     <div class="guides-container">
       <span class="mb-3 mt-1">
         <img :src="diabloIcon" alt="icon" />

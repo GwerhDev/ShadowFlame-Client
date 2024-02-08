@@ -1,7 +1,7 @@
 .divider {
   height: 1px;
   width: 100%;
-  background-color: rgb(192, 192, 192);
+  background-color: rgba(255, 255, 255, .15);
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
