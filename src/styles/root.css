@@ -12,8 +12,8 @@
   --color-secondary-bg-transparency: #1c1e26b4;
   --color-primary: #0074e0;
   --color-primary-light: #69a9e4;
-  --color-red-action: #2b2934;
-  --color-red-action-hover: #403d4e;
+  --color-red-action: #7B2917;
+  --color-red-action-hover: #A83A1E;
   --nav-color-primary: #2b2934f2;
 
   color-scheme: light dark;
@@ -161,7 +161,7 @@ button:focus-visible,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(168deg, rgb(41, 23, 23) 20%, var(--color-red-action) 120%);
+  background: linear-gradient(168deg, rgb(41, 23, 23) 20%, var(--nav-color-primary) 120%);
   border-radius: 1px;
 }
 
