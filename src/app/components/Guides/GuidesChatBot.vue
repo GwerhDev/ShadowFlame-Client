@@ -46,7 +46,7 @@ function handleInput(e: any) {
         </span>
         <div class="chatbot-presentation" v-else>
           <h1>ChatBot</h1>
-          <img src="../../../assets/svg/bot-icon.svg" alt="" height="50%">
+          <img src="../../../assets/svg/bot-icon.svg" alt="" height="100px">
           <p>Hazme una pregunta</p>
         </div>
       </div>
