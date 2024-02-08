@@ -15,7 +15,7 @@ let urlLogin: string = API_URL + "/login-bnet" || "";
       Iniciar sesión
     </a>
     <span>
-      ¿Ya estás registrado?
+      ¿No estás registrado?
       <router-link to='/signup' class="justify-content-center align-items-center d-flex g-1 w-100" :href="urlSignup">
         <img src="../../assets/svg/blizz-icon.svg" alt="" height="25px">
         Registrarme
