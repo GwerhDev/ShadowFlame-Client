@@ -18,10 +18,12 @@ import TasksComponent from '../components/Tasks/TasksComponent.vue';
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 3.5rem;
 }
 
 @media (max-width: 1100px) {
   .div-container {
+    padding-top: 2rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }

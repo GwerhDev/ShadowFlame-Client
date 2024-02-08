@@ -12,8 +12,8 @@ const store: any = useStore();
 
 <template>
   <div class="container">
-    <div class="todo-container">
-      <span>
+    <div class="guides-container">
+      <span class="mb-3 mt-1">
         <img :src="diabloIcon" alt="icon" />
         <h1>Guías</h1>
       </span>

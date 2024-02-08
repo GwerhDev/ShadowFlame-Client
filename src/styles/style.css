@@ -26,12 +26,44 @@
   margin-bottom: 1rem;
 }
 
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
 .d-flex {
   display: flex;
 }
 
 .g-1 {
   gap: 1rem;
+}
+
+.border-right {
+  border-right: solid 1px #99938a;
+}
+
+.border-top {
+  border-top: solid 1px #99938a;
+}
+
+.border-top-left-radius {
+  border-top-left-radius: 8px;
+}
+
+.border-top-right-radius {
+  border-top-right-radius: 8px;
+}
+
+.border-bottom-left-radius {
+  border-bottom-left-radius: 8px;
+}
+
+.border-bottom-right-radius {
+  border-bottom-right-radius: 8px;
 }
 
 .justify-content-center {

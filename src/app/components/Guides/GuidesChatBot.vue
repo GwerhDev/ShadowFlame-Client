@@ -35,7 +35,7 @@ function handleInput(e: any) {
 </script>
 
 <template>
-  <section class="container">
+  <section class="container-chatbox">
     <div class="inner-container">
       <div class="chatbox-container">
         <p>{{ answer }}</p>

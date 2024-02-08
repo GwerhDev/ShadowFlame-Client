@@ -36,7 +36,7 @@ function handleInput() {
   else isButtonDisabled.value = true;
 };
 
-async function addTodo() {
+async function addTask() {
   isButtonDisabled.value = true;
 
   const formData: any = {
@@ -59,23 +59,25 @@ async function addTodo() {
 
 <template>
   <div class="container">
-    <div class="todo-container">
-      <span>
+    <div class="tasks-container">
+      <span class="mb-3 mt-1">
         <img :src="diabloIcon" alt="icon" />
         <h1>Mis Tareas</h1>
       </span>
-      <div class="filter-container">
-        <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged"/>
-      </div>
 
       <div class="section-container">
         <section class="menu-section">
           <TasksLateralMenu :logged="store.currentUser.logged" />
         </section>
         <section class="todolist-section" v-if="store.currentUser.logged">
-          <form @submit.prevent="addTodo">
-            <input type="text" list="options" placeholder="Agregarla una tarea a tu lista" v-model="title" @input="handleInput" />
-            
+          <div class="filter-container">
+            <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged" />
+          </div>
+
+          <form @submit.prevent="addTask">
+            <input type="text" list="options" placeholder="Agregarla una tarea a tu lista" v-model="title"
+              @input="handleInput" />
+
             <datalist id="options">
               <option v-for="option of optionTodoList" :value="option"></option>
             </datalist>
@@ -84,10 +86,10 @@ async function addTodo() {
             </button>
           </form>
           <ul v-if="store.currentUser.tasks?.length">
-            <TasksCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
+            <TasksCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date" />
           </ul>
           <ul v-if="store.currentUser.tasks?.length">
-            <TasksCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date"/>
+            <TasksCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date" />
           </ul>
           <ul v-if="!store.currentUser.tasks?.length">{{ message }}</ul>
         </section>

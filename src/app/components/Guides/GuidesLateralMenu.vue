@@ -5,10 +5,10 @@ const props: any = defineProps({ logged: Boolean });
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-lateral">
     <ul>
       <li>
-        <button :disabled="!props.logged">
+        <button :disabled="!props.logged" class="first">
           <img src="../../../assets/svg/bot-icon.svg" alt="" />
           <span>ChatBot</span>
           <span></span>
@@ -22,7 +22,7 @@ const props: any = defineProps({ logged: Boolean });
         </button>
       </li>
       <li>
-        <button disabled>
+        <button disabled class="last">
           <img src="../../../assets/svg/swords-warband-icon.svg" alt="" />
           <span>Streamers</span>
           <span></span>

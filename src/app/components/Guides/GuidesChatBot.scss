@@ -1,8 +1,8 @@
-.container {
+.container-chatbox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0;
+  padding: 1rem;
   
   .inner-container {
     padding: 0;
@@ -62,14 +62,5 @@
 }
 
 @media (max-width: 1100px) {
-  .container {
-    .inner-container {
-      .chatbox-container {
-        margin-left: 2rem;
-      }
-      form {
-        padding-left: 2rem;
-      }
-    }
-  }
+
 }
