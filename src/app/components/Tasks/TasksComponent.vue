@@ -16,7 +16,7 @@ const isButtonDisabled: Ref = ref(true);
 const message: Ref = ref("");
 
 onMounted(async () => {
-  message.value = "Cargando..."
+  message.value = "Cargando...";
   try {
     await store.handleGetTask(date.value);
   } catch (error) {
