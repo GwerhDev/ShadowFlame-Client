@@ -27,7 +27,7 @@ function handleClick() {
       <router-link class="router-li" to='/gallery' @click="handleClick">
         <li class="nav-button">Galería</li>
       </router-link>
-      <span class="dashboard-container">
+      <span class="dashboard-container" @click="handleClick">
         <DashboardButton />
       </span>
     </ul>

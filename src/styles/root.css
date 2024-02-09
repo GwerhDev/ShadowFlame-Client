@@ -138,9 +138,6 @@ button:focus-visible,
 
 }
 
-@media (prefers-color-scheme: light) {
-
-}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -175,3 +172,7 @@ button:focus-visible,
 }
 
 @keyframes l2 {to{background-size: 100% 3px}}
+
+@media (prefers-color-scheme: light) {
+
+}

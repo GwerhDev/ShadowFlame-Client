@@ -2,13 +2,13 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useStore } from '../../../middlewares/store';
-import { $display } from '../../../functions';
+import { $d } from '../../../functions';
 
 const router: any = useRouter();
 const store: any = useStore();
 
 function handleClick() {
-  $display('#nav-menu-mobile');
+  $d('#nav-menu-mobile').style.display = 'none';
   router.push('/dashboard');
 };
 
