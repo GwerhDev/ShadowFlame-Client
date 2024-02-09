@@ -4,8 +4,7 @@
   padding-right: 1rem;
   display: flex;
   flex-direction: column-reverse;
-  justify-content: flex-end;
-  height: 100%;
+  justify-content: flex-start;
 
   ul {
     padding: 0;
@@ -48,11 +47,14 @@
   .container-lateral {    
     width: 100%;
     padding: 0;
-
+    margin: 0;
+    display: flex;
+    
     ul {
       flex-direction: row;
       gap: 0;
       width: 100%;
+
 
       li {
         width: 100%;
