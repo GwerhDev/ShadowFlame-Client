@@ -8,8 +8,8 @@ const router: any = useRouter();
 const store: any = useStore();
 
 function handleClick() {
-  $display('#nav-menu-mobile')
-  router.push('/dashboard')
+  $display('#nav-menu-mobile');
+  router.push('/dashboard');
 };
 
 </script>

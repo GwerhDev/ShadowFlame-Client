@@ -70,10 +70,10 @@ function handleRole($event: any) {
     </span>
     <ul class="buttons-container">
       <button @click="handleUpdate(user)">
-        actualizar
+        ✔️
       </button>
       <button @click="handleCancel">
-        cancelar
+        ❌
       </button>
     </ul>
   </div>
@@ -86,10 +86,10 @@ function handleRole($event: any) {
     </span>
     <ul class="buttons-container">
       <button @click="handleDeleteUser(user._id)">
-        eliminar
+        ✔️
       </button>
       <button @click="handleCancel">
-        cancelar
+        ❌
       </button>
     </ul>
   </div>
