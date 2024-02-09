@@ -14,7 +14,7 @@ onMounted(async () => {
 
 <template>
   <div class="ul-container">
-    <ul>
+    <ul v-if="store.users">
       <nav>
         <li>#</li>
         <li>username</li>
