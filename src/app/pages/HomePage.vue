@@ -5,7 +5,7 @@
   <main>
     <section class="first-section">
       <div class="left-section">
-        <img class="di-logo" src="../../assets/png/theflame-logo.png" alt="">
+        <img class="di-logo" src="../../assets/png/shadowgardians-logo.png" alt="">
         <div class="warband">
           <h3 class="subtitle">"No está muerto todo lo que yace eternamente; y con extraños, incluso la muerte puede
             morir."</h3>

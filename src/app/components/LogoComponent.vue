@@ -6,7 +6,7 @@
 <template>
   <span class="logo-container">
     <router-link to='/'>
-      <img src="../../assets/png/theflame-logo.png" alt="" width="120px">
+      <img src="../../assets/png/shadowgardians-logo.png" alt="" width="120px">
     </router-link>
   </span>
 </template>
