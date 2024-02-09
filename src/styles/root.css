@@ -139,16 +139,7 @@ button:focus-visible,
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
 }
 
 ::-webkit-scrollbar {
@@ -182,4 +173,5 @@ button:focus-visible,
 .loader:before {
   content:"Cargando..."
 }
+
 @keyframes l2 {to{background-size: 100% 3px}}

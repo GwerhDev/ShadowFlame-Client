@@ -6,7 +6,7 @@ import SignupForm from '../components/SignupForm.vue';
 <template>
   <div class="register-message-container">
     <img src="../../assets/diabloimmortal-logo.png" alt="">
-    <h1>The Flame</h1>
+    <h1>Shadowgardians</h1>
     <p class="read-the-docs">
       Habla alfombra y entra.
     </p>
