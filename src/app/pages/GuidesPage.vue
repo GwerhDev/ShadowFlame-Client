@@ -19,11 +19,12 @@ import GuidesComponent from '../components/Guides/GuidesComponent.vue';
   align-items: center;
   justify-content: center;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 @media (max-width: 1100px) {
   .div-container {
+    padding-top: 2rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }

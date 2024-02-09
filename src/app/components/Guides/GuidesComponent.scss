@@ -55,12 +55,11 @@
 
 @media (max-width: 1100px) {
   .container-guides-component {
-    margin: 0;
     padding: 0;
-    margin-top: 4rem;
+    padding-top: 4rem;
     
     .guides-container {
-      margin-top: 4rem;
+      margin-top: 0;
       padding-bottom: 0;
       height: 100%;
       padding: 1rem;
@@ -74,8 +73,12 @@
         flex-direction: column;
         
         .menu-section {
-          height: auto;
-          margin: 0;
+          position: relative;
+          bottom: 0;
+          left: 0;
+          display: flex;
+          align-items: center;
+          width: 100%;
           border-right: none;
         }
       }

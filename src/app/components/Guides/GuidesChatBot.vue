@@ -41,12 +41,12 @@ function handleInput(e: any) {
     <div class="inner-container">
       <div class="chatbox-container">
         <span v-if="question">
-          <div class="question"><p>{{ question }}</p><img src="../../../assets/svg/profile-icon.svg" alt=""></div>
-          <div class="answer"><img src="../../../assets/svg/bot-icon.svg" alt=""><p>{{ answer }}</p></div>
+          <div class="question"><p>{{ question }}</p><img src="../../../assets/svg/profile-icon.svg" alt="Tú"></div>
+          <div class="answer"><img src="../../../assets/svg/bot-icon.svg" alt="El Guía"><p>{{ answer }}</p></div>
         </span>
         <div class="chatbot-presentation" v-else>
           <h1>ChatBot</h1>
-          <img src="../../../assets/svg/bot-icon.svg" alt="" height="100px">
+          <img src="../../../assets/svg/bot-icon.svg" alt="El Guía" height="100px">
           <p>Hazme una pregunta</p>
         </div>
       </div>
