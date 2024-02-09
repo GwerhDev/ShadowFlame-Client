@@ -21,7 +21,7 @@
       margin: 0;
 
       button {
-        width: 100%;
+        width: 180px;
         background-color: var(--color-primary-bg);
         display: flex;
         align-items: center;
@@ -63,6 +63,8 @@
           padding-left: .2rem;
           padding-right: .2rem;
           border-radius: 0;
+          width: 100%;
+
 
           span {
             display: none;
