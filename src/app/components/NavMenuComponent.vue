@@ -22,7 +22,7 @@ function handleClick() {
         <li class="nav-button">Mis Tareas</li>
       </router-link>
       <router-link class="router-li" to='/guides' @click="handleClick">
-        <li class="nav-button">Guías</li>
+        <li class="nav-button">El Guía</li>
       </router-link>
       <router-link class="router-li" to='/gallery' @click="handleClick">
         <li class="nav-button">Galería</li>

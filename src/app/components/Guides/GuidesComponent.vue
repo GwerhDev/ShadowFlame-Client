@@ -15,7 +15,7 @@ const store: any = useStore();
     <div class="guides-container">
       <span class="mb-3 mt-1">
         <img :src="diabloIcon" alt="icon" />
-        <h1>Guías</h1>
+        <h1>El Guía</h1>
       </span>
 
       <div class="section-container">
