@@ -52,7 +52,7 @@ function handleInput(e: any) {
       </div>
       <div class="form-container">
         <form @submit.prevent="handleSubmit">
-          <input :value="query" type="text" @input="handleInput" :disabled="isInputDisabled">
+          <input :value="query" type="text" placeholder="Escribe aquí..." @input="handleInput" :disabled="isInputDisabled">
           <button :disabled="isButtonDisabled">
             <img src="../../../assets/svg/bot-icon.svg" alt="">
           </button>
