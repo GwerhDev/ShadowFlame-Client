@@ -6,7 +6,7 @@ import SignupForm from '../components/SignupForm.vue';
 <template>
   <div class="register-message-container">
     <img src="../../assets/diabloimmortal-logo.png" alt="">
-    <h1>Shadowgardians</h1>
+    <h1 class="title">Shadowgardians</h1>
     <p class="read-the-docs">
       Habla alfombra y entra.
     </p>
@@ -21,6 +21,10 @@ import SignupForm from '../components/SignupForm.vue';
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+
+.title {
+  font-size: 38px;
 }
 
 </style>
