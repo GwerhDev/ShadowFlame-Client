@@ -26,5 +26,6 @@ onMounted(async () => {
         <UserListCard :user="user"></UserListCard>
       </li>
     </ul>
+    <div v-else class="loader"></div>
   </div>
 </template>

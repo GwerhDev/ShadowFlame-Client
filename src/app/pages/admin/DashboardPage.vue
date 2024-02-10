@@ -11,7 +11,7 @@ import DashboardComponent from '../../components/admin/DashboardComponent.vue';
 <style scoped>
 .container {
   width: 100vw;
-  margin-top: 7rem;
+  margin-top: 5rem;
   padding: 0;
 }
 
