@@ -92,7 +92,7 @@ async function addTask() {
             <TasksCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date" />
           </ul>
           <ul v-if="!store.currentUser.tasks?.length">{{ message }}</ul>
-          <div v-if="!message.length" class="loader"></div>
+          <div v-if="!store.currentUser.tasks?.length && !message.length" class="loader"></div>
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />
