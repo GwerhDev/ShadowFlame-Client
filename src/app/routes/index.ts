@@ -1,17 +1,18 @@
 import { RouteRecordRaw, createRouter, createWebHashHistory } from 'vue-router';
-import SignupPage from '../pages/SignupPage.vue';
-import AuthPage from '../pages/AuthPage.vue';
 import HomePage from '../pages/HomePage.vue';
-import AlreadyRegisteredPage from '../pages/AlreadyRegisteredPage.vue';
-import RegisterSuccessPage from '../pages/RegisterSuccessPage.vue';
-import RegisterErrorPage from '../pages/RegisterErrorPage.vue';
-import UserNotFoundPage from '../pages/UserNotFoundPage.vue';
+import AuthPage from '../pages/AuthPage.vue';
+import SignupPage from '../pages/SignupPage.vue';
+import LoginErrorPage from '../pages/LoginErrorPage.vue';
 import UserPendingPage from '../pages/UserPendingPage.vue';
+import UserInactivePage from '../pages/UserInactivePage.vue';
+import UserNotFoundPage from '../pages/UserNotFoundPage.vue';
+import RegisterErrorPage from '../pages/RegisterErrorPage.vue';
+import RegisterSuccessPage from '../pages/RegisterSuccessPage.vue';
+import AlreadyRegisteredPage from '../pages/AlreadyRegisteredPage.vue';
 import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
-import UserInactivePage from '../pages/UserInactivePage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MyTasksManagementPage from '../pages/admin/MyTasksManagementPage.vue';
 import ClanTasksManagementPage from '../pages/admin/ClanTasksManagementPage.vue';
@@ -77,6 +78,11 @@ const routes: RouteRecordRaw[] = [
     path: '/login/user-inactive',
     name: 'UserInactivePage',
     component: UserInactivePage
+  },
+  {
+    path: '/login/login-error',
+    name: 'LoginErrorPage',
+    component: LoginErrorPage
   },
   {
     path: '/signup/register-error',
