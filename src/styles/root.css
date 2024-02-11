@@ -152,6 +152,7 @@ button:focus,
   padding: 0;
   text-align: center;
 }
+
 @media (max-width: 1100px) {
   input[type="date"] {
     padding: 0;
