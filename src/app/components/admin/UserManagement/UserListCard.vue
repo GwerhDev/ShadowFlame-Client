@@ -62,9 +62,12 @@ function handleRole($event: any) {
       <select :value="user.role" @change="handleRole">
         <option value="admin">admin</option>
         <option value="member">member</option>
+        <option value="clanleader">clanleader</option>
+        <option value="warbandleader">warbandleader</option>
       </select>
       <select :value="user.status" @change="handleStatus">
         <option value="active">active</option>
+        <option value="pending">pending</option>
         <option value="inactive">inactive</option>
       </select>
     </span>
