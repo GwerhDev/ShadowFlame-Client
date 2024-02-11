@@ -134,16 +134,13 @@ button,
 }
 
 button:hover,
-.button:hover {
+button:active,
+button:focus,
+.button:hover,
+.button:active,
+.button:focus {
   border: solid 2px;
   border-color: var(--color-primary-light);
-}
-
-button:focus,
-button:focus-visible,
-.button:focus,
-.button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 .card {
