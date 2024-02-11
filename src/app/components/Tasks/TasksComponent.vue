@@ -85,14 +85,14 @@ async function addTask() {
               <p>+</p>
             </button>
           </form>
-          <ul v-if="store.currentUser.tasks?.length">
-            <TasksCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date" />
+          <ul v-if="store.currentUser.mytasks?.length">
+            <TasksCard v-for="(item, index) in store.currentUser.mytasks" :key="index" :todo="item" :date="date" />
           </ul>
-          <ul v-if="store.currentUser.tasks?.length">
-            <TasksCompletedCard v-for="(item, index) in store.currentUser.tasks" :key="index" :todo="item" :date="date" />
+          <ul v-if="store.currentUser.mytasks?.length">
+            <TasksCompletedCard v-for="(item, index) in store.currentUser.mytasks" :key="index" :todo="item" :date="date" />
           </ul>
-          <ul v-if="!store.currentUser.tasks?.length">{{ message }}</ul>
-          <div v-if="!store.currentUser.tasks?.length && !message.length" class="loader"></div>
+          <ul v-if="!store.currentUser.mytasks?.length">{{ message }}</ul>
+          <div v-if="!store.currentUser.mytasks?.length && !message.length" class="loader"></div>
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />

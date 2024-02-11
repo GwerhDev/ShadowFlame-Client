@@ -10,7 +10,7 @@ export const useStore = defineStore('store', {
     currentUser: {
       logged: false,
       userData: null,
-      tasks: null
+      mytasks: null
     },
     userToken: '',
     users: null
@@ -22,7 +22,7 @@ export const useStore = defineStore('store', {
       this.currentUser = {
         logged: false,
         userData: null,
-        tasks: {}
+        mytasks: {}
       };
       this.userToken = '';
     },
@@ -72,7 +72,7 @@ export const useStore = defineStore('store', {
     async handleGetTask(date: Date) {
       try {
         const response: any = await getTasks(date);
-        this.currentUser.tasks = response;
+        this.currentUser.mytasks = response;
         return;
       } catch (error) {
         console.error(error);
