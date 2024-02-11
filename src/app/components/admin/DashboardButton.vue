@@ -8,10 +8,9 @@ import { onMounted } from "vue";
 const store: any = useStore();
 const router: any = useRouter();
 
-onMounted( async () => {
+onMounted(async() => {
   try {
     await store.handleGetAdminNotifications();
-
   } catch (error) {
     console.error(error);
   } finally {

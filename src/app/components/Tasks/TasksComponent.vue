@@ -30,7 +30,7 @@ onMounted(async () => {
 async function handleDate(e: any) {
   date.value = e.target.value
   await store.handleGetTask(date.value);
-}
+};
 
 function handleInput() {
   if (title.value.length) isButtonDisabled.value = false;
@@ -47,7 +47,7 @@ async function addTask() {
     repeat: false,
     completed: false,
     repeatType: null
-  }
+  };
 
   await store.handleCreateTask(formData);
   await store.handleGetTask(date.value);

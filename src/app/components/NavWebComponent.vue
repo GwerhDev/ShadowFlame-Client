@@ -6,6 +6,8 @@ import NavMenuComponent from './NavMenuComponent.vue';
 import UserMenuComponent from './UserMenuComponent.vue';
 import DashboardButton from './admin/DashboardButton.vue';
 
+defineProps(["loggedin"])
+
 </script>
 
 <template>
@@ -13,7 +15,7 @@ import DashboardButton from './admin/DashboardButton.vue';
     <div class="section-container">
       <LogoComponent />
       <NavMenuComponent />
-      <AccountButton />
+      <AccountButton :loggedin="loggedin" />
       <DashboardButton />
     </div>
     <UserMenuComponent />

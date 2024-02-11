@@ -5,12 +5,14 @@ import NavWebComponent from './NavWebComponent.vue';
 import AccountMenuMobile from './AccountMenuMobile.vue';
 import NavMobileComponent from './NavMobileComponent.vue';
 
+defineProps(["loggedin"])
+
 </script>
 
 <template>
   <div class="nav-container">
-    <NavWebComponent />
-    <NavMobileComponent />
+    <NavWebComponent :loggedin="loggedin"/>
+    <NavMobileComponent :loggedin="loggedin"/>
   </div>
   <div class="account-mobile">
     <AccountMenuMobile />

@@ -3,7 +3,9 @@
 import LogoComponent from './LogoComponent.vue';
 import BurgerMenu from './BurgerMenuComponent.vue';
 import UserMenuComponent from './UserMenuComponent.vue';
-import AccountMobileButton from './AccountMobileButton.vue'
+import AccountMobileButton from './AccountMobileButton.vue';
+
+defineProps(["loggedin"]);
 
 </script>
 
@@ -12,7 +14,7 @@ import AccountMobileButton from './AccountMobileButton.vue'
     <div class="section-container">
       <BurgerMenu />
       <LogoComponent />
-      <AccountMobileButton />
+      <AccountMobileButton :loggedin="loggedin" />
     </div>
     <UserMenuComponent />
   </nav>

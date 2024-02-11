@@ -13,10 +13,9 @@ let urlLogin: string = API_URL + "/login-bnet" || "";
 document.addEventListener('mouseup', function (e) {
   const container = $d('#user-menu-container');
   if (!container?.contains(e.target)) {
-    return (
-      $d('#user-menu-container').style.display = 'none'
-    )
-  }
+    return $d('#user-menu-container').style.display = 'none';
+  };
+  
   return;
 });
 
