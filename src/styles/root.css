@@ -33,6 +33,10 @@ input[type="checkbox"] {
   &:disabled {
     display: none;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 input[type="date"] {
