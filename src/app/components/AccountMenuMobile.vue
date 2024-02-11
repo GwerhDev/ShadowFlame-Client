@@ -39,7 +39,8 @@ function handleLogout() {
 <template>
   <div class="account-menu" id="account-menu-mobile">
     <div class="top-menu">
-      <img src="" alt="">
+      <div></div>
+      <img src="../../assets/png/shadowgardians-logo.png" height="40px" alt="">
       <span @click="handleButton"><img src="../../assets/svg/close-icon.svg" alt="" height="25px"></span>
     </div>
     <div class="inner-container">

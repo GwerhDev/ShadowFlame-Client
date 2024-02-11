@@ -25,7 +25,8 @@ document.addEventListener('mouseup', function (e) {
       <span @click="handleButton">
         <img src="../../assets/svg/close-icon.svg" alt="" height="25px" />
       </span>
-      <img src="" alt="" />
+      <img src="../../assets/png/shadowgardians-logo.png" height="40px" alt="">
+      <div></div>
     </div>
     <img class="menu-logo" src="../../assets/avif/di-logo-960.avif" alt="">
     <NavMenuComponent />
