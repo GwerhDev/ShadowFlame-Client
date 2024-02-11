@@ -11,6 +11,7 @@ export interface storeState {
     mytasks: any,
     clantasks: any,
     warbandtasks: any,
+    notifications: any,
   },
   userToken: string,
 }

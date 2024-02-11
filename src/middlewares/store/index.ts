@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -20,6 +20,7 @@ export const useStore = defineStore('store', {
       mytasks: null,
       clantasks: null,
       warbandtasks: null,
+      notifications: null,
     },
 
     userToken: '',
@@ -41,6 +42,7 @@ export const useStore = defineStore('store', {
         mytasks: null,
         clantasks: null,
         warbandtasks: null,
+        notifications: null,
       };
 
       this.userToken = '';
@@ -68,7 +70,7 @@ export const useStore = defineStore('store', {
         console.error(error);
       }
     },
-    
+
     async handleUpdateUserData(formData: any, id: any, token: any) {
       await updateUserData(formData, id, token);
       this.currentUser = await getUserData(token);
@@ -133,6 +135,15 @@ export const useStore = defineStore('store', {
         console.error(error);
       }
     },
+
+    async handleGetAdminNotifications() {
+      try {
+        this.admin.notifications = await getAdminNotifications();
+        return;
+      } catch (error) {
+        console.error(error);
+      }
+    },
   }
-  
+
 });

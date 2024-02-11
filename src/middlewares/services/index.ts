@@ -51,12 +51,12 @@ export const getUsers: any = async () => {
 }
 
 export const updateUser: any = async (id: string, formData: any) => {
-  await axios.patch(API_URL + "/admin/users/" + id, formData, options())
+  await axios.patch(API_URL + "/admin/users/" + id, formData, options());
   return;
 }
 
 export const deleteUser: any = async (id: string) => {
-  await axios.delete(API_URL + "/admin/users/" + id, options())
+  await axios.delete(API_URL + "/admin/users/" + id, options());
   return;
 }
 
@@ -74,7 +74,7 @@ export const createTask: any = async (formData: any) => {
 
 export const updateTask: any = async (id: string, formData: any) => {
   const response: any = await axios.patch(API_URL + "/my-tasks/update/" + id, formData, options())
-                                    .then(response => response.data)
+                                   .then(response => response.data)
   return response;
 }
 
@@ -85,6 +85,12 @@ export const deleteTask: any = async (id: string) => {
 
 export const chatbotQuery: any = async (formData: any) => {
   const response: any = await axios.post(API_URL + "/chatbot", formData, options())
-                                    .then(response => response.data)
+                                   .then(response => response.data);
+  return response;
+}
+
+export const getAdminNotifications: any = async () => {
+  const response: any = await axios.get(API_URL + "/admin/notifications", options())
+                                   .then(response => response.data);
   return response;
 }

@@ -27,12 +27,14 @@ async function handleUpdate(user: any) {
 
   await store.handleUpdateUser(user._id, formData)
   await store.handleGetUsers();
+  await store.handleGetAdminNotifications();
   editionActive.value = false;
 };
 
 async function handleDeleteUser(id: string) {
   await store.handleDeleteUser(id);
   await store.handleGetUsers();
+  await store.handleGetAdminNotifications();
 };
 
 function handleCancel() {

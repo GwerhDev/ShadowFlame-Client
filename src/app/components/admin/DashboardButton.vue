@@ -3,9 +3,20 @@
 import { useRouter } from 'vue-router';
 import { useStore } from '../../../middlewares/store';
 import { $d } from '../../../functions';
+import { onMounted } from "vue";
 
-const router: any = useRouter();
 const store: any = useStore();
+const router: any = useRouter();
+
+onMounted( async () => {
+  try {
+    await store.handleGetAdminNotifications();
+
+  } catch (error) {
+    console.error(error);
+  } finally {
+  }
+});
 
 function handleClick() {
   $d('#nav-menu-mobile').style.display = 'none';
@@ -16,8 +27,9 @@ function handleClick() {
 
 <template>
   <span class="dashboard-container" v-if="store.currentUser?.userData?.role === 'admin'">
-    <button class="nav-button action-button" @click="handleClick">
+    <button class="nav-button" @click="handleClick">
       <p>Dashboard</p>
+      <span v-if="store.admin?.notifications?.counter">{{ store.admin?.notifications?.counter }}</span>
     </button>
   </span>
 </template>
