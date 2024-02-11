@@ -51,8 +51,8 @@ async function addTask() {
   await store.handleCreateTask(formData);
   await store.handleGetTask(date.value);
 
+  isButtonDisabled.value = true;
   title.value = "";
-  isButtonDisabled.value = false;
 };
 
 </script>
