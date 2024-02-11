@@ -158,17 +158,13 @@ button:focus-visible,
 }
 
 .loader {
-  width: 100%;
-  font-weight: bold;
-  font-family: sans-serif;
-  font-size: 30px;
-  padding-bottom: 8px;
-  background: linear-gradient(var(--color-primary) 0 0) 0 100%/0% 3px no-repeat;
-  animation: l2 2s linear infinite;
-}
-
-.loader:before {
-  content:""
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-primary);
+  mask: radial-gradient(circle closest-side at 50% 40%, #0000 94%, #000);
+  transform-origin: 50% 40%;
+  animation: l25 1s infinite linear;
 }
 
 @keyframes l2 {to{background-size: 100% 3px}}
