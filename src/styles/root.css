@@ -33,9 +33,7 @@ input {
 }
 
 input[type="text"] {
-  padding: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding: .5rem;
   border: none;
   border-bottom: var(--nav-color-primary) solid 1px;
 
