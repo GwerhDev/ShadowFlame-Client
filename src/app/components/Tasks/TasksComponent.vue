@@ -8,6 +8,7 @@ import TasksLateralMenu from "./TasksLateralMenu.vue";
 import TasksCompletedCard from "./TasksCompletedCard.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
+import LoaderComponent from "../../utils/LoaderComponent.vue";
 
 const store: any = useStore();
 const title: Ref = ref("");
@@ -92,7 +93,7 @@ async function addTask() {
             <TasksCompletedCard v-for="(item, index) in store.currentUser.mytasks" :key="index" :todo="item" :date="date" />
           </ul>
           <ul v-if="!store.currentUser.mytasks?.length">{{ message }}</ul>
-          <div v-if="!store.currentUser.mytasks?.length && !message.length" class="loader"></div>
+          <LoaderComponent v-if="!store.currentUser.mytasks?.length && !message.length" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />

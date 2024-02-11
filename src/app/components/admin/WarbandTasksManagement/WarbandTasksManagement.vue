@@ -3,6 +3,7 @@
 import { useStore } from '../../../../middlewares/store';
 import { onMounted } from 'vue';
 import router from '../../../routes';
+import LoaderComponent from '../../../utils/LoaderComponent.vue';
 
 const store: any = useStore();
 
@@ -27,6 +28,6 @@ function handleDashboardButton() {
         <li>actividad</li>
       </nav>
     </ul>
-    <div v-else class="loader"></div>
+    <LoaderComponent v-else />
   </div>
 </template>

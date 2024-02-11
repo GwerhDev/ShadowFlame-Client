@@ -4,6 +4,7 @@
 import { useStore } from '../../middlewares/store/index';
 import { useRoute, useRouter } from 'vue-router';
 import { error } from '../../middlewares/misc/errors';
+import LoaderComponent from '../utils/LoaderComponent.vue';
 
 const store: any = useStore();
 const route: any = useRoute();
@@ -20,5 +21,5 @@ if(userToken === error.notFound) {
 </script>
 
 <template>
-  <div class="loader"></div>
+  <LoaderComponent />
 </template>

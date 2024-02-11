@@ -4,6 +4,7 @@ import { useStore } from '../../../../middlewares/store';
 import { onMounted } from 'vue';
 import UserListCard from './UserListCard.vue';
 import router from '../../../routes';
+import LoaderComponent from '../../../utils/LoaderComponent.vue';
 
 const store: any = useStore();
 
@@ -34,6 +35,6 @@ function handleDashboardButton() {
         <UserListCard :user="user"></UserListCard>
       </li>
     </ul>
-    <div v-else class="loader"></div>
+    <LoaderComponent v-else />
   </div>
 </template>
