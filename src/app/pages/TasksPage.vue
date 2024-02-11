@@ -24,8 +24,6 @@ import TasksComponent from '../components/Tasks/TasksComponent.vue';
 @media (max-width: 1100px) {
   .div-container {
     padding-top: 2rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 }
 </style>
