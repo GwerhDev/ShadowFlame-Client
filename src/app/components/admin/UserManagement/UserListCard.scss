@@ -54,3 +54,15 @@ select {
 .red-bg {
   background-color: var(--color-red-action);
 }
+
+.status-container {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  .status {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+}

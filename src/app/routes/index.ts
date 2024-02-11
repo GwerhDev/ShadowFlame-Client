@@ -11,11 +11,11 @@ import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
+import UserInactivePage from '../pages/UserInactivePage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MyTasksManagementPage from '../pages/admin/MyTasksManagementPage.vue';
 import ClanTasksManagementPage from '../pages/admin/ClanTasksManagementPage.vue';
 import WarbandTasksManagementPage from '../pages/admin/WarbandTasksManagementPage.vue';
-import UserInactivePage from '../pages/UserInactivePage.vue';
 
 const routes: RouteRecordRaw[] = [
   {

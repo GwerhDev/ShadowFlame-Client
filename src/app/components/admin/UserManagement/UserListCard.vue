@@ -52,6 +52,22 @@ function handleRole($event: any) {
   role.value = $event.target.value;
 };
 
+function styleStatus(status: string) {
+
+  if(status === 'active') {
+    return { backgroundColor: '#99d499'} 
+  }
+
+  if(status === 'pending') {
+    return { backgroundColor: '#eaec72'} 
+  }
+
+  if(status === 'inactive') {
+    return { backgroundColor: '#b67f75'} 
+  }
+
+};
+
 </script>
 
 <template>
@@ -101,7 +117,7 @@ function handleRole($event: any) {
     <span>
       <p>{{ user.battletag }}</p>
       <p>{{ user.role }}</p>
-      <p>{{ user.status }}</p>
+      <p class="status-container"><span class="status" :style="styleStatus(user.status)"></span></p>
     </span>
     <ul class="buttons-container">
       <button @click="handleEdit">
