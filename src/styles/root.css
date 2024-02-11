@@ -33,6 +33,7 @@ input {
 }
 
 input[type="text"] {
+  padding: 1rem;
   padding-top: .5rem;
   padding-bottom: .5rem;
   border: none;
