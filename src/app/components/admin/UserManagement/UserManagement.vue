@@ -22,7 +22,7 @@ function handleDashboardButton() {
     <ul>
       <button @click="handleDashboardButton">Dashboard</button>
     </ul>
-    <ul v-if="store.users">
+    <ul v-if="store.admin.users">
       <nav>
         <li>#</li>
         <li>username</li>
@@ -30,7 +30,7 @@ function handleDashboardButton() {
         <li>status</li>
         <li>acciones</li>
       </nav>
-      <li v-for="user in store.users" :key="user._id">
+      <li v-for="user in store.admin.users" :key="user._id">
         <UserListCard :user="user"></UserListCard>
       </li>
     </ul>

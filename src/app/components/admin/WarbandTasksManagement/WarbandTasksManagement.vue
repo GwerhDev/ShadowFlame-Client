@@ -21,7 +21,7 @@ function handleDashboardButton() {
     <ul>
       <button @click="handleDashboardButton">Dashboard</button>
     </ul>
-    <ul v-if="store.users">
+    <ul v-if="store.admin.warbandtasks">
       <nav>
         <li>#</li>
         <li>actividad</li>

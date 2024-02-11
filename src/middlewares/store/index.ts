@@ -10,10 +10,19 @@ export const useStore = defineStore('store', {
     currentUser: {
       logged: false,
       userData: null,
-      mytasks: null
+      mytasks: null,
+      clantasks: null,
+      warbandtasks: null,
     },
+
+    admin: {
+      users: null,
+      mytasks: null,
+      clantasks: null,
+      warbandtasks: null,
+    },
+
     userToken: '',
-    users: null
   }),
 
   actions: {
@@ -22,8 +31,18 @@ export const useStore = defineStore('store', {
       this.currentUser = {
         logged: false,
         userData: null,
-        mytasks: {}
+        mytasks: {},
+        clantasks: {},
+        warbandtasks: {},
       };
+
+      this.admin = {
+        users: null,
+        mytasks: null,
+        clantasks: null,
+        warbandtasks: null,
+      };
+
       this.userToken = '';
     },
 
@@ -58,7 +77,7 @@ export const useStore = defineStore('store', {
     },
 
     async handleGetUsers() {
-      this.users = await getUsers();
+      this.admin.users = await getUsers();
     },
 
     async handleUpdateUser(id: string, formData: any) {
