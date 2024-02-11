@@ -74,7 +74,7 @@ const routes: RouteRecordRaw[] = [
     component: UserPendingPage
   },
   {
-    path: '/login/user-pending-approve',
+    path: '/login/user-inactive',
     name: 'UserInactivePage',
     component: UserInactivePage
   },
