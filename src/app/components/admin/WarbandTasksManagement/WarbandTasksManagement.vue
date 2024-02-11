@@ -20,7 +20,7 @@ function handleDashboardButton() {
 <template>
   <div class="ul-container">
     <ul>
-      <button @click="handleDashboardButton">Dashboard</button>
+      <button @click="handleDashboardButton">Volver</button>
     </ul>
     <ul v-if="store.admin.warbandtasks">
       <nav>

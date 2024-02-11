@@ -1,5 +1,8 @@
 <style scoped lang="scss" src="./DashboardComponent.scss"/>
 <script setup lang="ts">
+import { useStore } from '../../../middlewares/store';
+
+const store: any = useStore();
 
 </script>
 
@@ -8,7 +11,10 @@
     <h1>Dashboard</h1>
     <ul>
       <router-link to="/dashboard/user-management">
-        <li>Usuarios</li>
+        <li>
+          Usuarios
+          <span v-if="store.admin?.notifications?.pendingUsers.length">{{ store.admin?.notifications?.pendingUsers.length }}</span>
+        </li>
       </router-link>
 
       <router-link to="/dashboard/my-tasks-management">
