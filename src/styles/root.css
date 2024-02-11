@@ -27,8 +27,12 @@
 }
 
 input[type="checkbox"] {
-  width: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: none;
+  &:disabled {
+    display: none;
+  }
 }
 
 input[type="date"] {
@@ -158,13 +162,20 @@ button:focus-visible,
 }
 
 .loader {
-  width: 50px;
+  width: 30px;
+  height: 30px;
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: 100%;
   background: var(--color-primary);
   mask: radial-gradient(circle closest-side at 50% 40%, #0000 94%, #000);
   transform-origin: 50% 40%;
   animation: l25 1s infinite linear;
+}
+
+@keyframes l25 {
+  100% {
+    transform: rotate(1turn)
+  }
 }
 
 @keyframes l2 {to{background-size: 100% 3px}}

@@ -7,6 +7,7 @@ const store: any = useStore();
 const props: any = defineProps({ todo: Object, date: String });
 
 const editionActive: Ref = ref(false);
+const isCheckInputDisabled: Ref = ref(false);
 const deleteConfirmationActive: Ref = ref(false);
 const editedTitle: Ref = ref("");
 const isInputDisabled: Ref = ref("");
@@ -34,12 +35,15 @@ function handleDeleteButton() {
 };
 
 async function handleCheckButton() {
+  isCheckInputDisabled.value = true;
+
   const formData: any = {
     completed: !props.todo.completed
   };
-
   await store.handleUpdateTask(props.todo._id, formData);
   await store.handleGetTask(props.date);
+
+  isCheckInputDisabled.value = false;
 };
 
 async function updateEdit() {
@@ -63,7 +67,8 @@ async function handleDeleteTaskConfirmation() {
 
 <template>
   <li v-if="!props.todo.completed && !editionActive && !deleteConfirmationActive">
-    <input type="checkbox" :checked="props.todo.completed" @change="handleCheckButton"/>
+    <div class="loader" v-if="isCheckInputDisabled"></div>
+    <input type="checkbox" :checked="props.todo.completed" :disabled="isCheckInputDisabled" @change="handleCheckButton"/>
     <p>{{ props.todo.title }}</p>
     <span>
       <button @click="handleActivateEditionButton">

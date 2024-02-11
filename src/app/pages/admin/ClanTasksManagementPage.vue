@@ -16,4 +16,10 @@ import ClanTasksManagement from '../../components/admin/ClanTasksManagement/Clan
   padding: 0;
 }
 
+@media (max-width: 1100px) {
+  .container {
+    margin-top: 2rem;
+  }
+}
+
 </style>
