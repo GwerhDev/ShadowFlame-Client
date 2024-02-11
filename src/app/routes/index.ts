@@ -15,6 +15,7 @@ import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MyTasksManagementPage from '../pages/admin/MyTasksManagementPage.vue';
 import ClanTasksManagementPage from '../pages/admin/ClanTasksManagementPage.vue';
 import WarbandTasksManagementPage from '../pages/admin/WarbandTasksManagementPage.vue';
+import UserInactivePage from '../pages/UserInactivePage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -71,6 +72,11 @@ const routes: RouteRecordRaw[] = [
     path: '/login/user-pending-approve',
     name: 'UserPendingPage',
     component: UserPendingPage
+  },
+  {
+    path: '/login/user-pending-approve',
+    name: 'UserInactivePage',
+    component: UserInactivePage
   },
   {
     path: '/signup/register-error',
