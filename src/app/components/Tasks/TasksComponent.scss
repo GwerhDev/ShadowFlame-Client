@@ -40,8 +40,9 @@
         font-size: 16px;
         border-bottom: solid 1px rgba(255, 255, 255, .15);
 
-        &:focus {
+        &:focus, &:active {
           outline: none;
+          border-color: var(--color-primary);
         }
       }
 

@@ -37,10 +37,10 @@ input[type="text"] {
   padding-bottom: .5rem;
   border: none;
   border-bottom: var(--nav-color-primary) solid 1px;
-  
+
   &:focus, &:active {
     outline: none;
-    border: solid var(--color-primary);
+          border-color: var(--color-primary);
   }
 }
 
