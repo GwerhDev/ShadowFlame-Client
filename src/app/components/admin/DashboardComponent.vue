@@ -1,31 +1,27 @@
 <style scoped lang="scss" src="./DashboardComponent.scss"/>
 <script setup lang="ts">
-import { useStore } from '../../../middlewares/store';
-import { onMounted } from 'vue';
-import UserListCard from './UserListCard.vue';
-
-const store: any = useStore();
-
-onMounted(async () => {
-  await store.handleGetUsers();
-});
 
 </script>
 
 <template>
-  <div class="ul-container">
-    <ul v-if="store.users">
-      <nav>
-        <li>#</li>
-        <li>username</li>
-        <li>role</li>
-        <li>status</li>
-        <li>actions</li>
-      </nav>
-      <li v-for="user in store.users" :key="user._id">
-        <UserListCard :user="user"></UserListCard>
-      </li>
+  <div class="dashboard-container">
+    <h1>Dashboard</h1>
+    <ul>
+      <router-link to="/dashboard/user-management">
+        <li>Usuarios</li>
+      </router-link>
+
+      <router-link to="/dashboard/my-tasks-management">
+        <li>My Tasks </li>
+      </router-link>
+
+      <router-link to="/dashboard/clan-tasks-management">
+        <li>Clan Tasks</li>
+      </router-link>
+
+      <router-link to="/dashboard/warband-tasks-management">
+        <li>Warband Tasks</li>
+      </router-link>
     </ul>
-    <div v-else class="loader"></div>
   </div>
 </template>

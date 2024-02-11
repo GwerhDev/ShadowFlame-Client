@@ -1,43 +1,23 @@
-.ul-container {
-  padding: 1rem;
+.dashboard-container {
+  padding: 1.1rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   
   ul {
     padding: 0;
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: .4rem;
+    margin: 0;
     list-style: none;
-
-    nav {
-      display: flex;
-      flex-direction: row;
-      background-color: var(--color-secondary-bg);
-      justify-content: space-between;
-      padding-left: 1.4rem;
-      padding-right: 1.4rem;
-      border-radius: 8px;
-
-      li {
-        background: none;
-        padding: .3rem;
-        padding-left: 1.3rem;
-        padding-right: 1.3rem;
-
-        &:hover {
-          background: none;
-        }
-      }
-    }
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
 
     li {
-      display: flex;
-      border-radius: 9px;
+      padding: 1rem;
+      border-radius: 8px;
       background-color: var(--color-secondary-bg);
-      justify-content: space-evenly;
-      align-items: center;
-      gap: 1rem;
-      
+
       &:hover {
         background-color: var(--color-primary);
       }

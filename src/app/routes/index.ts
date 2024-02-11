@@ -11,12 +11,36 @@ import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
+import UserManagementPage from '../pages/admin/UserManagementPage.vue';
+import MyTasksManagementPage from '../pages/admin/MyTasksManagementPage.vue';
+import ClanTasksManagementPage from '../pages/admin/ClanTasksManagementPage.vue';
+import WarbandTasksManagementPage from '../pages/admin/WarbandTasksManagementPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/dashboard',
     name: 'DashboardPage',
     component: DashboardPage
+  },
+  {
+    path: '/dashboard/user-management',
+    name: 'UserManagementPage',
+    component: UserManagementPage
+  },
+  {
+    path: '/dashboard/my-tasks-management',
+    name: 'MyTasksManagementPage',
+    component: MyTasksManagementPage
+  },
+  {
+    path: '/dashboard/clan-tasks-management',
+    name: 'ClanTasksManagementPage',
+    component: ClanTasksManagementPage
+  },
+  {
+    path: '/dashboard/warband-tasks-management',
+    name: 'WarbandTasksManagementPage',
+    component: WarbandTasksManagementPage
   },
   {
     path: '/',

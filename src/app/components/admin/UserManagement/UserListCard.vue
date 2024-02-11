@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./UserListCard.scss"/>
 <script setup lang="ts">
-import { useStore } from '../../../middlewares/store';
+import { useStore } from '../../../../middlewares/store';
 import { Ref, onMounted, ref } from 'vue';
 
 const store: any = useStore();
@@ -56,7 +56,7 @@ function handleRole($event: any) {
 
 <template>
   <div class="list-container" v-if="editionActive && !deleteActive">
-    <img src="../../../assets/svg/profile-icon.svg" alt="">
+    <img src="../../../../assets/svg/profile-icon.svg" alt="">
     <span>
       <p>{{ user.battletag }}</p>
       <select :value="user.role" @change="handleRole">
@@ -78,7 +78,7 @@ function handleRole($event: any) {
     </ul>
   </div>
   <div class="list-container red-bg" v-if="!editionActive && deleteActive">
-    <img src="../../../assets/svg/profile-icon.svg" alt="">
+    <img src="../../../../assets/svg/profile-icon.svg" alt="">
     <span>
       <p>{{ user.battletag }}</p>
       <p>{{ user.role }}</p>
@@ -94,7 +94,7 @@ function handleRole($event: any) {
     </ul>
   </div>
   <div class="list-container" v-if="!editionActive && !deleteActive">
-    <img src="../../../assets/svg/profile-icon.svg" alt="">
+    <img src="../../../../assets/svg/profile-icon.svg" alt="">
     <span>
       <p>{{ user.battletag }}</p>
       <p>{{ user.role }}</p>
@@ -102,10 +102,10 @@ function handleRole($event: any) {
     </span>
     <ul class="buttons-container">
       <button @click="handleEdit">
-        <img src="../../../assets/svg/edit-icon.svg" alt="" width="18px">
+        <img src="../../../../assets/svg/edit-icon.svg" alt="" width="18px">
       </button>
       <button @click="handleDelete">
-        <img src="../../../assets/svg/delete-icon.svg" alt="" width="22px">
+        <img src="../../../../assets/svg/delete-icon.svg" alt="" width="22px">
       </button>
     </ul>
   </div>
