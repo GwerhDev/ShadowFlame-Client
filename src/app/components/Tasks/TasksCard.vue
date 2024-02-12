@@ -11,6 +11,7 @@ const isCheckInputDisabled: Ref = ref(false);
 const deleteConfirmationActive: Ref = ref(false);
 const editedTitle: Ref = ref("");
 const isInputDisabled: Ref = ref("");
+const completed: Ref = ref(store.currentUser.mytasks?.completed.includes(props.todo._id));
 
 function handleActivateEditionButton() {
   isInputDisabled.value = false;
@@ -34,15 +35,31 @@ function handleDeleteButton() {
   deleteConfirmationActive.value = true;
 };
 
+const filterDates = props.todo.completedDates.filter((e: any) => e.substring(0, 10) === props.date);
+
 async function handleCheckButton() {
   isCheckInputDisabled.value = true;
 
-  const formData: any = {
-    completed: !props.todo.completed
+  let formData: any;
+
+  if(filterDates.length) {
+    formData = {
+      completedDates: props.todo.completedDates.filter((e: any) => e.substring(0, 10) !== props.date)
+    };
+  } else if (props.todo.completedDates && !filterDates.length) {
+    formData = {
+      completedDates: [...props.todo.completedDates, props.date]
+    };
+  } else {
+    formData = {
+      completedDates: [props.date]
+    };
   };
+
   await store.handleUpdateTask(props.todo._id, formData);
   await store.handleGetTask(props.date);
 
+  completed.value = store.currentUser.mytasks?.completed.includes(props.todo._id);
   isCheckInputDisabled.value = false;
 };
 
@@ -55,6 +72,7 @@ async function updateEdit() {
 
   await store.handleUpdateTask(props.todo._id, formData);
   await store.handleGetTask(props.date);
+
   editionActive.value = false;
 };
 
@@ -66,9 +84,9 @@ async function handleDeleteTaskConfirmation() {
 </script>
 
 <template>
-  <li v-if="!props.todo.completed && !editionActive && !deleteConfirmationActive">
+  <li v-if="!editionActive && !deleteConfirmationActive">
     <div class="loader" v-if="isCheckInputDisabled"></div>
-    <input type="checkbox" :checked="props.todo.completed" :disabled="isCheckInputDisabled" @change="handleCheckButton"/>
+    <input type="checkbox" :checked="completed" :disabled="isCheckInputDisabled" @change="handleCheckButton" />
     <p>{{ props.todo.title }}</p>
     <span>
       <button @click="handleActivateEditionButton">
@@ -79,8 +97,8 @@ async function handleDeleteTaskConfirmation() {
       </button>
     </span>
   </li>
-  <li v-if="!props.todo.completed && editionActive && !deleteConfirmationActive">
-    <input type="checkbox" :checked="props.todo.completed" disabled/>
+  <li v-if="editionActive && !deleteConfirmationActive">
+    <input type="checkbox" :checked="completed" disabled />
     <input class="edit-input" :value="props.todo.title" type="text" @input="handleEditedTidleInput">
     <span>
       <button @click="updateEdit">
@@ -91,8 +109,8 @@ async function handleDeleteTaskConfirmation() {
       </button>
     </span>
   </li>
-  <li v-if="!props.todo.completed && deleteConfirmationActive">
-    <input type="checkbox" :checked="props.todo.completed" disabled/>
+  <li v-if="deleteConfirmationActive">
+    <input type="checkbox" :checked="completed" disabled />
     <p>{{ props.todo.title }}</p>
     <span>
       <button @click="handleDeleteTaskConfirmation">

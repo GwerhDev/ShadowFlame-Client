@@ -5,7 +5,6 @@ import { useStore } from '../../../middlewares/store';
 import { optionTodoList } from "../../../helpers/lists";
 import TasksCard from "./TasksCard.vue";
 import TasksLateralMenu from "./TasksLateralMenu.vue";
-import TasksCompletedCard from "./TasksCompletedCard.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
 import LoaderComponent from "../../utils/LoaderComponent.vue";
@@ -44,9 +43,10 @@ async function addTask() {
     title: title.value,
     index: 1,
     date: date.value,
-    repeat: false,
-    completed: false,
-    repeatType: null
+    fixed: false,
+    repeat: null,
+    repeatTimes: null,
+    completedDates: null,
   };
 
   await store.handleCreateTask(formData);
@@ -86,14 +86,11 @@ async function addTask() {
               <p>+</p>
             </button>
           </form>
-          <ul v-if="store.currentUser.mytasks?.length">
-            <TasksCard v-for="(item, index) in store.currentUser.mytasks" :key="index" :todo="item" :date="date" />
+          <ul v-if="store.currentUser.mytasks?.tasks?.length">
+            <TasksCard v-for="(item, index) in store.currentUser?.mytasks?.tasks" :key="index" :todo="item" :date="date" />
           </ul>
-          <ul v-if="store.currentUser.mytasks?.length">
-            <TasksCompletedCard v-for="(item, index) in store.currentUser.mytasks" :key="index" :todo="item" :date="date" />
-          </ul>
-          <ul v-if="!store.currentUser.mytasks?.length">{{ message }}</ul>
-          <LoaderComponent v-if="!store.currentUser.mytasks?.length && !message.length" />
+          <ul v-if="!store.currentUser.mytasks?.tasks?.length">{{ message }}</ul>
+          <LoaderComponent v-if="!store.currentUser.mytasks?.tasks?.length && !message.length" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />
