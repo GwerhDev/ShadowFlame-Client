@@ -14,11 +14,11 @@
     </section>
     <section class="second-section">
       <h1>Salva a Sanctuary</h1>
-      <p>El mundo de Santuario vuelve a estar asediado por las hordas demoníacas y necesita tu ayuda para defenderse del ataque.</p>
+      <h3 class="subtitle">Sanctuary vuelve a estar asediado por las hordas demoníacas y necesita tu ayuda para defenderse del ataque.</h3>
     </section>
     <section class="third-section">
       <h1>... y a Richter</h1>
-      <p>Camadería y apoyo mutuo.</p>
+      <h3 class="subtitle">Camadería y apoyo mutuo.</h3>
     </section>
   </main>
 </template>
