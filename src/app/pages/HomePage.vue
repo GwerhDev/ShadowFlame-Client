@@ -18,7 +18,7 @@
     </section>
     <section class="third-section">
       <h1 class="mb-1">... y a Richter</h1>
-      <h3 class="subtitle">Camadería y apoyo mutuo.</h3>
+      <h3 class="subtitle">Camaradería y apoyo mutuo.</h3>
     </section>
   </main>
 </template>
