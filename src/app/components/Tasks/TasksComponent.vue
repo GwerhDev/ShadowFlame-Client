@@ -76,7 +76,7 @@ async function addTask() {
           </div>
 
           <form @submit.prevent="addTask">
-            <input type="text" list="options" placeholder="Agregarla una tarea a tu lista" v-model="title"
+            <input type="text" list="options" placeholder="Agregar una tarea a tu lista" v-model="title"
               @input="handleInput" />
 
             <datalist id="options">
