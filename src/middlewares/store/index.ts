@@ -13,6 +13,7 @@ export const useStore = defineStore('store', {
       mytasks: null,
       clantasks: null,
       warbandtasks: null,
+      tasksdate: null,
     },
 
     admin: {
@@ -35,6 +36,7 @@ export const useStore = defineStore('store', {
         mytasks: {},
         clantasks: {},
         warbandtasks: {},
+        tasksdate: null,
       };
 
       this.admin = {
@@ -46,6 +48,10 @@ export const useStore = defineStore('store', {
       };
 
       this.userToken = '';
+    },
+
+    setTasksDate(date: any) {
+      this.currentUser.tasksdate = date;
     },
 
     async handleRegister(data: any) {
@@ -64,6 +70,7 @@ export const useStore = defineStore('store', {
     async handleUserData(token: any) {
       try {
         this.currentUser = await getUserData(token);
+        
         this.userToken = token;
         setUserToken(token);
       } catch (error) {

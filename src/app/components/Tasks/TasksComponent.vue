@@ -22,12 +22,14 @@ onMounted(async () => {
   } catch (error) {
     console.error(error);
   } finally {
-    message.value = "No hay tareas para esta fecha."
+    store.setTasksDate(date.value);
+    message.value = "No hay tareas para esta fecha.";
   }
 });
 
 async function handleDate(e: any) {
   date.value = e.target.value
+  store.setTasksDate(date.value);
   await store.handleGetTask(date.value);
 };
 
@@ -36,17 +38,14 @@ function handleInput() {
   else isButtonDisabled.value = true;
 };
 
-async function addTask() {
+async function createTask() {
   isButtonDisabled.value = true;
 
   const formData: any = {
     title: title.value,
     index: 1,
     date: date.value,
-    fixed: false,
-    repeat: null,
-    repeatTimes: null,
-    completedDates: null,
+    completed: false,
   };
 
   await store.handleCreateTask(formData);
@@ -75,7 +74,7 @@ async function addTask() {
             <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged" />
           </div>
 
-          <form @submit.prevent="addTask">
+          <form @submit.prevent="createTask" disabled>
             <input type="text" list="options" placeholder="Agregar una tarea a tu lista" v-model="title"
               @input="handleInput" />
 
@@ -86,11 +85,11 @@ async function addTask() {
               <p>+</p>
             </button>
           </form>
-          <ul v-if="store.currentUser.mytasks?.tasks?.length">
-            <TasksCard v-for="(item, index) in store.currentUser?.mytasks?.tasks" :key="index" :todo="item" :date="date" />
+          <ul v-if="store.currentUser.mytasks?.length">
+            <TasksCard v-for="(item, index) in store.currentUser?.mytasks" :key="index" :todo="item" />
           </ul>
-          <ul v-if="!store.currentUser.mytasks?.tasks?.length">{{ message }}</ul>
-          <LoaderComponent v-if="!store.currentUser.mytasks?.tasks?.length && !message.length" />
+          <ul v-if="!store.currentUser.mytasks?.length">{{ message }}</ul>
+          <LoaderComponent v-if="!store.currentUser.mytasks?.length && !message.length" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />

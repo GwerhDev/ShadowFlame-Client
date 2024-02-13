@@ -5,6 +5,7 @@ export interface storeState {
     mytasks: any,
     clantasks: any,
     warbandtasks: any,
+    tasksdate: any,
   },
   admin: {
     users: any,
