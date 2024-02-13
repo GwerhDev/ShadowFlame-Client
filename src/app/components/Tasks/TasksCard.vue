@@ -11,7 +11,7 @@ const isCheckInputDisabled: Ref = ref(false);
 const deleteConfirmationActive: Ref = ref(false);
 const editedTitle: Ref = ref("");
 const isInputDisabled: Ref = ref("");
-const completed: Ref = ref(store.currentUser.mytasks?.completed.includes(props.todo._id));
+const completed: Ref = ref(store.currentUser.mytasks?.completed?.includes(props.todo._id));
 
 function handleActivateEditionButton() {
   isInputDisabled.value = false;
@@ -79,7 +79,7 @@ async function updateEdit() {
 async function handleDeleteTaskConfirmation() {
   await store.handleDeleteTask(props.todo._id);
   await store.handleGetTask(props.date);
-  
+
   deleteConfirmationActive.value = false;
 };
 
