@@ -11,6 +11,7 @@ const isCheckInputDisabled: Ref = ref(false);
 const deleteConfirmationActive: Ref = ref(false);
 const isInputDisabled: Ref = ref("");
 const editedTitle: Ref = ref("");
+const titleStyle: Ref = ref({ color: "#7fa87f", textDecoration: "line-through" });
 
 function handleActivateEditionButton() {
   isInputDisabled.value = false;
@@ -72,8 +73,8 @@ async function handleDeleteTaskConfirmation() {
 <template>
   <li v-if="!editionActive && !deleteConfirmationActive">
     <div class="loader" v-if="isCheckInputDisabled"></div>
-    <input type="checkbox" :disabled="isCheckInputDisabled" @change="handleCheckButton" />
-    <p>{{ props.todo.title }}</p>
+    <input type="checkbox" :checked="props.todo.completed" :disabled="isCheckInputDisabled" @change="handleCheckButton" />
+    <p :style="props.todo.completed? titleStyle : null">{{ props.todo.title }}</p>
     <span>
       <button @click="handleActivateEditionButton">
         <img src="../../../assets/svg/edit-icon.svg" alt="">
