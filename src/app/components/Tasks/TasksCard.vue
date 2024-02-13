@@ -35,7 +35,7 @@ function handleDeleteButton() {
   deleteConfirmationActive.value = true;
 };
 
-const filterDates = props.todo.completedDates.filter((e: any) => e.substring(0, 10) === props.date);
+const filterDates = props.todo.completedDates?.filter((e: any) => e.substring(0, 10) === props.date);
 
 async function handleCheckButton() {
   isCheckInputDisabled.value = true;
@@ -79,6 +79,8 @@ async function updateEdit() {
 async function handleDeleteTaskConfirmation() {
   await store.handleDeleteTask(props.todo._id);
   await store.handleGetTask(props.date);
+  
+  deleteConfirmationActive.value = false;
 };
 
 </script>
@@ -88,7 +90,7 @@ async function handleDeleteTaskConfirmation() {
     <div class="loader" v-if="isCheckInputDisabled"></div>
     <input type="checkbox" :checked="completed" :disabled="isCheckInputDisabled" @change="handleCheckButton" />
     <p>{{ props.todo.title }}</p>
-    <span>
+    <span v-if="!props.todo.fixed">
       <button @click="handleActivateEditionButton">
         <img src="../../../assets/svg/edit-icon.svg" alt="">
       </button>
