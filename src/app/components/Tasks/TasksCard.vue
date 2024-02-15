@@ -38,18 +38,18 @@ function handleDeleteButton() {
 
 async function handleCheckButton(e: any) {
   isCheckInputDisabled.value = true;
-  
+
   const formData = {
     date: store.currentUser.taskdate,
     type: "mytasks",
   };
-  
+
   if (e.target.checked) {
     await store.handleCreateCompletedTask(props.todo._id, formData);
-  } else { 
+  } else {
     await store.handleDeleteCompletedTask(props.todo._id, formData);
   };
-  
+
   await store.handleGetTask(store.currentUser.taskdate);
   checkedStyle.value = e.target.checked;
   isCheckInputDisabled.value = false;
