@@ -36,6 +36,12 @@ li {
       border-radius: 5px;
       background-color: var(--color-secondary-bg);
 
+      &:disabled:hover {
+        border-color: transparent;
+        cursor: default;
+        background-color: var(--color-secondary-bg);
+      }
+
       &:hover {
         background-color: var(--color-primary-bg);
       }

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -10,15 +10,14 @@ export const useStore = defineStore('store', {
     currentUser: {
       logged: false,
       userData: null,
-      mytasks: null,
-      clantasks: null,
-      warbandtasks: null,
-      tasksdate: null,
+      task: null,
+      taskdate: null,
+      completedTask: null,
     },
 
     admin: {
       users: null,
-      mytasks: null,
+      tasks: null,
       clantasks: null,
       warbandtasks: null,
       notifications: null,
@@ -33,15 +32,14 @@ export const useStore = defineStore('store', {
       this.currentUser = {
         logged: false,
         userData: null,
-        mytasks: {},
-        clantasks: {},
-        warbandtasks: {},
-        tasksdate: null,
+        task: null,
+        taskdate: null,
+        completedTask: null,
       };
 
       this.admin = {
         users: null,
-        mytasks: null,
+        tasks: null,
         clantasks: null,
         warbandtasks: null,
         notifications: null,
@@ -51,7 +49,7 @@ export const useStore = defineStore('store', {
     },
 
     setTasksDate(date: any) {
-      this.currentUser.tasksdate = date;
+      this.currentUser.taskdate = date;
     },
 
     async handleRegister(data: any) {
@@ -97,10 +95,18 @@ export const useStore = defineStore('store', {
       await deleteUser(id);
     },
 
+    async handleCreateCompletedTask (id: string, formData: any) {
+      await createCompletedTask(id, formData);
+    },
+
+    async handleDeleteCompletedTask (id: string, date: Date) {
+      await deleteCompletedTask(id, date);
+    },
+
     async handleGetTask(date: Date) {
       try {
         const response: any = await getTasks(date);
-        this.currentUser.mytasks = response;
+        this.currentUser.task = response;
         return;
       } catch (error) {
         console.error(error);

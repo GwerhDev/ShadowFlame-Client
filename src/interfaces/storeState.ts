@@ -2,14 +2,13 @@ export interface storeState {
   currentUser: {
     logged: boolean,
     userData: any,
-    mytasks: any,
-    clantasks: any,
-    warbandtasks: any,
-    tasksdate: any,
+    task: any,
+    taskdate: any,
+    completedTask: any,
   },
   admin: {
     users: any,
-    mytasks: any,
+    tasks: any,
     clantasks: any,
     warbandtasks: any,
     notifications: any,

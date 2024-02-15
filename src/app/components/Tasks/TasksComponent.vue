@@ -42,10 +42,10 @@ async function createTask() {
   isButtonDisabled.value = true;
 
   const formData: any = {
-    title: title.value,
-    index: 1,
     date: date.value,
-    completed: false,
+    type: "mytasks",
+    title: title.value,
+    fixed: false,
   };
 
   await store.handleCreateTask(formData);
@@ -85,11 +85,11 @@ async function createTask() {
               <p>+</p>
             </button>
           </form>
-          <ul v-if="store.currentUser.mytasks?.length">
-            <TasksCard v-for="(item, index) in store.currentUser?.mytasks" :key="index" :todo="item" />
+          <ul v-if="store.currentUser.task?.length">
+            <TasksCard v-for="(item, index) in store.currentUser.task" :key="index" :todo="item"/>
           </ul>
-          <ul v-if="!store.currentUser.mytasks?.length">{{ message }}</ul>
-          <LoaderComponent v-if="!store.currentUser.mytasks?.length && !message.length" />
+          <ul v-if="!store.currentUser.task?.length">{{ message }}</ul>
+          <LoaderComponent v-if="!store.currentUser.task?.length && !message.length" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />

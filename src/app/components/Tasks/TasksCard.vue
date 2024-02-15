@@ -12,6 +12,7 @@ const deleteConfirmationActive: Ref = ref(false);
 const isInputDisabled: Ref = ref("");
 const editedTitle: Ref = ref("");
 const titleStyle: Ref = ref({ color: "#7fa87f", textDecoration: "line-through" });
+const checkedStyle: Ref = ref(props.todo.completed);
 
 function handleActivateEditionButton() {
   isInputDisabled.value = false;
@@ -37,14 +38,20 @@ function handleDeleteButton() {
 
 async function handleCheckButton(e: any) {
   isCheckInputDisabled.value = true;
-
+  
   const formData = {
-    completed: e.target.checked
+    date: store.currentUser.taskdate,
+    type: "mytasks",
   };
-
-  await store.handleUpdateTask(props.todo._id, formData);
+  
+  if (e.target.checked) {
+    await store.handleCreateCompletedTask(props.todo._id, formData);
+  } else { 
+    await store.handleDeleteCompletedTask(props.todo._id);
+  };
+  
   await store.handleGetTask(store.currentUser.tasksdate);
-
+  checkedStyle.value = e.target.checked;
   isCheckInputDisabled.value = false;
 };
 
@@ -62,7 +69,7 @@ async function updateEdit() {
 };
 
 async function handleDeleteTaskConfirmation() {
-  await store.handleDeleteTask(props.todo._id);
+  await store.handleDeleteTask(props.todo._id, new Date(store.currentUser.taskdate));
   await store.handleGetTask(store.currentUser.tasksdate);
 
   deleteConfirmationActive.value = false;
@@ -74,13 +81,18 @@ async function handleDeleteTaskConfirmation() {
   <li v-if="!editionActive && !deleteConfirmationActive">
     <div class="loader" v-if="isCheckInputDisabled"></div>
     <input type="checkbox" :checked="props.todo.completed" :disabled="isCheckInputDisabled" @change="handleCheckButton" />
-    <p :style="props.todo.completed? titleStyle : null">{{ props.todo.title }}</p>
-    <span>
+    <p :style="checkedStyle ? titleStyle : null">{{ props.todo.title }}</p>
+    <span v-if="!props.todo.fixed">
       <button @click="handleActivateEditionButton">
         <img src="../../../assets/svg/edit-icon.svg" alt="">
       </button>
       <button @click="handleDeleteButton">
         <img src="../../../assets/svg/delete-icon.svg" alt="">
+      </button>
+    </span>
+    <span v-else>
+      <button disabled>
+        ⚔️
       </button>
     </span>
   </li>
