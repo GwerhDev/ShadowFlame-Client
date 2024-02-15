@@ -89,8 +89,8 @@ export const createCompletedTask: any = async (id: string, formData: any) => {
   return response;
 };
 
-export const deleteCompletedTask: any = async (id: string, date: Date) => {
-  const response: any = await axios.patch(API_URL + "/completed-task/delete/" + id, date, options())
+export const deleteCompletedTask: any = async (id: string, formData: any) => {
+  const response: any = await axios.patch(API_URL + "/completed-task/delete/" + id, formData, options())
   return response;
 };
 

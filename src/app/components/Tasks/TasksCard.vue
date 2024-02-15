@@ -47,7 +47,7 @@ async function handleCheckButton(e: any) {
   if (e.target.checked) {
     await store.handleCreateCompletedTask(props.todo._id, formData);
   } else { 
-    await store.handleDeleteCompletedTask(props.todo._id);
+    await store.handleDeleteCompletedTask(props.todo._id, formData);
   };
   
   await store.handleGetTask(store.currentUser.taskdate);

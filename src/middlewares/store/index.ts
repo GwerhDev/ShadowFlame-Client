@@ -99,8 +99,8 @@ export const useStore = defineStore('store', {
       await createCompletedTask(id, formData);
     },
 
-    async handleDeleteCompletedTask (id: string, date: Date) {
-      await deleteCompletedTask(id, date);
+    async handleDeleteCompletedTask (id: string, formData: any) {
+      await deleteCompletedTask(id, formData);
     },
 
     async handleGetTask(date: Date) {
