@@ -12,17 +12,19 @@ import LoaderComponent from "../../utils/LoaderComponent.vue";
 const store: any = useStore();
 const title: Ref = ref("");
 const date: Ref = ref(new Date().toISOString().substring(0, 10));
-const isButtonDisabled: Ref = ref(true);
+const type: Ref = ref("mytasks");
 const message: Ref = ref("");
+const isButtonDisabled: Ref = ref(true);
 
 onMounted(async () => {
   message.value = "";
   try {
-    await store.handleGetTask(date.value);
+    await store.handleGetTask(date.value, type.value);
   } catch (error) {
     console.error(error);
   } finally {
-    store.setTasksDate(date.value);
+    store.setTaskType(type.value);
+    store.setTaskDate(date.value);
     message.value = "No hay tareas para esta fecha.";
   }
 });
@@ -30,7 +32,7 @@ onMounted(async () => {
 async function handleDate(e: any) {
   date.value = e.target.value;
   store.setTasksDate(date.value);
-  await store.handleGetTask(store.currentUser.taskdate);
+  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
 };
 
 function handleInput() {
@@ -43,14 +45,14 @@ async function createTask() {
 
   const formData: any = {
     date: store.currentUser.taskdate,
-    type: "mytasks",
+    type: store.currentUser.tasktype,
     title: title.value,
     fixed: false,
     user: store.currentUser.userData.id
   };
 
   await store.handleCreateTask(formData);
-  await store.handleGetTask(store.currentUser.taskdate);
+  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
 
   isButtonDisabled.value = true;
   title.value = "";
@@ -75,7 +77,7 @@ async function createTask() {
             <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged" />
           </div>
 
-          <form @submit.prevent="createTask" disabled>
+          <form @submit.prevent="createTask" disabled v-if="store.currentUser.tasktype === 'mytasks'">
             <input type="text" list="options" placeholder="Agregar una tarea a tu lista" v-model="title"
               @input="handleInput" />
 

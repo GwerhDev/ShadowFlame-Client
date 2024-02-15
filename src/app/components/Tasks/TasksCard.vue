@@ -41,7 +41,7 @@ async function handleCheckButton(e: any) {
 
   const formData = {
     date: store.currentUser.taskdate,
-    type: "mytasks",
+    type: store.currentUser.tasktype,
   };
 
   if (e.target.checked) {
@@ -50,7 +50,7 @@ async function handleCheckButton(e: any) {
     await store.handleDeleteCompletedTask(props.todo._id, formData);
   };
 
-  await store.handleGetTask(store.currentUser.taskdate);
+  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
   checkedStyle.value = e.target.checked;
   isCheckInputDisabled.value = false;
 };
@@ -63,14 +63,14 @@ async function updateEdit() {
   };
 
   await store.handleUpdateTask(props.todo._id, formData);
-  await store.handleGetTask(store.currentUser.taskdate);
+  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
 
   editionActive.value = false;
 };
 
 async function handleDeleteTaskConfirmation() {
   await store.handleDeleteTask(props.todo._id, store.currentUser.taskdate);
-  await store.handleGetTask(store.currentUser.taskdate);
+  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
 
   deleteConfirmationActive.value = false;
 };

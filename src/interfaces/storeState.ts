@@ -4,7 +4,7 @@ export interface storeState {
     userData: any,
     task: any,
     taskdate: any,
-    completedTask: any,
+    tasktype: string,
   },
   admin: {
     users: any,

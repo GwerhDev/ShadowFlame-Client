@@ -12,7 +12,7 @@ export const useStore = defineStore('store', {
       userData: null,
       task: null,
       taskdate: null,
-      completedTask: null,
+      tasktype: '',
     },
 
     admin: {
@@ -34,7 +34,7 @@ export const useStore = defineStore('store', {
         userData: null,
         task: null,
         taskdate: null,
-        completedTask: null,
+        tasktype: '',
       };
 
       this.admin = {
@@ -48,8 +48,12 @@ export const useStore = defineStore('store', {
       this.userToken = '';
     },
 
-    setTasksDate(date: any) {
+    setTaskDate(date: any) {
       this.currentUser.taskdate = date;
+    },
+
+    setTaskType(type: any) {
+      this.currentUser.tasktype = type;
     },
 
     async handleRegister(data: any) {
@@ -103,9 +107,9 @@ export const useStore = defineStore('store', {
       await deleteCompletedTask(id, formData);
     },
 
-    async handleGetTask(date: Date) {
+    async handleGetTask(date: Date, type: string) {
       try {
-        const response: any = await getTasks(date);
+        const response: any = await getTasks(date, type);
         this.currentUser.task = response;
         return;
       } catch (error) {
