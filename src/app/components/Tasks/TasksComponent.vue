@@ -28,9 +28,9 @@ onMounted(async () => {
 });
 
 async function handleDate(e: any) {
-  date.value = e.target.value
+  date.value = e.target.value;
   store.setTasksDate(date.value);
-  await store.handleGetTask(date.value);
+  await store.handleGetTask(store.currentUser.taskdate);
 };
 
 function handleInput() {
@@ -42,7 +42,7 @@ async function createTask() {
   isButtonDisabled.value = true;
 
   const formData: any = {
-    date: date.value,
+    date: store.currentUser.taskdate,
     type: "mytasks",
     title: title.value,
     fixed: false,
