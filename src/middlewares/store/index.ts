@@ -13,6 +13,7 @@ export const useStore = defineStore('store', {
       task: null,
       taskdate: null,
       tasktype: '',
+      taskloading: false,
     },
 
     admin: {
@@ -35,6 +36,7 @@ export const useStore = defineStore('store', {
         task: null,
         taskdate: null,
         tasktype: '',
+        taskloading: false,
       };
 
       this.admin = {
@@ -54,6 +56,10 @@ export const useStore = defineStore('store', {
 
     setTaskType(type: any) {
       this.currentUser.tasktype = type;
+    },
+
+    setTaskLoading(loading: boolean) {
+      this.currentUser.taskloading = loading;
     },
 
     async handleRegister(data: any) {

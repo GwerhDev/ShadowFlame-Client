@@ -7,9 +7,11 @@ const store: any = useStore();
 const props: any = defineProps({ logged: Boolean });
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" })
 
-function handleType(type: string) {
+async function handleType(type: string) {
   store.setTaskType(type);
-  store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+  store.setTaskLoading(true);
+  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+  store.setTaskLoading(false);
 };
 
 function styleActive(type: string) {

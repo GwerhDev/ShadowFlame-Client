@@ -5,6 +5,7 @@ export interface storeState {
     task: any,
     taskdate: any,
     tasktype: string,
+    taskloading: boolean,
   },
   admin: {
     users: any,

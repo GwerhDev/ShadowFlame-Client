@@ -77,7 +77,7 @@ async function createTask() {
             <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged" />
           </div>
 
-          <form @submit.prevent="createTask" disabled v-if="store.currentUser.tasktype === 'mytasks'">
+          <form @submit.prevent="createTask" disabled v-if="store.currentUser.tasktype === 'mytasks' && !store.currentUser.taskloading">
             <input type="text" list="options" placeholder="Agregar una tarea a tu lista" v-model="title"
               @input="handleInput" />
 
@@ -88,11 +88,11 @@ async function createTask() {
               <p>+</p>
             </button>
           </form>
-          <ul v-if="store.currentUser.task?.length">
+          <ul v-if="store.currentUser.task?.length && !store.currentUser.taskloading">
             <TasksCard v-for="(item, index) in store.currentUser.task" :key="index" :todo="item"/>
           </ul>
           <ul v-if="!store.currentUser.task?.length">{{ message }}</ul>
-          <LoaderComponent v-if="!store.currentUser.task?.length && !message.length" />
+          <LoaderComponent v-if="(!store.currentUser.task?.length && !message.length) || store.currentUser.taskloading" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />
