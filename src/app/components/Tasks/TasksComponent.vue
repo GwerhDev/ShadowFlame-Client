@@ -45,7 +45,8 @@ async function createTask() {
     date: store.currentUser.taskdate,
     type: "mytasks",
     title: title.value,
-    fixed: false,
+    fixed: true,
+    user: store.currentUser.userData.id
   };
 
   await store.handleCreateTask(formData);
