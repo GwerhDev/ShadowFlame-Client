@@ -45,12 +45,12 @@ async function createTask() {
     date: store.currentUser.taskdate,
     type: "mytasks",
     title: title.value,
-    fixed: true,
+    fixed: false,
     user: store.currentUser.userData.id
   };
 
   await store.handleCreateTask(formData);
-  await store.handleGetTask(date.value);
+  await store.handleGetTask(store.currentUser.taskdate);
 
   isButtonDisabled.value = true;
   title.value = "";
