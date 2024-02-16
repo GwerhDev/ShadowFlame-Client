@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -14,6 +14,8 @@ export const useStore = defineStore('store', {
       taskdate: null,
       tasktype: '',
       taskloading: false,
+      guidetype: '',
+      chatbotmodel: '',
     },
 
     admin: {
@@ -37,6 +39,8 @@ export const useStore = defineStore('store', {
         taskdate: null,
         tasktype: '',
         taskloading: false,
+        guidetype: '',
+        chatbotmodel: '',
       };
 
       this.admin = {
@@ -62,6 +66,10 @@ export const useStore = defineStore('store', {
       this.currentUser.taskloading = loading;
     },
 
+    setGuideType(type: string) {
+      this.currentUser.guidetype = type;
+    },
+
     async handleRegister(data: any) {
       const userToken = await signupInner(data);
       setUserToken(userToken);
@@ -71,14 +79,13 @@ export const useStore = defineStore('store', {
     },
 
     handleLogin() {
-      const url: string = API_URL + '/login-bnet'
+      const url: string = API_URL + '/login-bnet';
       return url;
     },
 
     async handleUserData(token: any) {
       try {
         this.currentUser = await getUserData(token);
-        
         this.userToken = token;
         setUserToken(token);
       } catch (error) {
@@ -167,6 +174,14 @@ export const useStore = defineStore('store', {
         console.error(error);
       }
     },
+
+    async handleGetChatbotModel() {
+      try {
+        this.currentUser.chatbotmodel = await getChatbotModel();
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 
 });

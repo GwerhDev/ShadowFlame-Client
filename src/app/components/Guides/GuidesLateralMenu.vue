@@ -1,6 +1,21 @@
 <style scoped lang="scss" src="./GuidesLateralMenu.scss"/>
 <script setup lang="ts">
+import { Ref, ref } from 'vue';
+import { useStore } from '../../../middlewares/store';
+
+const store: any = useStore();
 const props: any = defineProps({ logged: Boolean });
+const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
+
+async function handleType(type: string) {
+  store.setGuideType(type);
+};
+
+function styleActive(type: string) {
+  if (store.currentUser.guidetype === type) {
+    return active.value;
+  };
+};
 
 </script>
 
@@ -8,7 +23,7 @@ const props: any = defineProps({ logged: Boolean });
   <div class="container-lateral">
     <ul>
       <li>
-        <button :disabled="!props.logged" class="first">
+        <button :disabled="!props.logged" class="first" @click="handleType('chatbot')" :style="props.logged && styleActive('chatbot')">
           <img src="../../../assets/svg/bot-icon.svg" alt="" />
           <span>ChatBot</span>
           <span></span>

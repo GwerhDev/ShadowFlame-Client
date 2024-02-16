@@ -5,7 +5,7 @@ import { useStore } from '../../../middlewares/store';
 
 const store: any = useStore();
 const props: any = defineProps({ logged: Boolean });
-const active: Ref = ref({ backgroundColor: "var(--color-primary)" })
+const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 async function handleType(type: string) {
   store.setTaskType(type);
@@ -26,7 +26,7 @@ function styleActive(type: string) {
   <div class="container-lateral">
     <ul>
       <li>
-        <button :disabled="!props.logged" class="first" @click="handleType('mytasks')" :style="styleActive('mytasks')">
+        <button :disabled="!props.logged" class="first" @click="handleType('mytasks')" :style="props.logged && styleActive('mytasks')">
           <img src="../../../assets/svg/profile-icon.svg" alt="" />
           <span>Mis Tareas</span>
           <span></span>

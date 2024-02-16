@@ -1,12 +1,29 @@
 <style scoped lang="scss" src="./GuidesComponent.scss"/>
 <script setup lang="ts">
-import diabloIcon from "../../../assets/svg/diablo-icon.svg";
-import GuidesChatBot from "./GuidesChatBot.vue";
-import GuidesLateralMenu from "./GuidesLateralMenu.vue";
+import { ref, onMounted, Ref } from "vue";
 import { useStore } from '../../../middlewares/store';
+import GuidesChatBot from "./GuidesChatBot.vue";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
+import GuidesLateralMenu from "./GuidesLateralMenu.vue";
+import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
 const store: any = useStore();
+const type: Ref = ref("chatbot");
+
+onMounted(async () => {
+  try {
+    if (!store.currentUser.guidetype) { 
+      await store.handleGetChatbotModel();
+      store.setGuideType(type.value);
+    } else {
+      type.value = store.currentUser.guidetype;
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+
+  }
+});
 
 </script>
 

@@ -6,6 +6,8 @@ export interface storeState {
     taskdate: any,
     tasktype: string,
     taskloading: boolean,
+    guidetype: string,
+    chatbotmodel: string,
   },
   admin: {
     users: any,

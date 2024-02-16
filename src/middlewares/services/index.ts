@@ -94,14 +94,20 @@ export const deleteCompletedTask: any = async (id: string, formData: any) => {
   return response;
 };
 
-export const chatbotQuery: any = async (formData: any) => {
-  const response: any = await axios.post(API_URL + "/chatbot", formData, options())
+export const getAdminNotifications: any = async () => {
+  const response: any = await axios.get(API_URL + "/admin/notifications", options())
                                    .then(response => response.data);
   return response;
 };
 
-export const getAdminNotifications: any = async () => {
-  const response: any = await axios.get(API_URL + "/admin/notifications", options())
+export const chatbotQuery: any = async (formData: any) => {
+  const response: any = await axios.post(API_URL + "/guide/chatbot", formData, options())
+                                   .then(response => response.data);
+  return response;
+};
+
+export const getChatbotModel: any = async () => {
+  const response: any = await axios.get(API_URL + "/guide/model", options())
                                    .then(response => response.data);
   return response;
 };
