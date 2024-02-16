@@ -31,7 +31,7 @@ onMounted(async () => {
 
 async function handleDate(e: any) {
   date.value = e.target.value;
-  store.setTasksDate(date.value);
+  store.setTaskDate(date.value);
   await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
 };
 
