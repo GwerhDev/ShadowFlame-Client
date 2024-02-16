@@ -17,14 +17,20 @@ const message: Ref = ref("");
 const isButtonDisabled: Ref = ref(true);
 
 onMounted(async () => {
-  message.value = "";
   try {
-    await store.handleGetTask(date.value, type.value);
+    message.value = "";
+    if (!store.currentUser.tasktype) { 
+      await store.handleGetTask(date.value, type.value);
+      store.setTaskType(type.value);
+      store.setTaskDate(date.value);
+    } else {
+      type.value = store.currentUser.tasktype;
+      date.value = store.currentUser.taskdate;
+      await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+    }
   } catch (error) {
     console.error(error);
   } finally {
-    store.setTaskType(type.value);
-    store.setTaskDate(date.value);
     message.value = "No hay tareas para esta fecha.";
   }
 });
