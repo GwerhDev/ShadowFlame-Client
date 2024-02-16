@@ -92,7 +92,7 @@ async function handleDeleteTaskConfirmation() {
     </span>
     <span v-else>
       <button disabled>
-        ⚔️
+        <img src="../../../assets/svg/fixed-icon.svg" alt="">
       </button>
     </span>
   </li>

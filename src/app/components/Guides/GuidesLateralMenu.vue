@@ -24,21 +24,28 @@ function styleActive(type: string) {
     <ul>
       <li>
         <button :disabled="!props.logged" class="first" @click="handleType('chatbot')" :style="props.logged && styleActive('chatbot')">
-          <img src="../../../assets/svg/bot-icon.svg" alt="" />
+          <img src="../../../assets/svg/bot-icon.svg" alt="Chatbot" />
           <span>ChatBot</span>
           <span></span>
         </button>
       </li>
       <li>
+        <button disabled @click="handleType('chatbot')" :style="props.logged && styleActive('maps')">
+          <img src="../../../assets/svg/map-icon.svg" alt="Mapas" />
+          <span>Mapas</span>
+          <span></span>
+        </button>
+      </li>
+      <li>
         <button disabled>
-          <img src="../../../assets/svg/clan-shield-icon.svg" alt="" />
+          <img src="../../../assets/svg/clan-shield-icon.svg" alt="Páginas" />
           <span>Páginas</span>
           <span></span>
         </button>
       </li>
       <li>
         <button disabled class="last">
-          <img src="../../../assets/svg/swords-warband-icon.svg" alt="" />
+          <img src="../../../assets/svg/swords-warband-icon.svg" alt="Streamers" />
           <span>Streamers</span>
           <span></span>
         </button>
