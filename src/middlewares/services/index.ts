@@ -107,7 +107,7 @@ export const chatbotQuery: any = async (formData: any) => {
 };
 
 export const getChatbotModel: any = async () => {
-  const response: any = await axios.get(API_URL + "/guide/model", options())
+  const response: any = await axios.get(API_URL + "/guide/chatbot-model")
                                    .then(response => response.data);
   return response;
 };

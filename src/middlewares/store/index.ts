@@ -14,7 +14,7 @@ export const useStore = defineStore('store', {
       taskdate: null,
       tasktype: '',
       taskloading: false,
-      guidetype: '',
+      guidetype: 'chatbot',
       chatbotmodel: '',
     },
 
@@ -39,7 +39,7 @@ export const useStore = defineStore('store', {
         taskdate: null,
         tasktype: '',
         taskloading: false,
-        guidetype: '',
+        guidetype: 'chatbot',
         chatbotmodel: '',
       };
 
@@ -85,7 +85,7 @@ export const useStore = defineStore('store', {
 
     async handleUserData(token: any) {
       try {
-        this.currentUser = await getUserData(token);
+        this.currentUser = {...this.currentUser, ...await getUserData(token)};
         this.userToken = token;
         setUserToken(token);
       } catch (error) {
@@ -177,7 +177,9 @@ export const useStore = defineStore('store', {
 
     async handleGetChatbotModel() {
       try {
-        this.currentUser.chatbotmodel = await getChatbotModel();
+        const response: string = await getChatbotModel();
+        this.currentUser.chatbotmodel = response;
+        return response;
       } catch (error) {
         console.error(error);
       }

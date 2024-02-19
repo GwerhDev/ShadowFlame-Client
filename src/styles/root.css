@@ -72,6 +72,28 @@ input[type="date"] {
   }
 }
 
+select {
+  height: 30px;
+  font-family: 'Cinzel', serif;
+  background-color: #15171E;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  &:focus {
+    outline: none;
+  }
+}
+
+option {
+  font-size: 15px;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
@@ -117,9 +139,10 @@ h2 {
 
 button,
 .button {
-  padding: 0;
   padding-top: .4rem;
   padding-bottom: .4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 5px;
   border: 1px solid transparent;
   font-size: 1em;

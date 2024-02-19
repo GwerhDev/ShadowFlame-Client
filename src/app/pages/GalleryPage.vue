@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import TitleComponent from '../utils/TitleComponent.vue';
+import AlbumList from '../components/Album/AlbumList.vue';
 
 </script>
 
@@ -10,6 +11,7 @@ import TitleComponent from '../utils/TitleComponent.vue';
     </div>
   </div>
   <main class="main-container red-shadow-fx">
+    <AlbumList />
   </main>
 </template>
 

@@ -11,10 +11,10 @@ import LoaderComponent from "../../utils/LoaderComponent.vue";
 
 const store: any = useStore();
 const title: Ref = ref("");
-const date: Ref = ref(new Date().toISOString().substring(0, 10));
-const type: Ref = ref("mytasks");
 const message: Ref = ref("");
 const isButtonDisabled: Ref = ref(true);
+const date: Ref = ref(new Date().toISOString().substring(0, 10));
+const type: Ref = ref("mytasks");
 
 onMounted(async () => {
   try {

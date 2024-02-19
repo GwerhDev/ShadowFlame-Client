@@ -30,7 +30,7 @@ function styleActive(type: string) {
         </button>
       </li>
       <li>
-        <button disabled @click="handleType('chatbot')" :style="props.logged && styleActive('maps')">
+        <button :disabled="!props.logged" @click="handleType('maps')" :style="props.logged && styleActive('maps')">
           <img src="../../../assets/svg/map-icon.svg" alt="Mapas" />
           <span>Mapas</span>
           <span></span>
