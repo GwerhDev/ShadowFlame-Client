@@ -7,7 +7,7 @@
       <div class="left-section">
         <img class="di-logo" src="../../assets/png/shadowgardians-logo.png" alt="">
         <div class="warband">
-          <h3 class="subtitle">Las Sombras reinarán</h3>
+          <h3 class="subtitle">Las Sombras reinarán por siempre</h3>
         </div>
       </div>
       <div class="right-section"></div>
