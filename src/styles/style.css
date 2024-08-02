@@ -14,11 +14,14 @@
 }
 
 .logo-styles {
+  margin: 0;
+  padding: 0;
   font-family: Diablo;
   color: rgb(227, 210, 168);
   filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.245));
   transform: scale(1, 1.5);
   display: inline-block;
+  height: 100%;
 }
 
 .w-100 {
