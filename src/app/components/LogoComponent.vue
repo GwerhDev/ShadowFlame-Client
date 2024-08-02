@@ -4,9 +4,9 @@
 </script>
 
 <template>
-  <span class="logo-container">
+  <div class="logo-container">
     <router-link to='/'>
-      <img src="../../assets/png/shadowgardians-logo.png" alt="" width="120px">
+      <span class="logo-styles">ShadowFlame</span>
     </router-link>
-  </span>
+  </div>
 </template>

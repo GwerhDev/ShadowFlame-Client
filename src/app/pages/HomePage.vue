@@ -5,7 +5,7 @@
   <main>
     <section class="first-section">
       <div class="left-section">
-        <img class="di-logo" src="../../assets/png/shadowgardians-logo.png" alt="">
+        <span class="logo-styles f-size-large">ShadowFlame</span>
         <div class="warband">
           <h3 class="subtitle">Las Sombras reinarán</h3>
         </div>

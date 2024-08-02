@@ -9,7 +9,7 @@ let urlLogin: string = API_URL + "/login-bnet" || "";
 
 <template>
   <div class="container justify-content-center align-items-center d-flex g-1">
-    <h2>Esta función solo está disponible para miembros de Shadowgardians</h2>
+    <h2>Esta función solo está disponible para miembros de ShadowFlame</h2>
     <a class="button justify-content-center align-items-center d-flex g-1 w-100" :href="urlLogin">
       <img src="../../assets/svg/blizz-icon.svg" alt="" height="25px">
       Iniciar sesión
