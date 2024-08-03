@@ -287,3 +287,8 @@
 .text-align-start {
   text-align: start;
 }
+
+.featured-text {
+  color: rgb(227, 210, 168);
+  filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.245));
+}

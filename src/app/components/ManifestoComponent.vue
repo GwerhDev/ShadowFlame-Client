@@ -14,13 +14,12 @@
         <h1>Manifiesto</h1>
         <span class="text-align-start p-3 pt-1 mw-800">
           <p>
-            Buscamos rescatar el sentido cooperativo de los clanes, dándole mayor importancia a la participación activa
+            Buscamos rescatar el <span class="featured-text">sentido cooperativo</span> de los clanes, dándole mayor importancia a la <span class="featured-text">participación activa</span>
             de los miembros por sobre la cantidad de miembros.
           </p>
           <p>
-            Queremos generar una comunidad de jugadores que nos acompañemos en el camino de fortalecimiento y
-            mejoramiento
-            colectivo tanto en PvE como en PvP, respetando compromisos y generando instancias de apoyo dentro del juego.
+            Queremos generar una <span class="featured-text">comunidad de jugadores</span> que nos acompañemos en el camino de fortalecimiento y
+            mejoramiento colectivo tanto en <span class="featured-text">PvE</span> como en <span class="featured-text">PvP</span>, <span class="featured-text">respetando compromisos</span> y generando <span class="featured-text">instancias de apoyo</span> dentro del juego.
           </p>
         </span>
       </div>
