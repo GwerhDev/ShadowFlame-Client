@@ -4,7 +4,7 @@
 </script>
 
 <template>
-  <section class="manifesto-section">
+  <section class="manifesto-section pt-3 pb-3">
     <div class="default-container">
       <div class="left-section">
         <img src="../../assets/webp/di-bloodknight-cinematic-trailer.webp" width="100%" alt="">
