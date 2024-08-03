@@ -103,8 +103,36 @@
   padding-bottom: 3rem;
 }
 
+.pr-1 {
+  padding-right: 1rem;
+}
+
+.pr-2 {
+  padding-right: 2rem;
+}
+
+.pr-3 {
+  padding-right: 3rem;
+}
+
+.pl-1 {
+  padding-left: 1rem;
+}
+
+.pl-2 {
+  padding-left: 2rem;
+}
+
+.pl-3 {
+  padding-left: 3rem;
+}
+
 .mw-800 {
   max-width: 800px;
+}
+
+.mw-1080 {
+  max-width: 1080px;
 }
 
 .d-flex {
@@ -231,29 +259,21 @@
 }
 
 .divider-top {
-  background-image: url(../assets/jpeg/divider-top.jpg);
+  height: 50px;
+  background-color: #000000;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 50px;
   filter: drop-shadow(0px 15px 42px #000000);
+  background-image: url(../assets/jpeg/divider-top.jpg);
 }
 
 .divider-bottom {
-  background-image: url(../assets/jpeg/divider-bottom.jpg);
+  height: 20px;
+  background-color: #000000;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 20px;
   filter: drop-shadow(0px 15px 42px #000000);
-}
-
-.manifesto-section {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  background-image: url(../assets/avif/Stone-Relief-BG_Desktop_2600.avif);
-  background-position: top center;
-  background-repeat: no-repeat;
+  background-image: url(../assets/jpeg/divider-bottom.jpg);
 }
 
 .text-align-start {

@@ -1,0 +1,41 @@
+.manifesto-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-image: url(../../assets/avif/Stone-Relief-BG_Desktop_2600.avif);
+}
+
+.left-section {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.right-section {
+  width: 100%;
+}
+
+.default-container {
+  gap: 2rem;
+  display: flex;
+  max-width: 2500px;
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
+}
+
+@media (max-width: 1100px) {
+  .default-container {
+    flex-direction: column-reverse;
+  }
+  .default-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}

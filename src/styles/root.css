@@ -188,9 +188,7 @@ button:focus,
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
 }
-
 
 ::-webkit-scrollbar {
   width: 6px;
