@@ -135,6 +135,14 @@
   max-width: 1080px;
 }
 
+.mw-1250 {
+  max-width: 1250px;
+}
+
+.mw-2500 {
+  max-width: 2500px;
+}
+
 .d-flex {
   display: flex;
 }

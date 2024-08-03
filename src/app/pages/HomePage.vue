@@ -6,13 +6,13 @@ import ManifestoComponent from '../components/ManifestoComponent.vue';
 <template>
   <main>
     <section class="first-section">
-      <div class="left-section">
+      <div class="left-section mw-1250">
         <span class="logo-styles f-size-large">ShadowFlame</span>
         <div class="warband">
           <h3 class="subtitle">Las Sombras reinarán</h3>
         </div>
       </div>
-      <div class="right-section"></div>
+      <div class="right-section mw-1250"></div>
     </section>
     <div class="divider-top"></div>
     <ManifestoComponent />
@@ -50,9 +50,8 @@ main {
   padding-left: 1.1rem;
   padding-right: 1.1rem;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
   background: linear-gradient(to bottom, transparent 1%, black 90%);
 }
 
@@ -79,10 +78,15 @@ main {
 }
 
 .left-section {
-  width: 50%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+}
+
+.right-section {
+  width: 100%;
+  aspect-ratio: 16/9;
 }
 
 .warband {
@@ -104,6 +108,15 @@ main {
   .first-section {
     align-items: center;
     max-height: 800px;
+    flex-direction: column;
+  }
+
+  .left-section {
+    justify-content: center;
+  }
+
+  .right-section {
+    display: none;
   }
 
   .di-logo {
