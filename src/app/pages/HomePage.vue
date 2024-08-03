@@ -47,12 +47,12 @@ main {
 
 .first-section {
   height: 100vh;
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 1.1rem;
-  padding-right: 1.1rem;
   background: linear-gradient(to bottom, transparent 1%, black 90%);
 }
 
@@ -103,6 +103,7 @@ main {
 @media (max-width: 1100px) {
   .first-section {
     align-items: center;
+    max-height: 800px;
   }
 
   .di-logo {
