@@ -12,13 +12,30 @@
       </div>
       <div class="right-section"></div>
     </section>
+    <div class="divider-top"></div>
+    <section class="manifesto-section p-2">
+      <h4>nuestro</h4>
+      <h1>Manifiesto</h1>
+      <span class="text-align-start p-3 pt-1 mw-800">
+        <p>
+          Buscamos rescatar el sentido cooperativo de los clanes, dándole mayor importancia a la participación activa
+          de los miembros por sobre la cantidad de miembros.
+        </p>
+        <p>
+          Queremos generar una comunidad de jugadores que nos acompañemos en el camino de fortalecimiento y mejoramiento
+          colectivo tanto en PvE como en PvP, respetando compromisos y generando instancias de apoyo dentro del juego.
+        </p>
+      </span>
+    </section>
+    <div class="divider-bottom"></div>
     <section class="second-section">
       <h1 class="mb-1">Salva a Sanctuary</h1>
-      <h3 class="subtitle">Sanctuary vuelve a estar asediado por las hordas demoníacas y necesita tu ayuda para defenderse del ataque.</h3>
+      <h3 class="subtitle mw-800">Sanctuary vuelve a estar asediado por las hordas demoníacas y necesita tu ayuda para
+        defenderse del ataque.</h3>
     </section>
     <section class="third-section">
       <h1 class="mb-1">... y a Richter</h1>
-      <h3 class="subtitle">Camaradería y apoyo mutuo.</h3>
+      <h3 class="subtitle mw-800">Camaradería y apoyo mutuo.</h3>
     </section>
   </main>
 </template>
