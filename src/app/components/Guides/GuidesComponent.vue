@@ -46,6 +46,9 @@ onMounted(async () => {
         <section class="chatbox-section" v-if="store.currentUser?.logged && store.currentUser?.guidetype === 'chatbot'">
           <GuidesChatBot />
         </section>
+        <section class="chatbox-section" v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'gems'">
+          <GuidesGems />
+        </section>
         <section class="chatbox-section" v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'maps'">
           <GuidesMaps />
         </section>
