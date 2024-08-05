@@ -47,6 +47,7 @@ main {
 
 .first-section {
   height: 100vh;
+  min-height: 800px;
   padding-left: 1.1rem;
   padding-right: 1.1rem;
   display: flex;
@@ -107,7 +108,6 @@ main {
 @media (max-width: 1100px) {
   .first-section {
     align-items: center;
-    max-height: 800px;
     flex-direction: column;
   }
 
