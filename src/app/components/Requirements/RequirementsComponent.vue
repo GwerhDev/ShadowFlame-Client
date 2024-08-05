@@ -15,27 +15,37 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
       <ul>
         <li>
-          Paragón mínimo de <span class="variable-value"> {{ 200 }} </span>.
+          Paragón mínimo de 
+          200
+          .
         </li>
         <li>
           Participación semanal en Guerra Sombría al menos
-          <span class="variable-value">1</span>
+          1
           batalla por semana.
         </li>
         <li>
-          Participación semanal en Asalto de la Bóveda al menos <span class="variable-value">3 veces</span> a la semana.
+          Participación semanal en Asalto de la Bóveda al menos 
+          3 veces 
+          a la semana.
         </li>
         <li>
-          Participación semanal en Torres Malditas <span class="variable-value">cuando sea necesario</span>.
+          Participación semanal en Torres Malditas 
+          cuando sea necesario
+          .
         </li>
         <li>
-          Rango de Sombra mínimo de <span class="variable-value">Fantasma</span> al acabar cada ciclo.
+          Rango de Sombra mínimo de 
+          Fantasma 
+          al acabar cada ciclo.
         </li>
         <li>
-          Inactividad máxima de <span class="variable-value">7</span> días
+          Inactividad máxima de 
+          7 días
+          .
         </li>
         <li>
-          Ingresar a grupo de Whatsapp
+          Ingresar a grupo de Whatsapp.
         </li>
       </ul>
       <p>
