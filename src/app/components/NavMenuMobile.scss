@@ -9,6 +9,7 @@
   flex-direction: column;
   display: none;
   overflow-y: auto;
+  z-index: 9;
 
   .top-menu {
     height: 58px;

@@ -1,12 +1,12 @@
 <style scoped lang="scss" src="./NavWebComponent.scss"/>
 <script setup lang="ts">
-import AccountButton from './AccountButton.vue';
+import AccountButton from './Buttons/AccountButton.vue';
 import LogoComponent from './LogoComponent.vue';
 import NavMenuComponent from './NavMenuComponent.vue';
 import UserMenuComponent from './UserMenuComponent.vue';
 import DashboardButton from './admin/DashboardButton.vue';
 
-defineProps(["loggedin"])
+defineProps(["loggedin"]);
 
 </script>
 

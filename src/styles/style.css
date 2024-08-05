@@ -202,17 +202,9 @@
   justify-content: center;
 }
 
-.action-button {
-  background-color: var(--color-red-action);
-}
-
-.action-button:hover {
-  background-color: var(--color-red-action-hover);
-}
-
 .header-container {
   background-color: #111111;
-  width: 100vw;
+  width: 100%;
   height: 600px;
   display: flex;
   justify-content: center;
@@ -291,4 +283,14 @@
 .featured-text {
   color: rgb(227, 210, 168);
   filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.245));
+}
+
+.variable-value {
+  color: rgb(162, 195, 169);
+  background-color: rgba(37, 42, 55, 0.689);
+  margin-left: .3rem;
+  margin-right: .3rem;
+  padding-left: .3rem;
+  padding-right: .3rem;
+  border-radius: .3rem;
 }

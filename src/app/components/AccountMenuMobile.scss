@@ -1,14 +1,15 @@
 .account-menu {
-  position: fixed;
-  right: 0;
   top: 0;
-  width: calc(100% - 60px);
-  max-width: 480px;
+  right: 0;
+  z-index: 9;
   height: 100vh;
-  background-color: var(--color-primary-bg);
+  max-width: 480px;
+  width: calc(100% - 60px);
   display: none;
-  flex-direction: column;
+  position: fixed;
   overflow-y: auto;
+  flex-direction: column;
+  background-color: var(--color-primary-bg);
 
   .top-menu {
     height: 78px;
@@ -30,7 +31,6 @@
       &:hover {
         cursor: pointer;
         background-color: rgba(255, 255, 255, 0.1);
-
       }
     }
   }

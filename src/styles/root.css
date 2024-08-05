@@ -29,7 +29,6 @@
 input {
   background-color: var(--color-secondary-bg);
   border-radius: 5px;
-
 }
 
 input[type="text"] {

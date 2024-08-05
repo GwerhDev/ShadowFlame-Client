@@ -13,6 +13,7 @@ import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
+import RequirementsPage from '../pages/RequirementsPage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MyTasksManagementPage from '../pages/admin/MyTasksManagementPage.vue';
 import ClanTasksManagementPage from '../pages/admin/ClanTasksManagementPage.vue';
@@ -23,6 +24,11 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'DashboardPage',
     component: DashboardPage
+  },
+  {
+    path: '/requirements',
+    name: 'RequirementsPage',
+    component: RequirementsPage
   },
   {
     path: '/dashboard/user-management',

@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+import ActionButton from '../components/Buttons/ActionButton.vue';
 import ManifestoComponent from '../components/ManifestoComponent.vue';
+
+const router = useRouter();
+
+function apply() {
+  router.push('/requirements');
+}
 
 </script>
 
@@ -8,9 +16,10 @@ import ManifestoComponent from '../components/ManifestoComponent.vue';
     <section class="first-section">
       <div class="left-section mw-1250">
         <span class="logo-styles f-size-large">ShadowFlame</span>
-        <div class="warband">
+        <div class="warband pb-2">
           <h3 class="subtitle">Las Sombras reinarán</h3>
         </div>
+        <ActionButton message="Requisitos" :action="apply"/>
       </div>
       <div class="right-section mw-1250"></div>
     </section>
@@ -40,7 +49,7 @@ main {
   overflow-x: hidden;
   position: absolute;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-image: url(../../assets/avif/background.avif);
 }
