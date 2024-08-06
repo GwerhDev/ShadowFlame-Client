@@ -12,6 +12,7 @@ import AlreadyRegisteredPage from '../pages/AlreadyRegisteredPage.vue';
 import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
+import SettingsPage from '../pages/user/SettingsPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
 import RequirementsPage from '../pages/RequirementsPage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
@@ -34,6 +35,11 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard/user-management',
     name: 'UserManagementPage',
     component: UserManagementPage
+  },
+  {
+    path: '/u/settings',
+    name: 'SettingsPage',
+    component: SettingsPage
   },
   {
     path: '/dashboard/my-tasks-management',

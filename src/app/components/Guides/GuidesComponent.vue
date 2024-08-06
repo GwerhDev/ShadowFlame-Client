@@ -7,6 +7,7 @@ import GuidesMaps from "./GuidesMaps.vue";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
 import GuidesLateralMenu from "./GuidesLateralMenu.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
+import GuidesGems from "./GuidesGems.vue";
 
 const store: any = useStore();
 const type: Ref = ref("chatbot");

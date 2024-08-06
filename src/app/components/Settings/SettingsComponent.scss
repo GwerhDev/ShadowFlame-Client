@@ -1,4 +1,4 @@
-.container-requirements-component {
+.container-settings-component {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -7,7 +7,7 @@
   padding-left: 1.1rem;
   padding-right: 1.1rem;
 
-  .requirements-container {
+  .settings-container {
     margin-top: 7rem;
     margin-bottom: 3rem;
     width: 100%;
@@ -28,43 +28,22 @@
       justify-content: center;
       gap: 1rem;
     }
-
-    ul {
-      gap: .2rem;
-      display: flex;
-      text-align: start;
-      flex-direction: column;
-
-      li {
-        gap: .3rem;
-        display: flex;
-        align-items: center;
-        
-        &::before {
-          content: '';
-          background-color: rgb(255, 255, 255);
-          width: 8px;
-          height: 8px;
-          border-radius: 100%;
-
-        }
-      }
-    }
-
-    p {
-      background-color: rgba(37, 42, 55, 0.689);
-      padding: 1rem;
-      border-radius: .4rem;
-    }
   }
 }
 
+.character-container {
+  padding-top: .4rem;
+  border-radius: 5px;
+  padding-bottom: .4rem;
+  background-color: var(--color-primary-bg);
+}
+
 @media (max-width: 1100px) {
-  .container-requirements-component {
+  .container-settings-component {
     padding: 0;
     padding-top: 4rem;
 
-    .requirements-container {
+    .settings-container {
       margin-top: 0;
       padding-bottom: 0;
       height: 100%;

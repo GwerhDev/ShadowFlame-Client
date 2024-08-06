@@ -29,6 +29,11 @@ function handleSignup() {
   router.push('/signup');
 };
 
+function handleSettings() {
+  $d('#account-menu-mobile').style.display = 'none'
+  router.push('/u/settings');
+};
+
 function handleLogout() {
   $d('#account-menu-mobile').style.display = 'none'
   store.logout();
@@ -63,7 +68,7 @@ function handleLogout() {
           Registrarme
         </li>
   
-        <li v-if="store.currentUser?.userData">
+        <li @click="handleSettings" v-if="store.currentUser?.userData">
           <img src="../../assets/svg/settings-icon.svg" alt="">
           Ajustes de tu cuenta
         </li>

@@ -1,9 +1,8 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
-
 
 export const useStore = defineStore('store', {
   state: (): storeState => ({
@@ -27,6 +26,8 @@ export const useStore = defineStore('store', {
     },
 
     userToken: '',
+    currentCharacter: '',
+    warbands: null,
   }),
 
   actions: {
@@ -85,7 +86,7 @@ export const useStore = defineStore('store', {
 
     async handleUserData(token: any) {
       try {
-        this.currentUser = {...this.currentUser, ...await getUserData(token)};
+        this.currentUser = { ...this.currentUser, ...await getUserData(token) };
         this.userToken = token;
         setUserToken(token);
       } catch (error) {
@@ -112,11 +113,11 @@ export const useStore = defineStore('store', {
       await deleteUser(id);
     },
 
-    async handleCreateCompletedTask (id: string, formData: any) {
+    async handleCreateCompletedTask(id: string, formData: any) {
       await createCompletedTask(id, formData);
     },
 
-    async handleDeleteCompletedTask (id: string, formData: any) {
+    async handleDeleteCompletedTask(id: string, formData: any) {
       await deleteCompletedTask(id, formData);
     },
 
@@ -183,7 +184,36 @@ export const useStore = defineStore('store', {
       } catch (error) {
         console.error(error);
       }
-    }
-  }
+    },
 
+    async handleGetCharacter() {
+      try {
+        const response: any = await getCharacter();
+        this.currentUser.userData.character = response;
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleCreateCharacter(formData: any) {
+      try {
+        const response: any = await createCharacter(formData);
+        this.currentUser.userData.character = response;
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleGetWarbands() {
+      try {
+        const response: any = await getWarbands();
+        this.warbands = response;
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  }
 });

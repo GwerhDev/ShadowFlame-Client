@@ -36,9 +36,10 @@ input[type="text"] {
   border: none;
   border-bottom: var(--nav-color-primary) solid 1px;
 
-  &:focus, &:active {
+  &:focus,
+  &:active {
     outline: none;
-          border-color: var(--color-primary);
+    border-color: var(--color-primary);
   }
 }
 
@@ -46,6 +47,7 @@ input[type="checkbox"] {
   width: 30px;
   height: 30px;
   border-radius: none;
+
   &:disabled {
     display: none;
   }
@@ -84,6 +86,7 @@ select {
   align-items: center;
   justify-content: center;
   color: white;
+
   &:focus {
     outline: none;
   }
@@ -102,6 +105,7 @@ a {
   color: #ffffff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #ffffff;
 }
@@ -119,12 +123,24 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3 {
+.col {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+h1,
+h2,
+h3 {
   margin: 0;
   font-family: 'Cinzel', serif;
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   margin: 0;
   font-family: 'Cinzel', serif;
   color: rgb(227, 210, 168);
@@ -218,14 +234,25 @@ button:focus,
   animation: l25 1s infinite linear;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
 @keyframes l25 {
   100% {
     transform: rotate(1turn)
   }
 }
 
-@keyframes l2 {to{background-size: 100% 3px}}
-
-@media (prefers-color-scheme: light) {
-
+@keyframes l2 {
+  to {
+    background-size: 100% 3px
+  }
 }
+
+@media (prefers-color-scheme: light) {}

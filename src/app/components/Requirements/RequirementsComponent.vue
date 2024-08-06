@@ -13,7 +13,7 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
         <h1>Requisitos</h1>
       </span>
 
-      <ul>
+      <ul class="pl-3 lr-3">
         <li>
           Paragón mínimo de 
           200

@@ -17,4 +17,6 @@ export interface storeState {
     notifications: any,
   },
   userToken: string,
+  currentCharacter: string,
+  warbands: any,
 }

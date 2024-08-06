@@ -111,3 +111,21 @@ export const getChatbotModel: any = async () => {
                                    .then(response => response.data);
   return response;
 };
+
+export const getCharacter: any = async () => {
+  const response: any = await axios.get(API_URL + "/character/", options())
+                                   .then(response => response.data);
+  return response;
+};
+
+export const createCharacter: any = async (formData: any) => {
+  const response: any = await axios.post(API_URL + "/character/create", formData, options())
+                                   .then(response => response.data);
+  return response;
+};
+
+export const getWarbands: any = async () => {
+  const response: any = await axios.get(API_URL + "/warband/", options())
+                                   .then(response => response.data);
+  return response;
+};

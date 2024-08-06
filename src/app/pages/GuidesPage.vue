@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import GuidesComponent from '../components/Guides/GuidesComponent.vue';
+import AddCharacterModal from '../components/Settings/AddCharacterModal.vue';
 
 </script>
 
@@ -7,6 +8,7 @@ import GuidesComponent from '../components/Guides/GuidesComponent.vue';
   <main class="main-container red-shadow-fx">
     <div class="div-container">
       <GuidesComponent />
+      <AddCharacterModal />
     </div>
   </main>
 </template>
