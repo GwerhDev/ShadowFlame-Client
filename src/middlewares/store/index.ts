@@ -26,7 +26,7 @@ export const useStore = defineStore('store', {
     },
 
     userToken: '',
-    currentCharacter: '',
+    currentCharacter: null,
     warbands: null,
   }),
 
@@ -123,7 +123,7 @@ export const useStore = defineStore('store', {
 
     async handleGetTask(date: Date, type: string) {
       try {
-        const response: any = await getTasks(date, type);
+        const response: any = await getTasks(date, type, this.currentCharacter);
         this.currentUser.task = response;
         return;
       } catch (error) {
@@ -214,6 +214,10 @@ export const useStore = defineStore('store', {
       } catch (error) {
         console.error(error);
       }
+    },
+
+    setCurrentCharacter(character: string | null) {
+      this.currentCharacter = character;
     },
   }
 });

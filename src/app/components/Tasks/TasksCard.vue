@@ -42,6 +42,7 @@ async function handleCheckButton(e: any) {
   const formData = {
     date: store.currentUser.taskdate,
     type: store.currentUser.tasktype,
+    character: store.currentCharacter,
   };
 
   if (e.target.checked) {

@@ -1,6 +1,6 @@
-<style scoped lang="scss" src="./TasksComponent.scss"/>
+<style scoped lang="scss" src="./TasksComponent.scss" />
 <script setup lang="ts">
-import { ref, onMounted, Ref } from "vue";
+import { ref, onMounted, Ref, watch } from "vue";
 import { useStore } from '../../../middlewares/store';
 import { optionTodoList } from "../../../helpers/lists";
 import TasksCard from "./TasksCard.vue";
@@ -36,16 +36,22 @@ onMounted(async () => {
   }
 });
 
+watch(() => store.currentCharacter, async (newCharacter, oldCharacter) => {
+  if (newCharacter !== oldCharacter) {
+    await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+  }
+});
+
 async function handleDate(e: any) {
   date.value = e.target.value;
   store.setTaskDate(date.value);
   await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
-};
+}
 
 function handleInput() {
   if (title.value.length) isButtonDisabled.value = false;
   else isButtonDisabled.value = true;
-};
+}
 
 async function createTask() {
   isButtonDisabled.value = true;
@@ -55,7 +61,8 @@ async function createTask() {
     type: store.currentUser.tasktype,
     title: title.value,
     fixed: false,
-    user: store.currentUser.userData.id
+    user: store.currentUser.userData.id,
+    character: store.currentCharacter,
   };
 
   await store.handleCreateTask(formData);
@@ -63,8 +70,7 @@ async function createTask() {
 
   isButtonDisabled.value = true;
   title.value = "";
-};
-
+}
 </script>
 
 <template>
