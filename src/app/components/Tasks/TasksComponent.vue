@@ -8,6 +8,7 @@ import TasksLateralMenu from "./TasksLateralMenu.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
 import LoaderComponent from "../../utils/LoaderComponent.vue";
+import CharacterSelector from "../CharacterSelector/CharacterSelector.vue";
 
 const store: any = useStore();
 const title: Ref = ref("");
@@ -73,6 +74,8 @@ async function createTask() {
         <img :src="diabloIcon" alt="icon" />
         <h1>Mis Tareas</h1>
       </span>
+
+      <CharacterSelector />
 
       <div class="section-container">
         <section class="menu-section">

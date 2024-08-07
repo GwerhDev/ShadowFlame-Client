@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./GuidesComponent.scss"/>
+<style scoped lang="scss" src="./GuidesComponent.scss" />
 <script setup lang="ts">
 import { ref, onMounted, Ref } from "vue";
 import { useStore } from '../../../middlewares/store';
@@ -8,15 +8,16 @@ import DeniedAccess from "../../utils/DeniedAccess.vue";
 import GuidesLateralMenu from "./GuidesLateralMenu.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import GuidesGems from "./GuidesGems.vue";
+import CharacterSelector from "../CharacterSelector/CharacterSelector.vue";
 
 const store: any = useStore();
 const type: Ref = ref("chatbot");
 
 onMounted(async () => {
   try {
-    if (!store.currentUser.guidetype) { 
+    if (!store.currentUser.guidetype) {
       const getChatbot = await store.handleGetChatbotModel();
-      if(getChatbot === 'chatbot') {
+      if (getChatbot === 'chatbot') {
         store.setGuideType('chatbot');
       }
     } else {
@@ -39,6 +40,8 @@ onMounted(async () => {
         <img :src="diabloIcon" alt="icon" />
         <h1>El Guía</h1>
       </span>
+      
+      <CharacterSelector />
 
       <div class="section-container">
         <section class="menu-section">
@@ -47,10 +50,12 @@ onMounted(async () => {
         <section class="chatbox-section" v-if="store.currentUser?.logged && store.currentUser?.guidetype === 'chatbot'">
           <GuidesChatBot />
         </section>
-        <section class="chatbox-section" v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'gems'">
+        <section class="chatbox-section"
+          v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'gems'">
           <GuidesGems />
         </section>
-        <section class="chatbox-section" v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'maps'">
+        <section class="chatbox-section"
+          v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'maps'">
           <GuidesMaps />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
