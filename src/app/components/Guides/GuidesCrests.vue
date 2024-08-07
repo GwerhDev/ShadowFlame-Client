@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./GuidesGems.scss" />
+<style scoped lang="scss" src="./GuidesCrests.scss" />
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
 import { useStore } from '../../../middlewares/store';
@@ -30,20 +30,33 @@ function handleQuantity(e: Event) {
         <input :value="date" type="date" @input="" v-if="store?.currentUser?.logged" />
         <ul class="form-container">
           <li class="d-flex col g-1">
-            <span>
-              <label for="rare">Cimera Rara</label>
-              <input name="rare" min="0" max="100" @input="handleQuantity" type="number">
-            </span>
+            <div class="crest-form rare">
+              <span>
+                <label for="rare">Cimera Rara</label>
+                <input name="rare" min="0" max="100" @input="handleQuantity" type="number">
+              </span>
+            </div>
+            <div class="crest-form legendary">
+              <span>
+                <label for="legendary">Cimera Legendaria</label>
+                <input name="legendary" min="0" max="100" @input="handleQuantity" type="number">
+              </span>
+              <span class="d-flex align-items-center">
+                <label for="legendary-found-checkbox">Gema Legendaria encontrada</label>
+                <input name="legendary-found-checkbox" type="checkbox" />
+              </span>
+            </div>
 
-            <span>
-              <label for="legendary">Cimera Legendaria</label>
-              <input name="legendary" min="0" max="100" @input="handleQuantity" type="number">
-            </span>
-
-            <span>
-              <label for="eternal">Cimera Legendaria Eterna</label>
-              <input name="eternalLegendary" min="0" max="100" @input="handleQuantity" type="number">
-            </span>
+            <div class="crest-form eternal-legendary">
+              <span>
+                <label for="eternalLegendary">Cimera Legendaria Eterna</label>
+                <input name="eternalLegendary" min="0" max="100" @input="handleQuantity" type="number">
+              </span>
+              <span class="d-flex align-items-center">
+                <label for="legendary-found-checkbox">Gema Legendaria encontrada</label>
+                <input name="legendary-found-checkbox" type="checkbox" />
+              </span>
+            </div>
           </li>
         </ul>
         <span class="d-flex g-1 p-1">

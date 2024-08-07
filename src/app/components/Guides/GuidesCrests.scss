@@ -21,12 +21,27 @@
 .form-container {
   text-align: start;
   li {
-    padding-left: 1rem;
-    padding-right: 1rem;
 
     span {
       display: flex;
       justify-content: space-between;
     }
   }
+}
+
+.crest-form {
+  padding: .5rem;
+  border-radius: .4rem;
+}
+
+.rare {
+  background-color: rgba(0, 255, 255, 0.079);
+}
+
+.legendary {
+  background-color: rgba(231, 91, 26, 0.131);
+}
+
+.eternal-legendary {
+  background-color: rgba(103, 85, 133, 0.178);
 }
