@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AddCharacterModal from '../components/Settings/AddCharacterModal.vue';
 import TasksComponent from '../components/Tasks/TasksComponent.vue';
 </script>
 
@@ -6,6 +7,7 @@ import TasksComponent from '../components/Tasks/TasksComponent.vue';
   <main class="main-container red-shadow-fx">
     <div class="div-container">
       <TasksComponent />
+      <AddCharacterModal />
     </div>
   </main>
 </template>

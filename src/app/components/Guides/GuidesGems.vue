@@ -32,17 +32,17 @@ function handleQuantity(e: Event) {
           <li class="d-flex col g-1">
             <span>
               <label for="rare">Cimera Rara</label>
-              <input name="rare" min="0" max="10" @input="handleQuantity" type="number">
+              <input name="rare" min="0" max="100" @input="handleQuantity" type="number">
             </span>
 
             <span>
               <label for="legendary">Cimera Legendaria</label>
-              <input name="legendary" min="0" max="10" @input="handleQuantity" type="number">
+              <input name="legendary" min="0" max="100" @input="handleQuantity" type="number">
             </span>
 
             <span>
               <label for="eternal">Cimera Legendaria Eterna</label>
-              <input name="eternalLegendary" min="0" max="10" @input="handleQuantity" type="number">
+              <input name="eternalLegendary" min="0" max="100" @input="handleQuantity" type="number">
             </span>
           </li>
         </ul>
