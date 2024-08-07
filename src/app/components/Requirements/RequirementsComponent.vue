@@ -22,9 +22,6 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Participación semanal en:
-          </p>
-          <p class="p-0 m-0 d-flex g-small">
             Guerra Sombría al menos
             <span class="featured-text">
               1 batalla por semana
