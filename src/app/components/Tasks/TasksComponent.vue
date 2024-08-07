@@ -8,7 +8,7 @@ import TasksLateralMenu from "./TasksLateralMenu.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
 import LoaderComponent from "../../utils/LoaderComponent.vue";
-import CharacterSelector from "../CharacterSelector/CharacterSelector.vue";
+import CharacterSelector from "../Selectors/CharacterSelector/CharacterSelector.vue";
 
 const store: any = useStore();
 const title: Ref = ref("");

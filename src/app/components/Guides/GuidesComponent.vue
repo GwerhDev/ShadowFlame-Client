@@ -8,7 +8,7 @@ import DeniedAccess from "../../utils/DeniedAccess.vue";
 import GuidesLateralMenu from "./GuidesLateralMenu.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import GuidesGems from "./GuidesGems.vue";
-import CharacterSelector from "../CharacterSelector/CharacterSelector.vue";
+import CharacterSelector from "../Selectors/CharacterSelector/CharacterSelector.vue";
 
 const store: any = useStore();
 const type: Ref = ref("chatbot");
@@ -40,7 +40,7 @@ onMounted(async () => {
         <img :src="diabloIcon" alt="icon" />
         <h1>El Guía</h1>
       </span>
-      
+
       <CharacterSelector />
 
       <div class="section-container">

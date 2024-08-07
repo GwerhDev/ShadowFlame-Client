@@ -7,16 +7,17 @@ import { $d } from '../../../functions';
 
 const store: any = useStore();
 const warbands = ref([]);
-const name = ref("");
-const warband = ref(null);
+const name: any = ref("");
+const warband: any = ref(null);
 const isDisabled = ref(true);
 
 onMounted(async () => {
   warbands.value = await store.handleGetWarbands();
 });
 
-function handleName(e: any) {
-  name.value = e.target.value;
+function handleName(e: Event) {
+  const target = e.target as HTMLInputElement;
+  name.value = target.value;
   if(name.value) {
     isDisabled.value = false;
   } else {
@@ -24,9 +25,10 @@ function handleName(e: any) {
   }
 }
 
-function handleWarband(e: any) {
-  if(!e.target.value) return warband.value = null;
-  warband.value = e.target.value;
+function handleWarband(e: Event) {
+  const target = e.target as HTMLInputElement;
+  if(!target.value) return warband.value = null;
+  warband.value = target.value;
 }
 
 async function handleSubmit(e: any) {

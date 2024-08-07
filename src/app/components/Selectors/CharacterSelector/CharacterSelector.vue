@@ -1,8 +1,8 @@
 <style scoped lang="scss" src="./CharacterSelector.scss" />
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { $d } from '../../../functions';
-import { useStore } from '../../../middlewares/store';
+import { $d } from '../../../../functions';
+import { useStore } from '../../../../middlewares/store';
 
 const store = useStore();
 
@@ -24,6 +24,7 @@ function handleChange(e: any) {
     <select :onchange="handleChange" class="" name="character-selector" id="character-selector">
       <option value="default">Por defecto</option>
       <option v-for="character in store.currentUser?.userData?.character" value="">{{ character.name }}</option>
+      <option disabled class="separator">─────────────</option>
       <option value="create-character">Crear</option>
     </select>
   </span>

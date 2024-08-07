@@ -1,0 +1,32 @@
+.inner-container {
+  display: flex;
+}
+
+.filter-container {
+  width: 100%;
+  max-width: 300px;
+}
+
+.crest-img-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.crest-img-container span {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
+.form-container {
+  text-align: start;
+  li {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    span {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
