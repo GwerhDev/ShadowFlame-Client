@@ -1,7 +1,10 @@
 <style scoped lang="scss" src="./RequirementsComponent.scss" />
 
 <script setup lang="ts">
+import { useStore } from "../../../middlewares/store";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
+
+const store = useStore();
 
 </script>
 
@@ -76,7 +79,9 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
         </li>
       </ul>
       <span class="mt-1">
-        <a class="button" target="_blank" href="https://chat.whatsapp.com/JKgACyEmmyx3HXsRf5SPlY">Solicitar ingreso</a>
+        <a class="button" target="_blank" href="https://chat.whatsapp.com/JKgACyEmmyx3HXsRf5SPlY">
+          {{ store.currentUser?.logged ? "Ir a whatsapp" : "Solicitar ingreso" }}
+        </a>
       </span>
       <p class="message-container mw-1250">
         Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
