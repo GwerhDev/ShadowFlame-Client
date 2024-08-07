@@ -15,10 +15,40 @@ const quantity: Ref<any> = ref({
   eternalLegendary: 0,
 });
 
-
 function handleQuantity(e: Event) {
   const target = e.target as HTMLInputElement;
   quantity.value[target.name] = parseInt(target.value, 10) || 0;
+};
+
+function handleSave(e: Event) {
+  e.preventDefault();
+
+  const formDataRare: object = {
+    type: "rare", 
+    date, 
+    quantity: quantity.value.rare,
+    legendaryFound: false, 
+    character: store.currentCharacter
+  };
+
+  const formDataLegendary: object = {
+    type: "legendary", 
+    date, 
+    quantity: quantity.value.legendary,
+    legendaryFound: false, 
+    character: store.currentCharacter
+  };
+
+  const formDataEternalLegendary: object = {
+    type: "eternalLegendary", 
+    date, 
+    quantity: quantity.value.eternalLegendary,
+    legendaryFound: false,
+    character: store.currentCharacter
+  };
+
+  
+
 };
 
 </script>
