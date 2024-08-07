@@ -7,22 +7,23 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
 <template>
   <div class="container-requirements-component">
-    <div class="requirements-container">
+    <div class="requirements-container d-flex col align-items-center">
       <span class="mb-3 mt-1">
         <img :src="diabloIcon" alt="icon" />
         <h1>Requisitos</h1>
       </span>
 
-      <ul class="d-flex col">
+      <ul class="d-flex col w-100 mw-800">
+        Los requisitos mínimos que pedimos a los miembros son los siguientes:
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Paragón mínimo de <span class="featured-text">200</span>
+            Paragón de <span class="featured-text">200</span>
           </p>
         </li>
 
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Guerra Sombría al menos
+            Guerra Sombría
             <span class="featured-text">
               1 batalla por semana
             </span>
@@ -31,7 +32,7 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Asalto de la Bóveda al menos
+            Asalto de la Bóveda
             <span class="featured-text">
               3 veces a la semana
             </span>
@@ -48,7 +49,7 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Rango de Sombra mínimo de
+            Rango de Sombra
             <span class="featured-text">
               Fantasma
             </span>
@@ -77,7 +78,7 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
       <span class="mt-1">
         <a class="button" target="_blank" href="https://chat.whatsapp.com/JKgACyEmmyx3HXsRf5SPlY">Solicitar ingreso</a>
       </span>
-      <p class="message-container">
+      <p class="message-container mw-1250">
         Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
         el siguiente Ciclo.
       </p>
