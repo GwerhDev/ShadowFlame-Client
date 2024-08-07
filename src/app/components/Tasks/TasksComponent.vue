@@ -61,7 +61,7 @@ async function createTask() {
     type: store.currentUser.tasktype,
     title: title.value,
     fixed: false,
-    user: store.currentUser.userData.id,
+    user: !store.currentCharacter ? store.currentUser.userData.id : null,
     character: store.currentCharacter,
   };
 
