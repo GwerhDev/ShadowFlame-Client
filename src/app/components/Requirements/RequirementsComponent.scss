@@ -34,24 +34,20 @@
       display: flex;
       text-align: start;
       flex-direction: column;
+      padding-left: 3rem;
+      padding-right: 3rem;
 
       li {
-        gap: .3rem;
+        margin: 0;
+        padding: 0;
         display: flex;
-        align-items: center;
-        
-        &::before {
-          content: '';
-          background-color: rgb(255, 255, 255);
-          width: 8px;
-          height: 8px;
-          border-radius: 100%;
-
-        }
+        text-align: start;
+        align-items: start;
+        flex-direction: column;
       }
     }
 
-    p {
+    .message-container {
       background-color: rgba(37, 42, 55, 0.689);
       padding: 1rem;
       border-radius: .4rem;
@@ -69,6 +65,18 @@
       padding-bottom: 0;
       height: 100%;
       padding: 1rem;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .container-requirements-component {
+
+    .requirements-container {
+
+      ul {
+        padding: .5rem;
+      }
     }
   }
 }

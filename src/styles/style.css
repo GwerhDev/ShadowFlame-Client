@@ -284,3 +284,19 @@
   color: rgb(227, 210, 168);
   filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.245));
 }
+
+.p-0 {
+  padding: 0;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.bg {
+  background-color: aqua;
+}
+
+.g-small {
+  gap: .3rem
+}

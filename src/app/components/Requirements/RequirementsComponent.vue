@@ -13,42 +13,74 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
         <h1>Requisitos</h1>
       </span>
 
-      <ul class="pl-3 lr-3">
+      <ul class="d-flex col">
         <li>
-          Paragón mínimo de 
-          200
-          .
+          <p class="p-0 m-0 d-flex g-small">
+            Paragón mínimo de <span class="featured-text">200</span>
+          </p>
+        </li>
+
+        <li>
+          <p class="p-0 m-0 d-flex g-small">
+            Participación semanal en:
+          </p>
+          <p class="p-0 m-0 d-flex g-small">
+            Guerra Sombría al menos
+            <span class="featured-text">
+              1 batalla por semana
+            </span>
+          </p>
+        </li>
+
+        <li>
+          <p class="p-0 m-0 d-flex g-small">
+            Asalto de la Bóveda al menos
+            <span class="featured-text">
+              3 veces a la semana
+            </span>
+          </p>
         </li>
         <li>
-          Participación semanal en Guerra Sombría al menos
-          1
-          batalla por semana.
+          <p class="p-0 m-0 d-flex g-small">
+            Torres Malditas
+            <span class="featured-text">
+              jueves y/o sábado
+            </span>
+          </p>
+        </li>
+
+        <li>
+          <p class="p-0 m-0 d-flex g-small">
+            Rango de Sombra mínimo de
+            <span class="featured-text">
+              Fantasma
+            </span>
+            (ciclo)
+          </p>
         </li>
         <li>
-          Participación semanal en Asalto de la Bóveda al menos 
-          3 veces 
-          a la semana.
+          <p class="p-0 m-0 d-flex g-small">
+            Inactividad máxima de
+            <span class="featured-text">
+              7 días
+            </span>
+          </p>
         </li>
+
         <li>
-          Participación semanal en Torres Malditas 
-          cuando sea necesario
-          .
-        </li>
-        <li>
-          Rango de Sombra mínimo de 
-          Fantasma 
-          al acabar cada ciclo.
-        </li>
-        <li>
-          Inactividad máxima de 
-          7 días
-          .
-        </li>
-        <li>
-          Ingresar a grupo de Whatsapp.
+          <p class="p-0 m-0 d-flex g-small">
+            Ingresar a grupo de
+            <span class="featured-text">
+              Whatsapp
+            </span>
+
+          </p>
         </li>
       </ul>
-      <p>
+      <span class="mt-1">
+        <a class="button" target="_blank" href="https://chat.whatsapp.com/JKgACyEmmyx3HXsRf5SPlY">Solicitar ingreso</a>
+      </span>
+      <p class="message-container">
         Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
         el siguiente Ciclo.
       </p>
