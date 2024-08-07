@@ -30,9 +30,9 @@ function styleActive(type: string) {
         </button>
       </li>
       <li>
-        <button :disabled="!props.logged" @click="handleType('gems')" :style="props.logged && styleActive('gems')">
-          <img src="../../../assets/svg/gem-icon.svg" alt="Gemas" />
-          <span>Gemas</span>
+        <button :disabled="!props.logged" @click="handleType('crests')" :style="props.logged && styleActive('crests')">
+          <img src="../../../assets/svg/gem-icon.svg" alt="Cimeras" />
+          <span>Cimeras</span>
           <span></span>
         </button>
       </li>

@@ -23,7 +23,7 @@ async function handleSubmit() {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 function handleInput(e: any) {
   query.value = e.target.value
@@ -32,7 +32,7 @@ function handleInput(e: any) {
   } else {
     isButtonDisabled.value = true;
   }
-}
+};
 
 </script>
 

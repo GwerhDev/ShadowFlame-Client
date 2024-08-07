@@ -31,7 +31,8 @@ input {
   border-radius: 5px;
 }
 
-input[type="text"] {
+input[type=text],
+input[type=number] {
   padding: .5rem;
   border: none;
   border-bottom: var(--nav-color-primary) solid 1px;
@@ -43,7 +44,7 @@ input[type="text"] {
   }
 }
 
-input[type="checkbox"] {
+input[type=checkbox] {
   width: 30px;
   height: 30px;
   border-radius: none;
@@ -61,7 +62,8 @@ input[type="date"] {
   height: 30px;
   font-family: 'Cinzel', serif;
   background-color: #15171E;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 8px;
   border: none;
   display: flex;

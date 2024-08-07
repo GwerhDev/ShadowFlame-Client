@@ -33,7 +33,6 @@ onMounted(() => {
 
 </script>
 
-
 <template>
   <div class="canvas-container">
     <select name="" id="">

@@ -51,7 +51,7 @@ onMounted(async () => {
           <GuidesChatBot />
         </section>
         <section class="chatbox-section"
-          v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'gems'">
+          v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'crests'">
           <GuidesGems />
         </section>
         <section class="chatbox-section"

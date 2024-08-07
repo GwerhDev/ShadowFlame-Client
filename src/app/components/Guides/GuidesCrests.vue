@@ -19,12 +19,12 @@ const quantity: Ref<any> = ref({
 function handleQuantity(e: Event) {
   const target = e.target as HTMLInputElement;
   quantity.value[target.name] = parseInt(target.value, 10) || 0;
-}
+};
 
 </script>
 
 <template>
-  <section class="container-gems">
+  <section class="container-crests">
     <div class="inner-container">
       <div class="filter-container d-flex col g-1 w-100">
         <input :value="date" type="date" @input="" v-if="store?.currentUser?.logged" />
