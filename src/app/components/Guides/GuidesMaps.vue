@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./GuidesMaps.scss"/>
+<style scoped lang="scss" src="./GuidesMaps.scss" />
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -35,11 +35,14 @@ onMounted(() => {
 
 <template>
   <div class="canvas-container">
-    <select name="" id="">
-      <option value="westmarch">Marca del Oeste</option>
-    </select>
+    <span class="selector-container">
+      <select name="" id="">
+        <option value="westmarch">Marca del Oeste</option>
+      </select>
+    </span>
     <img src="../../../assets/webp/westmarch.webp" alt="Westmarch" width="100%" ref="mapWestmarch">
     <canvas ref="canvas"></canvas>
   </div>
-  <button class="mb-3" v-if="store.currentUser.userData.role === 'admin'" @click="captureDrawing">Capturar dibujo</button>
+  <button class="mb-3" v-if="store.currentUser.userData.role === 'admin'" @click="captureDrawing">Capturar
+    dibujo</button>
 </template>

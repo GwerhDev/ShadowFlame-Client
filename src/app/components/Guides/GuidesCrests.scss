@@ -4,24 +4,22 @@
 
 .filter-container {
   width: 100%;
-  max-width: 300px;
+  max-width: 350px;
+
+  .crest-img-container {
+    overflow-x: scroll;
+  
+    span {
+      display: flex;
+    }
+  }
 }
 
-.crest-img-container {
-  width: 100%;
-  overflow: hidden;
-}
-
-.crest-img-container span {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
-}
 
 .form-container {
   text-align: start;
-  li {
 
+  li {
     span {
       display: flex;
       justify-content: space-between;
@@ -32,6 +30,11 @@
 .crest-form {
   padding: .5rem;
   border-radius: .4rem;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .rare {
