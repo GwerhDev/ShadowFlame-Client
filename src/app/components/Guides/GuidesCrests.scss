@@ -5,16 +5,16 @@
 .filter-container {
   width: 100%;
   max-width: 350px;
-
-  .crest-img-container {
-    overflow-x: scroll;
-  
-    span {
-      display: flex;
-    }
-  }
 }
 
+.crest-img-container {
+  width: 100%;
+  height: 100%;
+  
+  span {
+    
+  }
+}
 
 .form-container {
   text-align: start;

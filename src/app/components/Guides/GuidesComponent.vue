@@ -7,7 +7,7 @@ import GuidesMaps from "./GuidesMaps.vue";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
 import GuidesLateralMenu from "./GuidesLateralMenu.vue";
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
-import GuidesGems from "./GuidesCrests.vue";
+import GuidesCrests from "./GuidesCrests.vue";
 import CharacterSelector from "../Selectors/CharacterSelector/CharacterSelector.vue";
 
 const store: any = useStore();
@@ -50,9 +50,9 @@ onMounted(async () => {
         <section class="chatbox-section" v-if="store.currentUser?.logged && store.currentUser?.guidetype === 'chatbot'">
           <GuidesChatBot />
         </section>
-        <section class="chatbox-section"
+        <section class="crests-section"
           v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'crests'">
-          <GuidesGems />
+          <GuidesCrests />
         </section>
         <section class="chatbox-section"
           v-else-if="store.currentUser?.logged && store.currentUser?.guidetype === 'maps'">
