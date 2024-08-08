@@ -23,13 +23,13 @@ function handleName(e: Event) {
   } else {
     isDisabled.value = true;
   }
-}
+};
 
 function handleWarband(e: Event) {
   const target = e.target as HTMLInputElement;
   if(!target.value) return warband.value = null;
   warband.value = target.value;
-}
+};
 
 async function handleSubmit(e: any) {
   e.preventDefault();
@@ -52,11 +52,12 @@ async function handleSubmit(e: any) {
   } finally {
     isDisabled.value = false;
   }
-}
+};
 
 function handleCloseModal() {
   $d(".container-modal-component").style.display = "none";
-}
+  store.setCurrentCharacter(store.currentUser?.userData?.character[0] || null);
+};
 
 </script>
 
