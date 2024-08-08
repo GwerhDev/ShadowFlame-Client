@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./TasksComponent.scss" />
 <script setup lang="ts">
-import { ref, Ref, watch } from "vue";
+import { onMounted, ref, Ref, watch } from "vue";
 import { useStore } from '../../../middlewares/store';
 import { optionTodoList } from "../../../helpers/lists";
 import TasksCard from "./TasksCard.vue";
@@ -16,6 +16,25 @@ const message: Ref = ref("");
 const isButtonDisabled: Ref = ref(true);
 const date: Ref = ref(new Date().toISOString().substring(0, 10));
 const type: Ref = ref("mytasks");
+
+onMounted(async () => {
+  try {
+    message.value = "";
+    if (!store.currentUser.tasktype) {
+      await store.handleGetTask(date.value, type.value);
+      store.setTaskType(type.value);
+      store.setTaskDate(date.value);
+    } else {
+      type.value = store.currentUser.tasktype;
+      date.value = store.currentUser.taskdate;
+      await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    message.value = "No hay tareas para esta fecha.";
+  }
+});
 
 watch(() => store.currentCharacter, async (newCharacter, oldCharacter) => {
   if (newCharacter !== oldCharacter) {
