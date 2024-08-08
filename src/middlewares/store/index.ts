@@ -87,6 +87,7 @@ export const useStore = defineStore('store', {
     async handleUserData(token: any) {
       try {
         this.currentUser = { ...this.currentUser, ...await getUserData(token) };
+        this.currentCharacter = this.currentUser.userData?.character[0]?._id || null;
         this.userToken = token;
         setUserToken(token);
       } catch (error) {

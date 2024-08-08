@@ -43,9 +43,9 @@ async function handleSubmit(e: any) {
 
   try {
     await store.handleCreateCharacter(formData);
+    await store.setCurrentCharacter(store.currentUser?.userData?.character[0]?._id || null);
     handleCloseModal();
     await store.handleGetCharacter();
-    store.setCurrentCharacter(store.currentUser?.userData?.character[0] || null);
     
   } catch (error) {
     console.log(error);
@@ -54,9 +54,9 @@ async function handleSubmit(e: any) {
   }
 };
 
-function handleCloseModal() {
+async function handleCloseModal() {
+  await store.setCurrentCharacter(store.currentUser?.userData?.character[0]?._id || null);
   $d(".container-modal-component").style.display = "none";
-  store.setCurrentCharacter(store.currentUser?.userData?.character[0] || null);
 };
 
 </script>

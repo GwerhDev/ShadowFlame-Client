@@ -1,14 +1,9 @@
 <style scoped lang="scss" src="./CharacterSelector.scss" />
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { useStore } from '../../../../middlewares/store';
 import { $d } from '../../../../functions';
 
 const store = useStore();
-
-onMounted(async () => {
-  await store.handleGetCharacter();
-});
 
 function handleChange(e: Event) {
   const target = e.target as HTMLOptionElement;
@@ -25,7 +20,7 @@ function handleChange(e: Event) {
 
 <template>
   <span class="mb-1">
-    <select :value="store.currentCharacter || store.currentUser?.userData?.character[0]?.name || 'Por defecto'" :onchange="handleChange" class="" name="character-selector" id="character-selector">
+    <select :value="store.currentCharacter || 'Por defecto'" :onchange="handleChange" class="" name="character-selector" id="character-selector">
       <option v-for="character in store.currentUser?.userData?.character" :value="character._id">{{ character.name }}</option>
       <option v-if="!store.currentUser?.userData?.character">Por defecto</option>
       <option value="create-character">Crear</option>

@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./TasksComponent.scss" />
 <script setup lang="ts">
-import { ref, onMounted, Ref, watch } from "vue";
+import { ref, Ref, watch } from "vue";
 import { useStore } from '../../../middlewares/store';
 import { optionTodoList } from "../../../helpers/lists";
 import TasksCard from "./TasksCard.vue";
@@ -17,28 +17,24 @@ const isButtonDisabled: Ref = ref(true);
 const date: Ref = ref(new Date().toISOString().substring(0, 10));
 const type: Ref = ref("mytasks");
 
-onMounted(async () => {
-  try {
-    message.value = "";
-    if (!store.currentUser.tasktype) { 
-      await store.handleGetTask(date.value, type.value);
-      store.setTaskType(type.value);
-      store.setTaskDate(date.value);
-    } else {
-      type.value = store.currentUser.tasktype;
-      date.value = store.currentUser.taskdate;
-      await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
-    }
-  } catch (error) {
-    console.error(error);
-  } finally {
-    message.value = "No hay tareas para esta fecha.";
-  }
-});
-
 watch(() => store.currentCharacter, async (newCharacter, oldCharacter) => {
   if (newCharacter !== oldCharacter) {
-    await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+    try {
+      message.value = "";
+      if (!store.currentUser.tasktype) {
+        await store.handleGetTask(date.value, type.value);
+        store.setTaskType(type.value);
+        store.setTaskDate(date.value);
+      } else {
+        type.value = store.currentUser.tasktype;
+        date.value = store.currentUser.taskdate;
+        await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      message.value = "No hay tareas para esta fecha.";
+    }
   }
 });
 
@@ -92,7 +88,8 @@ async function createTask() {
             <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged" />
           </div>
 
-          <form @submit.prevent="createTask" disabled v-if="store.currentUser.tasktype === 'mytasks' && !store.currentUser.taskloading">
+          <form @submit.prevent="createTask" disabled
+            v-if="store.currentUser.tasktype === 'mytasks' && !store.currentUser.taskloading">
             <input type="text" list="options" placeholder="Agregar una tarea a tu lista" v-model="title"
               @input="handleInput" />
 
@@ -104,10 +101,11 @@ async function createTask() {
             </button>
           </form>
           <ul v-if="store.currentUser.task?.length && !store.currentUser.taskloading">
-            <TasksCard v-for="(item, index) in store.currentUser.task" :key="index" :todo="item"/>
+            <TasksCard v-for="(item, index) in store.currentUser.task" :key="index" :todo="item" />
           </ul>
           <ul v-if="!store.currentUser.task?.length">{{ message }}</ul>
-          <LoaderComponent v-if="(!store.currentUser.task?.length && !message.length) || store.currentUser.taskloading" />
+          <LoaderComponent
+            v-if="(!store.currentUser.task?.length && !message.length) || store.currentUser.taskloading" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
           <DeniedAccess />
