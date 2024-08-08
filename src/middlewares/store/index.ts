@@ -103,7 +103,7 @@ export const useStore = defineStore('store', {
     },
 
     async handleGetUsers() {
-      this.admin.users = await getUsers();
+      this.currentUser.userData?.role === "admin" ? this.admin.users = await getUsers() : null;
     },
 
     async handleUpdateUser(id: string, formData: any) {
@@ -170,7 +170,7 @@ export const useStore = defineStore('store', {
 
     async handleGetAdminNotifications() {
       try {
-        this.admin.notifications = await getAdminNotifications();
+        this.currentUser.userData?.role === "admin" ? this.admin.notifications = await getAdminNotifications() : null;
         return;
       } catch (error) {
         console.error(error);
