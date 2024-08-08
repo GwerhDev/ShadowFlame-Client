@@ -43,9 +43,9 @@ async function handleSubmit(e: any) {
 
   try {
     await store.handleCreateCharacter(formData);
+    await store.handleGetCharacter();
     await store.setCurrentCharacter(store.currentUser?.userData?.character[0]?._id || null);
     handleCloseModal();
-    await store.handleGetCharacter();
     
   } catch (error) {
     console.log(error);
