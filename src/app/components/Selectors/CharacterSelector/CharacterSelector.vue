@@ -14,6 +14,7 @@ function handleChange(e: Event) {
   const target = e.target as HTMLOptionElement;
   if (target.value === "create-character") {
     $d(".container-modal-component").style.display = "flex";
+
   } else if (target.value === 'Por defecto') {
     return store.setCurrentCharacter(null);
   }
@@ -25,7 +26,7 @@ function handleChange(e: Event) {
 <template>
   <span class="mb-1">
     <select :value="store.currentCharacter || 'Por defecto'" :onchange="handleChange" class="" name="character-selector" id="character-selector">
-      <option>Por defecto</option>
+      <option v-if="!store.currentUser?.userData?.character">Por defecto</option>
       <option v-for="character in store.currentUser?.userData?.character" :value="character._id">{{ character.name }}</option>
       <option value="create-character">Crear</option>
     </select>
