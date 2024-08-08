@@ -20,7 +20,7 @@ function handleQuantity(e: Event) {
   quantity.value[target.name] = parseInt(target.value, 10) || 0;
 };
 
-function handleSave(e: Event) {
+/* function handleSave(e: Event) {
   e.preventDefault();
 
   const formDataRare: object = {
@@ -46,10 +46,7 @@ function handleSave(e: Event) {
     legendaryFound: false,
     character: store.currentCharacter
   };
-
-  
-
-};
+}; */
 
 </script>
 
