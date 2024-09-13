@@ -20,33 +20,7 @@ const store = useStore();
         Los requisitos mínimos que pedimos a los miembros son los siguientes:
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Paragón de <span class="featured-text">200</span>
-          </p>
-        </li>
-
-        <li>
-          <p class="p-0 m-0 d-flex g-small">
-            Guerra Sombría
-            <span class="featured-text">
-              1 batalla por semana
-            </span>
-          </p>
-        </li>
-
-        <li>
-          <p class="p-0 m-0 d-flex g-small">
-            Asalto de la Bóveda
-            <span class="featured-text">
-              3 veces a la semana
-            </span>
-          </p>
-        </li>
-        <li>
-          <p class="p-0 m-0 d-flex g-small">
-            Torres Malditas
-            <span class="featured-text">
-              jueves y/o sábado
-            </span>
+            Paragón de <span class="featured-text">300</span>
           </p>
         </li>
 
@@ -54,7 +28,7 @@ const store = useStore();
           <p class="p-0 m-0 d-flex g-small">
             Rango de Sombra
             <span class="featured-text">
-              Fantasma
+              Cazador
             </span>
             (ciclo)
           </p>
