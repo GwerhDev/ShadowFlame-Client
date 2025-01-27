@@ -20,7 +20,7 @@ const store = useStore();
         Los requisitos mínimos que pedimos a los miembros son los siguientes:
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Paragón de <span class="featured-text">500</span>
+            Paragón de <span class="featured-text">600</span>
           </p>
         </li>
 
@@ -58,8 +58,10 @@ const store = useStore();
         </a>
       </span>
       <p class="message-container mw-1250">
-        Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
-        el siguiente Ciclo.
+        <i>
+          Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
+          el siguiente Ciclo.
+        </i>
       </p>
     </div>
   </div>
