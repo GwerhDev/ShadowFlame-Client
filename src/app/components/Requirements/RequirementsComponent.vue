@@ -30,7 +30,7 @@ const store = useStore();
             <span class="featured-text">
               Cazador
             </span>
-            (ciclo)
+            (4ta semana del ciclo)
           </p>
         </li>
         <li>
