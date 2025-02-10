@@ -58,8 +58,10 @@ const store = useStore();
         </a>
       </span>
       <p class="message-container mw-1250">
-        Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
-        el siguiente Ciclo.
+        <i>
+          Los miembros que no cumplan los requerimientos serán expulsados del Clan y no se permitirá su reingreso hasta
+          el siguiente Ciclo.
+        </i>
       </p>
     </div>
   </div>
