@@ -28,7 +28,7 @@ function handleClick() {
       </router-link>
 
       <router-link class="router-li" to='/requirements' @click="handleClick">
-        <li class="nav-button">Requisistos</li>
+        <li class="nav-button">Requisitos</li>
       </router-link>
 
       <router-link class="router-li" to='/gallery' @click="handleClick">
