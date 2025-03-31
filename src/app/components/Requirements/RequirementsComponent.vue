@@ -20,7 +20,7 @@ const store = useStore();
         Los requisitos mínimos que pedimos a los miembros son los siguientes:
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Paragón de <span class="featured-text">500</span>
+            Paragón de <span class="featured-text">600</span>
           </p>
         </li>
 
@@ -28,7 +28,7 @@ const store = useStore();
           <p class="p-0 m-0 d-flex g-small">
             Rango de Sombra
             <span class="featured-text">
-              Cazador
+              Cazador IV
             </span>
             (4ta semana del ciclo)
           </p>
