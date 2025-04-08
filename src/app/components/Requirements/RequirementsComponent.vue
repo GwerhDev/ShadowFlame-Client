@@ -28,9 +28,9 @@ const store = useStore();
           <p class="p-0 m-0 d-flex g-small">
             Rango de Sombra
             <span class="featured-text">
-              Cazador IV
+              Fantasma IV
             </span>
-            (4ta semana del ciclo)
+            (6ta semana del ciclo)
           </p>
         </li>
         <li>
