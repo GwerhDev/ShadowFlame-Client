@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, Ref } from 'vue';
 import { useStore } from '../../../../middlewares/store';
 import CreateShadowWarForm from './CreateShadowWarForm.vue';
 
 const store: any = useStore();
 const nextWarDate = ref('');
-const nextWarDateObject = ref<Date | null>(null);
+const nextWarDateObject: Ref<Date | null> = ref(null); // Explicitly type as Ref<Date | null>
 
 const calculateNextWarDate = () => {
   const todayForLogic = new Date();
@@ -29,7 +29,10 @@ const calculateNextWarDate = () => {
   } else {
       nextWarDateObject.value = saturday;
   }
-  nextWarDate.value = nextWarDateObject.value.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  if (nextWarDateObject.value) { // Add null check
+    nextWarDate.value = nextWarDateObject.value.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
 };
 
 onMounted(() => {

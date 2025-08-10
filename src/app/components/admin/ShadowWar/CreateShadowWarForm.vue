@@ -1,21 +1,31 @@
 <script setup lang="ts">
-import { ref, defineProps, onMounted } from 'vue';
+import { ref, defineProps, onMounted, Ref, PropType } from 'vue';
 import { createShadowWar, getClans, getMembers } from '../../../../middlewares/services';
+import { Clan, Member, Match } from '../../../../interfaces/shadowWar'; // Import interfaces
 
 const props = defineProps({
   date: {
-    type: Date,
+    type: Object as PropType<Date | null>, // Use Object as type, and then cast with PropType
     required: true,
   },
 });
 
-const clans = ref([]);
-const members = ref([]);
+const clans: Ref<Clan[]> = ref([]);
+const members: Ref<Member[]> = ref([]);
 const enemyClan = ref('');
-const exalted = ref([]);
-const eminent = ref([]);
-const famed = ref([]);
-const proud = ref([]);
+
+// Initialize battle categories with 3 matches each
+const battleCategories = ref<{
+  exalted: Match[];
+  eminent: Match[];
+  famed: Match[];
+  proud: Match[];
+}> ({
+  exalted: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
+  eminent: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
+  famed: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
+  proud: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
+});
 
 onMounted(async () => {
   clans.value = await getClans();
@@ -25,15 +35,10 @@ onMounted(async () => {
 const handleSubmit = async () => {
   const formData = {
     date: props.date,
-    result: "pending", // Default result for new war
+    result: "pending",
     enemyClan: enemyClan.value,
-    battle: {
-      exalted: { member: exalted.value },
-      eminent: { member: eminent.value },
-      famed: { member: famed.value },
-      proud: { member: proud.value },
-    },
-    confirmed: [], // Initially empty
+    battle: battleCategories.value,
+    confirmed: [],
   };
   await createShadowWar(formData);
 };
@@ -49,31 +54,23 @@ const handleSubmit = async () => {
       </select>
     </div>
 
-    <div>
-      <h3>Miembros de Batalla:</h3>
-      <div>
-        <label for="exalted">Exaltados:</label>
-        <select id="exalted" v-model="exalted" multiple>
-          <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
-        </select>
-      </div>
-      <div>
-        <label for="eminent">Eminentes:</label>
-        <select id="eminent" v-model="eminent" multiple>
-          <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
-        </select>
-      </div>
-      <div>
-        <label for="famed">Famosos:</label>
-        <select id="famed" v-model="famed" multiple>
-          <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
-        </select>
-      </div>
-      <div>
-        <label for="proud">Orgullosos:</label>
-        <select id="proud" v-model="proud" multiple>
-          <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
-        </select>
+    <h3>Miembros de Batalla:</h3>
+    <div v-for="(category, categoryName) in battleCategories" :key="categoryName">
+      <h4>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h4>
+      <div v-for="(match, matchIndex) in category" :key="matchIndex">
+        <h5>Match {{ matchIndex + 1 }}</h5>
+        <div>
+          <label>Group 1 (4 members):</label>
+          <select v-model="match.group1.member" multiple>
+            <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
+          </select>
+        </div>
+        <div>
+          <label>Group 2 (4 members):</label>
+          <select v-model="match.group2.member" multiple>
+            <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
+          </select>
+        </div>
       </div>
     </div>
 
