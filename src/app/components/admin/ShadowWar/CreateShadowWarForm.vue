@@ -65,13 +65,11 @@ const handleSubmit = async () => {
 <template>
   <form @submit.prevent="handleSubmit">
     <div class="clan-selector-container">
-      <div>
-        <label for="enemyClan">Clan Enemigo:</label>
-        <select id="enemyClan" v-model="enemyClan" required>
-          <option value="" disabled>Selecciona un clan</option>
-          <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
-        </select>
-      </div>
+      <label for="enemyClan">Clan Enemigo:</label>
+      <select id="enemyClan" v-model="enemyClan" required>
+        <option value="">Clan no definido</option>
+        <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
+      </select>
       <button type="button" @click="showCreateClanModal = true">Crear Clan</button>
     </div>
 
@@ -91,7 +89,7 @@ const handleSubmit = async () => {
                   <span>
                     <select v-model="match.group1.member[n - 1]"
                       @change="updateMemberDetails(match.group1.member[n - 1], categoryName, 'group1', matchIndex, n - 1)">
-                      <option :value="undefined" disabled>Selecciona un personaje</option>
+                      <option :value="undefined">(Vacío)</option>
                       <option v-for="member in members" :key="member._id" :value="member">{{ member.character }}
                       </option>
                     </select>
@@ -108,7 +106,7 @@ const handleSubmit = async () => {
               <div v-for="n in 4" :key="n" class="table-row">
                 <select v-model="match.group2.member[n - 1]"
                   @change="updateMemberDetails(match.group2.member[n - 1], categoryName, 'group2', matchIndex, n - 1)">
-                  <option :value="undefined" disabled>Selecciona un personaje</option>
+                      <option :value="undefined">(Vacío)</option>
                   <option v-for="member in members" :key="member._id" :value="member">{{ member.character }}</option>
                 </select>
                 <span>{{ match.group2.member[n - 1]?.class || 'N/A' }}</span>
@@ -123,3 +121,5 @@ const handleSubmit = async () => {
     <button type="submit">Crear Guerra Sombría</button>
   </form>
 </template>
+
+<style scoped lang="scss" src="./CreateShadowWarForm.scss" />

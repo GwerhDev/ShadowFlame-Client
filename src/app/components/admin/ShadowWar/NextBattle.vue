@@ -45,10 +45,26 @@ onMounted(() => {
   <div>
     <h2>Próxima Batalla</h2>
     <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
-    <p>El oponente aún no está definido.</p>
 
     <div v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
       <CreateShadowWarForm :date="nextWarDateObject" />
     </div>
   </div>
 </template>
+
+<style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+</style>
