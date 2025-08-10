@@ -52,6 +52,7 @@
       align-items: center;
       gap: 0.5rem;
       width: 100px;
+      font-size: 10px;
 
       &.selected-class {
         border-color: var(--color-primary-light);
