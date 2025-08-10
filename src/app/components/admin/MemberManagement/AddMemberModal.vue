@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./AddMemberModal.scss" />
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref, defineEmits, computed } from 'vue';
 import diabloIcon from "../../../../assets/svg/diablo-icon.svg";
 
 const emit = defineEmits(['close']);
@@ -10,6 +10,8 @@ const character = ref('');
 const resonance = ref(0);
 const selectedClass = ref('');
 const whatsapp = ref('');
+
+const isCharacterEmpty = computed(() => character.value.trim() === '');
 
 const classes = [
   { name: "Druida", value: "druid", image: "https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt75eca7075dbe5195/6851ec39300f1cc6e7953c4b/druid_svg_1.svg" },
@@ -82,7 +84,7 @@ function handleSubmit() {
                   </button>
                 </div>
               </span>
-              <button type="submit"
+              <button type="submit" :disabled="isCharacterEmpty"
                 class="submit-button button justify-content-center align-items-center d-flex g-1 w-100">Add
                 Member</button>
               <button type="button" @click="handleCloseModal" class="secondary-button">Cancel</button>
