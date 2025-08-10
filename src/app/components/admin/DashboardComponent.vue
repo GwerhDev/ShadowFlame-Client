@@ -12,14 +12,14 @@ const store: any = useStore();
     <ul>
       <router-link to="/dashboard/user-management">
         <li v-if="store.currentUser?.userData?.role === 'admin'">
-          Users
+          Usuarios
           <span v-if="store.admin?.notifications?.pendingUsers.length">{{
             store.admin?.notifications?.pendingUsers.length }}</span>
         </li>
       </router-link>
       <router-link to="/dashboard/member-management">
         <li v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
-          Members
+          Miembros
         </li>
       </router-link>
     </ul>

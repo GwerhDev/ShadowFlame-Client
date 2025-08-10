@@ -1,9 +1,11 @@
 <style scoped lang="scss" src="./AddMemberModal.scss" />
 <script setup lang="ts">
 import { ref, defineEmits, computed } from 'vue';
+import { useStore } from '../../../../middlewares/store';
 import diabloIcon from "../../../../assets/svg/diablo-icon.svg";
 
 const emit = defineEmits(['close']);
+const store: any = useStore();
 
 const username = ref('');
 const character = ref('');
@@ -34,7 +36,6 @@ function handleCloseModal() {
 };
 
 function handleSubmit() {
-  // TODO: Implement member creation logic
   const formData = {
     username: username.value,
     character: character.value,
@@ -42,7 +43,7 @@ function handleSubmit() {
     class: selectedClass.value,
     whatsapp: whatsapp.value,
   };
-  console.log('New Member Data:', formData);
+  store.handleCreateMember(formData);
   handleCloseModal();
 };
 </script>
@@ -59,15 +60,15 @@ function handleSubmit() {
           <form @submit.prevent="handleSubmit">
             <ul class="d-flex col g-1">
               <span class="d-flex g-1">
-                <label for="username">Username:</label>
+                <label for="username">Nombre:</label>
                 <input type="text" id="username" v-model="username" required>
               </span>
               <span class="d-flex g-1">
-                <label for="character">Character:</label>
+                <label for="character">Personaje:</label>
                 <input type="text" id="character" v-model="character" required>
               </span>
               <span class="d-flex g-1">
-                <label for="resonance">Resonance:</label>
+                <label for="resonance">Resonancia:</label>
                 <input type="number" id="resonance" v-model.number="resonance" min="0">
               </span>
               <span class="d-flex g-1">
@@ -75,7 +76,7 @@ function handleSubmit() {
                 <input type="text" id="whatsapp" v-model="whatsapp">
               </span>
               <span class="d-flex col g-1">
-                <label>Class:</label>
+                <label>Clase:</label>
                 <div class="class-selection d-flex row g-1">
                   <button type="button" v-for="cls in classes" :key="cls.value" @click="handleClassSelection(cls.value)"
                     :class="{ 'selected-class': selectedClass === cls.value }">
@@ -85,9 +86,9 @@ function handleSubmit() {
                 </div>
               </span>
               <button type="submit" :disabled="isCharacterEmpty"
-                class="submit-button button justify-content-center align-items-center d-flex g-1 w-100">Add
-                Member</button>
-              <button type="button" @click="handleCloseModal" class="secondary-button">Cancel</button>
+                class="submit-button button justify-content-center align-items-center d-flex g-1 w-100">Agregar
+                Miembro</button>
+              <button type="button" @click="handleCloseModal" class="secondary-button">Cancelar</button>
             </ul>
           </form>
         </ul>

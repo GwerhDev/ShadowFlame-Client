@@ -23,7 +23,7 @@ function handleAddMember() {
   showModal.value = true;
 };
 
-const navItems = ['#', 'username', 'character', 'resonance', 'class', 'whatsapp'];
+const navItems = ['#', 'nombre', 'personaje', 'resonancia', 'clase', 'whatsapp'];
 
 </script>
 

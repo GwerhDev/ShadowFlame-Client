@@ -56,6 +56,12 @@ export const getMembers: any = async () => {
   return response;
 };
 
+export const createMember: any = async (formData: any) => {
+  const response: any = await axios.post(API_URL + "/admin/members", formData, options())
+                                   .then(response => response.data)
+  return response;
+};
+
 export const updateUser: any = async (id: string, formData: any) => {
   await axios.patch(API_URL + "/admin/users/" + id, formData, options());
   return;

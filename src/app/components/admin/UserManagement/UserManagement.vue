@@ -17,7 +17,7 @@ function handleDashboardButton() {
   router.push('/dashboard');
 };
 
-const navItems = ['#', 'username', 'rol', 'status', 'acciones'];
+const navItems = ['#', 'nombre', 'rol', 'estado', 'acciones'];
 
 </script>
 
