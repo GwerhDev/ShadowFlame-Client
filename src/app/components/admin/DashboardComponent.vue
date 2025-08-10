@@ -22,6 +22,11 @@ const store: any = useStore();
           Miembros
         </li>
       </router-link>
+      <router-link to="/dashboard/shadow-war">
+        <li v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
+          Guerra Sombría
+        </li>
+      </router-link>
     </ul>
   </div>
 </template>

@@ -15,6 +15,7 @@ export const useStore = defineStore('store', {
       taskloading: false,
       guidetype: 'chatbot',
       chatbotmodel: '',
+      shadowWarTab: 'next-battle',
     },
 
     admin: {
@@ -43,6 +44,7 @@ export const useStore = defineStore('store', {
         taskloading: false,
         guidetype: 'chatbot',
         chatbotmodel: '',
+        shadowWarTab: 'next-battle',
       };
 
       this.admin = {
@@ -71,6 +73,10 @@ export const useStore = defineStore('store', {
 
     setGuideType(type: string) {
       this.currentUser.guidetype = type;
+    },
+
+    setShadowWarTab(tab: string) {
+      this.currentUser.shadowWarTab = tab;
     },
 
     async handleRegister(data: any) {

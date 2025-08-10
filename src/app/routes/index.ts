@@ -17,6 +17,7 @@ import DashboardPage from '../pages/admin/DashboardPage.vue';
 import RequirementsPage from '../pages/RequirementsPage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MemberManagementPage from '../pages/admin/MemberManagementPage.vue';
+import ShadowWarPage from '../pages/admin/ShadowWarPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -38,6 +39,11 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard/member-management',
     name: 'MemberManagementPage',
     component: MemberManagementPage
+  },
+  {
+    path: '/dashboard/shadow-war',
+    name: 'ShadowWarPage',
+    component: ShadowWarPage
   },
   {
     path: '/u/settings',

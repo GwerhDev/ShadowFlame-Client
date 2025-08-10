@@ -151,3 +151,6 @@ export const getWarbands: any = async () => {
                                    .then(response => response.data);
   return response;
 };
+
+export { createShadowWar } from './shadowWarService';
+export { getClans } from './clanService';

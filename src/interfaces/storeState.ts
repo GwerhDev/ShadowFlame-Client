@@ -8,6 +8,7 @@ export interface storeState {
     taskloading: boolean,
     guidetype: string,
     chatbotmodel: string,
+    shadowWarTab: string,
   },
   admin: {
     users: any,
