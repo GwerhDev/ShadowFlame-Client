@@ -14,9 +14,7 @@ defineProps(['member']);
     <span>
       <p>{{ member.character }}</p>
     </span>
-    <span>
-      <p>{{ member.role }}</p>
-    </span>
+    
     <span>
       <p>{{ member.resonance }}</p>
     </span>

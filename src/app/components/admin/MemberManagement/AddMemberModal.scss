@@ -1,0 +1,36 @@
+.container-modal-component {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000; 
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.47);
+
+  .modal-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 5px;
+    background-color: var(--color-secondary-bg);
+    max-width: 500px; /* Added max-width */
+    width: 90%; /* Added width to make it responsive */
+  }
+
+  .submit-button:disabled {
+    background-color: #7e7972;
+    border: none;
+    cursor: not-allowed;
+  }
+
+  .secondary-button {
+    background-color: white;
+    color: black;
+    width: 100%;
+  }
+}

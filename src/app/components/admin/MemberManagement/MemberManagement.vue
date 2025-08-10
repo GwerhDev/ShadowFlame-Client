@@ -6,6 +6,7 @@ import TableComponent from '../../Tables/TableComponent.vue';
 import MemberListCard from './MemberListCard.vue';
 import router from '../../../routes';
 import LoaderComponent from '../../../utils/LoaderComponent.vue';
+import AddMemberModal from './AddMemberModal.vue';
 
 const store: any = useStore();
 const showModal = ref(false);
@@ -22,7 +23,7 @@ function handleAddMember() {
   showModal.value = true;
 };
 
-const navItems = ['#', 'username', 'character', 'role', 'resonance', 'class', 'whatsapp'];
+const navItems = ['#', 'username', 'character', 'resonance', 'class', 'whatsapp'];
 
 </script>
 
@@ -41,12 +42,6 @@ const navItems = ['#', 'username', 'character', 'role', 'resonance', 'class', 'w
     </ul>
     <LoaderComponent v-else />
 
-    <div v-if="showModal" class="modal-overlay">
-      <div class="modal-content">
-        <h2>Add New Member</h2>
-        <p>Form goes here...</p>
-        <button @click="showModal = false">Close</button>
-      </div>
-    </div>
+    <AddMemberModal v-if="showModal" @close="showModal = false" />
   </div>
 </template>
