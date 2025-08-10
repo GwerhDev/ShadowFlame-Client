@@ -42,9 +42,20 @@ onMounted(async () => {
 });
 
 const updateShadowWarData = async () => {
+  const battleData = JSON.parse(JSON.stringify(battleCategories.value));
+
+  for (const categoryName in battleData) {
+    if (battleData.hasOwnProperty(categoryName)) {
+      battleData[categoryName].forEach((match: any) => {
+        match.group1.member = match.group1.member.filter((m: any) => m !== undefined);
+        match.group2.member = match.group2.member.filter((m: any) => m !== undefined);
+      });
+    }
+  }
+
   const formData = {
     enemyClan: enemyClan.value,
-    battle: battleCategories.value,
+    battle: battleData,
   };
   await updateShadowWar(props.shadowWarId, formData);
 };
