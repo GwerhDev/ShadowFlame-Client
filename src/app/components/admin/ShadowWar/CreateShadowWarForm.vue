@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { ref, defineProps, onMounted, Ref, PropType } from 'vue';
-import { createShadowWar, getClans, getMembers } from '../../../../middlewares/services';
+import { updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar'; // Import interfaces
 import TableComponent from '../../Tables/TableComponent.vue'; // Import TableComponent
 import CreateClanModal from '../../admin/Clan/CreateClanModal.vue'; // Import CreateClanModal
 
 const props = defineProps({
   date: {
-    type: Object as PropType<Date | null>, // Use Object as type, and then cast with PropType
+    type: Object as PropType<Date | null>,
     required: true,
   },
+  shadowWarId: {
+    type: String,
+    required: true,
+  }
 });
 
 const clans: Ref<Clan[]> = ref([]);
@@ -37,36 +41,34 @@ onMounted(async () => {
   members.value = await getMembers();
 });
 
+const updateShadowWarData = async () => {
+  const formData = {
+    enemyClan: enemyClan.value,
+    battle: battleCategories.value,
+  };
+  await updateShadowWar(props.shadowWarId, formData);
+};
+
 const updateMemberDetails = (selectedMember: Member, categoryName: keyof typeof battleCategories.value, group: 'group1' | 'group2', matchIndex: number, memberIndex: number) => {
   if (selectedMember) {
     battleCategories.value[categoryName][matchIndex][group].member[memberIndex] = selectedMember;
   } else {
     battleCategories.value[categoryName][matchIndex][group].member[memberIndex] = undefined as any;
   }
+  updateShadowWarData();
 };
 
 const handleClanCreated = async () => {
   clans.value = await getClans(); // Refresh clan list
   showCreateClanModal.value = false; // Close modal
 };
-
-const handleSubmit = async () => {
-  const formData = {
-    date: props.date,
-    result: "pending",
-    enemyClan: enemyClan.value,
-    battle: battleCategories.value,
-    confirmed: [],
-  };
-  await createShadowWar(formData);
-};
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
+  <div>
     <div class="clan-selector-container">
       <label for="enemyClan">Clan Enemigo:</label>
-      <select id="enemyClan" v-model="enemyClan" required>
+      <select id="enemyClan" v-model="enemyClan" @change="updateShadowWarData" required>
         <option value="">Clan no definido</option>
         <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
       </select>
@@ -117,9 +119,7 @@ const handleSubmit = async () => {
         </div>
       </div>
     </div>
-
-    <button type="submit">Crear Guerra Sombría</button>
-  </form>
+  </div>
 </template>
 
 <style scoped lang="scss" src="./CreateShadowWarForm.scss" />
