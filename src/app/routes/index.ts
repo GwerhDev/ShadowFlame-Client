@@ -13,11 +13,11 @@ import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import SettingsPage from '../pages/user/SettingsPage.vue';
+import ShadowWarPage from '../pages/admin/ShadowWarPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
 import RequirementsPage from '../pages/RequirementsPage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MemberManagementPage from '../pages/admin/MemberManagementPage.vue';
-import ShadowWarPage from '../pages/admin/ShadowWarPage.vue';
 import PublicShadowWarPage from '../pages/PublicShadowWarPage.vue';
 
 const routes: RouteRecordRaw[] = [
@@ -47,7 +47,7 @@ const routes: RouteRecordRaw[] = [
     component: MemberManagementPage
   },
   {
-    path: '/dashboard/shadow-war',
+    path: '/dashboard/shadow-war/:id',
     name: 'ShadowWarPage',
     component: ShadowWarPage
   },

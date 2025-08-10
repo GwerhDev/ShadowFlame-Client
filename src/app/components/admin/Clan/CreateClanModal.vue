@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./CreateClanModal.scss" />
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref } from 'vue';
 import { createClan } from '../../../../middlewares/services/clanService';
 import diabloIcon from "../../../../assets/svg/diablo-icon.svg"; // Assuming this path is correct
 

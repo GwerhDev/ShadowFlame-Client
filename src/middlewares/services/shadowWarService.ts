@@ -13,3 +13,21 @@ export const getShadowWars: any = async () => {
                                    .then(response => response.data)
   return response;
 };
+
+export const findOrCreateShadowWarByDate: any = async (date: Date) => {
+  const response: any = await axios.post(API_URL + "/admin/shadow-wars/findOrCreateByDate", { date }, options())
+                                   .then(response => response.data)
+  return response;
+};
+
+export const getShadowWarById: any = async (id: string) => {
+  const response: any = await axios.get(API_URL + `/admin/shadow-wars/${id}`, options())
+                                   .then(response => response.data)
+  return response;
+};
+
+export const updateShadowWar: any = async (id: string, formData: any) => {
+  const response: any = await axios.patch(API_URL + `/admin/shadow-wars/${id}`, formData, options())
+                                   .then(response => response.data)
+  return response;
+};
