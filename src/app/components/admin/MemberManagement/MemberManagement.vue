@@ -23,7 +23,7 @@ function handleAddMember() {
   showModal.value = true;
 };
 
-const navItems = ['#', 'nombre', 'personaje', 'resonancia', 'clase', 'whatsapp'];
+const navItems = ['#', 'battletag', 'personaje', 'resonancia', 'clase', 'whatsapp', 'acciones'];
 
 </script>
 
@@ -31,7 +31,7 @@ const navItems = ['#', 'nombre', 'personaje', 'resonancia', 'clase', 'whatsapp']
   <div class="ul-container">
     <span class="button-list">
       <button @click="handleDashboardButton">Volver</button>
-      <button @click="handleAddMember">Add Member</button>
+      <button @click="handleAddMember">Agregar miembro</button>
     </span>
     <ul v-if="store.admin.members">
       <TableComponent :navItems="navItems">

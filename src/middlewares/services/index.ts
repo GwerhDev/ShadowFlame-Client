@@ -62,6 +62,16 @@ export const createMember: any = async (formData: any) => {
   return response;
 };
 
+export const updateMember: any = async (id: string, formData: any) => {
+  await axios.patch(API_URL + "/admin/members/" + id, formData, options());
+  return;
+};
+
+export const deleteMember: any = async (id: string) => {
+  await axios.delete(API_URL + "/admin/members/" + id, options());
+  return;
+};
+
 export const updateUser: any = async (id: string, formData: any) => {
   await axios.patch(API_URL + "/admin/users/" + id, formData, options());
   return;
