@@ -29,12 +29,12 @@ onMounted(async () => {
                 <h6>Match {{ matchIndex + 1 }}</h6>
                 <p>Grupo 1:
                   <span v-for="member in match.group1.member" :key="member._id">
-                    {{ member.name }}
+                    {{ member.character }}
                   </span>
                 </p>
                 <p>Grupo 2:
                   <span v-for="member in match.group2.member" :key="member._id">
-                    {{ member.name }}
+                    {{ member.character }}
                   </span>
                 </p>
                 <p>Resultado del Match: {{ match.result || 'N/A' }}</p>
@@ -45,7 +45,7 @@ onMounted(async () => {
           <p v-if="war.confirmed && war.confirmed.length">
             Miembros Confirmados:
             <span v-for="member in war.confirmed" :key="member._id">
-              {{ member.name }}
+              {{ member.character }}
             </span>
           </p>
         </li>
