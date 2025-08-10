@@ -1,15 +1,19 @@
 <style scoped lang="scss" src="./TableComponent.scss"/>
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
 
-defineProps<{
+const props = defineProps<{
   navItems: string[];
 }>();
+
+const gridColumns = computed(() => {
+  return { gridTemplateColumns: `repeat(${props.navItems.length}, 1fr)` };
+});
 </script>
 
 <template>
   <div class="table-container">
-    <nav>
+    <nav :style="gridColumns">
       <li v-for="(item, index) in navItems" :key="index">{{ item }}</li>
     </nav>
     <slot></slot>

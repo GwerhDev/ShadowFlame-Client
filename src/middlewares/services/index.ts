@@ -50,6 +50,12 @@ export const getUsers: any = async () => {
   return response;
 };
 
+export const getMembers: any = async () => {
+  const response: any = await axios.get(API_URL + "/admin/members", options())
+                                   .then(response => response.data)
+  return response;
+};
+
 export const updateUser: any = async (id: string, formData: any) => {
   await axios.patch(API_URL + "/admin/users/" + id, formData, options());
   return;

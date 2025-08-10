@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -23,6 +23,7 @@ export const useStore = defineStore('store', {
       clantasks: null,
       warbandtasks: null,
       notifications: null,
+      members: null,
     },
 
     userToken: '',
@@ -50,6 +51,7 @@ export const useStore = defineStore('store', {
         clantasks: null,
         warbandtasks: null,
         notifications: null,
+        members: null,
       };
 
       this.userToken = '';
@@ -104,6 +106,12 @@ export const useStore = defineStore('store', {
 
     async handleGetUsers() {
       this.currentUser.userData?.role === "admin" ? this.admin.users = await getUsers() : null;
+    },
+
+    async handleGetMembers() {
+      if (this.currentUser.userData?.role === "admin" || this.currentUser.userData?.role === "leader" || this.currentUser.userData?.role === "official") {
+        this.admin.members = await getMembers();
+      }
     },
 
     async handleUpdateUser(id: string, formData: any) {

@@ -5,7 +5,6 @@
 
   nav {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); // This might need to be dynamic based on navItems length
     background-color: var(--color-secondary-bg);
     justify-content: space-between;
     border-radius: 8px;

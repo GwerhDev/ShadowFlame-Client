@@ -1,5 +1,7 @@
 .ul-container {
   padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
 
   ul {
     padding-top: .3rem;
@@ -27,4 +29,14 @@
       }
     }
   }
+}
+
+.button-list {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
