@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./UserListCard.scss"/>
+<style scoped lang="scss" src="./UserListCard.scss" />
 <script setup lang="ts">
 import { useStore } from '../../../../middlewares/store';
 import { Ref, onMounted, ref } from 'vue';
@@ -56,16 +56,16 @@ function handleRole($event: any) {
 
 function styleStatus(status: string) {
 
-  if(status === 'active') {
-    return { backgroundColor: '#99d499'} 
+  if (status === 'active') {
+    return { backgroundColor: '#99d499' }
   }
 
-  if(status === 'pending') {
-    return { backgroundColor: '#eaec72'} 
+  if (status === 'pending') {
+    return { backgroundColor: '#eaec72' }
   }
 
-  if(status === 'inactive') {
-    return { backgroundColor: '#b67f75'} 
+  if (status === 'inactive') {
+    return { backgroundColor: '#b67f75' }
   }
 
 };
@@ -74,60 +74,84 @@ function styleStatus(status: string) {
 
 <template>
   <div class="list-container" v-if="editionActive && !deleteActive">
-    <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    <span>
+      <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    </span>
     <span>
       <p>{{ user.battletag }}</p>
+    </span>
+    <span>
       <select :value="user.role" @change="handleRole">
         <option value="admin">admin</option>
         <option value="member">member</option>
         <option value="clanleader">clanleader</option>
         <option value="warbandleader">warbandleader</option>
       </select>
+    </span>
+    <span>
       <select :value="user.status" @change="handleStatus">
         <option value="active">active</option>
         <option value="pending">pending</option>
         <option value="inactive">inactive</option>
       </select>
     </span>
-    <ul class="buttons-container">
-      <button @click="handleUpdate(user)">
-        ✔️
-      </button>
-      <button @click="handleCancel">
-        ❌
-      </button>
-    </ul>
+    <span>
+      <ul class="buttons-container">
+        <button @click="handleUpdate(user)">
+          ✔️
+        </button>
+        <button @click="handleCancel">
+          ❌
+        </button>
+      </ul>
+    </span>
   </div>
   <div class="list-container red-bg" v-if="!editionActive && deleteActive">
-    <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    <span>
+      <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    </span>
     <span>
       <p>{{ user.battletag }}</p>
+    </span>
+    <span>
       <p>{{ user.role }}</p>
+    </span>
+    <span>
       <p>{{ user.status }}</p>
     </span>
-    <ul class="buttons-container">
-      <button @click="handleDeleteUser(user._id)">
-        ✔️
-      </button>
-      <button @click="handleCancel">
-        ❌
-      </button>
-    </ul>
+    <span>
+      <ul class="buttons-container">
+        <button @click="handleDeleteUser(user._id)">
+          ✔️
+        </button>
+        <button @click="handleCancel">
+          ❌
+        </button>
+      </ul>
+    </span>
   </div>
   <div class="list-container" v-if="!editionActive && !deleteActive">
-    <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    <span>
+      <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    </span>
     <span>
       <p>{{ user.battletag }}</p>
+    </span>
+    <span>
       <p>{{ user.role }}</p>
+    </span>
+    <span>
       <p class="status-container"><span class="status" :style="styleStatus(user.status)"></span></p>
     </span>
-    <ul class="buttons-container">
-      <button @click="handleEdit">
-        <img src="../../../../assets/svg/edit-icon.svg" alt="" width="18px">
-      </button>
-      <button @click="handleDelete">
-        <img src="../../../../assets/svg/delete-icon.svg" alt="" width="22px">
-      </button>
-    </ul>
+    <span>
+      <ul class="buttons-container">
+        <button @click="handleEdit">
+          <img src="../../../../assets/svg/edit-icon.svg" alt="" width="18px">
+        </button>
+        <button @click="handleDelete">
+          <img src="../../../../assets/svg/delete-icon.svg" alt="" width="22px">
+        </button>
+      </ul>
+    </span>
   </div>
 </template>

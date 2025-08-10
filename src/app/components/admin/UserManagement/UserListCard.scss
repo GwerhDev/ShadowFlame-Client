@@ -37,6 +37,7 @@ button {
 select {
   max-width: 100px;
   height: 28px;
+
   &:hover {
     cursor: pointer;
   }
@@ -44,11 +45,10 @@ select {
 
 .list-container {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 9px;
+  display: grid;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .red-bg {
