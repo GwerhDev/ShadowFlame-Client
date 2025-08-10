@@ -8,16 +8,13 @@ const props: any = defineProps({ logged: Boolean });
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 async function handleType(type: string) {
-  store.setTaskType(type);
-  store.setTaskLoading(true);
-  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
-  store.setTaskLoading(false);
+  store.setShadowWarTab(type);
 };
 
 function styleActive(type: string) {
-  if (store.currentUser.tasktype === type) {
+  if (store.currentUser.shadowWarTab == type) {
     return active.value;
-  };
+  }
 };
 
 </script>

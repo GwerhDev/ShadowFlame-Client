@@ -77,6 +77,7 @@ export const useStore = defineStore('store', {
 
     setShadowWarTab(tab: string) {
       this.currentUser.shadowWarTab = tab;
+      console.log('Shadow War Tab changed to:', tab);
     },
 
     async handleRegister(data: any) {
