@@ -83,9 +83,9 @@ function styleStatus(status: string) {
     <span>
       <select :value="user.role" @change="handleRole">
         <option value="admin">admin</option>
+        <option value="leader">leader</option>
+        <option value="official">official</option>
         <option value="member">member</option>
-        <option value="clanleader">clanleader</option>
-        <option value="warbandleader">warbandleader</option>
       </select>
     </span>
     <span>
