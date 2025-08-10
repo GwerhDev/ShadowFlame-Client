@@ -7,3 +7,9 @@ export const getClans: any = async () => {
                                    .then(response => response.data)
   return response;
 };
+
+export const createClan: any = async (formData: any) => {
+  const response: any = await axios.post(API_URL + "/admin/clans", formData, options())
+                                   .then(response => response.data)
+  return response;
+};

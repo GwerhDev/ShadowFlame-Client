@@ -1,14 +1,17 @@
 export interface Member {
   _id: string;
-  name: string;
+  battletag: string;
+  character: string; // Added character property
   class?: string; // Assuming class is a string
   resonance?: number; // Assuming resonance is a number
-  // Add other member properties if known
+  whatsapp?: string; // Assuming whatsapp is a string
 }
 
 export interface Clan {
   _id: string;
   name: string;
+  status?: 'top' | 'active' | 'ghost'; // Add status
+  members?: number; // Add members count
   // Add other clan properties if known
 }
 
