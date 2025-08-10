@@ -18,8 +18,14 @@ import RequirementsPage from '../pages/RequirementsPage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import MemberManagementPage from '../pages/admin/MemberManagementPage.vue';
 import ShadowWarPage from '../pages/admin/ShadowWarPage.vue';
+import PublicShadowWarPage from '../pages/PublicShadowWarPage.vue';
 
 const routes: RouteRecordRaw[] = [
+  {
+    path: '/shadow-war-summary',
+    name: 'PublicShadowWarPage',
+    component: PublicShadowWarPage
+  },
   {
     path: '/dashboard',
     name: 'DashboardPage',
