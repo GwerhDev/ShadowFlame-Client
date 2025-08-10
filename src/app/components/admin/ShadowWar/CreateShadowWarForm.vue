@@ -2,6 +2,7 @@
 import { ref, defineProps, onMounted, Ref, PropType } from 'vue';
 import { createShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar'; // Import interfaces
+import TableComponent from '../../Tables/TableComponent.vue'; // Import TableComponent
 
 const props = defineProps({
   date: {
@@ -21,16 +22,24 @@ const battleCategories = ref<{
   famed: Match[];
   proud: Match[];
 }> ({
-  exalted: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
-  eminent: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
-  famed: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
-  proud: Array(3).fill(null).map(() => ({ group1: { member: [] }, group2: { member: [] }, result: 'pending' })),
+  exalted: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
+  eminent: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
+  famed: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
+  proud: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
 });
 
 onMounted(async () => {
   clans.value = await getClans();
   members.value = await getMembers();
 });
+
+const updateMemberDetails = (selectedMember: Member, categoryName: keyof typeof battleCategories.value, group: 'group1' | 'group2', matchIndex: number, memberIndex: number) => {
+  if (selectedMember) {
+    battleCategories.value[categoryName][matchIndex][group].member[memberIndex] = selectedMember;
+  } else {
+    battleCategories.value[categoryName][matchIndex][group].member[memberIndex] = undefined as any;
+  }
+};
 
 const handleSubmit = async () => {
   const formData = {
@@ -59,17 +68,33 @@ const handleSubmit = async () => {
       <h4>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h4>
       <div v-for="(match, matchIndex) in category" :key="matchIndex">
         <h5>Match {{ matchIndex + 1 }}</h5>
-        <div>
-          <label>Group 1 (4 members):</label>
-          <select v-model="match.group1.member" multiple>
-            <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
-          </select>
-        </div>
-        <div>
-          <label>Group 2 (4 members):</label>
-          <select v-model="match.group2.member" multiple>
-            <option v-for="member in members" :key="member._id" :value="member._id">{{ member.name }}</option>
-          </select>
+        <div class="match-groups">
+          <div class="group">
+            <label>Group 1 (4 members):</label>
+            <TableComponent :nav-items="['Personaje', 'Clase', 'Resonancia']">
+              <div v-for="n in 4" :key="n" class="table-row">
+                <select v-model="match.group1.member[n-1]" @change="updateMemberDetails(match.group1.member[n-1], categoryName, 'group1', matchIndex, n-1)">
+                  <option :value="undefined" disabled>Selecciona un personaje</option>
+                  <option v-for="member in members" :key="member._id" :value="member">{{ member.name }}</option>
+                </select>
+                <span>{{ match.group1.member[n-1]?.class || 'N/A' }}</span>
+                <span>{{ match.group1.member[n-1]?.resonance || 'N/A' }}</span>
+              </div>
+            </TableComponent>
+          </div>
+          <div class="group">
+            <label>Group 2 (4 members):</label>
+            <TableComponent :nav-items="['Personaje', 'Clase', 'Resonancia']">
+              <div v-for="n in 4" :key="n" class="table-row">
+                <select v-model="match.group2.member[n-1]" @change="updateMemberDetails(match.group2.member[n-1], categoryName, 'group2', matchIndex, n-1)">
+                  <option :value="undefined" disabled>Selecciona un personaje</option>
+                  <option v-for="member in members" :key="member._id" :value="member">{{ member.name }}</option>
+                </select>
+                <span>{{ match.group2.member[n-1]?.class || 'N/A' }}</span>
+                <span>{{ match.group2.member[n-1]?.resonance || 'N/A' }}</span>
+              </div>
+            </TableComponent>
+          </div>
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 export interface Member {
   _id: string;
   name: string;
+  class?: string; // Assuming class is a string
+  resonance?: number; // Assuming resonance is a number
   // Add other member properties if known
 }
 
