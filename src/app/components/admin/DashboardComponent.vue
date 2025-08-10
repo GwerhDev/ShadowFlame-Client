@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./DashboardComponent.scss"/>
+<style scoped lang="scss" src="./DashboardComponent.scss" />
 <script setup lang="ts">
 import { useStore } from '../../../middlewares/store';
 
@@ -11,22 +11,16 @@ const store: any = useStore();
     <h1>Dashboard</h1>
     <ul>
       <router-link to="/dashboard/user-management">
-        <li>
-          Usuarios
-          <span v-if="store.admin?.notifications?.pendingUsers.length">{{ store.admin?.notifications?.pendingUsers.length }}</span>
+        <li v-if="store.currentUser?.userData?.role === 'admin'">
+          Users
+          <span v-if="store.admin?.notifications?.pendingUsers.length">{{
+            store.admin?.notifications?.pendingUsers.length }}</span>
         </li>
       </router-link>
-
-      <router-link to="/dashboard/my-tasks-management">
-        <li>My Tasks </li>
-      </router-link>
-
-      <router-link to="/dashboard/clan-tasks-management">
-        <li>Clan Tasks</li>
-      </router-link>
-
-      <router-link to="/dashboard/warband-tasks-management">
-        <li>Warband Tasks</li>
+      <router-link to="/dashboard/member-management">
+        <li v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
+          Members
+        </li>
       </router-link>
     </ul>
   </div>

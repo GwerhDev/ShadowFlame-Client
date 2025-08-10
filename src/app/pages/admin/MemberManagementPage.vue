@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import ClanTasksManagement from '../../components/admin/ClanTasksManagement/ClanTasksManagement.vue';
+import MemberManagement from '../../components/admin/MemberManagement/MemberManagement.vue';
 
 </script>
 
 <template>
   <div class="container">
-    <ClanTasksManagement />
+    <MemberManagement />
   </div>
 </template>
 
