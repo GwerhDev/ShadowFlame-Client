@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, defineProps, onMounted, Ref, PropType } from 'vue';
+import { ref, defineProps, onMounted, Ref, PropType, computed } from 'vue';
 import { updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
 import CreateClanModal from '../../admin/Clan/CreateClanModal.vue';
@@ -39,6 +39,21 @@ const battleCategories = ref<{
   eminent: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
   famed: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
   proud: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
+});
+
+const assignedMemberIds = computed(() => {
+  const ids = new Set<string>();
+  for (const category of Object.values(battleCategories.value)) {
+    for (const match of category) {
+      for (const member of match.group1.member) {
+        if (member?._id) ids.add(member._id);
+      }
+      for (const member of match.group2.member) {
+        if (member?._id) ids.add(member._id);
+      }
+    }
+  }
+  return Array.from(ids);
 });
 
 onMounted(async () => {
@@ -91,6 +106,7 @@ const handleClanCreated = async () => {
     <MemberSelectionModal 
       v-if="showMemberSelectionModal" 
       :members="members" 
+      :assigned-member-ids="assignedMemberIds"
       @close="showMemberSelectionModal = false" 
       @member-selected="handleMemberSelected" 
     />
