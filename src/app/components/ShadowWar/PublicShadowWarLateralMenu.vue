@@ -3,8 +3,8 @@
 import { Ref, ref } from 'vue';
 import { useStore } from '../../../middlewares/store';
 
+defineProps({ logged: Boolean });
 const store: any = useStore();
-const props: any = defineProps({ logged: Boolean });
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 async function handleType(type: string) {

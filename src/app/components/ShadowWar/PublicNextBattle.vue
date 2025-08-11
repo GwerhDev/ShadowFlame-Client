@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
 import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
 import { useStore } from '../../../middlewares/store';
@@ -13,12 +13,16 @@ PublicShadowWarMemberCard;
 type ShadowWarWithMatch = ShadowWarInterfaces.ShadowWar & { battle: { exalted: ShadowWarInterfaces.Match[], eminent: ShadowWarInterfaces.Match[], famed: ShadowWarInterfaces.Match[], proud: ShadowWarInterfaces.Match[] } };
 
 // Access store properties directly
-const activeCategory = store.publicNextBattleTab;
-const shadowWarData = store.currentUser.shadowWarData;
-const error = store.currentUser.shadowWarError;
+const activeCategory = computed(() => store.currentUser.publicNextBattleTab);
+const shadowWarData = computed(() => store.currentUser.shadowWarData);
+const error = computed(() => store.currentUser.shadowWarError);
 
-watch(() => store.publicNextBattleTab, (newVal, oldVal) => {
-  console.log('activeCategory changed:', oldVal, '->', newVal);
+watch(activeCategory, (newVal) => {
+  console.log('activeCategory changed:', newVal);
+});
+
+watch(shadowWarData, (newVal) => {
+  console.log('shadowWarData changed:', newVal);
 });
 
 const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => {
@@ -42,8 +46,6 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
           <div v-if="activeCategory === categoryName" class="category">
             <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
-            <p>Category Data:</p>
-            <pre>{{ category }}</pre>
             <div v-if="category.length === 0">
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>
@@ -57,7 +59,7 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
                       <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
                     </div>
                   </div>
-                  <div class="group">
+                  <div classs="group">
                     <h5>Grupo 2</h5>
                     <div class="member-cards-grid">
                       <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
@@ -73,19 +75,4 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
   </div>
 </template>
 
-<style scoped>
-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-}
-
-h2 {
-  margin-bottom: 1rem;
-}
-
-p {
-  margin-bottom: 0.5rem;
-}
-</style>
+<style scoped lang="scss" src="./PublicNextBattle.scss" />

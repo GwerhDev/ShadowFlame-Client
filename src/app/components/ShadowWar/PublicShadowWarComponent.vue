@@ -1,11 +1,16 @@
 <style scoped lang="scss" src="./PublicShadowWarComponent.scss" />
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { useStore } from '../../../middlewares/store';
 import ShadowWarLateralMenu from './PublicShadowWarLateralMenu.vue';
 import PublicNextBattle from './PublicNextBattle.vue';
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
 const store: any = useStore();
+
+onMounted(() => {
+  store.handleGetNextShadowWar();
+});
 </script>
 
 <template>

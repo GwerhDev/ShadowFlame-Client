@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -94,6 +94,15 @@ export const useStore = defineStore('store', {
 
     setShadowWarError(error: string | null) {
       this.currentUser.shadowWarError = error;
+    },
+
+    async handleGetNextShadowWar() {
+      try {
+        const response = await getNextShadowWar();
+        this.setShadowWarData(response);
+      } catch (error: any) {
+        this.setShadowWarError(error.message);
+      }
     },
 
     async handleRegister(data: any) {
