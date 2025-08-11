@@ -23,34 +23,34 @@ function styleActive(type: string) {
   <div class="container-lateral">
     <ul>
       <li>
-        <button class="first" @click="handleType('exalted')"
+        <button title="Sublime" class="first" @click="handleType('exalted')"
           :style="styleActive('exalted')">
-          <img src="../../../assets/svg/quest-icon.svg" alt="Exalted" />
-          <span>Exalted</span>
+          <img src="../../../assets/svg/quest-icon.svg" alt="Sublime" />
+          <span>Sublime</span>
           <span></span>
         </button>
       </li>
       <li>
-        <button @click="handleType('eminent')"
+        <button title="Eminente" @click="handleType('eminent')"
           :style="styleActive('eminent')">
-          <img src="../../../assets/svg/calendar-icon.svg" alt="Eminent" />
-          <span>Eminent</span>
+          <img src="../../../assets/svg/calendar-icon.svg" alt="Eminente" />
+          <span>Eminente</span>
           <span></span>
         </button>
       </li>
       <li>
-        <button @click="handleType('famed')"
+        <button title="Célebre" @click="handleType('famed')"
           :style="styleActive('famed')">
-          <img src="../../../assets/svg/calendar-icon.svg" alt="Famed" />
-          <span>Famed</span>
+          <img src="../../../assets/svg/calendar-icon.svg" alt="Célebre" />
+          <span>Célebre</span>
           <span></span>
         </button>
       </li>
       <li>
-        <button  class="last" @click="handleType('proud')"
+        <button title="Imponente"  class="last" @click="handleType('proud')"
           :style="styleActive('proud')">
-          <img src="../../../assets/svg/calendar-icon.svg" alt="Proud" />
-          <span>Proud</span>
+          <img src="../../../assets/svg/calendar-icon.svg" alt="Imponente" />
+          <span>Imponente</span>
           <span></span>
         </button>
       </li>
