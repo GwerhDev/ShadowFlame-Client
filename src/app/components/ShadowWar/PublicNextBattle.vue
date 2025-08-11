@@ -9,8 +9,6 @@ const store: any = useStore();
 // This line will make TypeScript happy by "using" the imported component
 PublicShadowWarMemberCard;
 
-// Explicitly use Match in a type definition for a variable that is actually used
-type ShadowWarWithMatch = ShadowWarInterfaces.ShadowWar & { battle: { exalted: ShadowWarInterfaces.Match[], eminent: ShadowWarInterfaces.Match[], famed: ShadowWarInterfaces.Match[], proud: ShadowWarInterfaces.Match[] } };
 
 // Access store properties directly
 const activeCategory = computed(() => store.currentUser.publicNextBattleTab);
