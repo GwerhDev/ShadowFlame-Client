@@ -17,8 +17,7 @@ import PublicShadowWarComponent from '../components/ShadowWar/PublicShadowWarCom
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
  @media (max-width: 1100px) {
