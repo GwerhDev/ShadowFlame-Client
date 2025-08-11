@@ -21,7 +21,7 @@ let urlSignup: string = API_URL + "/signup-bnet" || "";
 
     <BackButton />
 
-    <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.netlify.app"
+    <p class="read-the-docs">Plataforma para alfombras desarrollada por <a href="https://gwerh.nhexa.cl"
         target="_blank">Gwerh</a>.</p>
   </div>
 </template>
