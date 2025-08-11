@@ -145,7 +145,7 @@
   height: 100%;
   overflow: auto;
   flex-grow: 1;
-  padding-inline: .5rem;
+  padding-inline: 1rem;
 }
 
 .battle-details {
@@ -199,7 +199,7 @@
 
   .member-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin-top: 1rem;
   }

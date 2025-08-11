@@ -32,7 +32,7 @@ onMounted(async () => {
 });
 const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => {
   const padded = members ? [...members] : [];
-  while (padded.length < 3) {
+  while (padded.length < 4) {
     padded.push(undefined);
   }
   return padded;
