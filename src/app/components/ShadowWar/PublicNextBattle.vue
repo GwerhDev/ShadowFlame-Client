@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, Ref } from 'vue';
-import { getNextShadowWar } from '../../../middlewares/services'; // Import the new service
+import { watch } from 'vue';
 import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
 import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
-import PublicShadowWarLateralMenu from './PublicShadowWarLateralMenu.vue';
-import diabloIcon from '../../../assets/svg/diablo-icon.svg';
+import { useStore } from '../../../middlewares/store';
+
+const store: any = useStore();
 
 // This line will make TypeScript happy by "using" the imported component
 PublicShadowWarMemberCard;
@@ -12,25 +12,15 @@ PublicShadowWarMemberCard;
 // Explicitly use Match in a type definition for a variable that is actually used
 type ShadowWarWithMatch = ShadowWarInterfaces.ShadowWar & { battle: { exalted: ShadowWarInterfaces.Match[], eminent: ShadowWarInterfaces.Match[], famed: ShadowWarInterfaces.Match[], proud: ShadowWarInterfaces.Match[] } };
 
-const nextWarDate = ref('');
-const shadowWar: Ref<ShadowWarWithMatch | null> = ref(null);
-const error: Ref<string | null> = ref(null);
-const activeCategory = ref('exalted');
+// Access store properties directly
+const activeCategory = store.publicNextBattleTab;
+const shadowWarData = store.currentUser.shadowWarData;
+const error = store.currentUser.shadowWarError;
 
-onMounted(async () => {
-  try {
-    const fetchedShadowWar = await getNextShadowWar();
-    if (fetchedShadowWar) {
-      shadowWar.value = fetchedShadowWar as ShadowWarWithMatch;
-      // Update nextWarDate based on fetched data, assuming it has a date property
-      if (shadowWar.value.date) {
-        nextWarDate.value = new Date(shadowWar.value.date).toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-      }
-    }
-  } catch (e: any) {
-    error.value = e.message;
-  }
+watch(() => store.publicNextBattleTab, (newVal, oldVal) => {
+  console.log('activeCategory changed:', oldVal, '->', newVal);
 });
+
 const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => {
   const padded = members ? [...members] : [];
   while (padded.length < 4) {
@@ -42,30 +32,22 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
 
 <template>
   <div class="public-next-battle">
-    <div class="sw-container"> <!-- Added sw-container -->
-      <span class="mb-3 mt-1">
-        <img :src="diabloIcon" alt="icon" />
-        <h1>Próxima Batalla</h1>
-      </span>
-      <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
+    <div v-if="error">
+      <p>Ha ocurrido un error:</p>
+      <pre>{{ error }}</pre>
+    </div>
 
-      <div v-if="error">
-        <p>Ha ocurrido un error:</p>
-        <pre>{{ error }}</pre>
-      </div>
-
-      <div v-if="shadowWar && shadowWar.battle" class="main-content-wrapper">
-        <PublicShadowWarLateralMenu
-          v-if="shadowWar && shadowWar.battle"
-          :battleCategories="shadowWar.battle"
-          :activeCategory="activeCategory"
-          @update:activeCategory="activeCategory = $event"
-        />
-
-        <div class="content-section">
-          <div v-for="(category, categoryName) in shadowWar.battle" :key="categoryName">
-            <div v-if="activeCategory === categoryName" class="category">
-              <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
+    <div v-if="shadowWarData && shadowWarData.battle" class="main-content-wrapper">
+      <div class="content-section">
+        <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
+          <div v-if="activeCategory === categoryName" class="category">
+            <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
+            <p>Category Data:</p>
+            <pre>{{ category }}</pre>
+            <div v-if="category.length === 0">
+              <p>No hay partidas asignadas para esta categoría.</p>
+            </div>
+            <div v-else>
               <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
                 <h4>Match {{ matchIndex + 1 }}</h4>
                 <div class="match-groups">
@@ -91,4 +73,19 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
   </div>
 </template>
 
-<style scoped lang="scss" src="./PublicNextBattle.scss" />
+<style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+</style>

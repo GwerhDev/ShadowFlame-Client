@@ -16,6 +16,9 @@ export const useStore = defineStore('store', {
       guidetype: 'chatbot',
       chatbotmodel: '',
       shadowWarTab: 'next-battle',
+      publicNextBattleTab: 'exalted',
+      shadowWarData: null, // New state property
+      shadowWarError: null, // New state property
     },
 
     admin: {
@@ -78,6 +81,19 @@ export const useStore = defineStore('store', {
     setShadowWarTab(tab: string) {
       this.currentUser.shadowWarTab = tab;
       console.log('Shadow War Tab changed to:', tab);
+    },
+
+    setPublicNextBattleTab(tab: string) {
+      this.currentUser.publicNextBattleTab = tab;
+      console.log('Public Next Battle Tab changed to:', tab);
+    },
+
+    setShadowWarData(data: any) {
+      this.currentUser.shadowWarData = data;
+    },
+
+    setShadowWarError(error: string | null) {
+      this.currentUser.shadowWarError = error;
     },
 
     async handleRegister(data: any) {

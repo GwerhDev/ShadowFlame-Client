@@ -1,36 +1,59 @@
+<style scoped lang="scss" src="./PublicShadowWarLateralMenu.scss" />
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
-import questIcon from '../../../assets/svg/quest-icon.svg';
-import calendarIcon from '../../../assets/svg/calendar-icon.svg';
+import { Ref, ref } from 'vue';
+import { useStore } from '../../../middlewares/store';
 
-const props = defineProps<{
-  battleCategories: { [key: string]: ShadowWarInterfaces.Match[] };
-  activeCategory: string;
-}>();
+const store: any = useStore();
+const props: any = defineProps({ logged: Boolean });
+const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
-const emit = defineEmits(['update:activeCategory']);
+async function handleType(type: string) {
+  store.setPublicNextBattleTab(type);
+};
 
-function handleCategoryClick(categoryName: string) {
-  emit('update:activeCategory', categoryName);
-}
+function styleActive(type: string) {
+  if (store.currentUser.publicNextBattleTab == type) {
+    return active.value;
+  }
+};
+
 </script>
 
 <template>
   <div class="container-lateral">
     <ul>
-      <li v-for="(category, categoryName) in battleCategories" :key="categoryName">
-        <button
-          @click="handleCategoryClick(categoryName)"
-          :class="{ active: activeCategory === categoryName }"
-        >
-          <img :src="categoryName === 'next-battle' ? questIcon : calendarIcon" alt="icon" />
-          <span>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</span>
+      <li>
+        <button class="first" @click="handleType('exalted')"
+          :style="styleActive('exalted')">
+          <img src="../../../assets/svg/quest-icon.svg" alt="Exalted" />
+          <span>Exalted</span>
+          <span></span>
+        </button>
+      </li>
+      <li>
+        <button class="last" @click="handleType('eminent')"
+          :style="styleActive('eminent')">
+          <img src="../../../assets/svg/calendar-icon.svg" alt="Eminent" />
+          <span>Eminent</span>
+          <span></span>
+        </button>
+      </li>
+      <li>
+        <button class="last" @click="handleType('famed')"
+          :style="styleActive('famed')">
+          <img src="../../../assets/svg/calendar-icon.svg" alt="Famed" />
+          <span>Famed</span>
+          <span></span>
+        </button>
+      </li>
+      <li>
+        <button  class="last" @click="handleType('proud')"
+          :style="styleActive('proud')">
+          <img src="../../../assets/svg/calendar-icon.svg" alt="Proud" />
+          <span>Proud</span>
           <span></span>
         </button>
       </li>
     </ul>
   </div>
 </template>
-
-<style scoped lang="scss" src="./PublicShadowWarLateralMenu.scss" />

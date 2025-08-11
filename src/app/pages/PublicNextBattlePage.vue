@@ -1,13 +1,14 @@
+<script setup lang="ts">
+import PublicShadowWarComponent from '../components/ShadowWar/PublicShadowWarComponent.vue';
+</script>
+
 <template>
   <main class="main-container red-shadow-fx">
     <div class="div-container">
-      <PublicNextBattle />
+      <PublicShadowWarComponent />
     </div>
-  </main></template>
-
-<script setup lang="ts">
-import PublicNextBattle from '../components/ShadowWar/PublicNextBattle.vue';
-</script>
+  </main>
+</template>
 
 <style scoped>
 .div-container {
@@ -20,7 +21,7 @@ import PublicNextBattle from '../components/ShadowWar/PublicNextBattle.vue';
   overflow: hidden;
 }
 
-@media (max-width: 1100px) {
+ @media (max-width: 1100px) {
   .div-container {
     padding-top: 2rem;
   }
