@@ -61,7 +61,7 @@ onMounted(() => {
     </div>
 
     <div v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
-      <CreateShadowWarForm v-if="shadowWar" :date="nextWarDateObject" :shadowWarId="shadowWar._id" />
+      <CreateShadowWarForm v-if="shadowWar && shadowWar._id" :date="nextWarDateObject" :shadowWarId="shadowWar._id" />
     </div>
   </div>
 </template>

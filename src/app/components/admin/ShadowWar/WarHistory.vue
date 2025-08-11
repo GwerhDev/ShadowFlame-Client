@@ -28,14 +28,18 @@ onMounted(async () => {
               <div v-for="(match, matchIndex) in category" :key="matchIndex">
                 <h6>Match {{ matchIndex + 1 }}</h6>
                 <p>Grupo 1:
-                  <span v-for="member in match.group1.member" :key="member._id">
-                    {{ member.character }}
-                  </span>
+                  <template v-for="(member, index) in match.group1.member">
+                    <span v-if="member" :key="member._id || index">
+                      {{ member.character }}
+                    </span>
+                  </template>
                 </p>
                 <p>Grupo 2:
-                  <span v-for="member in match.group2.member" :key="member._id">
-                    {{ member.character }}
-                  </span>
+                  <template v-for="(member, index) in match.group2.member">
+                    <span v-if="member" :key="member._id || index">
+                      {{ member.character }}
+                    </span>
+                  </template>
                 </p>
                 <p>Resultado del Match: {{ match.result || 'N/A' }}</p>
               </div>

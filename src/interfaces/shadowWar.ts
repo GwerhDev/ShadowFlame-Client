@@ -17,10 +17,10 @@ export interface Clan {
 
 export interface Match {
   group1: {
-    member: Member[];
+    member: (Member | undefined)[];
   };
   group2: {
-    member: Member[];
+    member: (Member | undefined)[];
   };
   result?: string; // Optional, as it's 'pending' initially
 }
