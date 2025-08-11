@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, defineProps, onMounted, Ref, PropType, computed } from 'vue';
-import { updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
+import { getShadowWarById, updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
 import CreateClanModal from '../../admin/Clan/CreateClanModal.vue';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
@@ -59,6 +59,23 @@ const assignedMemberIds = computed(() => {
 onMounted(async () => {
   clans.value = await getClans();
   members.value = await getMembers();
+
+  if (props.shadowWarId) {
+    const shadowWar = await getShadowWarById(props.shadowWarId);
+    if (shadowWar) {
+      if (shadowWar.battle) {
+        const { exalted, eminent, famed, proud } = shadowWar.battle;
+        battleCategories.value.exalted = exalted || battleCategories.value.exalted;
+        battleCategories.value.eminent = eminent || battleCategories.value.eminent;
+        battleCategories.value.famed = famed || battleCategories.value.famed;
+        battleCategories.value.proud = proud || battleCategories.value.proud;
+      }
+      
+      if (shadowWar.enemyClan) {
+        enemyClan.value = shadowWar.enemyClan._id;
+      }
+    }
+  }
 });
 
 const updateShadowWarData = async () => {
