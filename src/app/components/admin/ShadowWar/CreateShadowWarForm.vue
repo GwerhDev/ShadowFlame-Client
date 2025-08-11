@@ -63,7 +63,6 @@ onMounted(async () => {
 
 const updateShadowWarData = async () => {
   const battleData = JSON.parse(JSON.stringify(battleCategories.value));
-  // ... (rest of the function is the same)
   const formData = {
     enemyClan: enemyClan.value,
     battle: battleData,
@@ -83,6 +82,11 @@ const handleMemberSelected = (selectedMember: Member) => {
     updateShadowWarData();
   }
   showMemberSelectionModal.value = false;
+};
+
+const unassignMember = (categoryName: keyof typeof battleCategories.value, group: 'group1' | 'group2', matchIndex: number, memberIndex: number) => {
+  battleCategories.value[categoryName][matchIndex][group].member[memberIndex] = undefined;
+  updateShadowWarData();
 };
 
 const handleClanCreated = async () => {
@@ -124,7 +128,9 @@ const handleClanCreated = async () => {
                 v-for="n in 4" 
                 :key="n" 
                 :member="match.group1.member[n - 1]" 
+                :show-unassign-button="!!match.group1.member[n - 1]"
                 @click="openMemberSelection(categoryName, 'group1', matchIndex, n - 1)"
+                @unassign="unassignMember(categoryName, 'group1', matchIndex, n - 1)"
               />
             </div>
           </div>
@@ -135,7 +141,9 @@ const handleClanCreated = async () => {
                 v-for="n in 4" 
                 :key="n" 
                 :member="match.group2.member[n - 1]" 
+                :show-unassign-button="!!match.group2.member[n - 1]"
                 @click="openMemberSelection(categoryName, 'group2', matchIndex, n - 1)"
+                @unassign="unassignMember(categoryName, 'group2', matchIndex, n - 1)"
               />
             </div>
           </div>

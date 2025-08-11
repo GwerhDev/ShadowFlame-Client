@@ -33,18 +33,13 @@ const isAssigned = (memberId: string) => {
   <div class="container-modal-component" @click.self="$emit('close')" style="display: flex;">
     <div class="modal-container">
       <div class="d-flex justify-content-between align-items-center">
-        <h3>Seleccionar Miembro</h3>
-        <button @click="$emit('close')" class="secondary-button">Cancelar</button>
+        <h2>Seleccionar Miembro</h2>
       </div>
       <div class="member-selection-grid">
-        <ShadowWarMemberCard 
-          v-for="member in members" 
-          :key="member._id" 
-          :member="member" 
-          @click="handleCardClick(member)"
-          :class="{ 'is-assigned': isAssigned(member._id) }"
-        />
+        <ShadowWarMemberCard v-for="member in members" :key="member._id" :member="member"
+          @click="handleCardClick(member)" :class="{ 'is-assigned': isAssigned(member._id) }" />
       </div>
+      <button @click="$emit('close')" class="secondary-button">Cancelar</button>
     </div>
   </div>
 </template>

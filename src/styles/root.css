@@ -15,6 +15,8 @@
   --color-red-action: #7B2917;
   --color-red-action-hover: #A83A1E;
   --nav-color-primary: #2b2934f2;
+  --element-color-primary: #2b2934f2;
+  --element-color-primary-hover: #373444f2;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
