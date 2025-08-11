@@ -3,6 +3,7 @@ import { ref, onMounted, Ref } from 'vue';
 import { getNextShadowWar } from '../../../middlewares/services'; // Import the new service
 import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
 import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
+import diabloIcon from '../../../assets/svg/diablo-icon.svg';
 
 // This line will make TypeScript happy by "using" the imported component
 PublicShadowWarMemberCard;
@@ -13,6 +14,7 @@ type ShadowWarWithMatch = ShadowWarInterfaces.ShadowWar & { battle: { exalted: S
 const nextWarDate = ref('');
 const shadowWar: Ref<ShadowWarWithMatch | null> = ref(null);
 const error: Ref<string | null> = ref(null);
+const activeCategory = ref('exalted');
 
 onMounted(async () => {
   try {
@@ -39,30 +41,52 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
 
 <template>
   <div class="public-next-battle">
-    <h2>Próxima Batalla</h2>
-    <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
+    <div class="sw-container"> <!-- Added sw-container -->
+      <span class="mb-3 mt-1">
+        <img :src="diabloIcon" alt="icon" />
+        <h1>Próxima Batalla</h1>
+      </span>
+      <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
 
-    <div v-if="error">
-      <p>Ha ocurrido un error:</p>
-      <pre>{{ error }}</pre>
-    </div>
+      <div v-if="error">
+        <p>Ha ocurrido un error:</p>
+        <pre>{{ error }}</pre>
+      </div>
 
-    <div v-if="shadowWar && shadowWar.battle" class="battle-details">
-      <div v-for="(category, categoryName) in shadowWar.battle" :key="categoryName" class="category">
-        <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
-        <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
-          <h4>Match {{ matchIndex + 1 }}</h4>
-          <div class="match-groups">
-            <div class="group">
-              <h5>Grupo 1</h5>
-              <div class="member-cards-grid">
-                <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
-              </div>
-            </div>
-            <div class="group">
-              <h5>Grupo 2</h5>
-              <div class="member-cards-grid">
-                <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+      <div v-if="shadowWar && shadowWar.battle" class="main-content-wrapper">
+        <div class="sidebar-menu">
+          <ul>
+            <li v-for="(category, categoryName) in shadowWar.battle" :key="categoryName">
+              <button
+                @click="activeCategory = categoryName"
+                :class="{ active: activeCategory === categoryName }"
+              >
+                {{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-section">
+          <div v-for="(category, categoryName) in shadowWar.battle" :key="categoryName">
+            <div v-if="activeCategory === categoryName" class="category">
+              <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
+              <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
+                <h4>Match {{ matchIndex + 1 }}</h4>
+                <div class="match-groups">
+                  <div class="group">
+                    <h5>Grupo 1</h5>
+                    <div class="member-cards-grid">
+                      <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
+                    </div>
+                  </div>
+                  <div class="group">
+                    <h5>Grupo 2</h5>
+                    <div class="member-cards-grid">
+                      <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
