@@ -26,13 +26,14 @@ const getClassImage = (className: string | undefined) => {
       </div>
     </div>
     <div v-else class="empty-card">
-      <span>+</span>
-      <span>Vacante</span>
+      <i class="fas fa-ban"></i>
+      <span>No asignado</span>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+@import '@fortawesome/fontawesome-free/css/all.css';
 
 .member-card {
   position: relative; // Needed for absolute positioning of the button
