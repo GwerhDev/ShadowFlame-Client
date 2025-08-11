@@ -152,5 +152,5 @@ export const getWarbands: any = async () => {
   return response;
 };
 
-export { createShadowWar, getShadowWarById, updateShadowWar } from './shadowWarService';
+export { createShadowWar, getNextShadowWar, getShadowWarById, updateShadowWar } from './shadowWarService';
 export { getClans } from './clanService';

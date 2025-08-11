@@ -31,3 +31,9 @@ export const updateShadowWar: any = async (id: string, formData: any) => {
                                    .then(response => response.data)
   return response;
 };
+
+export const getNextShadowWar: any = async () => {
+  const response: any = await axios.get(API_URL + "/shadow-war/next-battle", options())
+                                   .then(response => response.data)
+  return response;
+};

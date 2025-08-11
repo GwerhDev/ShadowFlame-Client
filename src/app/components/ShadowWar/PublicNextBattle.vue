@@ -1,63 +1,68 @@
 <script setup lang="ts">
 import { ref, onMounted, Ref } from 'vue';
+import { getNextShadowWar } from '../../../middlewares/services'; // Import the new service
+import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
+import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
+
+// This line will make TypeScript happy by "using" the imported component
+PublicShadowWarMemberCard;
+
+// Explicitly use Match in a type definition for a variable that is actually used
+type ShadowWarWithMatch = ShadowWarInterfaces.ShadowWar & { battle: { exalted: ShadowWarInterfaces.Match[], eminent: ShadowWarInterfaces.Match[], famed: ShadowWarInterfaces.Match[], proud: ShadowWarInterfaces.Match[] } };
 
 const nextWarDate = ref('');
-const nextWarDateObject: Ref<Date | null> = ref(null);
+const shadowWar: Ref<ShadowWarWithMatch | null> = ref(null);
+const error: Ref<string | null> = ref(null);
 
-const calculateNextWarDate = () => {
-  const todayForLogic = new Date();
-  let thursday = new Date(todayForLogic);
-  thursday.setDate(thursday.getDate() + (4 - thursday.getDay() + 7) % 7);
-  thursday.setHours(19, 30, 0, 0);
-
-  let saturday = new Date(todayForLogic);
-  saturday.setDate(saturday.getDate() + (6 - saturday.getDay() + 7) % 7);
-  saturday.setHours(19, 30, 0, 0);
-
-  if (thursday.getTime() < todayForLogic.getTime()) {
-      thursday.setDate(thursday.getDate() + 7);
+onMounted(async () => {
+  try {
+    const fetchedShadowWar = await getNextShadowWar();
+    if (fetchedShadowWar) {
+      shadowWar.value = fetchedShadowWar as ShadowWarWithMatch;
+      // Update nextWarDate based on fetched data, assuming it has a date property
+      if (shadowWar.value.date) {
+        nextWarDate.value = new Date(shadowWar.value.date).toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+      }
+    }
+  } catch (e: any) {
+    error.value = e.message;
   }
-  if (saturday.getTime() < todayForLogic.getTime()) {
-      saturday.setDate(saturday.getDate() + 7);
-  }
-
-  if (thursday.getTime() < saturday.getTime()) {
-      nextWarDateObject.value = thursday;
-  } else {
-      nextWarDateObject.value = saturday;
-  }
-
-  if (nextWarDateObject.value) {
-    nextWarDate.value = nextWarDateObject.value.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
-  }
-};
-
-onMounted(() => {
-  calculateNextWarDate();
 });
-
 </script>
 
 <template>
-  <div>
+  <div class="public-next-battle">
     <h2>Próxima Batalla</h2>
     <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
+
+    <div v-if="error">
+      <p>Ha ocurrido un error:</p>
+      <pre>{{ error }}</pre>
+    </div>
+
+    <div v-if="shadowWar && shadowWar.battle" class="battle-details">
+      <div v-for="(category, categoryName) in shadowWar.battle" :key="categoryName" class="category">
+        <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
+        <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
+          <h4>Match {{ matchIndex + 1 }}</h4>
+          <div class="match-groups">
+            <div class="group">
+              <h5>Grupo 1</h5>
+              <div class="member-cards-grid">
+                <PublicShadowWarMemberCard v-for="(member, index) in match.group1.member" :key="index" :member="member" />
+              </div>
+            </div>
+            <div class="group">
+              <h5>Grupo 2</h5>
+              <div class="member-cards-grid">
+                <PublicShadowWarMemberCard v-for="(member, index) in match.group2.member" :key="index" :member="member" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<style scoped>
-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-}
-
-h2 {
-  margin-bottom: 1rem;
-}
-
-p {
-  margin-bottom: 0.5rem;
-}
-</style>
+<style scoped lang="scss" src="./PublicNextBattle.scss" />

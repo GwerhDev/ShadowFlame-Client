@@ -1,0 +1,60 @@
+.public-next-battle {
+  padding: 1rem;
+  
+  .battle-details {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .category {
+    margin-bottom: 2rem;
+    
+    h3 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #ffc107;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .match {
+    margin-bottom: 1.5rem;
+    
+    h4 {
+      font-size: 1.2rem;
+      color: #eee;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .match-groups {
+    display: flex;
+    gap: 1rem; // Adjusted from 2rem for a slightly tighter look
+    margin-bottom: 1rem;
+    flex-wrap: wrap; // Allow wrapping on smaller screens
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .group {
+    flex: 1;
+    min-width: 300px; // Ensure groups don't get too small
+    
+    h5 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .member-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); // Adjusted minmax for card size
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+}
