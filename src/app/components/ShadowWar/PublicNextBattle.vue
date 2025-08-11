@@ -3,6 +3,7 @@ import { ref, onMounted, Ref } from 'vue';
 import { getNextShadowWar } from '../../../middlewares/services'; // Import the new service
 import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
 import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
+import PublicShadowWarLateralMenu from './PublicShadowWarLateralMenu.vue';
 import diabloIcon from '../../../assets/svg/diablo-icon.svg';
 
 // This line will make TypeScript happy by "using" the imported component
@@ -54,18 +55,12 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       </div>
 
       <div v-if="shadowWar && shadowWar.battle" class="main-content-wrapper">
-        <div class="sidebar-menu">
-          <ul>
-            <li v-for="(category, categoryName) in shadowWar.battle" :key="categoryName">
-              <button
-                @click="activeCategory = categoryName"
-                :class="{ active: activeCategory === categoryName }"
-              >
-                {{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}
-              </button>
-            </li>
-          </ul>
-        </div>
+        <PublicShadowWarLateralMenu
+          v-if="shadowWar && shadowWar.battle"
+          :battleCategories="shadowWar.battle"
+          :activeCategory="activeCategory"
+          @update:activeCategory="activeCategory = $event"
+        />
 
         <div class="content-section">
           <div v-for="(category, categoryName) in shadowWar.battle" :key="categoryName">
