@@ -16,9 +16,10 @@ const shadowWarData = computed(() => store.currentUser.shadowWarData);
 const error = computed(() => store.currentUser.shadowWarError);
 
 const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => {
-  const padded = members ? [...members] : [];
-  while (padded.length < 4) {
-    padded.push(undefined);
+  const padded: (ShadowWarInterfaces.Member | undefined)[] = members ? [...members] : [];
+  const missingMembers = 4 - padded.length;
+  if (missingMembers > 0) {
+    return padded.concat(Array(missingMembers).fill(undefined));
   }
   return padded;
 };
@@ -35,7 +36,7 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
           <div v-if="activeCategory === categoryName" class="category">
-            <h3>{{ (categoryName as string).charAt(0).toUpperCase() + (categoryName as string).slice(1) }}</h3>
+            <h3>{{ String(categoryName).charAt(0).toUpperCase() + String(categoryName).slice(1) }}</h3>
             <div v-if="category.length === 0">
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>
