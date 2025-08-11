@@ -48,7 +48,7 @@ async function handleSubmit(e: any) {
     handleCloseModal();
     
   } catch (error) {
-    console.log(error);
+    console.error(error);
   } finally {
     isDisabled.value = false;
   }

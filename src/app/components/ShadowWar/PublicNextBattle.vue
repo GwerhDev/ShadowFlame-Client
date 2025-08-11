@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
 import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
 import { useStore } from '../../../middlewares/store';
@@ -14,14 +14,6 @@ PublicShadowWarMemberCard;
 const activeCategory = computed(() => store.currentUser.publicNextBattleTab);
 const shadowWarData = computed(() => store.currentUser.shadowWarData);
 const error = computed(() => store.currentUser.shadowWarError);
-
-watch(activeCategory, (newVal) => {
-  console.log('activeCategory changed:', newVal);
-});
-
-watch(shadowWarData, (newVal) => {
-  console.log('shadowWarData changed:', newVal);
-});
 
 const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => {
   const padded = members ? [...members] : [];
@@ -43,7 +35,7 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
           <div v-if="activeCategory === categoryName" class="category">
-            <h3>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h3>
+            <h3>{{ (categoryName as string).charAt(0).toUpperCase() + (categoryName as string).slice(1) }}</h3>
             <div v-if="category.length === 0">
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>

@@ -21,7 +21,7 @@ async function handleSubmit() {
     answer.value = await store.handleChatbotQuery({ query: question.value });
     isInputDisabled.value = false;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
