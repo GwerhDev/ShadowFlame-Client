@@ -31,7 +31,7 @@ function styleActive(type: string) {
         </button>
       </li>
       <li>
-        <button class="last" @click="handleType('eminent')"
+        <button @click="handleType('eminent')"
           :style="styleActive('eminent')">
           <img src="../../../assets/svg/calendar-icon.svg" alt="Eminent" />
           <span>Eminent</span>
@@ -39,7 +39,7 @@ function styleActive(type: string) {
         </button>
       </li>
       <li>
-        <button class="last" @click="handleType('famed')"
+        <button @click="handleType('famed')"
           :style="styleActive('famed')">
           <img src="../../../assets/svg/calendar-icon.svg" alt="Famed" />
           <span>Famed</span>
