@@ -57,7 +57,6 @@
 
 @media (max-width: 1100px) {
   .container-lo-page {
-    padding: 0;
     padding-top: 4rem;
 
     .lo-container {
@@ -93,6 +92,12 @@
           /* Make content-section a flex container */
           flex-direction: column;
           /* Arrange its children in a column */
+
+          .title-section {
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+          }
 
           .scrollable-content {
             flex-grow: 1;

@@ -66,7 +66,7 @@ onMounted(async () => {
         battleCategories.value.famed = famed || battleCategories.value.famed;
         battleCategories.value.proud = proud || battleCategories.value.proud;
       }
-      
+
       if (shadowWar.enemyClan) {
         enemyClan.value = shadowWar.enemyClan._id;
       }
@@ -112,21 +112,16 @@ const handleClanCreated = async () => {
   <div>
     <div class="clan-selector-container">
       <label for="enemyClan">Clan Enemigo:</label>
-      <select id="enemyClan" v-model="enemyClan" @change="updateShadowWarData" required>
-        <option value="">Clan no definido</option>
-        <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
-      </select>
-      <button type="button" @click="showCreateClanModal = true">Crear Clan</button>
+        <select id="enemyClan" v-model="enemyClan" @change="updateShadowWarData" required>
+          <option value="">Clan no definido</option>
+          <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
+        </select>
+        <button type="button" @click="showCreateClanModal = true">Crear Clan</button>
     </div>
 
     <CreateClanModal v-if="showCreateClanModal" @close="showCreateClanModal = false" @clanCreated="handleClanCreated" />
-    <MemberSelectionModal 
-      v-if="showMemberSelectionModal" 
-      :members="members" 
-      :assigned-member-ids="assignedMemberIds"
-      @close="showMemberSelectionModal = false" 
-      @member-selected="handleMemberSelected" 
-    />
+    <MemberSelectionModal v-if="showMemberSelectionModal" :members="members" :assigned-member-ids="assignedMemberIds"
+      @close="showMemberSelectionModal = false" @member-selected="handleMemberSelected" />
 
     <h3>Miembros de Batalla:</h3>
     <div v-for="(category, categoryName) in battleCategories" :key="categoryName">
@@ -137,27 +132,19 @@ const handleClanCreated = async () => {
           <div class="group">
             <label>Group 1</label>
             <div class="member-cards-grid">
-              <ShadowWarMemberCard 
-                v-for="n in 4" 
-                :key="n" 
-                :member="match.group1.member[n - 1]" 
+              <ShadowWarMemberCard v-for="n in 4" :key="n" :member="match.group1.member[n - 1]"
                 :show-unassign-button="!!match.group1.member[n - 1]"
                 @click="openMemberSelection(categoryName, 'group1', matchIndex, n - 1)"
-                @unassign="unassignMember(categoryName, 'group1', matchIndex, n - 1)"
-              />
+                @unassign="unassignMember(categoryName, 'group1', matchIndex, n - 1)" />
             </div>
           </div>
           <div class="group">
             <label>Group 2</label>
             <div class="member-cards-grid">
-              <ShadowWarMemberCard 
-                v-for="n in 4" 
-                :key="n" 
-                :member="match.group2.member[n - 1]" 
+              <ShadowWarMemberCard v-for="n in 4" :key="n" :member="match.group2.member[n - 1]"
                 :show-unassign-button="!!match.group2.member[n - 1]"
                 @click="openMemberSelection(categoryName, 'group2', matchIndex, n - 1)"
-                @unassign="unassignMember(categoryName, 'group2', matchIndex, n - 1)"
-              />
+                @unassign="unassignMember(categoryName, 'group2', matchIndex, n - 1)" />
             </div>
           </div>
         </div>

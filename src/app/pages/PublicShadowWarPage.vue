@@ -68,10 +68,12 @@ watch(() => store.layout.tab, async (newTab) => {
     <div class="div-container">
       <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.layout.tab"
         title="Guerra Sombría">
-        <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
-          Enfrentaremos al Clan:
-        <h4>{{ enemyClanName }}</h4>
-        </p>
+        <span class="info-text">
+          <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
+            Enfrentaremos al Clan:
+          <h4>{{ enemyClanName }}</h4>
+          </p>
+        </span>
         <PublicShadowWar :active-tab="store.layout.tab" :loading="loading" />
       </AppLayout>
     </div>
@@ -81,11 +83,17 @@ watch(() => store.layout.tab, async (newTab) => {
 <style scoped>
 .div-container {
   height: 100%;
-  padding: 1rem;
+  padding: rem;
   padding-top: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.info-text {
+  display: flex;
+  justify-content: center;
+  padding-inline: 1rem;
 }
 
 @media (max-width: 1100px) {

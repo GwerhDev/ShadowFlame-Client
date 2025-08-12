@@ -35,7 +35,7 @@ defineProps({
         </section>
 
         <section class="content-section">
-          <span>
+          <span class="title-section">
             <img :src="diabloIcon" alt="icon" />
             <h1>{{ title }}</h1>
           </span>

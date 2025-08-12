@@ -18,18 +18,24 @@ const error: Ref<string | null> = ref(null);
 
 <template>
   <div class="shadow-war-container">
-    <h2>Próxima Batalla</h2>
-    <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
+    <span class="info-text">
+      <h2>Próxima Batalla</h2>
+      <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
 
-    <div v-if="error">
-      <p>Ha ocurrido un error:</p>
-      <pre>{{ error }}</pre>
-    </div>
+      <div v-if="error">
+        <p>Ha ocurrido un error:</p>
+        <pre>{{ error }}</pre>
+      </div>
+    </span>
 
     <CreateShadowWarForm v-if="shadowWarData && shadowWarData._id" :shadowWarId="shadowWarData._id" />
   </div>
 </template>
 
 <style scoped>
-
+.info-text {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 1rem;
+}
 </style>

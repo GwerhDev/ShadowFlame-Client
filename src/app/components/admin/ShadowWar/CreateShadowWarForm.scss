@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
 }
 
-.clan-selector-container>div {
+.clan-selector-container div {
   display: flex;
   flex-direction: column;
 }
@@ -71,4 +71,11 @@ button[type="submit"]:hover {
   gap: 1rem;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .clan-selector-container {
+    display: flex;
+    flex-direction: column;
+  }
 }

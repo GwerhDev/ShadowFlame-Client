@@ -166,6 +166,16 @@ h2 {
   font-weight: 600;
 }
 
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+}
+
 button,
 .button {
   padding-top: .4rem;
