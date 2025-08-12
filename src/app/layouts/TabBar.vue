@@ -1,7 +1,7 @@
 <style scoped lang="scss" src="./SideBar.scss" />
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
-import { useStore } from '../../middlewares/store';
+import { useStore, AppStore } from '../../middlewares/store';
 
 defineProps({
   logged: Boolean,
@@ -11,7 +11,7 @@ defineProps({
   },
 });
 
-const store = useStore() as ReturnType<typeof useStore>;
+const store: AppStore = useStore();
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 function handleType(type: string) {
