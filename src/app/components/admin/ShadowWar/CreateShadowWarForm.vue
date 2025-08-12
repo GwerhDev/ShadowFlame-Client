@@ -7,10 +7,6 @@ import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
 import MemberSelectionModal from './MemberSelectionModal.vue';
 
 const props = defineProps({
-  date: {
-    type: Object as PropType<Date | null>,
-    required: true,
-  },
   shadowWarId: {
     type: String,
     required: true,
@@ -171,11 +167,3 @@ const handleClanCreated = async () => {
 </template>
 
 <style scoped lang="scss" src="./CreateShadowWarForm.scss" />
-<style scoped lang="scss">
-.member-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-</style>

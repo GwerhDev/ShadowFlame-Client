@@ -2,42 +2,50 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Add some space between the select and the button */
+  gap: 1rem;
+  /* Add some space between the select and the button */
   margin-bottom: 1rem;
 }
 
-.clan-selector-container > div {
+.clan-selector-container>div {
   display: flex;
   flex-direction: column;
 }
 
 .match-groups {
-  display: flex;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
   gap: 1rem;
   margin-bottom: 1rem;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
+  padding-inline: 1rem;
 }
 
 .group {
-  flex: 1; /* Distribute space equally */
-  min-width: 300px; /* Ensure groups don't get too small */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Styles for elements within the TableComponent slot */
 .table-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Match the 3 columns of the TableComponent header */
-  align-items: center; /* Vertically align items in the grid row */
+  grid-template-columns: repeat(2, 1fr);
+  /* Match the 3 columns of the TableComponent header */
+  align-items: center;
+  /* Vertically align items in the grid row */
   margin-bottom: 0.5rem;
 }
 
 .table-row span {
-  white-space: nowrap; /* Prevent text from wrapping */
+  white-space: nowrap;
+  /* Prevent text from wrapping */
 }
 
 /* Specific styling for select elements within table rows */
 .table-row select {
-  width: 100%; /* Ensure it fills the grid cell */
+  width: 100%;
+  /* Ensure it fills the grid cell */
   border-radius: 4px;
   border: 1px solid #ccc;
   background-color: #333;
@@ -57,4 +65,10 @@ button[type="submit"] {
 button[type="button"]:hover,
 button[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+.member-cards-grid {
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
 }

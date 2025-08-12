@@ -45,20 +45,4 @@ const isAssigned = (memberId: string) => {
 </template>
 
 <style scoped lang="scss" src="./MemberSelectionModal.scss" />
-<style scoped lang="scss">
-.member-selection-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  max-height: 400px;
-  overflow-y: auto;
-}
 
-.is-assigned {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-</style>

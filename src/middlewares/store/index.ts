@@ -15,9 +15,8 @@ export const useStore = defineStore('store', {
       taskloading: false,
       guidetype: 'chatbot',
       chatbotmodel: '',
-      shadowWarTab: 'next-battle',
       publicNextBattleTab: 'exalted',
-      layoutTab: 'exalted', // Initialize with a default value
+      layoutTab: '', // Initialize with a default value
       shadowWarData: null, // New state property
       shadowWarError: null, // New state property
     },
@@ -45,10 +44,10 @@ export const useStore = defineStore('store', {
         task: null,
         taskdate: null,
         tasktype: '',
+        layoutTab: '',
         taskloading: false,
         guidetype: 'chatbot',
         chatbotmodel: '',
-        shadowWarTab: 'next-battle',
         publicNextBattleTab: 'exalted',
         shadowWarData: null,
         shadowWarError: null,
@@ -80,10 +79,6 @@ export const useStore = defineStore('store', {
 
     setGuideType(type: string) {
       this.currentUser.guidetype = type;
-    },
-
-    setShadowWarTab(tab: string) {
-      this.currentUser.shadowWarTab = tab;
     },
 
     setPublicNextBattleTab(tab: string) {

@@ -8,11 +8,11 @@ const props: any = defineProps({ logged: Boolean });
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 async function handleType(type: string) {
-  store.setShadowWarTab(type);
+  store.setLayoutTab(type);
 };
 
 function styleActive(type: string) {
-  if (store.currentUser.shadowWarTab == type) {
+  if (store.currentUser.layoutTab == type) {
     return active.value;
   }
 };

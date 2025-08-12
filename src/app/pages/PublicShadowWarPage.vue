@@ -57,12 +57,8 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <AppLayout
-        :loading="loading"
-        :sidebar-tabs="sidebarTabs"
-        :active-layout-tab="store.currentUser.layoutTab"
-        title="Guerra Sombría"
-      >
+      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.currentUser.layoutTab"
+        title="Guerra Sombría">
         <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
           Enfrentaremos al Clan:
         <h4>{{ enemyClanName }}</h4>
@@ -83,7 +79,7 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
   justify-content: center;
 }
 
- @media (max-width: 1100px) {
+@media (max-width: 1100px) {
   .div-container {
     padding: 0;
   }
