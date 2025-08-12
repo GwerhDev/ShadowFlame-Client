@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { classes } from '../../../../middlewares/misc/const';
 import { useStore } from '../../../../middlewares/store';
-import { Ref, onMounted, ref } from 'vue';
+import { Ref, computed, onMounted, ref } from 'vue';
 
 const store: any = useStore();
 const editionActive: Ref<boolean> = ref(false);
@@ -13,6 +13,10 @@ const character: Ref<string> = ref('');
 const resonance: Ref<number> = ref(0);
 const memberClass: Ref<string> = ref('');
 const whatsapp: Ref<string> = ref('');
+
+const formattedWhatsapp = computed(() => {
+  return props.member.whatsapp.replace(/[+\s]/g, '');
+});
 
 const props = defineProps(['member']);
 
@@ -106,7 +110,9 @@ function handleDelete() {
       <p>{{ member.class }}</p>
     </span>
     <span>
-      <p>{{ member.whatsapp }}</p>
+      <a :href="'https://wa.me/' + formattedWhatsapp" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+      </a>
     </span>
     <span>
       <ul class="buttons-container">
@@ -135,11 +141,12 @@ function handleDelete() {
     <span>
       <ul class="class-container">
         <img :src="classes.find(cls => cls.value === member.class)?.image" alt="" width="30">
-        <p>{{classes.find(cls => cls.value === member.class)?.name}}</p>
       </ul>
     </span>
     <span>
-      <p>{{ member.whatsapp }}</p>
+      <a :href="'https://wa.me/' + formattedWhatsapp" target="_blank">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+      </a>
     </span>
     <span>
       <ul class="buttons-container">
