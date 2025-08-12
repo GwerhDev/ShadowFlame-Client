@@ -9,6 +9,7 @@ import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 const store: any = useStore();
 const nextWarDate = ref('');
 const warTime = ref('');
+const enemyClanName = ref('');
 
 onMounted(async () => {
   await store.handleGetNextShadowWar();
@@ -16,6 +17,12 @@ onMounted(async () => {
     const warDate = new Date(store.currentUser.shadowWarData.date);
     nextWarDate.value = warDate.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     warTime.value = warDate.toLocaleString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+    if (store.currentUser.shadowWarData.enemyClan) {
+      enemyClanName.value = store.currentUser.shadowWarData.enemyClan.name;
+    } else {
+      enemyClanName.value = 'aun no está definido';
+    }
   }
 });
 
@@ -28,7 +35,10 @@ onMounted(async () => {
         <img :src="diabloIcon" alt="icon" />
         <h1>Guerra Sombría</h1>
       </span>
-      <p>La próxima Guerra Sombría es el {{ nextWarDate }} a las {{ warTime }}h (hora del servidor).</p>
+      <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
+        Enfrentaremos al Clan:
+      <h4>{{ enemyClanName }}</h4>
+      </p>
 
       <div class="section-container">
         <section class="menu-section">
