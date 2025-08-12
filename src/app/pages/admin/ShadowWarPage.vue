@@ -17,6 +17,7 @@ const sidebarTabs = [
 
 
 onMounted(async () => {
+  store.setTab('next');
   await store.handleGetNextShadowWar();
   if (store.currentUser.shadowWarData && store.currentUser.shadowWarData.date) {
     const warDate = new Date(store.currentUser.shadowWarData.date);
@@ -57,8 +58,8 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
   <main class="red-shadow-fx">
     <div class="div-container">
       <AppLayout :logged="store.currentUser.logged" :loading="loading" :sidebar-tabs="sidebarTabs"
-        :active-layout-tab="store.currentUser.layoutTab" title="Guerra Sombría">
-        <section class="content-section" v-if="store.currentUser?.logged && store.currentUser?.layoutTab === 'next'">
+        :active-layout-tab="store.layout.tab" title="Guerra Sombría">
+        <section class="content-section" v-if="store.currentUser?.logged && store.layout.tab === 'next'">
           <ShadowWar :nextWarDate="nextWarDate" :warTime="warTime" :enemyClanName="enemyClanName" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">

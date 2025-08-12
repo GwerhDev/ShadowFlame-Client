@@ -16,9 +16,12 @@ export const useStore = defineStore('store', {
       guidetype: 'chatbot',
       chatbotmodel: '',
       publicNextBattleTab: 'exalted',
-      layoutTab: '', // Initialize with a default value
       shadowWarData: null, // New state property
       shadowWarError: null, // New state property
+    },
+
+    layout: {
+      tab: '',
     },
 
     admin: {
@@ -44,13 +47,15 @@ export const useStore = defineStore('store', {
         task: null,
         taskdate: null,
         tasktype: '',
-        layoutTab: '',
         taskloading: false,
         guidetype: 'chatbot',
         chatbotmodel: '',
         publicNextBattleTab: 'exalted',
         shadowWarData: null,
         shadowWarError: null,
+      };
+      this.layout = {
+        tab: '',
       };
       
       this.admin = {
@@ -85,8 +90,8 @@ export const useStore = defineStore('store', {
       this.currentUser.publicNextBattleTab = tab;
     },
 
-    setLayoutTab(tab: string) {
-      this.currentUser.layoutTab = tab;
+    setTab(tab: string) {
+      this.layout.tab = tab;
     },
 
     setShadowWarData(data: any) {

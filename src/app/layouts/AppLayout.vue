@@ -15,10 +15,6 @@ defineProps({
     type: Array,
     required: true
   },
-  activeLayoutTab: {
-    type: String,
-    required: true
-  },
   title: {
     type: String,
     required: true
@@ -32,7 +28,7 @@ defineProps({
       <div v-if="!loading" class="section-container">
         <section class="menu-section">
           <img :src="diabloIcon" alt="icon" />
-          <SideBar :logged="store.currentUser.logged" :tabs="sidebarTabs" :active-tab="activeLayoutTab" />
+          <SideBar :logged="store.currentUser.logged" :tabs="sidebarTabs" :active-tab="activeTab" />
         </section>
         <section class="content-section">
           <span class="mb-3 mt-1">

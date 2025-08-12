@@ -19,11 +19,11 @@ const store: any = useStore();
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 function handleType(type: string) {
-  store.setLayoutTab(type);
+  store.setTab(type);
 };
 
 function styleActive(type: string) {
-  if (store.currentUser.layoutTab == type) {
+  if (store.layout.tab == type) {
     return active.value;
   }
 };

@@ -18,6 +18,7 @@ const sidebarTabs = [
 ];
 
 onMounted(async () => {
+  store.setTab('exalted');
   await store.handleGetNextShadowWar();
   if (store.currentUser.shadowWarData && store.currentUser.shadowWarData.date) {
     const warDate = new Date(store.currentUser.shadowWarData.date);
@@ -57,13 +58,13 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.currentUser.layoutTab"
+      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.layout.tab"
         title="Guerra Sombría">
         <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
           Enfrentaremos al Clan:
         <h4>{{ enemyClanName }}</h4>
         </p>
-        <PublicShadowWar :active-tab="store.currentUser.layoutTab" />
+        <PublicShadowWar :active-tab="store.layout.tab" />
       </AppLayout>
     </div>
   </main>

@@ -9,9 +9,11 @@ export interface storeState {
     guidetype: string,
     chatbotmodel: string,
     publicNextBattleTab: string;
-    layoutTab: string;
     shadowWarData: any;
     shadowWarError: string | null;
+  },
+  layout: {
+    tab: string;
   },
   admin: {
     users: any,
