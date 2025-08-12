@@ -11,7 +11,7 @@ defineProps({
   },
 });
 
-const store: any = useStore();
+const store = useStore();
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 function handleType(type: string) {
