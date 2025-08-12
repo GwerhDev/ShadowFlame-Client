@@ -5,38 +5,40 @@ import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
 
 export const useStore = defineStore('store', {
-  state: (): storeState => ({
-    currentUser: {
-      logged: false,
-      userData: null,
-      task: null,
-      taskdate: null,
-      tasktype: '',
-      taskloading: false,
-      guidetype: 'chatbot',
-      chatbotmodel: '',
-      publicNextBattleTab: 'exalted',
-      shadowWarData: null, // New state property
-      shadowWarError: null, // New state property
-    },
+  state: () => {
+    return {
+      currentUser: {
+        logged: false,
+        userData: null,
+        task: null,
+        taskdate: null,
+        tasktype: '',
+        taskloading: false,
+        guidetype: 'chatbot',
+        chatbotmodel: '',
+        publicNextBattleTab: 'exalted',
+        shadowWarData: null, // New state property
+        shadowWarError: null, // New state property
+      },
 
-    layout: {
-      tab: '',
-    },
+      layout: {
+        tab: '',
+      },
 
-    admin: {
-      users: null,
-      tasks: null,
-      clantasks: null,
-      warbandtasks: null,
-      notifications: null,
-      members: null,
-    },
+      admin: {
+        users: null,
+        tasks: null,
+        clantasks: null,
+        warbandtasks: null,
+        notifications: null,
+        members: null,
+      },
 
-    userToken: '',
-    currentCharacter: null,
-    warbands: null,
-  }),
+      userToken: '',
+      currentCharacter: null,
+      warbands: null,
+    } as storeState;
+  },
 
   actions: {
     logout() {
