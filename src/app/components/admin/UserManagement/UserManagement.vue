@@ -5,7 +5,6 @@ import { onMounted, ref, watch } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import UserListCard from './UserListCard.vue';
 import router from '../../../routes';
-import LoaderComponent from '../../../utils/LoaderComponent.vue';
 
 const store: any = useStore();
 const loading = ref(true); // New ref for loading state

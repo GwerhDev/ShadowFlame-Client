@@ -5,7 +5,6 @@ import { onMounted, ref, watch } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import MemberListCard from './MemberListCard.vue';
 import router from '../../../routes';
-import LoaderComponent from '../../../utils/LoaderComponent.vue';
 import AddMemberModal from './AddMemberModal.vue';
 
 const store: any = useStore();

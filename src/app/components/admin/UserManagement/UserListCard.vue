@@ -1,7 +1,7 @@
 <style scoped lang="scss" src="./UserListCard.scss" />
 <script setup lang="ts">
 import { useStore } from '../../../../middlewares/store';
-import { Ref, onMounted, ref } from 'vue';
+import { Ref, ref } from 'vue';
 
 const store: any = useStore();
 const role: Ref<string> = ref('');
