@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import { PropType } from 'vue';
 import { Member } from '../../../../interfaces/shadowWar';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
 

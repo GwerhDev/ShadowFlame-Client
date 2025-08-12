@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./AddMemberModal.scss" />
 <script setup lang="ts">
-import { ref, defineEmits, computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useStore } from '../../../../middlewares/store';
 import diabloIcon from "../../../../assets/svg/diablo-icon.svg";
 import { classes } from '../../../../middlewares/misc/const';
