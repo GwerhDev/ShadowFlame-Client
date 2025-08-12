@@ -25,7 +25,7 @@ function styleActive(type: string) {
       <li>
         <button title="Sublime" class="first" @click="handleType('exalted')"
           :style="styleActive('exalted')">
-          <img src="../../../assets/svg/quest-icon.svg" alt="Sublime" />
+          <i class="fas fa-crown"></i>
           <span>Sublime</span>
           <span></span>
         </button>
@@ -33,7 +33,7 @@ function styleActive(type: string) {
       <li>
         <button title="Eminente" @click="handleType('eminent')"
           :style="styleActive('eminent')">
-          <img src="../../../assets/svg/calendar-icon.svg" alt="Eminente" />
+          <i class="fas fa-trophy"></i>
           <span>Eminente</span>
           <span></span>
         </button>
@@ -41,7 +41,7 @@ function styleActive(type: string) {
       <li>
         <button title="Célebre" @click="handleType('famed')"
           :style="styleActive('famed')">
-          <img src="../../../assets/svg/calendar-icon.svg" alt="Célebre" />
+          <i class="fas fa-medal"></i>
           <span>Célebre</span>
           <span></span>
         </button>
@@ -49,7 +49,7 @@ function styleActive(type: string) {
       <li>
         <button title="Imponente"  class="last" @click="handleType('proud')"
           :style="styleActive('proud')">
-          <img src="../../../assets/svg/calendar-icon.svg" alt="Imponente" />
+          <i class="fas fa-fist-raised"></i>
           <span>Imponente</span>
           <span></span>
         </button>
