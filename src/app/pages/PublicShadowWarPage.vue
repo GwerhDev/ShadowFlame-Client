@@ -22,6 +22,7 @@ import PublicShadowWarComponent from '../components/ShadowWar/PublicShadowWarCom
 
  @media (max-width: 1100px) {
   .div-container {
+    padding: 0;
     padding-top: 2rem;
   }
 }
