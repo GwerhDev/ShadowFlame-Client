@@ -1,6 +1,6 @@
 <style scoped lang="scss" src="./PublicShadowWarComponent.scss" />
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useStore } from '../../../middlewares/store';
 import ShadowWarLateralMenu from './PublicShadowWarLateralMenu.vue';
 import PublicShadowWar from './PublicShadowWar.vue';
@@ -24,9 +24,32 @@ onMounted(async () => {
     } else {
       enemyClanName.value = 'aun no está definido';
     }
-  }
   loading.value = false; // Set loading to false after data is processed
+  } else {
+    // If shadowWarData is not available, still set loading to false
+    // but perhaps display a message or handle the empty state
+    loading.value = false;
+  }
 });
+
+watch(() => store.currentUser.shadowWarData, (newVal) => {
+  if (newVal && newVal.date) {
+    const warDate = new Date(newVal.date);
+    nextWarDate.value = warDate.toLocaleString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    warTime.value = warDate.toLocaleString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+    if (newVal.enemyClan) {
+      enemyClanName.value = newVal.enemyClan.name;
+    } else {
+      enemyClanName.value = 'aun no está definido';
+    }
+  } else {
+    // Reset values if shadowWarData becomes null or invalid
+    nextWarDate.value = '';
+    warTime.value = '';
+    enemyClanName.value = '';
+  }
+}, { immediate: true });
 
 </script>
 
