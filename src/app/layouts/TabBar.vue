@@ -3,14 +3,16 @@
 import { Ref, ref } from 'vue';
 import { useStore, AppStore } from '../../middlewares/store';
 
-defineProps({
+withDefaults(defineProps<{
   logged: Boolean,
-  tabs: Array as () => Array<{
+  tabs: Array<{
     id: string;
     name: string;
     icon: string;
     length?: number;
-  }>
+  }>,
+}>(), {
+  tabs: () => []
 });
 
 const store: AppStore = useStore();
