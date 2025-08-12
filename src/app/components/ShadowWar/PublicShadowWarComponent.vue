@@ -10,6 +10,7 @@ const store: any = useStore();
 const nextWarDate = ref('');
 const warTime = ref('');
 const enemyClanName = ref('');
+const loading = ref(true); // New ref for loading state
 
 onMounted(async () => {
   await store.handleGetNextShadowWar();
@@ -24,6 +25,7 @@ onMounted(async () => {
       enemyClanName.value = 'aun no está definido';
     }
   }
+  loading.value = false; // Set loading to false after data is processed
 });
 
 </script>
@@ -40,13 +42,44 @@ onMounted(async () => {
       <h4>{{ enemyClanName }}</h4>
       </p>
 
-      <div class="section-container">
+      <div v-if="!loading" class="section-container">
         <section class="menu-section">
           <ShadowWarLateralMenu :logged="store.currentUser.logged" />
         </section>
         <section class="content-section">
           <PublicShadowWar />
         </section>
+      </div>
+
+      <div v-else class="skeleton-section-container">
+        <div class="skeleton-menu-section">
+          <div class="skeleton-box skeleton-menu-item"></div>
+          <div class="skeleton-box skeleton-menu-item"></div>
+          <div class="skeleton-box skeleton-menu-item"></div>
+        </div>
+        <div class="skeleton-content-section">
+          <div class="skeleton-box skeleton-title"></div>
+          <div class="skeleton-matches-row-container">
+            <div class="skeleton-match">
+              <div class="skeleton-box skeleton-subtitle"></div>
+              <div class="skeleton-member-cards-grid">
+                <div class="skeleton-box skeleton-member-card"></div>
+                <div class="skeleton-box skeleton-member-card"></div>
+                <div class="skeleton-box skeleton-member-card"></div>
+                <div class="skeleton-box skeleton-member-card"></div>
+              </div>
+            </div>
+            <div class="skeleton-match">
+              <div class="skeleton-box skeleton-subtitle"></div>
+              <div class="skeleton-member-cards-grid">
+                <div class="skeleton-box skeleton-member-card"></div>
+                <div class="skeleton-box skeleton-member-card"></div>
+                <div class="skeleton-box skeleton-member-card"></div>
+                <div class="skeleton-box skeleton-member-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
