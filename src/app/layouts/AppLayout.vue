@@ -3,6 +3,7 @@
 import { useStore } from '../../middlewares/store';
 import SideBar from './SideBar.vue';
 import diabloIcon from "../../assets/svg/diablo-icon.svg";
+import TabBar from './TabBar.vue';
 
 const store: any = useStore();
 
@@ -26,15 +27,19 @@ defineProps({
   <div class="container-lo-page">
     <div class="lo-container">
       <div v-if="!loading" class="section-container">
-        <section class="menu-section">
+        <section class="menu-section desktop">
           <img :src="diabloIcon" alt="icon" />
-          <SideBar :logged="store.currentUser.logged" :tabs="sidebarTabs" :active-tab="activeTab" />
+          <SideBar :logged="store.currentUser.logged" :tabs="sidebarTabs" />
         </section>
+
         <section class="content-section">
-          <span class="mb-3 mt-1">
+          <span>
             <img :src="diabloIcon" alt="icon" />
             <h1>{{ title }}</h1>
           </span>
+          <section class="menu-section mobile">
+            <TabBar :logged="store.currentUser.logged" :tabs="sidebarTabs" />
+          </section>
           <div class="scrollable-content">
             <slot></slot>
           </div>
