@@ -70,7 +70,9 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
             Enfrentaremos al Clan:
           <h4>{{ enemyClanName }}</h4>
           </p>
-          <PublicShadowWar />
+          <div class="scrollable-content">
+            <PublicShadowWar />
+          </div>
         </section>
       </div>
 
