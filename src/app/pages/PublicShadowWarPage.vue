@@ -2,12 +2,20 @@
 import { onMounted, ref, watch } from 'vue';
 import { useStore } from '../../middlewares/store';
 import AppLayout from '../layouts/AppLayout.vue';
+import PublicShadowWar from '../components/ShadowWar/PublicShadowWar.vue';
 
 const store: any = useStore();
 const nextWarDate = ref('');
 const warTime = ref('');
 const enemyClanName = ref('');
 const loading = ref(true);
+
+const sidebarTabs = [
+  { id: 'exalted', name: 'Sublime', icon: 'fas fa-crown' },
+  { id: 'eminent', name: 'Eminente', icon: 'fas fa-trophy' },
+  { id: 'famed', name: 'Célebre', icon: 'fas fa-medal' },
+  { id: 'proud', name: 'Imponente', icon: 'fas fa-fist-raised' },
+];
 
 onMounted(async () => {
   await store.handleGetNextShadowWar();
@@ -49,7 +57,18 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <AppLayout :loading="loading" :next-war-date="nextWarDate" :war-time="warTime" :enemy-clan-name="enemyClanName" />
+      <AppLayout
+        :loading="loading"
+        :sidebar-tabs="sidebarTabs"
+        :active-layout-tab="store.currentUser.layoutTab"
+        title="Guerra Sombría"
+      >
+        <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
+          Enfrentaremos al Clan:
+        <h4>{{ enemyClanName }}</h4>
+        </p>
+        <PublicShadowWar :active-tab="store.currentUser.layoutTab" />
+      </AppLayout>
     </div>
   </main>
 </template>

@@ -17,6 +17,7 @@ export const useStore = defineStore('store', {
       chatbotmodel: '',
       shadowWarTab: 'next-battle',
       publicNextBattleTab: 'exalted',
+      layoutTab: 'exalted', // Initialize with a default value
       shadowWarData: null, // New state property
       shadowWarError: null, // New state property
     },
@@ -87,6 +88,10 @@ export const useStore = defineStore('store', {
 
     setPublicNextBattleTab(tab: string) {
       this.currentUser.publicNextBattleTab = tab;
+    },
+
+    setLayoutTab(tab: string) {
+      this.currentUser.layoutTab = tab;
     },
 
     setShadowWarData(data: any) {

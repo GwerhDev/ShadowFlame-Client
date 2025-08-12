@@ -5,7 +5,15 @@ import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
 import { useStore } from '../../../middlewares/store';
 
 const store: any = useStore();
-const activeCategory = computed(() => store.currentUser.publicNextBattleTab);
+
+const props = defineProps({
+  activeTab: {
+    type: String,
+    required: true
+  }
+});
+
+const activeCategory = computed(() => props.activeTab);
 const shadowWarData = computed(() => store.currentUser.shadowWarData);
 const error = computed(() => store.currentUser.shadowWarError);
 
