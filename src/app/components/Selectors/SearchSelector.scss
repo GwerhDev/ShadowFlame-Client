@@ -1,0 +1,89 @@
+.search-selector-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex; // To align input and button
+    align-items: center;
+  }
+
+  input[type="text"] {
+    flex-grow: 1; // Allow input to take available space
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    &[readonly] {
+      background-color: #444; // Slightly different background for readonly
+      cursor: default;
+    }
+  }
+
+  .clear-button {
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: white;
+
+  &:hover {
+    background-color: #007bff;
+  }
+}
+
+.no-results {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}

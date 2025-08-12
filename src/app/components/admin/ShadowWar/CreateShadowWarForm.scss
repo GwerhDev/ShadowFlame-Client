@@ -1,10 +1,12 @@
+.create-shadow-war-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .clan-selector-container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  /* Add some space between the select and the button */
-  margin-bottom: 1rem;
 }
 
 .clan-selector-container div {
@@ -77,5 +79,47 @@ button[type="submit"]:hover {
   .clan-selector-container {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.clan-selection-area {
+  position: relative;
+  margin-bottom: 1rem; // Revert to 1rem for consistency
+  max-width: 500px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  button {
+    padding: 0.5rem 1rem; // Revert to 0.5rem padding, 1rem for horizontal
+    border-radius: 4px; // Revert to 4px border-radius
+    font-size: 0.95rem; // Keep 0.95rem font size
+    transition: background-color 0.3s ease; // Simpler transition
+    // Remove transform for consistency
+  }
+
+  .btn-create-clan {
+    background-color: #007bff; // Use existing primary blue
+
+    &:hover {
+      background-color: #0056b3; // Use existing darker blue
+    }
+  }
+
+  .btn-not-defined {
+    background-color: #6c757d; // Keeping this grey as it's a common neutral and no direct equivalent exists
+
+    &:hover {
+      background-color: darken(#6c757d, 10%); // Darken for hover
+    }
   }
 }

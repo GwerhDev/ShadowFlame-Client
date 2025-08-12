@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, Ref, computed } from 'vue';
+import { ref, onMounted, Ref, computed, watch } from 'vue';
 import { getShadowWarById, updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
 import CreateClanModal from '../../admin/Clan/CreateClanModal.vue';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
 import MemberSelectionModal from './MemberSelectionModal.vue';
+import SearchSelector from '../../Selectors/SearchSelector.vue';
 
 const props = defineProps({
   shadowWarId: {
@@ -74,18 +75,16 @@ onMounted(async () => {
   }
 });
 
-const handleEnemyClanChange = async (event: Event) => {
-  const target = event.target as HTMLSelectElement;
-  if (target.value === '__CREATE_NEW_CLAN__') {
-    showCreateClanModal.value = true;
-    target.value = enemyClan.value; // Keep the previously selected clan in the dropdown
-  } else {
-    enemyClan.value = target.value;
+watch(enemyClan, (newValue, oldValue) => {
+  console.log('enemyClan changed:', { oldValue, newValue }); // Debug log
+  // Only update if the value actually changes and it's not the initial load
+  if (newValue !== oldValue) {
     updateShadowWarData();
   }
-};
+});
 
 const updateShadowWarData = async () => {
+  console.log('updateShadowWarData called with enemyClan:', enemyClan.value); // Debug log
   const battleData = JSON.parse(JSON.stringify(battleCategories.value));
   const formData = {
     enemyClan: enemyClan.value,
@@ -120,14 +119,16 @@ const handleClanCreated = async () => {
 </script>
 
 <template>
-  <div>
+  <div class="create-shadow-war-form">
     <div class="clan-selector-container">
-      <label for="enemyClan">Clan Enemigo:</label>
-        <select id="enemyClan" v-model="enemyClan" @change="handleEnemyClanChange" required>
-          <option value="__CREATE_NEW_CLAN__">Crear Clan</option>
-          <option value="">Clan no definido</option>
-          <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
-        </select>
+      <div class="clan-selection-area">
+        <SearchSelector v-model="enemyClan" :options="clans" label="Clan Enemigo:"
+          placeholder="Buscar o seleccionar clan" @select="updateShadowWarData" />
+
+        <div class="action-buttons">
+          <button type="button" @click="showCreateClanModal = true" class="btn-create-clan">Crear Nuevo Clan</button>
+        </div>
+      </div>
     </div>
 
     <CreateClanModal v-if="showCreateClanModal" @close="showCreateClanModal = false" @clanCreated="handleClanCreated" />
