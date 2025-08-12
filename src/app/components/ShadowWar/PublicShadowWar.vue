@@ -41,19 +41,21 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>
             <div v-else>
-              <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
-                <h4>Match {{ matchIndex + 1 }}</h4>
-                <div class="match-groups">
-                  <div class="group">
-                    <h5>Grupo 1</h5>
-                    <div class="member-cards-grid">
-                      <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
+              <div class="matches-row-container">
+                <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
+                  <h4>Match {{ matchIndex + 1 }}</h4>
+                  <div class="match-groups">
+                    <div class="group">
+                      <h5>Grupo 1</h5>
+                      <div class="member-cards-grid">
+                        <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
+                      </div>
                     </div>
-                  </div>
-                  <div class="group">
-                    <h5>Grupo 2</h5>
-                    <div class="member-cards-grid">
-                      <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+                    <div class="group">
+                      <h5>Grupo 2</h5>
+                      <div class="member-cards-grid">
+                        <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+                      </div>
                     </div>
                   </div>
                 </div>

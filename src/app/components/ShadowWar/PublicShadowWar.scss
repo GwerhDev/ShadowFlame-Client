@@ -38,6 +38,18 @@
   }
 }
 
+.matches-row-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Add some space between matches */
+  overflow-x: auto; /* Enable horizontal scrolling if matches exceed screen width */
+  padding-bottom: 1rem; /* Add some padding for scrollbar */
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack matches vertically on smaller screens */
+  }
+}
+
 .match {
   display: flex;
   flex-direction: column;
