@@ -1,6 +1,8 @@
 .ul-container {
   padding: 1.1rem;
+  min-height: 100%;
   display: flex;
+  position: relative;
   flex-direction: column;
 
   ul {

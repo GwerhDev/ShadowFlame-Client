@@ -8,11 +8,11 @@ import { classes } from '../../../../middlewares/misc/const';
 const emit = defineEmits(['close']);
 const store: any = useStore();
 
+const whatsapp = ref('');
 const battletag = ref('');
 const character = ref('');
 const resonance = ref(0);
 const selectedClass = ref('');
-const whatsapp = ref('');
 
 const isCharacterEmpty = computed(() => character.value.trim() === '');
 
