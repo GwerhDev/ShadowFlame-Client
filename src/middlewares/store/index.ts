@@ -5,40 +5,37 @@ import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
 
 export const useStore = defineStore('store', {
-  state: () => {
-    return {
-      currentUser: {
-        logged: false,
-        userData: null,
-        task: null,
-        taskdate: null,
-        tasktype: '',
-        taskloading: false,
-        guidetype: 'chatbot',
-        chatbotmodel: '',
-        publicNextBattleTab: 'exalted',
-        shadowWarData: null, // New state property
-        shadowWarError: null, // New state property
-      },
+  state: (): storeState => ({
+    currentUser: {
+      logged: false,
+      userData: null,
+      task: null,
+      taskdate: null,
+      tasktype: '',
+      taskloading: false,
+      guidetype: 'chatbot',
+      chatbotmodel: '',
+      shadowWarData: null,
+      shadowWarError: null,
+    },
 
-      layout: {
-        tab: '',
-      },
+    layout: {
+      tab: '',
+    },
 
-      admin: {
-        users: null,
-        tasks: null,
-        clantasks: null,
-        warbandtasks: null,
-        notifications: null,
-        members: null,
-      },
+    admin: {
+      users: null,
+      tasks: null,
+      clantasks: null,
+      warbandtasks: null,
+      notifications: null,
+      members: null,
+    },
 
-      userToken: '',
-      currentCharacter: null,
-      warbands: null,
-    } as storeState;
-  },
+    userToken: '',
+    currentCharacter: null,
+    warbands: null,
+  }),
 
   actions: {
     logout() {
@@ -52,10 +49,9 @@ export const useStore = defineStore('store', {
         taskloading: false,
         guidetype: 'chatbot',
         chatbotmodel: '',
-        publicNextBattleTab: 'exalted',
         shadowWarData: null,
         shadowWarError: null,
-      };
+      } as storeState['currentUser'];
       this.layout = {
         tab: '',
       };
@@ -86,10 +82,6 @@ export const useStore = defineStore('store', {
 
     setGuideType(type: string) {
       this.currentUser.guidetype = type;
-    },
-
-    setPublicNextBattleTab(tab: string) {
-      this.currentUser.publicNextBattleTab = tab;
     },
 
     setTab(tab: string) {

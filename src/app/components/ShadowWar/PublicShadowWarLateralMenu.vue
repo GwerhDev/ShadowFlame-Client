@@ -8,11 +8,11 @@ const store: any = useStore();
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
 async function handleType(type: string) {
-  store.setPublicNextBattleTab(type);
+  store.setTab(type);
 };
 
 function styleActive(type: string) {
-  if (store.currentUser.publicNextBattleTab == type) {
+  if (store.layout.tab == type) {
     return active.value;
   }
 };

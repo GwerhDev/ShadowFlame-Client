@@ -8,7 +8,6 @@ export interface storeState {
     taskloading: boolean,
     guidetype: string,
     chatbotmodel: string,
-    publicNextBattleTab: string;
     shadowWarData: any;
     shadowWarError: string | null;
   },

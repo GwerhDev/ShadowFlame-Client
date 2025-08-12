@@ -19,7 +19,7 @@ function handleType(type: string) {
 };
 
 function styleActive(type: string) {
-  if (store.layout.tab == type) {
+  if ((store.layout.tab as string) == type) {
     return active.value;
   }
 };
