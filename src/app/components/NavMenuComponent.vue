@@ -19,7 +19,7 @@ function handleClick() {
         <li class="nav-button">Inicio</li>
       </router-link>
 
-      <router-link class="router-li" to='/shadow-war/next-battle' @click="handleClick">
+      <router-link class="router-li" to='/shadow-war' @click="handleClick">
         <li class="nav-button">PvP</li>
       </router-link>
 

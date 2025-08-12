@@ -66,4 +66,4 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
   </div>
 </template>
 
-<style scoped lang="scss" src="./PublicNextBattle.scss" />
+<style scoped lang="scss" src="./PublicShadowWar.scss" />

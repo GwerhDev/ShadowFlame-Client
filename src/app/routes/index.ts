@@ -17,14 +17,14 @@ import ShadowWarPage from '../pages/admin/ShadowWarPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
 import RequirementsPage from '../pages/RequirementsPage.vue';
 import UserManagementPage from '../pages/admin/UserManagementPage.vue';
+import PublicShadowWarPage from '../pages/PublicShadowWarPage.vue';
 import MemberManagementPage from '../pages/admin/MemberManagementPage.vue';
-import PublicNextBattlePage from '../pages/PublicNextBattlePage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/shadow-war/next-battle',
-    name: 'PublicNextBattlePage',
-    component: PublicNextBattlePage
+    path: '/shadow-war',
+    name: 'PublicShadowWarPage',
+    component: PublicShadowWarPage
   },
   {
     path: '/dashboard',

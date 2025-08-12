@@ -3,7 +3,7 @@
 import { onMounted } from 'vue';
 import { useStore } from '../../../middlewares/store';
 import ShadowWarLateralMenu from './PublicShadowWarLateralMenu.vue';
-import PublicNextBattle from './PublicNextBattle.vue';
+import PublicShadowWar from './PublicShadowWar.vue';
 import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 
 const store: any = useStore();
@@ -26,7 +26,7 @@ onMounted(() => {
           <ShadowWarLateralMenu :logged="store.currentUser.logged" />
         </section>
         <section class="content-section">
-          <PublicNextBattle />
+          <PublicShadowWar />
         </section>
       </div>
     </div>
