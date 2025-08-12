@@ -5,12 +5,6 @@ import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
 import { useStore } from '../../../middlewares/store';
 
 const store: any = useStore();
-
-// This line will make TypeScript happy by "using" the imported component
-PublicShadowWarMemberCard;
-
-
-// Access store properties directly
 const activeCategory = computed(() => store.currentUser.publicNextBattleTab);
 const shadowWarData = computed(() => store.currentUser.shadowWarData);
 const error = computed(() => store.currentUser.shadowWarError);
