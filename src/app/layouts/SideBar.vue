@@ -5,10 +5,12 @@ import { useStore, AppStore } from '../../middlewares/store';
 
 defineProps({
   logged: Boolean,
-  tabs: {
-    type: Array,
-    required: true
-  },
+  tabs: Array as () => Array<{
+    id: string;
+    name: string;
+    icon: string;
+    length?: number;
+  }>,
 });
 
 const store: AppStore = useStore();

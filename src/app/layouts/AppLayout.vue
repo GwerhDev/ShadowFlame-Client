@@ -12,10 +12,12 @@ defineProps({
     type: Boolean,
     required: true
   },
-  sidebarTabs: {
-    type: Array,
-    required: true
-  },
+  sidebarTabs: Array as () => Array<{
+    id: string;
+    name: string;
+    icon: string;
+    length?: number;
+  }>,
   title: {
     type: String,
     required: true
