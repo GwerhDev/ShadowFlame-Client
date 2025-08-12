@@ -47,19 +47,28 @@ select {
   display: grid;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .red-bg {
   background-color: var(--color-red-action);
 }
 
-.status-container {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
+.status-image {
+  padding: 0;
+  position: relative;
+
+  img {
+    padding: 0;
+  }
 
   .status {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
     width: 10px;
     height: 10px;
     border-radius: 100%;

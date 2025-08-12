@@ -33,7 +33,7 @@ function handleDashboardButton() {
   router.push('/dashboard');
 };
 
-const navItems = ['#', 'nombre', 'rol', 'estado', 'acciones'];
+const navItems = ['estado', 'nombre', 'rol', 'acciones'];
 
 </script>
 
@@ -55,10 +55,8 @@ const navItems = ['#', 'nombre', 'rol', 'estado', 'acciones'];
         <div class="skeleton-box skeleton-header-item"></div>
         <div class="skeleton-box skeleton-header-item"></div>
         <div class="skeleton-box skeleton-header-item"></div>
-        <div class="skeleton-box skeleton-header-item"></div>
       </div>
       <div class="skeleton-table-row" v-for="n in 5" :key="n">
-        <div class="skeleton-box skeleton-cell"></div>
         <div class="skeleton-box skeleton-cell"></div>
         <div class="skeleton-box skeleton-cell"></div>
         <div class="skeleton-box skeleton-cell"></div>

@@ -73,7 +73,11 @@ function styleStatus(status: string) {
 <template>
   <div class="list-container" v-if="editionActive && !deleteActive">
     <span>
-      <img src="../../../../assets/svg/profile-icon.svg" alt="">
+      <select :value="user.status" @change="handleStatus">
+        <option value="active">active</option>
+        <option value="pending">pending</option>
+        <option value="inactive">inactive</option>
+      </select>
     </span>
     <span>
       <p>{{ user.battletag }}</p>
@@ -84,13 +88,6 @@ function styleStatus(status: string) {
         <option value="leader">leader</option>
         <option value="official">official</option>
         <option value="member">member</option>
-      </select>
-    </span>
-    <span>
-      <select :value="user.status" @change="handleStatus">
-        <option value="active">active</option>
-        <option value="pending">pending</option>
-        <option value="inactive">inactive</option>
       </select>
     </span>
     <span>
@@ -105,8 +102,11 @@ function styleStatus(status: string) {
     </span>
   </div>
   <div class="list-container red-bg" v-if="!editionActive && deleteActive">
-    <span>
-      <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    <span class="status-container">
+      <div class="status-image">
+        <img src="../../../../assets/svg/profile-icon.svg" alt="">
+        <span class="status" :style="styleStatus(user.status)"></span>
+      </div>
     </span>
     <span>
       <p>{{ user.battletag }}</p>
@@ -114,9 +114,7 @@ function styleStatus(status: string) {
     <span>
       <p>{{ user.role }}</p>
     </span>
-    <span>
-      <p>{{ user.status }}</p>
-    </span>
+
     <span>
       <ul class="buttons-container">
         <button @click="handleDeleteUser(user._id)">
@@ -129,17 +127,17 @@ function styleStatus(status: string) {
     </span>
   </div>
   <div class="list-container" v-if="!editionActive && !deleteActive">
-    <span>
-      <img src="../../../../assets/svg/profile-icon.svg" alt="">
+    <span class="status-container">
+      <div class="status-image">
+        <img src="../../../../assets/svg/profile-icon.svg" alt="">
+        <span class="status" :style="styleStatus(user.status)"></span>
+      </div>
     </span>
     <span>
       <p>{{ user.battletag }}</p>
     </span>
     <span>
       <p>{{ user.role }}</p>
-    </span>
-    <span>
-      <p class="status-container"><span class="status" :style="styleStatus(user.status)"></span></p>
     </span>
     <span>
       <ul class="buttons-container">
