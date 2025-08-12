@@ -17,13 +17,17 @@ onMounted(() => {
 });
 
 watch(() => store.currentUser.logged, async (isLoggedIn) => {
-  if (isLoggedIn && !store.admin.members) { // Only fetch if logged in and members data is not already present
-    loading.value = true; // Set loading to true before fetching
-    await store.handleGetMembers();
+  if (isLoggedIn) {
+    // Always set loading to true when we start fetching or re-evaluating data
+    loading.value = true;
+    // Only fetch if members data is not already present or if it's explicitly null/undefined
+    if (!store.admin.members) {
+      await store.handleGetMembers();
+    }
     loading.value = false; // Set loading to false after data is processed
-  } else if (!isLoggedIn) {
-    // Optionally reset data or handle logout state
-    store.admin.members = null; // Clear members data on logout
+  } else {
+    // If not logged in, clear data and set loading to false
+    store.admin.members = null;
     loading.value = false;
   }
 }, { immediate: true }); // immediate: true to run the watcher immediately on component setup
