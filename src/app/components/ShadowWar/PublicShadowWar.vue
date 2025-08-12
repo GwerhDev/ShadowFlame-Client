@@ -3,12 +3,17 @@ import { computed } from 'vue';
 import * as ShadowWarInterfaces from '../../../interfaces/shadowWar';
 import PublicShadowWarMemberCard from './PublicShadowWarMemberCard.vue';
 import { useStore } from '../../../middlewares/store';
+import MemberCardSkeleton from '../common/MemberCardSkeleton.vue';
 
 const store: any = useStore();
 
 const props = defineProps({
   activeTab: {
     type: String,
+    required: true
+  },
+  loading: {
+    type: Boolean,
     required: true
   }
 });
@@ -34,6 +39,8 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       <pre>{{ error }}</pre>
     </div>
 
+    
+
     <div v-if="shadowWarData && shadowWarData.battle" class="main-content-wrapper">
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
@@ -50,13 +57,23 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
                     <div class="group">
                       <h5>Grupo 1</h5>
                       <div class="member-cards-grid">
-                        <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
+                        <template v-if="loading">
+                          <MemberCardSkeleton />
+                        </template>
+                        <template v-else>
+                          <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
+                        </template>
                       </div>
                     </div>
                     <div class="group">
                       <h5>Grupo 2</h5>
                       <div class="member-cards-grid">
-                        <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+                        <template v-if="loading">
+                          <MemberCardSkeleton />
+                        </template>
+                        <template v-else>
+                          <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+                        </template>
                       </div>
                     </div>
                   </div>

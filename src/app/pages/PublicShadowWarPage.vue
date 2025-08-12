@@ -53,6 +53,14 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
     enemyClanName.value = '';
   }
 }, { immediate: true });
+
+watch(() => store.layout.tab, async (newTab) => {
+  if (newTab) {
+    loading.value = true;
+    await store.handleGetNextShadowWar();
+    loading.value = false;
+  }
+});
 </script>
 
 <template>
@@ -64,7 +72,7 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
           Enfrentaremos al Clan:
         <h4>{{ enemyClanName }}</h4>
         </p>
-        <PublicShadowWar :active-tab="store.layout.tab" />
+        <PublicShadowWar :active-tab="store.layout.tab" :loading="loading" />
       </AppLayout>
     </div>
   </main>
