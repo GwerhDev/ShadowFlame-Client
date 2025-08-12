@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import PublicShadowWarComponent from '../components/ShadowWar/PublicShadowWarComponent.vue';
+import AppLayout from '../layouts/AppLayout.vue';
 </script>
 
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <PublicShadowWarComponent />
+      <AppLayout />
     </div>
   </main>
 </template>
