@@ -24,7 +24,7 @@ onMounted(async () => {
     } else {
       enemyClanName.value = 'aun no está definido';
     }
-  loading.value = false; // Set loading to false after data is processed
+    loading.value = false; // Set loading to false after data is processed
   } else {
     // If shadowWarData is not available, still set loading to false
     // but perhaps display a message or handle the empty state
@@ -56,20 +56,20 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
 <template>
   <div class="container-sw-page">
     <div class="sw-container">
-      <span class="mb-3 mt-1">
-        <img :src="diabloIcon" alt="icon" />
-        <h1>Guerra Sombría</h1>
-      </span>
-      <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
-        Enfrentaremos al Clan:
-      <h4>{{ enemyClanName }}</h4>
-      </p>
-
       <div v-if="!loading" class="section-container">
         <section class="menu-section">
+          <img :src="diabloIcon" alt="icon" />
           <ShadowWarLateralMenu :logged="store.currentUser.logged" />
         </section>
         <section class="content-section">
+          <span class="mb-3 mt-1">
+            <img :src="diabloIcon" alt="icon" />
+            <h1>Guerra Sombría</h1>
+          </span>
+          <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
+            Enfrentaremos al Clan:
+          <h4>{{ enemyClanName }}</h4>
+          </p>
           <PublicShadowWar />
         </section>
       </div>

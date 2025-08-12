@@ -5,7 +5,7 @@ import AddCharacterModal from '../components/Settings/AddCharacterModal.vue';
 </script>
 
 <template>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <div class="div-container">
       <GuidesComponent />
       <AddCharacterModal />

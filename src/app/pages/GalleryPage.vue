@@ -10,7 +10,7 @@ import AlbumList from '../components/Album/AlbumList.vue';
       <TitleComponent :title="'Galería'" />
     </div>
   </div>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <AlbumList />
   </main>
 </template>

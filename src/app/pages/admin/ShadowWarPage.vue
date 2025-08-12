@@ -3,7 +3,7 @@ import ShadowWarComponent from '../../components/admin/ShadowWar/ShadowWarCompon
 </script>
 
 <template>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <div class="div-container">
       <ShadowWarComponent />
     </div>

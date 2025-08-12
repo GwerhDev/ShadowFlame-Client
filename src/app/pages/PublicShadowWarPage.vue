@@ -3,7 +3,7 @@ import PublicShadowWarComponent from '../components/ShadowWar/PublicShadowWarCom
 </script>
 
 <template>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <div class="div-container">
       <PublicShadowWarComponent />
     </div>
@@ -12,18 +12,17 @@ import PublicShadowWarComponent from '../components/ShadowWar/PublicShadowWarCom
 
 <style scoped>
 .div-container {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  height: 100%;
+  padding: 1rem;
+  padding-top: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 }
 
  @media (max-width: 1100px) {
   .div-container {
     padding: 0;
-    padding-top: 2rem;
   }
 }
 </style>

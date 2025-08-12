@@ -5,7 +5,7 @@ import SettingsComponent from '../../components/Settings/SettingsComponent.vue';
 </script>
 
 <template>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <div class="div-container">
       <SettingsComponent />
       <AddCharacterModal />

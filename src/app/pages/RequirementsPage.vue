@@ -4,7 +4,7 @@ import RequirementsComponent from '../components/Requirements/RequirementsCompon
 </script>
 
 <template>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <div class="div-container">
       <RequirementsComponent />
     </div>

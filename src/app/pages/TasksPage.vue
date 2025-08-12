@@ -4,7 +4,7 @@ import TasksComponent from '../components/Tasks/TasksComponent.vue';
 </script>
 
 <template>
-  <main class="main-container red-shadow-fx">
+  <main class="red-shadow-fx">
     <div class="div-container">
       <TasksComponent />
       <AddCharacterModal />

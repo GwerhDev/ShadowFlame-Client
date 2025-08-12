@@ -3,7 +3,7 @@ import Auth from "../components/AuthComponent.vue";
 </script>
 
 <template>
-  <main class="main-container">
+  <main>
     <div class="container">
       <Suspense>
         <Auth />

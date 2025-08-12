@@ -1,10 +1,9 @@
 .container-lateral {
   margin: 0;
-  padding: 0;
-  padding-inline: 1rem;
+  height: 100%;
+  padding: 1rem;
   display: flex;
   justify-content: flex-start;
-  flex-direction: column-reverse;
 
   ul {
     padding: 0;
