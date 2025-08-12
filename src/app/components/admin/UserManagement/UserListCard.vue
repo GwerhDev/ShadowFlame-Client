@@ -11,9 +11,7 @@ const deleteActive: any = ref(false);
 
 defineProps(['user']);
 
-onMounted(async () => {
-  await store.handleGetUsers();
-});
+
 
 function handleEdit() {
   editionActive.value = true;
