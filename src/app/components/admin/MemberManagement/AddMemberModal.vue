@@ -13,6 +13,25 @@ const battletag = ref('');
 const character = ref('');
 const resonance = ref(0);
 const selectedClass = ref('');
+const sliderContainer = ref<HTMLElement | null>(null);
+
+function scrollLeft() {
+  if (sliderContainer.value) {
+    sliderContainer.value.scrollBy({
+      left: -200, // Scroll by 200px to the left
+      behavior: 'smooth'
+    });
+  }
+}
+
+function scrollRight() {
+  if (sliderContainer.value) {
+    sliderContainer.value.scrollBy({
+      left: 200, // Scroll by 200px to the right
+      behavior: 'smooth'
+    });
+  }
+}
 
 const isCharacterEmpty = computed(() => character.value.trim() === '');
 
@@ -66,12 +85,16 @@ function handleSubmit() {
               </span>
               <span class="d-flex col g-1">
                 <label>Clase:</label>
-                <div class="class-selection d-flex row g-1">
-                  <button type="button" v-for="cls in classes" :key="cls.value" @click="handleClassSelection(cls.value)"
-                    :class="{ 'selected-class': selectedClass === cls.value }">
-                    <img :src="cls.image" :alt="cls.name" width="50" height="50">
-                    <span>{{ cls.name }}</span>
-                  </button>
+                <div class="class-selection-wrapper">
+                  <button type="button" class="slider-arrow left-arrow" @click="scrollLeft">&lt;</button>
+                  <div class="class-selection" ref="sliderContainer">
+                    <button type="button" v-for="cls in classes" :key="cls.value" @click="handleClassSelection(cls.value)"
+                      :class="{ 'selected-class': selectedClass === cls.value }">
+                      <img :src="cls.image" :alt="cls.name" width="50" height="50">
+                      <span>{{ cls.name }}</span>
+                    </button>
+                  </div>
+                  <button type="button" class="slider-arrow right-arrow" @click="scrollRight">&gt;</button>
                 </div>
               </span>
               <button type="submit" :disabled="isCharacterEmpty"
