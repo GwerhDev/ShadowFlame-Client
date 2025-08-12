@@ -1,29 +1,22 @@
 .container-modal-component {
-  position: absolute; // Changed from fixed to absolute to match AddMemberModal
   top: 0;
   left: 0;
-  width: 100%; // Changed from 100% to 100vw
-  height: 100%; // Changed from 100% to 100vh
-  z-index: 1000;
+  width: 100%;
+  height: 100%;
   display: flex;
+  position: absolute;
+  align-items: center; 
   justify-content: center;
-  backdrop-filter: blur(10px); // Added backdrop-filter
-  background-color: rgba(0, 0, 0, 0.47); // Adjusted background color
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.801);
+  z-index: 1000; 
+  
 
   .modal-container {
-    margin-top: 1rem; // Added margin-top
-    margin-bottom: 1rem; // Added margin-bottom
-    height: auto; // Adjusted height
-    min-height: 300px; // Adjusted min-height
-    display: flex;
-    flex-direction: column;
+    margin: 0;
     padding: 2rem;
     border-radius: 5px;
-    background-color: var(--color-secondary-bg); // Used CSS variable
-    max-width: 500px;
-    width: 90%;
-    overflow: auto;
-    color: white; // Ensure text color is white
+    background-color: var(--color-secondary-bg);
   }
 
   form {

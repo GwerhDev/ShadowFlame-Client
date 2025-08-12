@@ -47,7 +47,7 @@ const routes: RouteRecordRaw[] = [
     component: MemberManagementPage
   },
   {
-    path: '/dashboard/shadow-war/:id',
+    path: '/dashboard/shadow-war',
     name: 'ShadowWarPage',
     component: ShadowWarPage
   },

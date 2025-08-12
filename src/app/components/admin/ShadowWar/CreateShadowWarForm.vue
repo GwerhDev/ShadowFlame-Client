@@ -74,6 +74,17 @@ onMounted(async () => {
   }
 });
 
+const handleEnemyClanChange = async (event: Event) => {
+  const target = event.target as HTMLSelectElement;
+  if (target.value === '__CREATE_NEW_CLAN__') {
+    showCreateClanModal.value = true;
+    target.value = enemyClan.value; // Keep the previously selected clan in the dropdown
+  } else {
+    enemyClan.value = target.value;
+    updateShadowWarData();
+  }
+};
+
 const updateShadowWarData = async () => {
   const battleData = JSON.parse(JSON.stringify(battleCategories.value));
   const formData = {
@@ -112,11 +123,11 @@ const handleClanCreated = async () => {
   <div>
     <div class="clan-selector-container">
       <label for="enemyClan">Clan Enemigo:</label>
-        <select id="enemyClan" v-model="enemyClan" @change="updateShadowWarData" required>
+        <select id="enemyClan" v-model="enemyClan" @change="handleEnemyClanChange" required>
+          <option value="__CREATE_NEW_CLAN__">Crear Clan</option>
           <option value="">Clan no definido</option>
           <option v-for="clan in clans" :key="clan._id" :value="clan._id">{{ clan.name }}</option>
         </select>
-        <button type="button" @click="showCreateClanModal = true">Crear Clan</button>
     </div>
 
     <CreateClanModal v-if="showCreateClanModal" @close="showCreateClanModal = false" @clanCreated="handleClanCreated" />
