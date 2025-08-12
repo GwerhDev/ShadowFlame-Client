@@ -77,7 +77,11 @@ function handleDelete() {
       <input type="number" v-model.number="resonance">
     </span>
     <span>
-      <input type="text" v-model="memberClass">
+      <select v-model="memberClass">
+        <option v-for="cls in classes" :key="cls.value" :value="cls.value">
+          {{ cls.name }}
+        </option>
+      </select>
     </span>
     <span>
       <input type="text" v-model="whatsapp">
@@ -107,7 +111,9 @@ function handleDelete() {
       <p>{{ member.resonance }}</p>
     </span>
     <span>
-      <p>{{ member.class }}</p>
+      <ul class="class-container">
+        <img :src="classes.find(cls => cls.value === member.class)?.image" alt="" width="30">
+      </ul>
     </span>
     <span>
       <a :href="'https://wa.me/' + formattedWhatsapp" target="_blank">
