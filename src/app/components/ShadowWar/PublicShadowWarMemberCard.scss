@@ -82,7 +82,7 @@
     cursor: default;
 
     &:hover {
-      background-color: none;
+      background-color: var(--element-color-primary);
     }
 
     span:first-child {
