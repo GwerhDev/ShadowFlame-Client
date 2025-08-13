@@ -1,7 +1,6 @@
 <style scoped lang="scss" src="./NavMenuComponent.scss" />
 <script setup lang="ts">
 import { $d } from '../../functions';
-import DashboardButton from './admin/DashboardButton.vue';
 
 function handleClick() {
   $d('#nav-menu-mobile').style.display = 'none';
@@ -34,10 +33,6 @@ function handleClick() {
       <router-link class="router-li" to='/requirements' @click="handleClick">
         <li class="nav-button">Requisitos</li>
       </router-link>
-
-      <span class="dashboard-container" @click="handleClick">
-        <DashboardButton />
-      </span>
     </ul>
   </span>
 </template>

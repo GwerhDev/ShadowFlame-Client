@@ -19,13 +19,13 @@ const store: any = useStore();
       </router-link>
       <router-link to="/dashboard/member-management">
         <li
-          v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
+          v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'officer'">
           Miembros
         </li>
       </router-link>
       <router-link to="/dashboard/shadow-war">
         <li
-          v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'official'">
+          v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'officer'">
           Guerra Sombría
         </li>
       </router-link>

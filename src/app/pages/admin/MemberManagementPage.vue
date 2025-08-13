@@ -18,7 +18,7 @@ import MemberManagement from '../../components/admin/MemberManagement/MemberMana
 
 @media (max-width: 1100px) {
   .container {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 }
 

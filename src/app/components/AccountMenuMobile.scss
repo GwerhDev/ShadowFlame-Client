@@ -40,6 +40,13 @@
   padding: .7rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  gap: 1rem;
+
+  ul {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 span {

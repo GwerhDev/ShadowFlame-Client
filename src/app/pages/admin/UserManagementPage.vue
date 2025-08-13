@@ -18,7 +18,7 @@ import UserManagement from '../../components/admin/UserManagement/UserManagement
 
 @media (max-width: 1100px) {
   .container {
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 }
 

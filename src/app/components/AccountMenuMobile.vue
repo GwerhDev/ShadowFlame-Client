@@ -1,9 +1,10 @@
-<style scoped lang="scss" src="./AccountMenuMobile.scss"/>
+<style scoped lang="scss" src="./AccountMenuMobile.scss" />
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { $d, $display } from '../../functions';
 import { useStore } from '../../middlewares/store';
 import { API_URL } from '../../middlewares/misc/const';
+import DashboardButton from './admin/DashboardButton.vue';
 
 const store: any = useStore();
 const router: any = useRouter();
@@ -52,7 +53,7 @@ function handleLogout() {
       <span class="user-data" v-if="store.currentUser?.userData">
         <p class="battletag">
           <span>{{ store.currentUser?.userData?.username }}</span>
-          #{{store.currentUser?.userData?.discriminator }}
+          #{{ store.currentUser?.userData?.discriminator }}
         </p>
         <p class="role">{{ store.currentUser?.userData?.role }}</p>
       </span>
@@ -67,17 +68,17 @@ function handleLogout() {
           <img src="../../assets/svg/edit-icon.svg" alt="">
           Registrarme
         </li>
-  
+
         <li @click="handleSettings" v-if="store.currentUser?.userData">
           <img src="../../assets/svg/settings-icon.svg" alt="">
           Ajustes de tu cuenta
         </li>
-  
+
         <li @click="handleLogout" v-if="store.currentUser?.userData">
           <img src="../../assets/svg/logout-icon.svg" alt="">
           Cerrar sesión
         </li>
-  
+
       </ul>
     </div>
     <div class="darker-menu inner-container">
@@ -86,6 +87,9 @@ function handleLogout() {
           <img src="../../assets/svg/support-icon.svg" alt="">
           Asistencia
         </li>
+        <span class="dashboard-container" @click="handleButton" v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'officer'">
+          <DashboardButton />
+        </span>
       </ul>
     </div>
   </div>

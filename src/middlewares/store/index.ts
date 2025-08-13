@@ -141,7 +141,7 @@ export const useStore = defineStore('store', {
     },
 
     async handleGetMembers() {
-      if (this.currentUser.userData?.role === "admin" || this.currentUser.userData?.role === "leader" || this.currentUser.userData?.role === "official") {
+      if (this.currentUser.userData?.role === "admin" || this.currentUser.userData?.role === "leader" || this.currentUser.userData?.role === "officer") {
         this.admin.members = await getMembers();
       }
     },
