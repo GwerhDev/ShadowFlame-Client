@@ -4,7 +4,6 @@ import { useStore } from '../../../../middlewares/store';
 import { onMounted, ref, watch } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import MemberListCard from './MemberListCard.vue';
-import router from '../../../routes';
 import AddMemberModal from './AddMemberModal.vue';
 
 const store: any = useStore();

@@ -20,7 +20,7 @@ const error: Ref<string | null> = ref(null);
   <div class="shadow-war-container">
     <span class="info-text">
       <h2>Próxima Batalla</h2>
-      <p>La próxima Guerra Sombría es el {{ nextWarDate }}h (hora del servidor).</p>
+      <p>La próxima Guerra Sombría es el {{ nextWarDate }} a las 19:30h (hora del servidor).</p>
 
       <div v-if="error">
         <p>Ha ocurrido un error:</p>
