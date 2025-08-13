@@ -91,6 +91,7 @@ function handleSubmit() {
                     <button type="button" v-for="cls in classes" :key="cls.value" @click="handleClassSelection(cls.value)"
                       :class="{ 'selected-class': selectedClass === cls.value }">
                       <img :src="cls.image" :alt="cls.name" width="50" height="50">
+                      <small>{{ cls.name  }}</small>
                     </button>
                   </div>
                   <button type="button" class="slider-arrow right-arrow" @click="scrollRight">&gt;</button>
