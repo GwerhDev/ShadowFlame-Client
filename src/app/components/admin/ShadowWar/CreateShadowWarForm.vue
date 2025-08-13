@@ -30,6 +30,13 @@ const currentSelectionContext = ref<{
 const confirmedMembers: Ref<Member[]> = ref([]); // New ref
 const showConfirmedMemberSelectionModal = ref(false); // New ref
 
+const battleCategoryTranslations: Record<string, string> = {
+  exalted: 'sublime',
+  eminent: 'eminente',
+  famed: 'célebre',
+  proud: 'imponente',
+};
+
 const battleCategories = ref<{
   exalted: Match[];
   eminent: Match[];
@@ -40,6 +47,10 @@ const battleCategories = ref<{
   eminent: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
   famed: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
   proud: Array(3).fill(null).map(() => ({ group1: { member: Array(4).fill(undefined) }, group2: { member: Array(4).fill(undefined) }, result: 'pending' })),
+});
+
+const translatedCategoryName = computed(() => (categoryName: string) => {
+  return battleCategoryTranslations[categoryName] || categoryName;
 });
 
 const assignedMemberIds = computed(() => {
@@ -191,12 +202,14 @@ const handleClanCreated = async () => {
       :initial-selected-member-ids="confirmedMemberIds" @close="showConfirmedMemberSelectionModal = false"
       @update-selection="handleConfirmedMembersUpdate" />
     <div v-for="(category, categoryName) in battleCategories" :key="categoryName">
-      <h4>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h4>
+      <h2>Batalla {{ translatedCategoryName(categoryName) }}</h2>
       <div v-for="(match, matchIndex) in category" :key="matchIndex">
-        <h5>Match {{ matchIndex + 1 }}</h5>
+        <h5>Pelea {{ matchIndex + 1 }}</h5>
         <div class="match-groups">
           <div class="group">
-            <label>Group 1</label>
+            <label>
+              <h5>Grupo 1</h5>
+            </label>
             <div class="member-cards-grid">
               <ShadowWarMemberCard v-for="n in 4" :key="n" :member="match.group1.member[n - 1]"
                 :show-unassign-button="!!match.group1.member[n - 1]"
@@ -205,7 +218,9 @@ const handleClanCreated = async () => {
             </div>
           </div>
           <div class="group">
-            <label>Group 2</label>
+            <label>
+              <h5>Grupo 2</h5>
+            </label>
             <div class="member-cards-grid">
               <ShadowWarMemberCard v-for="n in 4" :key="n" :member="match.group2.member[n - 1]"
                 :show-unassign-button="!!match.group2.member[n - 1]"

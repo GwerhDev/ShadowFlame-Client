@@ -45,14 +45,14 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
           <div v-if="activeCategory === String(categoryName)" class="category">
-            <h3>{{ store.layout.tab.label }}</h3>
+            <h3>Batalla {{ store.layout.tab.label }}</h3>
             <div v-if="category.length === 0">
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>
             <div v-else>
               <div class="matches-row-container">
                 <div v-for="(match, matchIndex) in category" :key="matchIndex" class="match">
-                  <h4>Match {{ matchIndex + 1 }}</h4>
+                  <h4>Pelea {{ matchIndex + 1 }}</h4>
                   <div class="match-groups">
                     <div class="group">
                       <h5>Grupo 1</h5>
