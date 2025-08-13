@@ -153,7 +153,7 @@ const handleClanCreated = async () => {
     </div>
 
     <CreateClanModal v-if="showCreateClanModal" @close="showCreateClanModal = false" @clanCreated="handleClanCreated" />
-    <MemberSelectionModal v-if="showMemberSelectionModal" :members="members" :assigned-member-ids="assignedMemberIds"
+    <MemberSelectionModal v-if="showMemberSelectionModal" :members="confirmedMembers" :assigned-member-ids="assignedMemberIds"
       @close="showMemberSelectionModal = false" @member-selected="handleMemberSelected" />
     <ConfirmedSelectionModal v-if="showConfirmedMemberSelectionModal" :members="members" :initial-selected-member-ids="confirmedMemberIds"
       @close="showConfirmedMemberSelectionModal = false" @update-selection="handleConfirmedMembersUpdate" />
