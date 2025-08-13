@@ -2,6 +2,7 @@
 import { PropType } from 'vue';
 import { Member } from '../../../../interfaces/shadowWar';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
+import CustomModal from '../../Modals/CustomModal.vue';
 
 const props = defineProps({
   members: {
@@ -30,18 +31,12 @@ const isAssigned = (memberId: string) => {
 </script>
 
 <template>
-  <div class="container-modal-component" @click.self="$emit('close')" style="display: flex;">
-    <div class="modal-container">
-      <div class="d-flex justify-content-between align-items-center">
-        <h2>Seleccionar Miembro</h2>
-      </div>
+  <CustomModal title="Seleccionar Miembro" @close="$emit('close')">
       <div class="member-selection-grid">
         <ShadowWarMemberCard v-for="member in members" :key="member._id" :member="member"
           @click="handleCardClick(member)" :class="{ 'is-assigned': isAssigned(member._id) }" />
       </div>
-      <button @click="$emit('close')" class="secondary-button">Cancelar</button>
-    </div>
-  </div>
+  </CustomModal>
 </template>
 
 <style scoped lang="scss" src="./MemberSelectionModal.scss" />

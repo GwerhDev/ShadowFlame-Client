@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { PropType, ref, watch } from 'vue';
 import { Member } from '../../../../interfaces/shadowWar';
-import ShadowWarMemberCard from './ShadowWarMemberCard.vue'; // This is an existing component, I will only use it, not modify it.
+import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
+import CustomModal from '../../Modals/CustomModal.vue';
 
 const props = defineProps({
   members: {
@@ -38,21 +39,15 @@ const isSelected = (memberId: string) => {
 </script>
 
 <template>
-  <div class="container-modal-component" @click.self="$emit('close')">
-    <div class="modal-container">
-      <div class="d-flex justify-content-between align-items-center">
-        <h2>Seleccionar Miembros Confirmados</h2>
+  <CustomModal title="Seleccionar Miembros Confirmados" @close="$emit('close')">
+    <div class="member-grid">
+      <div v-for="member in members" :key="member._id" class="member-card-wrapper"
+        :class="{ 'is-selected': isSelected(member._id) }" @click="handleCardClick(member)">
+        <ShadowWarMemberCard :member="member" />
+        <i v-if="isSelected(member._id)" class="fas fa-check-circle check-icon"></i>
       </div>
-      <div class="member-grid">
-        <div v-for="member in members" :key="member._id" class="member-card-wrapper"
-          :class="{ 'is-selected': isSelected(member._id) }" @click="handleCardClick(member)">
-          <ShadowWarMemberCard :member="member" />
-          <i v-if="isSelected(member._id)" class="fas fa-check-circle check-icon"></i>
-        </div>
-      </div>
-      <button @click="$emit('close')" class="secondary-button">Cerrar</button>
     </div>
-  </div>
+  </CustomModal>
 </template>
 
 <style scoped lang="scss" src="./ConfirmedSelectionModal.scss" />

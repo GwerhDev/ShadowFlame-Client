@@ -4,6 +4,7 @@ import { ref, computed } from 'vue';
 import { useStore } from '../../../../middlewares/store';
 import diabloIcon from "../../../../assets/svg/diablo-icon.svg";
 import { classes } from '../../../../middlewares/misc/const';
+import CustomModal from '../../Modals/CustomModal.vue';
 
 const emit = defineEmits(['close']);
 const store: any = useStore();
@@ -57,54 +58,43 @@ function handleSubmit() {
 </script>
 
 <template>
-  <div class="container-modal-component">
-    <div class="modal-container">
-      <span class="mb-3 mt-1">
-        <ul class="d-flex col g-1">
-          <span class="d-flex row align-items-center">
-            <img :src="diabloIcon" alt="icon" />
-            <h2>Agregar nuevo miembro</h2>
-          </span>
-          <form @submit.prevent="handleSubmit">
-            <ul class="d-flex col g-1">
-              <span class="d-flex g-1">
-                <label for="battletag">Battletag:</label>
-                <input type="text" id="battletag" v-model="battletag" required>
-              </span>
-              <span class="d-flex g-1">
-                <label for="character">Personaje:</label>
-                <input type="text" id="character" v-model="character" required>
-              </span>
-              <span class="d-flex g-1">
-                <label for="resonance">Resonancia:</label>
-                <input type="number" id="resonance" v-model.number="resonance" min="0">
-              </span>
-              <span class="d-flex g-1">
-                <label for="whatsapp">WhatsApp:</label>
-                <input type="text" id="whatsapp" v-model="whatsapp">
-              </span>
-              <span class="d-flex col g-1">
-                <label>Clase:</label>
-                <div class="class-selection-wrapper">
-                  <button type="button" class="slider-arrow left-arrow" @click="scrollLeft">&lt;</button>
-                  <div class="class-selection" ref="sliderContainer">
-                    <button type="button" v-for="cls in classes" :key="cls.value" @click="handleClassSelection(cls.value)"
-                      :class="{ 'selected-class': selectedClass === cls.value }">
-                      <img :src="cls.image" :alt="cls.name" width="50" height="50">
-                      <small>{{ cls.name  }}</small>
-                    </button>
-                  </div>
-                  <button type="button" class="slider-arrow right-arrow" @click="scrollRight">&gt;</button>
-                </div>
-              </span>
-              <button type="submit" :disabled="isCharacterEmpty"
-                class="submit-button button justify-content-center align-items-center d-flex g-1 w-100">Agregar
-                Miembro</button>
-              <button type="button" @click="handleCloseModal" class="secondary-button">Cancelar</button>
-            </ul>
-          </form>
-        </ul>
-      </span>
-    </div>
-  </div>
+  <CustomModal title="Agregar miembro" @close="$emit('close')">
+    <form @submit.prevent="handleSubmit">
+      <ul class="d-flex col g-1">
+        <span class="d-flex g-1">
+          <label for="battletag">Battletag:</label>
+          <input type="text" id="battletag" v-model="battletag" required>
+        </span>
+        <span class="d-flex g-1">
+          <label for="character">Personaje:</label>
+          <input type="text" id="character" v-model="character" required>
+        </span>
+        <span class="d-flex g-1">
+          <label for="resonance">Resonancia:</label>
+          <input type="number" id="resonance" v-model.number="resonance" min="0">
+        </span>
+        <span class="d-flex g-1">
+          <label for="whatsapp">WhatsApp:</label>
+          <input type="text" id="whatsapp" v-model="whatsapp">
+        </span>
+        <span class="d-flex col g-1">
+          <label>Clase:</label>
+          <div class="class-selection-wrapper">
+            <button type="button" class="slider-arrow left-arrow" @click="scrollLeft">&lt;</button>
+            <div class="class-selection" ref="sliderContainer">
+              <button type="button" v-for="cls in classes" :key="cls.value" @click="handleClassSelection(cls.value)"
+                :class="{ 'selected-class': selectedClass === cls.value }">
+                <img :src="cls.image" :alt="cls.name" width="50" height="50">
+                <small>{{ cls.name }}</small>
+              </button>
+            </div>
+            <button type="button" class="slider-arrow right-arrow" @click="scrollRight">&gt;</button>
+          </div>
+        </span>
+        <button type="submit" :disabled="isCharacterEmpty"
+          class="submit-button button justify-content-center align-items-center d-flex g-1 w-100">Agregar
+          Miembro</button>
+      </ul>
+    </form>
+  </CustomModal>
 </template>

@@ -1,38 +1,4 @@
-.container-modal-component {
-  // Renamed
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.47); // Matched MemberSelectionModal
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(10px); // Moved up
-  z-index: 99; // Matched MemberSelectionModal
-  padding-top: 3rem;
 
-  .modal-container {
-    // Renamed
-    background-color: var(--color-secondary-bg); // Matched
-    padding: 2rem; // Matched
-    border-radius: 5px; // Matched
-    width: 90%;
-    max-width: 600px; // Matched MemberSelectionModal
-    max-height: 80vh; // Keep this for scrollable content
-    overflow-y: auto; // Keep this for scrollable content
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Keep this if desired, not in other modals but good practice
-  }
-}
-
-
-h2 {
-  margin-top: 0;
-  margin-bottom: 1.5rem; // Matched MemberSelectionModal
-  color: var(--color-heading); // Assuming this is correct
-}
 
 .member-grid {
   display: grid;
@@ -44,16 +10,16 @@ h2 {
 .member-card-wrapper {
   position: relative;
   cursor: pointer;
-  border: 2px solid transparent; // Default border
+  border: 2px solid transparent;
   border-radius: 8px;
   transition: border-color 0.2s ease-in-out;
 
   &:hover {
-    border-color: #555; // Subtle hover effect
+    border-color: #555;
   }
 
   &.is-selected {
-    border-color: #28a745; // Green border when selected
+    border-color: #28a745;
   }
 }
 
@@ -61,7 +27,7 @@ h2 {
   position: absolute;
   top: 5px;
   right: 5px;
-  color: #28a745; // Green color for checkmark
+  color: #28a745;
   font-size: 1.5em;
   border-radius: 50%;
   padding: 2px;
@@ -69,7 +35,6 @@ h2 {
 }
 
 .secondary-button {
-  // Renamed and restyled to match
   background-color: white;
   color: black;
   border: none;
@@ -77,9 +42,9 @@ h2 {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 10px;
-  align-self: flex-end; // Align to the right
+  align-self: flex-end;
 
   &:hover {
-    background-color: #eee; // Lighter hover for white button
+    background-color: #eee;
   }
 }
