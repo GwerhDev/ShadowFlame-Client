@@ -19,7 +19,7 @@
           </p>
           <p>
             Queremos generar una <span class="featured-text">comunidad de jugadores</span> que nos acompañemos en el camino de fortalecimiento y
-            mejoramiento colectivo tanto en <span class="featured-text">PvE</span> como en <span class="featured-text">PvP</span>, <span class="featured-text">respetando compromisos</span> y generando <span class="featured-text">instancias de apoyo</span> dentro del juego.
+            mejoramiento colectivo tanto en <span class="featured-text">PvE</span> como en <span class="featured-text">Guerra Sombría</span>, <span class="featured-text">respetando compromisos</span> y generando <span class="featured-text">instancias de apoyo</span> dentro del juego.
           </p>
         </span>
       </div>

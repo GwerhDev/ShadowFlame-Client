@@ -19,7 +19,7 @@ function handleClick() {
       </router-link>
 
       <router-link class="router-li" to='/shadow-war' @click="handleClick">
-        <li class="nav-button">PvP</li>
+        <li class="nav-button">Guerra Sombría</li>
       </router-link>
 
       <router-link class="router-li" to='/tasks' @click="handleClick">
