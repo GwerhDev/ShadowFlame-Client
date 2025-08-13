@@ -46,7 +46,6 @@ const navItems = ['#', 'battletag', 'personaje', 'resonancia', 'clase', 'whatsap
 <template>
   <div class="ul-container">
     <span class="button-list">
-      <button @click="handleDashboardButton">Volver</button>
       <button @click="handleAddMember">Agregar miembro</button>
     </span>
     <ul v-if="!loading && store.admin.members">

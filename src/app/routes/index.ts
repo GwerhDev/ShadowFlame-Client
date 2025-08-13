@@ -13,12 +13,9 @@ import TasksPage from '../pages/TasksPage.vue';
 import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import SettingsPage from '../pages/user/SettingsPage.vue';
-import ShadowWarPage from '../pages/admin/ShadowWarPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
 import RequirementsPage from '../pages/RequirementsPage.vue';
-import UserManagementPage from '../pages/admin/UserManagementPage.vue';
 import PublicShadowWarPage from '../pages/PublicShadowWarPage.vue';
-import MemberManagementPage from '../pages/admin/MemberManagementPage.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -35,21 +32,6 @@ const routes: RouteRecordRaw[] = [
     path: '/requirements',
     name: 'RequirementsPage',
     component: RequirementsPage
-  },
-  {
-    path: '/dashboard/user-management',
-    name: 'UserManagementPage',
-    component: UserManagementPage
-  },
-  {
-    path: '/dashboard/member-management',
-    name: 'MemberManagementPage',
-    component: MemberManagementPage
-  },
-  {
-    path: '/dashboard/shadow-war',
-    name: 'ShadowWarPage',
-    component: ShadowWarPage
   },
   {
     path: '/u/settings',
