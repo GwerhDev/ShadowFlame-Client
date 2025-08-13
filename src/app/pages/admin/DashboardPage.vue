@@ -85,14 +85,13 @@ watch(() => store.layout.tab, async (newTab) => {
       </AppLayout>
     </div>
   </main>
-  <div class="div-container">
+  <div v-else class="div-container">
     <DeniedAccess />
   </div>
 </template>
 
 <style scoped>
 .div-container {
-  width: 100vw;
   height: 100%;
   padding: 1rem;
   padding-top: 7rem;
