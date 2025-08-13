@@ -128,7 +128,49 @@ const openConfirmedMembersSelection = () => {
 const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
   console.log('handleConfirmedMembersUpdate called with:', selectedMemberIds);
   console.log('Current members.value:', members.value);
+
+  const oldConfirmedMemberIds = new Set(confirmedMembers.value.map(member => member._id));
+
   confirmedMembers.value = members.value.filter(member => member && selectedMemberIds.includes(member._id));
+
+  const newConfirmedMemberIds = new Set(confirmedMembers.value.map(member => member._id));
+
+  // Identify members that were removed from the confirmed list
+  const removedMemberIds = [...oldConfirmedMemberIds].filter(id => !newConfirmedMemberIds.has(id));
+
+  console.log('Members removed from confirmed list:', removedMemberIds);
+
+  // Unassign removed members from battle groups
+  if (removedMemberIds.length > 0) {
+    for (const categoryName in battleCategories.value) {
+      // Ensure categoryName is a valid key
+      if (Object.prototype.hasOwnProperty.call(battleCategories.value, categoryName)) {
+        const category = battleCategories.value[categoryName as keyof typeof battleCategories.value];
+        for (let matchIndex = 0; matchIndex < category.length; matchIndex++) {
+          const match = category[matchIndex];
+
+          // Check group1
+          for (let memberIndex = 0; memberIndex < match.group1.member.length; memberIndex++) {
+            const member = match.group1.member[memberIndex];
+            if (member && removedMemberIds.includes(member._id)) {
+              match.group1.member[memberIndex] = undefined;
+              console.log(`Unassigned member ${member.battletag} from ${categoryName} group1 match ${matchIndex + 1}`);
+            }
+          }
+
+          // Check group2
+          for (let memberIndex = 0; memberIndex < match.group2.member.length; memberIndex++) {
+            const member = match.group2.member[memberIndex];
+            if (member && removedMemberIds.includes(member._id)) {
+              match.group2.member[memberIndex] = undefined;
+              console.log(`Unassigned member ${member.battletag} from ${categoryName} group2 match ${matchIndex + 1}`);
+            }
+          }
+        }
+      }
+    }
+  }
+
   console.log('Confirmed members after filter:', confirmedMembers.value);
   updateShadowWarData();
 };
