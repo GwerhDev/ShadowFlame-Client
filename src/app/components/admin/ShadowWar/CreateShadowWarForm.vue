@@ -90,16 +90,13 @@ onMounted(async () => {
 
 
 const updateShadowWarData = async () => {
-  console.log('updateShadowWarData called.');
   const battleData = JSON.parse(JSON.stringify(battleCategories.value));
   const formData = {
     enemyClan: enemyClan.value,
     battle: battleData,
     confirmed: confirmedMembers.value.filter(member => member && member._id).map(member => member._id), // Include confirmed members
   };
-  console.log('Sending formData:', formData);
   await updateShadowWar(props.shadowWarId, formData);
-  console.log('updateShadowWar completed.');
 };
 
 const openMemberSelection = (categoryName: keyof typeof battleCategories.value, group: 'group1' | 'group2', matchIndex: number, memberIndex: number) => {
@@ -160,7 +157,6 @@ const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
     }
   }
 
-  console.log('Confirmed members after filter:', confirmedMembers.value);
   updateShadowWarData();
 };
 
