@@ -98,7 +98,7 @@ const inputValue = computed({
 
 <template>
   <div class="search-selector-container">
-    <label v-if="label">{{ label }}</label>
+    <label v-if="label"><h3>{{ label }}</h3></label>
     <div class="input-wrapper">
       <input
         type="text"

@@ -82,8 +82,7 @@ watch(() => store.layout.tab, async (newTab) => {
 
 <style scoped>
 .div-container {
-  height: 100%;
-  padding: rem;
+  padding: 1rem;
   padding-top: 7rem;
   display: flex;
   align-items: center;

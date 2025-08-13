@@ -3,22 +3,26 @@ import DashboardComponent from '../../components/admin/DashboardComponent.vue';
 </script>
 
 <template>
-  <div class="container">
-    <DashboardComponent />
-  </div>
+  <main class="red-shadow-fx">
+    <div class="div-container">
+      <DashboardComponent />
+    </div>
+  </main>
 </template>
 
 <style scoped>
-.container {
-  width: 100vw;
-  margin-top: 5rem;
-  padding: 0;
+.div-container {
+  width: 100%;
+  padding-top: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 1100px) {
-  .container {
-    margin-top: 2rem;
-  }
+.info-text {
+  display: flex;
+  justify-content: center;
+  padding-inline: 1rem;
 }
 
 </style>
