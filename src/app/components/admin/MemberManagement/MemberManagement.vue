@@ -31,10 +31,6 @@ watch(() => store.currentUser.logged, async (isLoggedIn) => {
   }
 }, { immediate: true }); // immediate: true to run the watcher immediately on component setup
 
-function handleDashboardButton() {
-  router.push('/dashboard');
-};
-
 function handleAddMember() {
   showModal.value = true;
 };

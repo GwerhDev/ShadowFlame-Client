@@ -4,7 +4,6 @@ import { useStore } from '../../../../middlewares/store';
 import { onMounted, ref, watch } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import UserListCard from './UserListCard.vue';
-import router from '../../../routes';
 
 const store: any = useStore();
 const loading = ref(true); // New ref for loading state
@@ -29,9 +28,6 @@ watch(() => store.currentUser.logged, async (isLoggedIn) => {
   }
 }, { immediate: true }); // immediate: true to run the watcher immediately on component setup
 
-function handleDashboardButton() {
-  router.push('/dashboard');
-};
 
 const navItems = ['estado', 'nombre', 'rol', 'acciones'];
 
@@ -39,9 +35,6 @@ const navItems = ['estado', 'nombre', 'rol', 'acciones'];
 
 <template>
   <div class="ul-container">
-    <ul>
-      <button @click="handleDashboardButton">Volver</button>
-    </ul>
     <ul v-if="!loading && store.admin.users">
       <TableComponent :navItems="navItems">
         <li v-for="user in store.admin.users" :key="user._id">
