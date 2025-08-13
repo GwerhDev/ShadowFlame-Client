@@ -126,19 +126,10 @@ const openConfirmedMembersSelection = () => {
 };
 
 const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
-  console.log('handleConfirmedMembersUpdate called with:', selectedMemberIds);
-  console.log('Current members.value:', members.value);
-
   const oldConfirmedMemberIds = new Set(confirmedMembers.value.map(member => member._id));
-
   confirmedMembers.value = members.value.filter(member => member && selectedMemberIds.includes(member._id));
-
   const newConfirmedMemberIds = new Set(confirmedMembers.value.map(member => member._id));
-
-  // Identify members that were removed from the confirmed list
   const removedMemberIds = [...oldConfirmedMemberIds].filter(id => !newConfirmedMemberIds.has(id));
-
-  console.log('Members removed from confirmed list:', removedMemberIds);
 
   // Unassign removed members from battle groups
   if (removedMemberIds.length > 0) {
@@ -154,7 +145,6 @@ const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
             const member = match.group1.member[memberIndex];
             if (member && removedMemberIds.includes(member._id)) {
               match.group1.member[memberIndex] = undefined;
-              console.log(`Unassigned member ${member.battletag} from ${categoryName} group1 match ${matchIndex + 1}`);
             }
           }
 
@@ -163,7 +153,6 @@ const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
             const member = match.group2.member[memberIndex];
             if (member && removedMemberIds.includes(member._id)) {
               match.group2.member[memberIndex] = undefined;
-              console.log(`Unassigned member ${member.battletag} from ${categoryName} group2 match ${matchIndex + 1}`);
             }
           }
         }
@@ -187,23 +176,21 @@ const handleClanCreated = async () => {
       <div class="clan-selection-area">
         <SearchSelector v-model="enemyClan" :options="clans" label="Clan Enemigo:"
           placeholder="Buscar o seleccionar clan" @select="updateShadowWarData" />
-
         <div class="action-buttons">
-          <button type="button" @click="showCreateClanModal = true" class="btn-create-clan">Crear Nuevo Clan</button>
+          <button type="button" @click="showCreateClanModal = true" class="btn-create-clan">Crear nuevo Clan</button>
+          <button type="button" class="btn-confirmados" @click="openConfirmedMembersSelection">Nómina de Confirmados</button>
         </div>
+
       </div>
     </div>
 
     <CreateClanModal v-if="showCreateClanModal" @close="showCreateClanModal = false" @clanCreated="handleClanCreated" />
-    <MemberSelectionModal v-if="showMemberSelectionModal" :members="confirmedMembers" :assigned-member-ids="assignedMemberIds"
-      @close="showMemberSelectionModal = false" @member-selected="handleMemberSelected" />
-    <ConfirmedSelectionModal v-if="showConfirmedMemberSelectionModal" :members="members" :initial-selected-member-ids="confirmedMemberIds"
-      @close="showConfirmedMemberSelectionModal = false" @update-selection="handleConfirmedMembersUpdate" />
-
-    <div class="section-header">
-      <h3>Nómina de confirmados:</h3>
-      <button type="button" class="btn-confirmados" @click="openConfirmedMembersSelection">Abrir Nómina</button>
-    </div>
+    <MemberSelectionModal v-if="showMemberSelectionModal" :members="confirmedMembers"
+      :assigned-member-ids="assignedMemberIds" @close="showMemberSelectionModal = false"
+      @member-selected="handleMemberSelected" />
+    <ConfirmedSelectionModal v-if="showConfirmedMemberSelectionModal" :members="members"
+      :initial-selected-member-ids="confirmedMemberIds" @close="showConfirmedMemberSelectionModal = false"
+      @update-selection="handleConfirmedMembersUpdate" />
     <div v-for="(category, categoryName) in battleCategories" :key="categoryName">
       <h4>{{ categoryName.charAt(0).toUpperCase() + categoryName.slice(1) }}</h4>
       <div v-for="(match, matchIndex) in category" :key="matchIndex">
