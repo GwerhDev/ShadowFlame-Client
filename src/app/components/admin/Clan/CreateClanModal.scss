@@ -5,7 +5,7 @@
   height: 100%;
   display: flex;
   position: absolute;
-  align-items: center; 
+  padding-top: 3rem;
   justify-content: center;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.801);
@@ -13,7 +13,6 @@
   
 
   .modal-container {
-    margin: 0;
     padding: 2rem;
     border-radius: 5px;
     background-color: var(--color-secondary-bg);

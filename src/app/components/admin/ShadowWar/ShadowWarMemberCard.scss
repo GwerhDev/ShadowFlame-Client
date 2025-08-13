@@ -45,19 +45,28 @@
   }
 
   .member-info {
+    gap: 1rem;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
 
-    .class-image {
-      width: 40px;
-      height: 40px;
+    .class-details {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .class-image {
+        width: 40px;
+        height: 40px;
+      }
     }
 
     .member-details {
+      width: 100%;
       display: flex;
       flex-direction: column;
+      text-align: start;
 
       .character-name {
         font-weight: bold;

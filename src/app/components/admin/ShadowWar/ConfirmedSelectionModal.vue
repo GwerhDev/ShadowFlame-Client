@@ -50,7 +50,7 @@ const isSelected = (memberId: string) => {
           <i v-if="isSelected(member._id)" class="fas fa-check-circle check-icon"></i>
         </div>
       </div>
-      <button @click="$emit('close')" class="secondary-button">Cancelar</button>
+      <button @click="$emit('close')" class="secondary-button">Cerrar</button>
     </div>
   </div>
 </template>
