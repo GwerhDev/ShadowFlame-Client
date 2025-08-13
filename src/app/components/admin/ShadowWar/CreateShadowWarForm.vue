@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, Ref, computed, watch } from 'vue';
+import { ref, onMounted, Ref, computed } from 'vue';
 import { getShadowWarById, updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
 import CreateClanModal from '../../admin/Clan/CreateClanModal.vue';
