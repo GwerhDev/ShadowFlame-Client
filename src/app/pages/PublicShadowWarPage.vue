@@ -18,7 +18,7 @@ const sidebarTabs = [
 ];
 
 onMounted(async () => {
-  store.setTab('exalted');
+  store.setTab({ value: 'exalted', label: 'Sublime' });
   await store.handleGetNextShadowWar();
   if (store.currentUser.shadowWarData && store.currentUser.shadowWarData.date) {
     const warDate = new Date(store.currentUser.shadowWarData.date);
@@ -55,7 +55,7 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
 }, { immediate: true });
 
 watch(() => store.layout.tab, async (newTab) => {
-  if (newTab) {
+  if (newTab.value) {
     loading.value = true;
     await store.handleGetNextShadowWar();
     loading.value = false;
@@ -66,12 +66,12 @@ watch(() => store.layout.tab, async (newTab) => {
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.layout.tab"
+      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.layout.tab.value"
         title="Guerra Sombría">
         <span class="info-text">
           <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las {{ warTime }}h (hora del servidor)</i>.
             Enfrentaremos al Clan:
-          <h4>{{ enemyClanName }}</h4>
+          <h4 class="clan-name">{{ enemyClanName }}</h4>
           </p>
         </span>
         <PublicShadowWar :active-tab="store.layout.tab" :loading="loading" />
@@ -93,6 +93,10 @@ watch(() => store.layout.tab, async (newTab) => {
   display: flex;
   justify-content: center;
   padding-inline: 1rem;
+}
+
+.clan-name {
+  font-size: 2rem;
 }
 
 @media (max-width: 1100px) {

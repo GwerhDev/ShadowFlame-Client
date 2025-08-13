@@ -9,7 +9,7 @@ const store: any = useStore();
 
 const props = defineProps({
   activeTab: {
-    type: String,
+    type: Object as () => { value: string; label: string },
     required: true
   },
   loading: {
@@ -18,7 +18,7 @@ const props = defineProps({
   }
 });
 
-const activeCategory = computed(() => props.activeTab);
+const activeCategory = computed(() => props.activeTab.value);
 const shadowWarData = computed(() => store.currentUser.shadowWarData);
 const error = computed(() => store.currentUser.shadowWarError);
 
@@ -45,7 +45,7 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
           <div v-if="activeCategory === String(categoryName)" class="category">
-            <h3>{{ String(categoryName).charAt(0).toUpperCase() + String(categoryName).slice(1) }}</h3>
+            <h3>{{ store.layout.tab.label }}</h3>
             <div v-if="category.length === 0">
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>

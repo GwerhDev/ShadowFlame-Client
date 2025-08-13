@@ -20,7 +20,7 @@ export const useStore = defineStore('store', {
     },
 
     layout: {
-      tab: '',
+      tab: { value: '', label: '' },
     },
 
     admin: {
@@ -53,7 +53,7 @@ export const useStore = defineStore('store', {
         shadowWarError: null,
       } as storeState['currentUser'];
       this.layout = {
-        tab: '',
+        tab: { value: '', label: '' },
       };
       
       this.admin = {
@@ -84,7 +84,7 @@ export const useStore = defineStore('store', {
       this.currentUser.guidetype = type;
     },
 
-    setTab(tab: string) {
+    setTab(tab: { value: string; label: string }) {
       this.layout.tab = tab;
     },
 

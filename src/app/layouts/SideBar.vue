@@ -18,12 +18,12 @@ withDefaults(defineProps<{
 const store: AppStore = useStore();
 const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
 
-function handleType(type: string) {
-  store.setTab(type);
+function handleType(tab: { id: string; name: string; icon: string; length?: number; }) {
+  store.setTab({ value: tab.id, label: tab.name });
 };
 
 function styleActive(type: string) {
-  if ((store.layout.tab as string) == type) {
+  if (store.layout.tab.value == type) {
     return active.value;
   }
 };
@@ -37,7 +37,7 @@ function styleActive(type: string) {
         <button
           :title="tab.name"
           :class="{ 'first': index === 0, 'last': index === tabs.length - 1 }"
-          @click="handleType(tab.id)"
+          @click="handleType(tab)"
           :style="styleActive(tab.id)"
         >
           <i :class="tab.icon"></i>

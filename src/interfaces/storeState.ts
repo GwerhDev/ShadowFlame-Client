@@ -12,7 +12,7 @@ export interface storeState {
     shadowWarError: string | null;
   },
   layout: {
-    tab: string;
+    tab: { value: string; label: string; };
   },
   admin: {
     users: any,
