@@ -184,7 +184,6 @@ const handleClanCreated = async () => {
             <i class="fas fa-users"></i>Nómina de Confirmados
           </button>
         </div>
-
       </div>
     </div>
 

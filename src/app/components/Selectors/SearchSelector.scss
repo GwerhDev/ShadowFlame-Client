@@ -1,9 +1,12 @@
 .search-selector-container {
   position: relative;
   width: 100%;
+  min-width: none;
   margin-bottom: 1rem;
 
   label {
+    width: 100%;
+    min-width: none;
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
@@ -12,6 +15,7 @@
 
   .input-wrapper {
     width: 100%;
+    min-width: none;
     display: flex;
     position: relative;
     align-items: center;
@@ -19,7 +23,7 @@
 
   input[type="text"] {
     width: 100%;
-    max-width: 400px;
+    min-width: none;
     font-size: 1.1rem;
     font-family: 'Cinzel', serif;
     transition-duration: .4s;
