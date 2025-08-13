@@ -3,7 +3,6 @@ import { computed, ref, Ref } from 'vue';
 import CreateShadowWarForm from './CreateShadowWarForm.vue';
 import { useStore } from '../../../../middlewares/store';
 
-
 defineProps({
   nextWarDate: {
     type: String,
@@ -20,8 +19,8 @@ const error: Ref<string | null> = ref(null);
   <div class="shadow-war-container">
     <span class="info-text">
       <h2>Próxima Batalla</h2>
-      <p>La próxima Guerra Sombría es el {{ nextWarDate }} a las 19:30h (hora del servidor).</p>
-
+      <p v-if="shadowWarData && shadowWarData._id">La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las
+          19:30h (hora del servidor)</i>.</p>
       <div v-if="error">
         <p>Ha ocurrido un error:</p>
         <pre>{{ error }}</pre>

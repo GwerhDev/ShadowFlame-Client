@@ -69,7 +69,8 @@ watch(() => store.layout.tab, async (newTab) => {
       <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.layout.tab.value"
         title="Guerra Sombría">
         <span class="info-text">
-          <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las 19:30h (hora del servidor)</i>.
+          <p v-if="!loading">La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las 19:30h (hora del
+              servidor)</i>.
             Enfrentaremos al Clan:
           <h4 class="clan-name">{{ enemyClanName }}</h4>
           </p>
