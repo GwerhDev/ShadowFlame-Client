@@ -38,9 +38,11 @@ const isSelected = (memberId: string) => {
 </script>
 
 <template>
-  <div class="confirmed-selection-modal-container" @click.self="$emit('close')">
-    <div class="modal-content">
-      <h2>Seleccionar Miembros Confirmados</h2>
+  <div class="container-modal-component" @click.self="$emit('close')">
+    <div class="modal-container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Seleccionar Miembros Confirmados</h2>
+      </div>
       <div class="member-grid">
         <div v-for="member in members" :key="member._id" class="member-card-wrapper"
           :class="{ 'is-selected': isSelected(member._id) }" @click="handleCardClick(member)">
@@ -48,7 +50,7 @@ const isSelected = (memberId: string) => {
           <i v-if="isSelected(member._id)" class="fas fa-check-circle check-icon"></i>
         </div>
       </div>
-      <button @click="$emit('close')" class="close-button">Cerrar</button>
+      <button @click="$emit('close')" class="secondary-button">Cancelar</button>
     </div>
   </div>
 </template>
