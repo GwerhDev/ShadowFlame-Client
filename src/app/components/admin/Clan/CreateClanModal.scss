@@ -1,21 +1,29 @@
 .container-modal-component {
+  // Renamed
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.47); // Matched MemberSelectionModal
   display: flex;
-  position: absolute;
-  padding-top: 3rem;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.801);
-  z-index: 1000; 
-  
+  backdrop-filter: blur(10px); // Moved up
+  z-index: 99; // Matched MemberSelectionModal
+  padding-top: 3rem;
 
   .modal-container {
-    padding: 2rem;
-    border-radius: 5px;
-    background-color: var(--color-secondary-bg);
+    // Renamed
+    background-color: var(--color-secondary-bg); // Matched
+    padding: 2rem; // Matched
+    border-radius: 5px; // Matched
+    width: 90%;
+    max-width: 600px; // Matched MemberSelectionModal
+    max-height: 80vh; // Keep this for scrollable content
+    overflow-y: auto; // Keep this for scrollable content
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Keep this if desired, not in other modals but good practice
   }
 
   form {
@@ -23,7 +31,8 @@
     flex-direction: column;
     gap: 10px;
 
-    span.d-flex.g-1 { // Styling for form rows
+    span.d-flex.g-1 {
+      // Styling for form rows
       display: flex;
       gap: 10px;
       align-items: center; // Align items in the row
