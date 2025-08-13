@@ -76,15 +76,12 @@ onMounted(async () => {
 });
 
 watch(enemyClan, (newValue, oldValue) => {
-  console.log('enemyClan changed:', { oldValue, newValue }); // Debug log
-  // Only update if the value actually changes and it's not the initial load
   if (newValue !== oldValue) {
     updateShadowWarData();
   }
 });
 
 const updateShadowWarData = async () => {
-  console.log('updateShadowWarData called with enemyClan:', enemyClan.value); // Debug log
   const battleData = JSON.parse(JSON.stringify(battleCategories.value));
   const formData = {
     enemyClan: enemyClan.value,
