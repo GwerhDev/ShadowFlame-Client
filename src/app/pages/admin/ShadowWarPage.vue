@@ -17,7 +17,7 @@ const sidebarTabs = [
 
 
 onMounted(async () => {
-  store.setTab('next');
+  store.setTab({ value: 'next', label: 'Próxima' });
   await store.handleGetNextShadowWar();
   if (store.currentUser.shadowWarData && store.currentUser.shadowWarData.date) {
     const warDate = new Date(store.currentUser.shadowWarData.date);
@@ -52,6 +52,14 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
     enemyClanName.value = '';
   }
 }, { immediate: true });
+
+watch(() => store.layout.tab, async (newTab) => {
+  if (newTab.value) {
+    loading.value = true;
+    await store.handleGetNextShadowWar();
+    loading.value = false;
+  }
+});
 </script>
 
 <template>
@@ -59,7 +67,7 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
     <div class="div-container">
       <AppLayout :logged="store.currentUser.logged" :loading="loading" :sidebar-tabs="sidebarTabs"
         :active-layout-tab="store.layout.tab" title="Guerra Sombría">
-        <section class="content-section" v-if="store.currentUser?.logged && store.layout.tab === 'next'">
+        <section class="content-section" v-if="store.currentUser?.logged && store.layout.tab.value === 'next'">
           <ShadowWar :nextWarDate="nextWarDate" :warTime="warTime" :enemyClanName="enemyClanName" />
         </section>
         <section v-else class="justify-content-center align-items-center d-flex g-1 w-100">
