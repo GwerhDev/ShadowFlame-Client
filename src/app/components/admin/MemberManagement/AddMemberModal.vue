@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useStore } from '../../../../middlewares/store';
-import diabloIcon from "../../../../assets/svg/diablo-icon.svg";
 import { classes } from '../../../../middlewares/misc/const';
 import CustomModal from '../../Modals/CustomModal.vue';
 
