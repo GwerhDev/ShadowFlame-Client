@@ -1,0 +1,81 @@
+.confirmed-selection-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // High z-index to ensure it's on top
+}
+
+.modal-content {
+  background-color: var(--color-background); // Assuming a global background variable
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--color-heading); // Assuming a global heading color variable
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.member-card-wrapper {
+  position: relative;
+  cursor: pointer;
+  border: 2px solid transparent; // Default border
+  border-radius: 8px;
+  transition: border-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: #555; // Subtle hover effect
+  }
+
+  &.is-selected {
+    border-color: #28a745; // Green border when selected
+  }
+}
+
+.check-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #28a745; // Green color for checkmark
+  font-size: 1.5em;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  padding: 2px;
+  z-index: 10;
+}
+
+.close-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end; // Align to the right
+  margin-top: 10px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
