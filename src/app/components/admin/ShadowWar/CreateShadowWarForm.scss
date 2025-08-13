@@ -95,8 +95,8 @@ button[type="submit"]:hover {
   .action-buttons {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   button {
@@ -104,7 +104,9 @@ button[type="submit"]:hover {
     border-radius: 4px; // Revert to 4px border-radius
     font-size: 0.95rem; // Keep 0.95rem font size
     transition: background-color 0.3s ease; // Simpler transition
-    // Remove transform for consistency
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   .btn-create-clan {

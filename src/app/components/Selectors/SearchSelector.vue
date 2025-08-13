@@ -123,7 +123,7 @@ const inputValue = computed({
         {{ option.name }}
       </div>
     </div>
-    <div v-else-if="showSuggestions && !filteredOptions.length && searchQuery" class="no-results">
+    <div v-else-if="showSuggestions && !filteredOptions.length && searchQuery" class="suggestions-dropdown">
       No se encontraron resultados.
     </div>
   </div>

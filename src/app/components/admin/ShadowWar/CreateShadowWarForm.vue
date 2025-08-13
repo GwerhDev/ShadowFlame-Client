@@ -177,8 +177,12 @@ const handleClanCreated = async () => {
         <SearchSelector v-model="enemyClan" :options="clans" label="Clan Enemigo:"
           placeholder="Buscar o seleccionar clan" @select="updateShadowWarData" />
         <div class="action-buttons">
-          <button type="button" @click="showCreateClanModal = true" class="btn-create-clan">Crear nuevo Clan</button>
-          <button type="button" class="btn-confirmados" @click="openConfirmedMembersSelection">Nómina de Confirmados</button>
+          <button type="button" @click="showCreateClanModal = true" class="btn-create-clan">
+            <i class="fas fa-plus"></i>Crear nuevo Clan
+          </button>
+          <button type="button" class="btn-confirmados" @click="openConfirmedMembersSelection">
+            <i class="fas fa-users"></i>Nómina de Confirmados
+          </button>
         </div>
 
       </div>
