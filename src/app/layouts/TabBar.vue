@@ -1,4 +1,4 @@
-<style scoped lang="scss" src="./SideBar.scss" />
+<style scoped lang="scss" src="./TabBar.scss" />
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
 import { useStore, AppStore } from '../../middlewares/store';
