@@ -45,17 +45,20 @@
   .member-info {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem; // Reduced gap
-
+    justify-content: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 200px;
+    
     .class-image {
       width: 30px; // Reduced size
       height: 30px; // Reduced size
     }
-
+    
     .member-details {
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       .character-name {
         font-weight: bold;

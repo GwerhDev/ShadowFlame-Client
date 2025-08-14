@@ -29,7 +29,7 @@ const getClassImage = (className: string | undefined) => {
       </div>
       <div class="member-details">
         <span class="character-name">{{ member.character }}</span>
-        <span class="resonance">{{ member.resonance }}</span>
+        <small><span class="resonance">{{ member.resonance }}</span></small>
       </div>
     </div>
     <div v-else class="empty-card">
