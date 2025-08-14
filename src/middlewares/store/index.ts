@@ -274,6 +274,29 @@ export const useStore = defineStore('store', {
       }
     },
 
+    async handleGetClans() {
+      if (this.currentUser.userData?.role === "admin" || this.currentUser.userData?.role === "leader" || this.currentUser.userData?.role === "officer") {
+        this.admin.clans = await getClans();
+      }
+    },
+
+    async handleCreateClan(formData: any) {
+      try {
+        const response: any = await createClan(formData);
+        return response;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async handleUpdateClan(id: string, formData: any) {
+      await updateClan(id, formData);
+    },
+
+    async handleDeleteClan(id: string) {
+      await deleteClan(id);
+    },
+
     setCurrentCharacter(character: string | null) {
       this.currentCharacter = character;
     },

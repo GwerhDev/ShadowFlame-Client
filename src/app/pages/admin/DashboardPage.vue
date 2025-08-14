@@ -2,10 +2,11 @@
 import { onMounted, ref, watch } from 'vue';
 import { useStore } from '../../../middlewares/store';
 import AppLayout from '../../layouts/AppLayout.vue';
-import ShadowWar from '../../components/admin/ShadowWar/ShadowWar.vue';
+import ShadowWar from '../../components/admin/ShadowWarManagement/ShadowWar.vue';
 import DeniedAccess from '../../utils/DeniedAccess.vue';
 import MemberManagement from '../../components/admin/MemberManagement/MemberManagement.vue';
 import UserManagement from '../../components/admin/UserManagement/UserManagement.vue';
+import EnemyClanManagement from '../../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
 
 const store: any = useStore();
 const nextWarDate = ref('');
@@ -15,6 +16,7 @@ const loading = ref(true);
 
 const sidebarTabs = [
   { id: 'shadow-war', name: 'Guerra Sombría', icon: 'fas fa-shield' },
+  { id: 'enemy-clans', name: 'Clanes Enemigos', icon: 'fas fa-skull-crossbones' },
   { id: 'members', name: 'Miembros', icon: 'fas fa-user-group' },
   { id: 'users', name: 'Usuarios', icon: 'fas fa-users' },
 ];
@@ -82,6 +84,10 @@ watch(() => store.layout.tab, async (newTab) => {
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader') && store.layout.tab.value === 'users'">
           <UserManagement />
         </section>
+        <section class="content-section"
+          v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'officer') && store.layout.tab.value === 'enemy-clans'">
+          <EnemyClanManagement />
+        </section>
       </AppLayout>
     </div>
   </main>
@@ -91,7 +97,6 @@ watch(() => store.layout.tab, async (newTab) => {
 </template>
 
 <style scoped>
-
 .div-container-denied {
   width: 100vw;
   height: 100%;

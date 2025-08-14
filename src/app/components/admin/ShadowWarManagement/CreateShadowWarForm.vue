@@ -2,7 +2,6 @@
 import { ref, onMounted, Ref, computed } from 'vue';
 import { getShadowWarById, updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
 import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
-import CreateClanModal from '../../admin/Clan/CreateClanModal.vue';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
 import MemberSelectionModal from './MemberSelectionModal.vue';
 import SearchSelector from '../../Selectors/SearchSelector.vue';
@@ -184,9 +183,6 @@ const handleClanCreated = async () => {
         <SearchSelector v-model="enemyClan" :options="clans" label="Clan Enemigo:"
           placeholder="Buscar o seleccionar clan" @select="updateShadowWarData" />
         <div class="action-buttons">
-          <button type="button" @click="showCreateClanModal = true" class="btn-create-clan">
-            <i class="fas fa-plus"></i>Crear nuevo Clan
-          </button>
           <button type="button" class="btn-confirmados" @click="openConfirmedMembersSelection">
             <i class="fas fa-users"></i>Nómina de Confirmados
           </button>

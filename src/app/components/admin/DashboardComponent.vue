@@ -29,6 +29,12 @@ const store: any = useStore();
           Guerra Sombría
         </li>
       </router-link>
+      <router-link to="/dashboard/enemy-clan-management">
+        <li
+          v-if="store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'officer'">
+          Clanes enemigos
+        </li>
+      </router-link>
     </ul>
   </div>
 </template>

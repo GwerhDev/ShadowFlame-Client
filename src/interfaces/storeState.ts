@@ -21,6 +21,7 @@ export interface storeState {
     warbandtasks: any,
     notifications: any,
     members: any,
+    clans: any,
   },
   userToken: string,
   currentCharacter: string | null,

@@ -1,6 +1,6 @@
-<style scoped lang="scss" src="./CreateClanModal.scss" />
+<style scoped lang="scss" src="./AddEnemyClanModal.scss" />
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { createClan } from '../../../../middlewares/services/clanService';
 import CustomModal from '../../Modals/CustomModal.vue';
 
@@ -9,6 +9,8 @@ const emit = defineEmits(['close', 'clanCreated']);
 const clanName = ref('');
 const clanStatus = ref('active'); // Default status
 const clanMembers = ref(0); // Default members
+
+const isClanNameEmpty = computed(() => clanName.value.trim() === '');
 
 const handleCloseModal = () => {
   emit('close');
@@ -48,7 +50,7 @@ const handleSubmit = async () => {
           <label for="clanMembers">Miembros:</label>
           <input type="number" id="clanMembers" v-model.number="clanMembers" min="0" required>
         </span>
-        <button type="submit"
+        <button type="submit" :disabled="isClanNameEmpty"
           class="submit-button button justify-content-center align-items-center d-flex g-1 w-100">Crear Clan</button>
       </ul>
     </form>
