@@ -178,7 +178,7 @@ const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
         <SearchSelector v-model="enemyClan" :options="clans" label="Clan Enemigo:"
           placeholder="Buscar o seleccionar clan" @select="updateShadowWarData" />
         <div class="action-buttons">
-          <button type="button" class="btn-confirmados" @click="openConfirmedMembersSelection">
+          <button type="button" @click="openConfirmedMembersSelection">
             <i class="fas fa-users"></i>Nómina de Confirmados
           </button>
         </div>
