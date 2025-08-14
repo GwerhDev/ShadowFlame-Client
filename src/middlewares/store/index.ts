@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -30,6 +30,7 @@ export const useStore = defineStore('store', {
       warbandtasks: null,
       notifications: null,
       members: null,
+      clans: null,
     },
 
     userToken: '',
@@ -55,7 +56,7 @@ export const useStore = defineStore('store', {
       this.layout = {
         tab: { value: '', label: '' },
       };
-      
+
       this.admin = {
         users: null,
         tasks: null,
@@ -63,6 +64,7 @@ export const useStore = defineStore('store', {
         warbandtasks: null,
         notifications: null,
         members: null,
+        clans: null,
       };
 
       this.userToken = '';

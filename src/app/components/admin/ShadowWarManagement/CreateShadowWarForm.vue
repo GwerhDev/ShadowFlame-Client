@@ -17,7 +17,6 @@ const props = defineProps({
 const clans: Ref<Clan[]> = ref([]);
 const members: Ref<Member[]> = ref([]);
 const enemyClan = ref('');
-const showCreateClanModal = ref(false);
 const showMemberSelectionModal = ref(false);
 const currentSelectionContext = ref<{
   categoryName: keyof typeof battleCategories.value;
@@ -170,10 +169,6 @@ const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
   updateShadowWarData();
 };
 
-const handleClanCreated = async () => {
-  clans.value = await getClans();
-  showCreateClanModal.value = false;
-};
 </script>
 
 <template>
@@ -190,7 +185,6 @@ const handleClanCreated = async () => {
       </div>
     </div>
 
-    <CreateClanModal v-if="showCreateClanModal" @close="showCreateClanModal = false" @clanCreated="handleClanCreated" />
     <MemberSelectionModal v-if="showMemberSelectionModal" :members="confirmedMembers"
       :assigned-member-ids="assignedMemberIds" @close="showMemberSelectionModal = false"
       @member-selected="handleMemberSelected" />
