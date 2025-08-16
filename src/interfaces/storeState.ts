@@ -22,6 +22,7 @@ export interface storeState {
     clantasks: any,
     warbandtasks: any,
     notifications: any,
+    shadowWars: any,
     members: any,
     clans: any,
   },
