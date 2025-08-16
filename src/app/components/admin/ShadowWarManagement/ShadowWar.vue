@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, Ref } from 'vue';
+import { ref, Ref } from 'vue';
 import CreateShadowWarForm from './CreateShadowWarForm.vue';
-import { useStore } from '../../../../middlewares/store';
 
 defineProps({
   nextWarDate: {
@@ -9,8 +8,7 @@ defineProps({
     required: true,
   },
 });
-const store: any = useStore();
-const shadowWarData = computed(() => store.currentUser.shadowWarData);
+
 const error: Ref<string | null> = ref(null);
 
 </script>
@@ -19,7 +17,7 @@ const error: Ref<string | null> = ref(null);
   <div class="shadow-war-container">
     <span class="info-text">
       <h2>Próxima Batalla</h2>
-      <p v-if="shadowWarData && shadowWarData._id">La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las
+      <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las
           19:30h (hora del servidor)</i>.</p>
       <div v-if="error">
         <p>Ha ocurrido un error:</p>
@@ -27,7 +25,7 @@ const error: Ref<string | null> = ref(null);
       </div>
     </span>
 
-    <CreateShadowWarForm v-if="shadowWarData && shadowWarData._id" :shadowWarId="shadowWarData._id" />
+    <CreateShadowWarForm />
   </div>
 </template>
 

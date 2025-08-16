@@ -1,21 +1,18 @@
 <script setup lang="ts">
 import { ref, onMounted, Ref, computed } from 'vue';
-import { getShadowWarById, updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
-import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
+import { updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
+import { Clan, Member, Match, ShadowWar } from '../../../../interfaces/shadowWar';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
 import MemberSelectionModal from './MemberSelectionModal.vue';
 import SearchSelector from '../../Selectors/SearchSelector.vue';
-import ConfirmedSelectionModal from './ConfirmedSelectionModal.vue'; // New import
+import ConfirmedSelectionModal from './ConfirmedSelectionModal.vue';
+import { useStore } from '../../../../middlewares/store';
 
-const props = defineProps({
-  shadowWarId: {
-    type: String,
-    required: true,
-  }
-});
+const store: any = useStore();
 
 const clans: Ref<Clan[]> = ref([]);
 const members: Ref<Member[]> = ref([]);
+const shadowWarData: ShadowWar = computed(() => store.currentUser.shadowWarData);
 const enemyClan = ref('');
 const showMemberSelectionModal = ref(false);
 const currentSelectionContext = ref<{
@@ -25,8 +22,8 @@ const currentSelectionContext = ref<{
   memberIndex: number;
 } | null>(null);
 
-const confirmedMembers: Ref<Member[]> = ref([]); // New ref
-const showConfirmedMemberSelectionModal = ref(false); // New ref
+const confirmedMembers: Ref<Member[]> = ref([]);
+const showConfirmedMemberSelectionModal = ref(false);
 
 const battleCategoryTranslations: Record<string, string> = {
   exalted: 'sublime',
@@ -73,30 +70,25 @@ const confirmedMemberIds = computed(() => {
 onMounted(async () => {
   clans.value = await getClans();
   const fetchedMembers = await getMembers();
-  members.value = fetchedMembers.filter((member: any) => member && member._id); // Filter for valid members
+  members.value = fetchedMembers;
 
-  if (props.shadowWarId) {
-    const shadowWar = await getShadowWarById(props.shadowWarId);
-    if (shadowWar) {
-      if (shadowWar.battle) {
-        const { exalted, eminent, famed, proud } = shadowWar.battle;
-        battleCategories.value.exalted = exalted || battleCategories.value.exalted;
-        battleCategories.value.eminent = eminent || battleCategories.value.eminent;
-        battleCategories.value.famed = famed || battleCategories.value.famed;
-        battleCategories.value.proud = proud || battleCategories.value.proud;
-      }
+  if (shadowWarData) {
+    if (shadowWarData.battle) {
+      const { exalted, eminent, famed, proud } = shadowWarData.battle;
+      battleCategories.value.exalted = exalted || battleCategories.value.exalted;
+      battleCategories.value.eminent = eminent || battleCategories.value.eminent;
+      battleCategories.value.famed = famed || battleCategories.value.famed;
+      battleCategories.value.proud = proud || battleCategories.value.proud;
+    }
 
-      if (shadowWar.enemyClan) {
-        enemyClan.value = shadowWar.enemyClan._id;
-      }
-      if (shadowWar.confirmed) {
-        confirmedMembers.value = shadowWar.confirmed;
-      }
+    if (shadowWarData.enemyClan) {
+      enemyClan.value = shadowWarData.enemyClan._id;
+    }
+    if (shadowWarData.confirmed) {
+      confirmedMembers.value = shadowWarData.confirmed;
     }
   }
 });
-
-
 
 const updateShadowWarData = async () => {
   const battleData = JSON.parse(JSON.stringify(battleCategories.value));
@@ -105,7 +97,7 @@ const updateShadowWarData = async () => {
     battle: battleData,
     confirmed: confirmedMembers.value.filter(member => member && member._id).map(member => member._id), // Include confirmed members
   };
-  await updateShadowWar(props.shadowWarId, formData);
+  await updateShadowWar(store.currentUser.shadowWarData._id, formData);
 };
 
 const openMemberSelection = (categoryName: keyof typeof battleCategories.value, group: 'group1' | 'group2', matchIndex: number, memberIndex: number) => {

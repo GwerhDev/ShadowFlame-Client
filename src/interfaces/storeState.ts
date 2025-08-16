@@ -1,3 +1,5 @@
+import { ShadowWar } from "./shadowWar";
+
 export interface storeState {
   currentUser: {
     logged: boolean,
@@ -8,7 +10,7 @@ export interface storeState {
     taskloading: boolean,
     guidetype: string,
     chatbotmodel: string,
-    shadowWarData: any;
+    shadowWarData: ShadowWar;
     shadowWarError: string | null;
   },
   layout: {
