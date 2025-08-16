@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan, getShadowWars } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -31,6 +31,7 @@ export const useStore = defineStore('store', {
       notifications: null,
       members: null,
       clans: null,
+      shadowWars: null,
     },
 
     userToken: '',
@@ -65,6 +66,7 @@ export const useStore = defineStore('store', {
         notifications: null,
         members: null,
         clans: null,
+        shadowWars: null,
       };
 
       this.userToken = '';
@@ -297,6 +299,12 @@ export const useStore = defineStore('store', {
 
     async handleDeleteClan(id: string) {
       await deleteClan(id);
+    },
+
+    async handleGetShadowWars() {
+      if (this.currentUser.userData?.role === "admin" || this.currentUser.userData?.role === "leader" || this.currentUser.userData?.role === "officer") {
+        this.admin.shadowWars = await getShadowWars();
+      }
     },
 
     setCurrentCharacter(character: string | null) {

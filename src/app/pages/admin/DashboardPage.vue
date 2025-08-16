@@ -7,7 +7,7 @@ import DeniedAccess from '../../utils/DeniedAccess.vue';
 import MemberManagement from '../../components/admin/MemberManagement/MemberManagement.vue';
 import UserManagement from '../../components/admin/UserManagement/UserManagement.vue';
 import EnemyClanManagement from '../../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
-import ShadowWarHistory from '../../components/admin/ShadowWarManagement/ShadowWarHistory.vue';
+import HistoryManagement from '../../components/admin/HistoryManagement/HistoryManagement.vue';
 
 const store: any = useStore();
 const nextWarDate = ref('');
@@ -80,7 +80,7 @@ watch(() => store.layout.tab, async (newTab) => {
         </section>
         <section class="content-section"
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'history'">
-          <ShadowWarHistory />
+          <HistoryManagement />
         </section>
         <section class="content-section"
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'members'">
