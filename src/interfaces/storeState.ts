@@ -10,7 +10,7 @@ export interface storeState {
     taskloading: boolean,
     guidetype: string,
     chatbotmodel: string,
-    shadowWarData: ShadowWar;
+    shadowWarData: ShadowWar | null;
     shadowWarError: string | null;
   },
   layout: {

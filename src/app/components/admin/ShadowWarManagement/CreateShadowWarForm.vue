@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, Ref, computed } from 'vue';
 import { updateShadowWar, getClans, getMembers } from '../../../../middlewares/services';
-import { Clan, Member, Match, ShadowWar } from '../../../../interfaces/shadowWar';
+import { Clan, Member, Match } from '../../../../interfaces/shadowWar';
 import ShadowWarMemberCard from './ShadowWarMemberCard.vue';
 import MemberSelectionModal from './MemberSelectionModal.vue';
 import SearchSelector from '../../Selectors/SearchSelector.vue';
@@ -12,7 +12,7 @@ const store: any = useStore();
 
 const clans: Ref<Clan[]> = ref([]);
 const members: Ref<Member[]> = ref([]);
-const shadowWarData: ShadowWar = computed(() => store.currentUser.shadowWarData);
+const shadowWarData = computed(() => store.currentUser.shadowWarData);
 const enemyClan = ref('');
 const showMemberSelectionModal = ref(false);
 const currentSelectionContext = ref<{
@@ -72,20 +72,20 @@ onMounted(async () => {
   const fetchedMembers = await getMembers();
   members.value = fetchedMembers;
 
-  if (shadowWarData) {
-    if (shadowWarData.battle) {
-      const { exalted, eminent, famed, proud } = shadowWarData.battle;
+  if (shadowWarData.value) {
+    if (shadowWarData.value.battle) {
+      const { exalted, eminent, famed, proud } = shadowWarData.value.battle;
       battleCategories.value.exalted = exalted || battleCategories.value.exalted;
       battleCategories.value.eminent = eminent || battleCategories.value.eminent;
       battleCategories.value.famed = famed || battleCategories.value.famed;
       battleCategories.value.proud = proud || battleCategories.value.proud;
     }
 
-    if (shadowWarData.enemyClan) {
-      enemyClan.value = shadowWarData.enemyClan._id;
+    if (shadowWarData.value.enemyClan) {
+      enemyClan.value = shadowWarData.value.enemyClan._id;
     }
-    if (shadowWarData.confirmed) {
-      confirmedMembers.value = shadowWarData.confirmed;
+    if (shadowWarData.value.confirmed) {
+      confirmedMembers.value = shadowWarData.value.confirmed;
     }
   }
 });
