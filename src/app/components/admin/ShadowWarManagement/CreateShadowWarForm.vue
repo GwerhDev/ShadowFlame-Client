@@ -186,7 +186,7 @@ const handleConfirmedMembersUpdate = (selectedMemberIds: string[]) => {
     <div v-for="(category, categoryName) in battleCategories" :key="categoryName">
       <h2>Batalla {{ translatedCategoryName(categoryName) }}</h2>
       <div v-for="(match, matchIndex) in category" :key="matchIndex">
-        <h5>Pelea {{ matchIndex + 1 }}</h5>
+        <h5>Partida {{ matchIndex + 1 }}</h5>
         <div class="match-groups">
           <div class="group">
             <label>
