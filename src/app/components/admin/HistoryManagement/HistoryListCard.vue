@@ -1,6 +1,5 @@
 <style scoped lang="scss" src="./HistoryListCard.scss"/>
 <script setup lang="ts">
-import { defineProps } from 'vue';
 
 defineProps(['war']);
 
