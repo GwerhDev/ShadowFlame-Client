@@ -15,7 +15,7 @@ const formatDate = (dateString: string) => {
       <p>{{ formatDate(war.date) }}</p>
     </span>
     <span>
-      <p>{{ war.enemyClan.name }}</p>
+      <p>{{ war.enemyClan?.name || "No definido" }}</p>
     </span>
     <span>
       <p>{{ war.result }}</p>
