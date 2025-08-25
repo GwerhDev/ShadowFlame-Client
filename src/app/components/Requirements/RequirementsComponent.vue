@@ -30,19 +30,18 @@ const store = useStore();
         <li>
           <p class="p-0 m-0 d-flex g-small">
             Inactividad máxima de
-            <span class="featured-text">
+            <b class="featured-text">
               7 días
-            </span>
+            </b>
           </p>
         </li>
 
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Ingresar a grupo de
-            <span class="featured-text">
-              Whatsapp
-            </span>
-
+            Ingresar al
+            <b class="featured-text">
+              Grupo de Whatsapp
+            </b>
           </p>
         </li>
       </ul>
