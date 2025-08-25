@@ -20,17 +20,11 @@ const store = useStore();
         Los requisitos mínimos que pedimos a los miembros son los siguientes:
         <li>
           <p class="p-0 m-0 d-flex g-small">
-            Paragón de <span class="featured-text">600</span>
-          </p>
-        </li>
-
-        <li>
-          <p class="p-0 m-0 d-flex g-small">
-            Rango de Sombra
-            <span class="featured-text">
-              Fantasma IV
-            </span>
-            (6ta semana del ciclo)
+            Acta de valor
+            <b class="featured-text">
+              El Omnisciente
+            </b>
+            (8%)
           </p>
         </li>
         <li>
