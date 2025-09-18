@@ -3,7 +3,7 @@ import { PropType } from 'vue';
 import { Member } from '../../../interfaces/shadowWar';
 import { classes } from '../../../middlewares/misc/const';
 
-const props = defineProps({
+defineProps({
   member: {
     type: Object as PropType<Member | undefined>,
     default: undefined,
