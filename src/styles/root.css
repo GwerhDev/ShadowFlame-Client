@@ -81,6 +81,13 @@ input[type="date"] {
   }
 }
 
+input:read-only, input:hover:read-only, input:active:read-only {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
 select {
   height: 30px;
   font-family: 'Cinzel', serif;

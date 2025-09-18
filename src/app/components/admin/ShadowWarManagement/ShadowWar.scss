@@ -1,6 +1,30 @@
 .shadow-war-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .info-text {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 1rem;
+  }
+
+  .button-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding-inline: 1rem;
+  }
+
+  .copied-feedback {
+    color: #4CAF50;
+    font-weight: bold;
+    height: 1rem;
+  }
 }

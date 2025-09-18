@@ -110,7 +110,7 @@ const inputValue = computed({
         :readonly="isSelected"
       />
       <button v-if="isSelected" @click="clearSelection" class="clear-button">
-        &#x2715; <!-- Unicode 'X' character -->
+        <i class="fas fa-exchange"></i>
       </button>
     </div>
     <div v-if="showSuggestions && filteredOptions.length" class="suggestions-dropdown">

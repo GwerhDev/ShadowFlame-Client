@@ -3,6 +3,14 @@ import { ref, Ref } from 'vue';
 import CreateShadowWarForm from './CreateShadowWarForm.vue';
 
 defineProps({
+  generateWhatsAppMessage: {
+    type: Function,
+    required: true,
+  },
+  copied: {
+    type: Boolean,
+    required: true,
+  },
   nextWarDate: {
     type: String,
     required: true,
@@ -23,16 +31,17 @@ const error: Ref<string | null> = ref(null);
         <p>Ha ocurrido un error:</p>
         <pre>{{ error }}</pre>
       </div>
+      <div class="button-container">
+        <button type="button" @click="generateWhatsAppMessage()">
+          <i class="fas fa-copy"></i> Generar Mensaje de WhatsApp
+        </button>
+        <span v-if="copied" class="copied-feedback">¡Mensaje copiado!</span>
+        <span v-else class="copied-feedback"></span>
+      </div>
     </span>
 
     <CreateShadowWarForm />
   </div>
 </template>
 
-<style scoped>
-.info-text {
-  display: flex;
-  flex-direction: column;
-  padding-inline: 1rem;
-}
-</style>
+<style scoped lang="scss" src="./ShadowWar.scss"/>

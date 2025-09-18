@@ -8,20 +8,64 @@ import MemberManagement from '../../components/admin/MemberManagement/MemberMana
 import UserManagement from '../../components/admin/UserManagement/UserManagement.vue';
 import EnemyClanManagement from '../../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
 import HistoryManagement from '../../components/admin/HistoryManagement/HistoryManagement.vue';
+import { ShadowWar as ShadowWarInterface, Match, Member } from '../../../interfaces/shadowWar';
 
 const store: any = useStore();
 const nextWarDate = ref('');
 const warTime = ref('');
 const enemyClanName = ref('');
 const loading = ref(true);
+const copied = ref(false);
 
 const sidebarTabs = [
   { id: 'shadow-war', name: 'Guerra Sombría', icon: 'fas fa-shield' },
   { id: 'history', name: 'Historial', icon: 'fas fa-history' },
-  { id: 'enemy-clans', name: 'Clanes Enemigos', icon: 'fas fa-skull-crossbones' },
+  { id: 'enemy-clans', name: 'Clanes', icon: 'fas fa-skull-crossbones' },
   { id: 'members', name: 'Miembros', icon: 'fas fa-user-group' },
   { id: 'users', name: 'Usuarios', icon: 'fas fa-users' },
 ];
+
+const generateWhatsAppMessage = async () => {
+  const warData = store.currentUser.shadowWarData as ShadowWarInterface;
+  if (!warData) return;
+
+  const enemy = warData.enemyClan?.name || 'Clan enemigo no definido';
+
+  const formatGroup = (group: (Member | undefined)[]) => {
+    return group
+      .map(m => m?.character || 'Vacío')
+      .join(', ');
+  };
+
+  const formatMatches = (title: string, matches: Match[]) => {
+    if (!matches || matches.length === 0) return '';
+    let section = `*${title.toUpperCase()}*\n\n`;
+    matches.forEach((match, index) => {
+      section += `*PARTIDA ${index + 1}*\n`;
+      section += `_grupo 1:_ ${formatGroup(match.group1.member)}\n`;
+      section += `_grupo 2:_ ${formatGroup(match.group2.member)}\n\n`;
+    });
+    return section + '\n';
+  };
+
+  let lineupText = '*ALINEACIÓN*\n\n';
+  lineupText += formatMatches('Batalla Sublime', warData.battle.exalted);
+  lineupText += formatMatches('Batalla Eminente', warData.battle.eminent);
+  lineupText += formatMatches('Batalla Célebre', warData.battle.famed);
+  lineupText += formatMatches('Batalla Imponente', warData.battle.proud);
+
+  const message = `*GUERRA SOMBRÍA*\n\nHoy a las _19:30 h (server)_ nos enfrentaremos al Clan *${enemy}*\n\n_Junto a los Oficiales hemos determinado la alineación que llevaremos, basados en la Encuesta de participación hecha mediante el canal general de nuestro clan._\n\n${lineupText}\n\n*PUEDEN VER LA ALINEACIÓN EN EL SIGUIENTE LINK*\n\n_(*) Los que no confirmaron y lleguen a la guerra, pueden ir rellenando los grupos donde falte gente_\n\nhttps://shadowflame.netlify.app/shadow-war`;
+
+  try {
+    await navigator.clipboard.writeText(message.replace(/\n/g, '\n'));
+    copied.value = true;
+    setTimeout(() => {
+      copied.value = false;
+    }, 2500);
+  } catch (err) {
+    console.error('Error al copiar el mensaje: ', err);
+  }
+};
 
 onMounted(async () => {
   store.setTab({ value: 'shadow-war', label: 'Guerra Sombría' });
@@ -50,8 +94,6 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
 
     if (newVal.enemyClan) {
       enemyClanName.value = newVal.enemyClan.name;
-    } else {
-      enemyClanName.value = 'aun no está definido';
     }
   } else {
     nextWarDate.value = '';
@@ -76,7 +118,7 @@ watch(() => store.layout.tab, async (newTab) => {
         :active-layout-tab="store.layout.tab" title="Guerra Sombría">
         <section class="content-section"
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'shadow-war'">
-          <ShadowWar :nextWarDate="nextWarDate" :warTime="warTime" :enemyClanName="enemyClanName" />
+          <ShadowWar :generateWhatsAppMessage="generateWhatsAppMessage" :copied="copied" :nextWarDate="nextWarDate" :warTime="warTime" :enemyClanName="enemyClanName" />
         </section>
         <section class="content-section"
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'history'">
