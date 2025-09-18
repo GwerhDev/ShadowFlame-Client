@@ -30,15 +30,15 @@ watchEffect(() => {
       const category = shadowWarData.value.battle[categoryName];
       for (let matchIndex = 0; matchIndex < category.length; matchIndex++) {
         const match = category[matchIndex];
-        
+
         const group1Members = match.group1.member || [];
-        if (group1Members.some(m => loggedInUser.value.member.includes(m._id))) {
-            battlesSet.add(JSON.stringify({ category: categoryName, match: matchIndex + 1, group: 1 }));
+        if (group1Members.some((m: ShadowWarInterfaces.Member) => loggedInUser.value.member.includes(m._id))) {
+          battlesSet.add(JSON.stringify({ category: categoryName, match: matchIndex + 1, group: 1 }));
         }
 
         const group2Members = match.group2.member || [];
-        if (group2Members.some(m => loggedInUser.value.member.includes(m._id))) {
-            battlesSet.add(JSON.stringify({ category: categoryName, match: matchIndex + 1, group: 2 }));
+        if (group2Members.some((m: ShadowWarInterfaces.Member) => loggedInUser.value.member.includes(m._id))) {
+          battlesSet.add(JSON.stringify({ category: categoryName, match: matchIndex + 1, group: 2 }));
         }
       }
     }
