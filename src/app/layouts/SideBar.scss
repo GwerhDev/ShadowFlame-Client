@@ -26,6 +26,7 @@
         align-items: center;
         justify-content: flex-start;
         gap: 1rem;
+        position: relative;
 
         &:disabled {
           background-color: #7e7972;
@@ -43,8 +44,10 @@
       }
 
       .user-battle-indicator {
-        margin-left: auto;
-        color: var(--color-accent);
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        z-index: 9;
       }
     }
   }

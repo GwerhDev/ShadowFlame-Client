@@ -26,6 +26,7 @@
         align-items: center;
         justify-content: flex-start;
         gap: 1rem;
+        position: relative;
 
         &:disabled {
           background-color: #7e7972;
@@ -36,11 +37,14 @@
         &.active-menu-item {
           background-color: var(--color-primary);
         }
+
+
       }
 
       span {
         text-wrap: nowrap;
       }
+
     }
   }
 }
@@ -73,6 +77,13 @@
             white-space: nowrap;
             text-overflow: ellipsis;
           }
+        }
+
+        .user-battle-indicator {
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          z-index: 9;
         }
 
         .first {

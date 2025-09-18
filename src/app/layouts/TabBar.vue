@@ -42,7 +42,7 @@ function styleActive(type: string) {
         >
           <i :class="tab.icon"></i>
           <span>{{ tab.name }}</span>
-          <span></span>
+          <small v-if="store.currentUser.userBattleInfo.some(b => b.category === tab.id)"><i class="fas fa-user-shield user-battle-indicator"></i></small>
         </button>
       </li>
     </ul>
