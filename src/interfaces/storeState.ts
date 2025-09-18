@@ -12,6 +12,11 @@ export interface storeState {
     chatbotmodel: string,
     shadowWarData: ShadowWar | null;
     shadowWarError: string | null;
+    userBattleInfo: {
+      category: string;
+      match: number;
+      group: number;
+    }[];
   },
   layout: {
     tab: { value: string; label: string; };

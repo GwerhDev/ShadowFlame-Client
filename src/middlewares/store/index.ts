@@ -17,6 +17,7 @@ export const useStore = defineStore('store', {
       chatbotmodel: '',
       shadowWarData: null,
       shadowWarError: null,
+      userBattleInfo: [],
     },
 
     layout: {
@@ -98,6 +99,14 @@ export const useStore = defineStore('store', {
 
     setShadowWarError(error: string | null) {
       this.currentUser.shadowWarError = error;
+    },
+
+    setUserBattleInfo(battleInfo: { category: string; match: number; group: number }[]) {
+      this.currentUser.userBattleInfo = battleInfo;
+    },
+
+    clearUserBattleInfo() {
+      this.currentUser.userBattleInfo = [];
     },
 
     async handleGetNextShadowWar() {

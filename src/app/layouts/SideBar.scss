@@ -41,6 +41,11 @@
       span {
         text-wrap: nowrap;
       }
+
+      .user-battle-indicator {
+        margin-left: auto;
+        color: var(--color-accent);
+      }
     }
   }
 }
