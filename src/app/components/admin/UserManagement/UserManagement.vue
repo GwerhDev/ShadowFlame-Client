@@ -29,7 +29,7 @@ watch(() => store.currentUser.logged, async (isLoggedIn) => {
 }, { immediate: true }); // immediate: true to run the watcher immediately on component setup
 
 
-const navItems = ['estado', 'nombre', 'rol', 'acciones'];
+const navItems = ['estado', 'nombre', 'rol', 'vinculado', 'acciones'];
 
 </script>
 
@@ -48,8 +48,10 @@ const navItems = ['estado', 'nombre', 'rol', 'acciones'];
         <div class="skeleton-box skeleton-header-item"></div>
         <div class="skeleton-box skeleton-header-item"></div>
         <div class="skeleton-box skeleton-header-item"></div>
+        <div class="skeleton-box skeleton-header-item"></div>
       </div>
       <div class="skeleton-table-row" v-for="n in 5" :key="n">
+        <div class="skeleton-box skeleton-cell"></div>
         <div class="skeleton-box skeleton-cell"></div>
         <div class="skeleton-box skeleton-cell"></div>
         <div class="skeleton-box skeleton-cell"></div>

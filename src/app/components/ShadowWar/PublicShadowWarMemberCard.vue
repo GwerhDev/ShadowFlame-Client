@@ -22,7 +22,6 @@ const getClassImage = (className: string | undefined) => {
       <img :src="getClassImage(member!.class)" :alt="member!.class" class="class-image" />
       <div class="member-details">
         <span class="character-name">{{ member!.character }}</span>
-        <span class="resonance">{{ member!.battletag }}</span>
       </div>
     </div>
     <div v-else class="empty-card">

@@ -34,7 +34,7 @@ function handleAddMember() {
   showModal.value = true;
 };
 
-const navItems = ['#', 'battletag', 'personaje', 'resonancia', 'clase', 'whatsapp', 'acciones'];
+const navItems = ['#', 'personaje', 'resonancia', 'clase', 'whatsapp', 'acciones'];
 
 </script>
 

@@ -8,7 +8,6 @@ const store: any = useStore();
 const editionActive: Ref<boolean> = ref(false);
 const deleteActive: Ref<boolean> = ref(false);
 
-const battletag: Ref<string> = ref('');
 const character: Ref<string> = ref('');
 const resonance: Ref<number> = ref(0);
 const memberClass: Ref<string> = ref('');
@@ -21,7 +20,6 @@ const formattedWhatsapp = computed(() => {
 const props = defineProps(['member']);
 
 onMounted(() => {
-  battletag.value = props.member.battletag;
   character.value = props.member.character;
   resonance.value = props.member.resonance;
   memberClass.value = props.member.class;
@@ -34,7 +32,6 @@ function handleEdit() {
 
 async function handleUpdate(member: any) {
   const formData = {
-    battletag: battletag.value,
     character: character.value,
     resonance: resonance.value,
     class: memberClass.value,
@@ -68,9 +65,6 @@ function handleDelete() {
       <img src="../../../../assets/svg/profile-icon.svg" alt="">
     </span>
     <span>
-      <input type="text" v-model="battletag">
-    </span>
-    <span>
       <input type="text" v-model="character">
     </span>
     <span>
@@ -102,9 +96,6 @@ function handleDelete() {
       <img src="../../../../assets/svg/profile-icon.svg" alt="">
     </span>
     <span>
-      <p>{{ member.battletag }}</p>
-    </span>
-    <span>
       <p>{{ member.character }}</p>
     </span>
     <span>
@@ -134,9 +125,6 @@ function handleDelete() {
   <div class="list-container" v-if="!editionActive && !deleteActive">
     <span>
       <img src="../../../../assets/svg/profile-icon.svg" alt="">
-    </span>
-    <span>
-      <p>{{ member.battletag }}</p>
     </span>
     <span>
       <p>{{ member.character }}</p>

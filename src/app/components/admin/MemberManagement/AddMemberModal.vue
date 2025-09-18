@@ -9,7 +9,6 @@ const emit = defineEmits(['close']);
 const store: any = useStore();
 
 const whatsapp = ref('');
-const battletag = ref('');
 const character = ref('');
 const resonance = ref(0);
 const selectedClass = ref('');
@@ -45,7 +44,6 @@ function handleCloseModal() {
 
 function handleSubmit() {
   const formData = {
-    battletag: battletag.value,
     character: character.value,
     resonance: resonance.value,
     class: selectedClass.value,
@@ -60,10 +58,6 @@ function handleSubmit() {
   <CustomModal title="Agregar miembro" @close="$emit('close')">
     <form @submit.prevent="handleSubmit">
       <ul class="d-flex col g-1">
-        <span class="d-flex g-1">
-          <label for="battletag">Battletag:</label>
-          <input type="text" id="battletag" v-model="battletag" required>
-        </span>
         <span class="d-flex g-1">
           <label for="character">Personaje:</label>
           <input type="text" id="character" v-model="character" required>

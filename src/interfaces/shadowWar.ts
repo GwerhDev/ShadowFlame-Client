@@ -1,6 +1,5 @@
 export interface Member {
   _id: string;
-  battletag: string;
   character: string; // Added character property
   class?: string; // Assuming class is a string
   resonance?: number; // Assuming resonance is a number
