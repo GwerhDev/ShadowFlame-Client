@@ -20,6 +20,7 @@ const props = defineProps({
 
 const activeCategory = computed(() => props.activeTab.value);
 const shadowWarData = computed(() => store.currentUser.shadowWarData);
+const loggedInUser = computed(() => store.currentUser.userData);
 const error = computed(() => store.currentUser.shadowWarError);
 
 const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => {
@@ -30,6 +31,13 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
   }
   return padded;
 };
+
+const isMemberLinked = (member: ShadowWarInterfaces.Member | undefined) => {
+  if (!loggedInUser.value || !loggedInUser.value.member || !member) {
+    return false;
+  }
+  return loggedInUser.value.member.includes(member._id);
+};
 </script>
 
 <template>
@@ -39,7 +47,7 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
       <pre>{{ error }}</pre>
     </div>
 
-    
+
 
     <div v-if="shadowWarData && shadowWarData.battle" class="main-content-wrapper">
       <div class="content-section">
@@ -61,7 +69,8 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
                           <MemberCardSkeleton />
                         </template>
                         <template v-else>
-                          <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)" :key="index" :member="member" />
+                          <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group1.member)"
+                            :key="index" :member="member" :is-linked="isMemberLinked(member)" />
                         </template>
                       </div>
                     </div>
@@ -72,7 +81,8 @@ const getPaddedMembers = (members: ShadowWarInterfaces.Member[] | undefined) => 
                           <MemberCardSkeleton />
                         </template>
                         <template v-else>
-                          <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)" :key="index" :member="member" />
+                          <PublicShadowWarMemberCard v-for="(member, index) in getPaddedMembers(match.group2.member)"
+                            :key="index" :member="member" :is-linked="isMemberLinked(member)" />
                         </template>
                       </div>
                     </div>

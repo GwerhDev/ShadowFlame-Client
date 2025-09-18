@@ -17,6 +17,10 @@
     background-color: var(--element-color-primary-hover);
   }
 
+  &.linked-member {
+    border: solid 1px var(--color-primary);
+  }
+
   .unassign-button {
     padding: 0;
     position: absolute;

@@ -3,10 +3,14 @@ import { PropType } from 'vue';
 import { Member } from '../../../interfaces/shadowWar';
 import { classes } from '../../../middlewares/misc/const';
 
-defineProps({
+const props = defineProps({
   member: {
     type: Object as PropType<Member | undefined>,
     default: undefined,
+  },
+  isLinked: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -17,7 +21,7 @@ const getClassImage = (className: string | undefined) => {
 </script>
 
 <template>
-  <div class="member-card">
+  <div class="member-card" :class="{ 'linked-member': isLinked }">
     <div v-if="member" class="member-info">
       <img :src="getClassImage(member!.class)" :alt="member!.class" class="class-image" />
       <div class="member-details">
