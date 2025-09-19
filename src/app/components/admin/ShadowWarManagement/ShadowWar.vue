@@ -3,16 +3,8 @@ import { ref, Ref } from 'vue';
 import CreateShadowWarForm from './CreateShadowWarForm.vue';
 
 defineProps({
-  generateWhatsAppMessage: {
-    type: Function,
-    required: true,
-  },
   openShareModal: {
     type: Function,
-    required: true,
-  },
-  copied: {
-    type: Boolean,
     required: true,
   },
   nextWarDate: {
@@ -28,10 +20,8 @@ const error: Ref<string | null> = ref(null);
 <template>
   <div class="shadow-war-container">
     <span class="info-text">
+      <span class="title">
       <h2>Próxima Batalla</h2>
-      <span class="buttons">
-        <i @click="generateWhatsAppMessage()" class="fas fa-copy"></i>
-        <span v-if="copied" class="copied-feedback">¡Mensaje copiado!</span>
         <i @click="openShareModal()" class="fas fa-share"></i>
       </span>
       <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las

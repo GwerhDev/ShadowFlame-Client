@@ -1,16 +1,16 @@
 .shadow-war-container {
   width: 100%;
-  padding: 1rem;
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  .buttons {
+  .title {
     gap: .5rem;
     width: 100%;
     padding: .5rem;
-    justify-content: center;
     display: flex;
+    align-items: center;
+    justify-content: center;
     
     i {
       padding: .5rem;

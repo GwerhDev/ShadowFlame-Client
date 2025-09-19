@@ -9,6 +9,7 @@ import UserManagement from '../../components/admin/UserManagement/UserManagement
 import EnemyClanManagement from '../../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
 import HistoryManagement from '../../components/admin/HistoryManagement/HistoryManagement.vue';
 import { ShadowWar as ShadowWarInterface, Match, Member } from '../../../interfaces/shadowWar';
+import CustomModal from '../../components/Modals/CustomModal.vue';
 
 const store: any = useStore();
 const nextWarDate = ref('');
@@ -16,6 +17,8 @@ const warTime = ref('');
 const enemyClanName = ref('');
 const loading = ref(true);
 const copied = ref(false);
+const isShareModalOpen = ref(false);
+const shareableMessage = ref('');
 
 const sidebarTabs = [
   { id: 'shadow-war', name: 'Guerra Sombría', icon: 'fas fa-shield' },
@@ -25,7 +28,7 @@ const sidebarTabs = [
   { id: 'users', name: 'Usuarios', icon: 'fas fa-users' },
 ];
 
-const generateWhatsAppMessage = async () => {
+const prepareShareableMessage = async () => {
   const warData = store.currentUser.shadowWarData as ShadowWarInterface;
   if (!warData) return;
 
@@ -56,8 +59,12 @@ const generateWhatsAppMessage = async () => {
 
   const message = `*GUERRA SOMBRÍA*\n\nHoy a las _19:30 h (server)_ nos enfrentaremos al Clan *${enemy}*\n\n_Junto a los Oficiales hemos determinado la alineación que llevaremos, basados en la Encuesta de participación hecha mediante el canal general de nuestro clan._\n\n${lineupText}\n\n*PUEDEN VER LA ALINEACIÓN EN EL SIGUIENTE LINK*\n\n_(*) Los que no confirmaron y lleguen a la guerra, pueden ir rellenando los grupos donde falte gente_\n\nhttps://shadowflame.netlify.app/shadow-war`;
 
+  shareableMessage.value = message.replace(/\n/g, '\n');
+};
+
+const copyPreparedMessage = async () => {
   try {
-    await navigator.clipboard.writeText(message.replace(/\n/g, '\n'));
+    await navigator.clipboard.writeText(shareableMessage.value);
     copied.value = true;
     setTimeout(() => {
       copied.value = false;
@@ -65,6 +72,15 @@ const generateWhatsAppMessage = async () => {
   } catch (err) {
     console.error('Error al copiar el mensaje: ', err);
   }
+};
+
+const openShareModalHandler = async () => {
+  await prepareShareableMessage();
+  isShareModalOpen.value = true;
+};
+
+const closeShareModal = () => {
+  isShareModalOpen.value = false;
 };
 
 onMounted(async () => {
@@ -118,7 +134,8 @@ watch(() => store.layout.tab, async (newTab) => {
         :active-layout-tab="store.layout.tab" title="Guerra Sombría">
         <section class="content-section"
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'shadow-war'">
-          <ShadowWar :generateWhatsAppMessage="generateWhatsAppMessage" :copied="copied" :nextWarDate="nextWarDate" :warTime="warTime" :enemyClanName="enemyClanName" />
+          <ShadowWar :openShareModal="openShareModalHandler" :nextWarDate="nextWarDate" :warTime="warTime"
+            :enemyClanName="enemyClanName" />
         </section>
         <section class="content-section"
           v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'history'">
@@ -138,6 +155,15 @@ watch(() => store.layout.tab, async (newTab) => {
         </section>
       </AppLayout>
     </div>
+    <CustomModal v-if="isShareModalOpen" @close="closeShareModal" title="Compartir Alineación">
+      <div class="share-content">
+        <pre class="shareable-message">{{ shareableMessage }}</pre>
+        <button @click="copyPreparedMessage" class="copy-button">
+          <i class="fas fa-copy"></i> Copiar Mensaje
+        </button>
+        <span v-if="copied" class="copied-feedback">¡Mensaje copiado!</span>
+      </div>
+    </CustomModal>
   </main>
   <div v-else class="div-container-denied">
     <DeniedAccess />
@@ -162,6 +188,45 @@ watch(() => store.layout.tab, async (newTab) => {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.share-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shareable-message {
+  white-space: pre-wrap;
+  background-color: #111;
+  padding: 1rem;
+  border-radius: 5px;
+  max-height: 400px;
+  overflow-y: auto;
+  font-family: monospace;
+}
+
+.copy-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.copy-button:hover {
+  background-color: #45a049;
+}
+
+.copied-feedback {
+  color: #4CAF50;
+  text-align: center;
 }
 
 @media (max-width: 1100px) {
