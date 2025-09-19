@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan, getShadowWars } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan, getShadowWars, updateShadowWar } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
+import { ShadowWar } from '../../interfaces/shadowWar';
 
 export const useStore = defineStore('store', {
   state: (): storeState => ({
@@ -321,6 +322,22 @@ export const useStore = defineStore('store', {
         return newShadowWars.length > 0; // Return true if more data was fetched, false otherwise
       }
       return false;
+    },
+
+    async handleUpdateShadowWar(id: string, updatedShadowWar: ShadowWar) {
+      try {
+        const response = await updateShadowWar(id, updatedShadowWar);
+        if (this.admin.shadowWars) {
+          const index = this.admin.shadowWars.findIndex((sw: ShadowWar) => sw._id === id);
+          if (index !== -1) {
+            this.admin.shadowWars[index] = response;
+          }
+        }
+        return response;
+      } catch (error) {
+        console.error('Error updating shadow war:', error);
+        throw error;
+      }
     },
 
     setCurrentCharacter(character: string | null) {

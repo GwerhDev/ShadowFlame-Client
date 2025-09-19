@@ -5,3 +5,18 @@ export const optionTodoList: string[] = [
   "Misiones diarias",
   "Campo de batalla",
 ];
+
+export const translateResult = (result: string | undefined) => {
+  switch (result) {
+    case 'victory':
+      return 'Victoria';
+    case 'defeat':
+      return 'Derrota';
+    case 'draw':
+      return 'Empate';
+    case 'pending':
+      return 'Pendiente';
+    default:
+      return 'Pendiente';
+  }
+};

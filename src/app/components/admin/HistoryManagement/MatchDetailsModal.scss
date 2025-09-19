@@ -1,5 +1,28 @@
 .match-details-content {
   padding: 1rem;
+
+  .result-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    p {
+      margin: 0;
+      color: var(--text-color-primary);
+      font-size: 1.1rem;
+    }
+
+    .result-select {
+      background-color: var(--background-color-secondary);
+      border: 1px solid var(--border-color-primary);
+      color: var(--text-color-primary);
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+  }
 }
 
 .team-composition {

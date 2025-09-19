@@ -26,13 +26,14 @@
       <h3>Batallas</h3>
       <div v-for="(matches, battleType) in shadowWarDetails?.battle" :key="battleType" class="battle-section">
         <h4>{{ battleType.charAt(0).toUpperCase() + battleType.slice(1) }}</h4>
-        <p>Miembros participantes: {{matches.reduce((acc, match) => acc + match.group1.member.filter(m => m).length +
-          match.group2.member.filter(m => m).length, 0)}}
-        </p>
 
         <div v-for="(match, index) in matches" :key="index" class="match-summary-section">
           <h5>Partida {{ index + 1 }}</h5>
-          <p>Resultado: {{ match.result || 'Pendiente' }}</p>
+          <p>
+            Miembros participantes: {{match.group1.member.filter(m => m).length + match.group2.member.filter(m =>
+            m).length}}
+          </p>
+          <p>Resultado: {{ translateResult(match.result) }}</p>
           <i @click="openMatchDetailsModal(match)" class="fas fa-eye icon-button"></i>
         </div>
       </div>
@@ -45,11 +46,7 @@
   <ConfirmedMembersModal v-if="showMembersModal" :members="shadowWarDetails?.confirmed || []"
     @close="closeMembersModal" />
 
-  <MatchDetailsModal
-    v-if="showMatchDetailsModal"
-    :match="selectedMatch"
-    @close="closeMatchDetailsModal"
-  />
+  <MatchDetailsModal v-if="showMatchDetailsModal" :currentShadowWar="shadowWarDetails" :match="selectedMatch" @close="closeMatchDetailsModal" />
 
 </template>
 
@@ -58,8 +55,9 @@ import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { getShadowWarById } from '../../../../middlewares/services/shadowWarService';
 import { ShadowWar, Match } from '../../../../interfaces/shadowWar';
-import ConfirmedMembersModal from './ConfirmedMembersModal.vue';
+import { translateResult } from '../../../../helpers/lists';
 import MatchDetailsModal from './MatchDetailsModal.vue';
+import ConfirmedMembersModal from './ConfirmedMembersModal.vue';
 
 const route = useRoute();
 const shadowWarDetails = ref<ShadowWar | null>(null);

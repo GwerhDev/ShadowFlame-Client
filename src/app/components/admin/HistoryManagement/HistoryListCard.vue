@@ -29,9 +29,8 @@ const viewDetails = (id: string) => {
     </span>
     <span>
       <ul class="buttons-container">
-        <button @click="viewDetails(war._id)">
-          Ver
-        </button>
+        <i class="fas fa-eye icon-button" @click="viewDetails(war._id)">
+        </i>
       </ul>
     </span>
   </div>
