@@ -1,33 +1,50 @@
 <script setup lang="ts">
+import AppLayout from '../layouts/AppLayout.vue';
 import GuidesComponent from '../components/Guides/GuidesComponent.vue';
 import AddCharacterModal from '../components/Settings/AddCharacterModal.vue';
+import { ref } from 'vue';
 
+const loading = ref(false);
+
+const sidebarTabs = [
+  { id: 'chatbot', name: 'Chatbot', icon: 'fas fa-robot', path: '/guides/chatbot' },
+  { id: 'maps', name: 'Mapas', icon: 'fas fa-map-marked-alt', path: '/guides/maps' },
+];
 </script>
 
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <GuidesComponent />
-      <AddCharacterModal />
+      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs">
+        <GuidesComponent />
+        <AddCharacterModal />
+      </AppLayout>
     </div>
   </main>
 </template>
 
 <style scoped>
 .div-container {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
+  padding-top: 7rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+}
+
+.info-text {
+  display: flex;
+  justify-content: center;
+  padding-inline: 1rem;
+}
+
+.clan-name {
+  font-size: 2rem;
 }
 
 @media (max-width: 1100px) {
   .div-container {
-    padding-top: 2rem;
+    padding: 0;
   }
 }
-
 </style>
