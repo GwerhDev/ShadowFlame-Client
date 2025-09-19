@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppLayout from '../layouts/AppLayout.vue';
+import AddCharacterModal from '../components/Settings/AddCharacterModal.vue';
 import { ref } from 'vue';
 
 const loading = ref(false); // This can be connected to a real loading state later
@@ -16,6 +17,7 @@ const sidebarTabs = [
   <main class="red-shadow-fx">
     <div class="div-container">
       <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs">
+        <AddCharacterModal />
         <router-view />
       </AppLayout>
     </div>

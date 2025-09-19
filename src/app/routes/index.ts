@@ -27,7 +27,6 @@ import EminentShadowWar from '../components/ShadowWar/EminentShadowWar.vue';
 import FamedShadowWar from '../components/ShadowWar/FamedShadowWar.vue';
 import ProudShadowWar from '../components/ShadowWar/ProudShadowWar.vue';
 import GuidesChatBot from '../components/Guides/GuidesChatBot.vue';
-import GuidesCrests from '../components/Guides/GuidesCrests.vue';
 import GuidesMaps from '../components/Guides/GuidesMaps.vue';
 import TasksComponent from '../components/Tasks/TasksComponent.vue';
 
@@ -200,19 +199,13 @@ const routes: RouteRecordRaw[] = [
         path: 'chatbot',
         name: 'GuidesChatBot',
         component: GuidesChatBot,
-        meta: { title: 'Guía - Chatbot' },
-      },
-      {
-        path: 'crests',
-        name: 'GuidesCrests',
-        component: GuidesCrests,
-        meta: { title: 'Guía - Emblemas' },
+        meta: { title: 'Chatbot' },
       },
       {
         path: 'maps',
         name: 'GuidesMaps',
         component: GuidesMaps,
-        meta: { title: 'Guía - Mapas' },
+        meta: { title: 'Mapas' },
       },
     ]
   },
