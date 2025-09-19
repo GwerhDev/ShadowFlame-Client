@@ -3,7 +3,7 @@ import { PropType } from 'vue';
 import { Match, Member } from '../../../../interfaces/shadowWar';
 import CustomModal from '../../Modals/CustomModal.vue';
 
-const props = defineProps({
+defineProps({
   battleType: {
     type: String,
     required: true
