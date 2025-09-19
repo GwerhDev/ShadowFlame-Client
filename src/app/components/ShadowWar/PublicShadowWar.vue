@@ -78,7 +78,7 @@ const isMemberLinked = (member: ShadowWarInterfaces.Member | undefined) => {
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">
           <div v-if="activeCategory === String(categoryName)" class="category">
-            <h3>Batalla {{ store.layout.tab.label }}</h3>
+            <h3>Batalla {{ props.activeTab.label }}</h3>
             <div v-if="category.length === 0">
               <p>No hay partidas asignadas para esta categoría.</p>
             </div>

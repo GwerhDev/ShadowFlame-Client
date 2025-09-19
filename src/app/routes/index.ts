@@ -31,6 +31,7 @@ const routes: RouteRecordRaw[] = [
     path: '/shadow-war',
     name: 'PublicShadowWar',
     component: PublicShadowWarPage,
+    redirect: '/shadow-war/exalted',
     children: [
       {
         path: 'exalted',
