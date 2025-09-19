@@ -64,6 +64,7 @@ const routes: RouteRecordRaw[] = [
     path: '/dashboard',
     name: 'Dashboard',
     component: DashboardPage,
+    redirect: '/dashboard/shadow-war',
     children: [
       {
         path: 'shadow-war',
