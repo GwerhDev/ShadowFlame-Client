@@ -24,12 +24,17 @@
 
     <div v-if="shadowWarDetails?.battle">
       <h3>Batallas</h3>
-      <div v-for="(matches, battleType) in shadowWarDetails?.battle" :key="battleType">
+      <div v-for="(matches, battleType) in shadowWarDetails?.battle" :key="battleType" class="battle-section">
         <h4>{{ battleType.charAt(0).toUpperCase() + battleType.slice(1) }}</h4>
         <p>Miembros participantes: {{matches.reduce((acc, match) => acc + match.group1.member.filter(m => m).length +
           match.group2.member.filter(m => m).length, 0)}}
-          <i @click="openBattleDetailsModal(battleType, matches)" class="fas fa-eye icon-button"></i>
         </p>
+
+        <div v-for="(match, index) in matches" :key="index" class="match-summary-section">
+          <h5>Partida {{ index + 1 }}</h5>
+          <p>Resultado: {{ match.result || 'Pendiente' }}</p>
+          <i @click="openMatchDetailsModal(match)" class="fas fa-eye icon-button"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -40,8 +45,11 @@
   <ConfirmedMembersModal v-if="showMembersModal" :members="shadowWarDetails?.confirmed || []"
     @close="closeMembersModal" />
 
-  <BattleDetailsModal v-if="showBattleDetailsModal" :battleType="selectedBattleType" :matches="selectedBattleMatches"
-    @close="closeBattleDetailsModal" />
+  <MatchDetailsModal
+    v-if="showMatchDetailsModal"
+    :match="selectedMatch"
+    @close="closeMatchDetailsModal"
+  />
 
 </template>
 
@@ -51,16 +59,15 @@ import { useRoute } from 'vue-router';
 import { getShadowWarById } from '../../../../middlewares/services/shadowWarService';
 import { ShadowWar, Match } from '../../../../interfaces/shadowWar';
 import ConfirmedMembersModal from './ConfirmedMembersModal.vue';
-import BattleDetailsModal from './BattleDetailsModal.vue';
+import MatchDetailsModal from './MatchDetailsModal.vue';
 
 const route = useRoute();
 const shadowWarDetails = ref<ShadowWar | null>(null);
 const loading = ref(true);
 const error = ref(null);
 const showMembersModal = ref(false);
-const showBattleDetailsModal = ref(false);
-const selectedBattleType = ref('');
-const selectedBattleMatches = ref<Match[]>([]);
+const showMatchDetailsModal = ref(false); // New state for MatchDetailsModal
+const selectedMatch = ref<Match | null>(null); // New state for selected match
 
 const confirmedMembersCount = computed(() => {
   return shadowWarDetails.value?.confirmed?.length || 0;
@@ -74,14 +81,14 @@ const closeMembersModal = () => {
   showMembersModal.value = false;
 };
 
-const openBattleDetailsModal = (battleType: string, matches: Match[]) => {
-  selectedBattleType.value = battleType;
-  selectedBattleMatches.value = matches;
-  showBattleDetailsModal.value = true;
+const openMatchDetailsModal = (match: Match) => {
+  selectedMatch.value = match;
+  showMatchDetailsModal.value = true;
 };
 
-const closeBattleDetailsModal = () => {
-  showBattleDetailsModal.value = false;
+const closeMatchDetailsModal = () => {
+  showMatchDetailsModal.value = false;
+  selectedMatch.value = null;
 };
 
 onMounted(async () => {
@@ -90,7 +97,6 @@ onMounted(async () => {
     try {
       loading.value = true;
       const response = await getShadowWarById(shadowWarId);
-      console.log(response)
       shadowWarDetails.value = response;
     } catch (err: any) {
       error.value = err.message;

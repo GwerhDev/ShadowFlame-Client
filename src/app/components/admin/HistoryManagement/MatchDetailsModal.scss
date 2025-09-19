@@ -1,0 +1,35 @@
+.match-details-content {
+  padding: 1rem;
+}
+
+.team-composition {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.team-group {
+  flex: 1;
+  background-color: var(--element-color-primary);
+  padding: 0.8rem;
+  border-radius: 5px;
+
+  h5 {
+    color: #f0f0f0;
+    margin-bottom: 0.6rem;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    color: #c0c0c0;
+    padding: 0.2rem 0;
+    text-align: center;
+  }
+}
