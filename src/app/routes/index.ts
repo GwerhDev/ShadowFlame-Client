@@ -29,6 +29,7 @@ import ProudShadowWar from '../components/ShadowWar/ProudShadowWar.vue';
 import GuidesChatBot from '../components/Guides/GuidesChatBot.vue';
 import GuidesCrests from '../components/Guides/GuidesCrests.vue';
 import GuidesMaps from '../components/Guides/GuidesMaps.vue';
+import TasksComponent from '../components/Tasks/TasksComponent.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -172,7 +173,22 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/tasks',
     name: 'TasksPage',
-    component: TasksPage
+    component: TasksPage,
+    redirect: '/tasks/my-tasks',
+    children: [
+      {
+        path: 'my-tasks',
+        name: 'MyTasks',
+        component: TasksComponent,
+        meta: { taskType: 'mytasks', title: 'Mis Tareas' }
+      },
+      {
+        path: 'clan-tasks',
+        name: 'ClanTasks',
+        component: TasksComponent,
+        meta: { taskType: 'clantasks', title: 'Tareas del Clan' }
+      }
+    ]
   },
   {
     path: '/guides',

@@ -2,65 +2,49 @@
 <script setup lang="ts">
 import { onMounted, ref, Ref, watch } from "vue";
 import { useStore } from '../../../middlewares/store';
+import { useRoute } from 'vue-router';
 import { optionTodoList } from "../../../helpers/lists";
 import TasksCard from "./TasksCard.vue";
-import TasksLateralMenu from "./TasksLateralMenu.vue";
-import diabloIcon from "../../../assets/svg/diablo-icon.svg";
 import DeniedAccess from "../../utils/DeniedAccess.vue";
 import LoaderComponent from "../../utils/LoaderComponent.vue";
 import CharacterSelector from "../Selectors/CharacterSelector/CharacterSelector.vue";
 
 const store: any = useStore();
+const route = useRoute();
+
 const title: Ref = ref("");
 const message: Ref = ref("");
 const isButtonDisabled: Ref = ref(true);
 const date: Ref = ref(new Date().toISOString().substring(0, 10));
-const type: Ref = ref("mytasks");
+const type: Ref = ref(route.meta.taskType as string);
 
-onMounted(async () => {
+async function fetchTasks() {
   try {
     message.value = "";
-    if (!store.currentUser.tasktype) {
-      await store.handleGetTask(date.value, type.value);
-      store.setTaskType(type.value);
-      store.setTaskDate(date.value);
-    } else {
-      type.value = store.currentUser.tasktype;
-      date.value = store.currentUser.taskdate;
-      await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
-    }
+    store.setTaskType(type.value);
+    store.setTaskDate(date.value);
+    await store.handleGetTask(date.value, type.value);
   } catch (error) {
     console.error(error);
   } finally {
-    message.value = "No hay tareas para esta fecha.";
-  }
-});
-
-watch(() => store.currentCharacter, async (newCharacter, oldCharacter) => {
-  if (newCharacter !== oldCharacter) {
-    try {
-      message.value = "";
-      if (!store.currentUser.tasktype) {
-        await store.handleGetTask(date.value, type.value);
-        store.setTaskType(type.value);
-        store.setTaskDate(date.value);
-      } else {
-        type.value = store.currentUser.tasktype;
-        date.value = store.currentUser.taskdate;
-        await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
+    if (!store.currentUser.task?.length) {
       message.value = "No hay tareas para esta fecha.";
     }
   }
+}
+
+onMounted(fetchTasks);
+
+watch(() => route.meta.taskType, (newType) => {
+  type.value = newType as string;
+  fetchTasks();
 });
+
+watch(() => store.currentCharacter, fetchTasks);
 
 async function handleDate(e: any) {
   date.value = e.target.value;
-  store.setTaskDate(date.value);
-  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+  fetchTasks();
 }
 
 function handleInput() {
@@ -72,8 +56,8 @@ async function createTask() {
   isButtonDisabled.value = true;
 
   const formData: any = {
-    date: store.currentUser.taskdate,
-    type: store.currentUser.tasktype,
+    date: date.value,
+    type: type.value,
     title: title.value,
     fixed: false,
     user: !store.currentCharacter ? store.currentUser.userData.id : null,
@@ -81,7 +65,7 @@ async function createTask() {
   };
 
   await store.handleCreateTask(formData);
-  await store.handleGetTask(store.currentUser.taskdate, store.currentUser.tasktype);
+  await fetchTasks();
 
   isButtonDisabled.value = true;
   title.value = "";
@@ -91,24 +75,17 @@ async function createTask() {
 <template>
   <div class="container-tasks-component">
     <div class="tasks-container">
-      <span class="mb-3 mt-1">
-        <img :src="diabloIcon" alt="icon" />
-        <h1>Mis Tareas</h1>
-      </span>
 
       <CharacterSelector />
 
       <div class="section-container">
-        <section class="menu-section">
-          <TasksLateralMenu :logged="store.currentUser.logged" />
-        </section>
         <section class="todolist-section" v-if="store.currentUser.logged">
           <div class="filter-container">
             <input :value="date" type="date" @input="handleDate" v-if="store.currentUser.logged" />
           </div>
 
           <form @submit.prevent="createTask" disabled
-            v-if="store.currentUser.tasktype === 'mytasks' && !store.currentUser.taskloading">
+            v-if="type === 'mytasks' && !store.currentUser.taskloading">
             <input type="text" list="options" placeholder="Agregar una tarea a tu lista" v-model="title"
               @input="handleInput" />
 
