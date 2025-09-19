@@ -2,14 +2,9 @@
 import { onMounted, ref, watch } from 'vue';
 import { useStore } from '../../../middlewares/store';
 import AppLayout from '../../layouts/AppLayout.vue';
-import ShadowWar from '../../components/admin/ShadowWarManagement/ShadowWar.vue';
-import DeniedAccess from '../../utils/DeniedAccess.vue';
-import MemberManagement from '../../components/admin/MemberManagement/MemberManagement.vue';
-import UserManagement from '../../components/admin/UserManagement/UserManagement.vue';
-import EnemyClanManagement from '../../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
-import HistoryManagement from '../../components/admin/HistoryManagement/HistoryManagement.vue';
 import { ShadowWar as ShadowWarInterface, Match, Member } from '../../../interfaces/shadowWar';
 import CustomModal from '../../components/Modals/CustomModal.vue';
+import { useRoute } from 'vue-router';
 
 const store: any = useStore();
 const nextWarDate = ref('');
@@ -20,12 +15,14 @@ const copied = ref(false);
 const isShareModalOpen = ref(false);
 const shareableMessage = ref('');
 
+const route = useRoute();
+
 const sidebarTabs = [
-  { id: 'shadow-war', name: 'Guerra Sombría', icon: 'fas fa-shield' },
-  { id: 'history', name: 'Historial', icon: 'fas fa-history' },
-  { id: 'enemy-clans', name: 'Clanes', icon: 'fas fa-skull-crossbones' },
-  { id: 'members', name: 'Miembros', icon: 'fas fa-user-group' },
-  { id: 'users', name: 'Usuarios', icon: 'fas fa-users' },
+  { id: 'shadow-war', name: 'Guerra Sombría', icon: 'fas fa-shield', path: '/dashboard/shadow-war' },
+  { id: 'history', name: 'Historial', icon: 'fas fa-history', path: '/dashboard/history' },
+  { id: 'clans', name: 'Clanes', icon: 'fas fa-skull-crossbones', path: '/dashboard/clans' },
+  { id: 'members', name: 'Miembros', icon: 'fas fa-user-group', path: '/dashboard/members' },
+  { id: 'users', name: 'Usuarios', icon: 'fas fa-users', path: '/dashboard/users' },
 ];
 
 const prepareShareableMessage = async () => {
@@ -84,7 +81,6 @@ const closeShareModal = () => {
 };
 
 onMounted(async () => {
-  store.setTab({ value: 'shadow-war', label: 'Guerra Sombría' });
   await store.handleGetNextShadowWar();
   if (store.currentUser.shadowWarData && store.currentUser.shadowWarData.date) {
     const warDate = new Date(store.currentUser.shadowWarData.date);
@@ -117,42 +113,15 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
     enemyClanName.value = '';
   }
 }, { immediate: true });
-
-watch(() => store.layout.tab, async (newTab) => {
-  if (newTab.value) {
-    loading.value = true;
-    await store.handleGetNextShadowWar();
-    loading.value = false;
-  }
-});
 </script>
 
 <template>
   <main class="red-shadow-fx" v-if="store.currentUser?.logged">
     <div class="div-container">
       <AppLayout :logged="store.currentUser.logged" :loading="loading" :sidebar-tabs="sidebarTabs"
-        :active-layout-tab="store.layout.tab" title="Guerra Sombría">
-        <section class="content-section"
-          v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'shadow-war'">
-          <ShadowWar :openShareModal="openShareModalHandler" :nextWarDate="nextWarDate" :warTime="warTime"
-            :enemyClanName="enemyClanName" />
-        </section>
-        <section class="content-section"
-          v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'history'">
-          <HistoryManagement />
-        </section>
-        <section class="content-section"
-          v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.userData?.currentUser?.role === 'officer') && store.layout.tab.value === 'members'">
-          <MemberManagement />
-        </section>
-        <section class="content-section"
-          v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader') && store.layout.tab.value === 'users'">
-          <UserManagement />
-        </section>
-        <section class="content-section"
-          v-if="store.currentUser?.logged && (store.currentUser?.userData?.role === 'admin' || store.currentUser?.userData?.role === 'leader' || store.currentUser?.userData?.role === 'officer') && store.layout.tab.value === 'enemy-clans'">
-          <EnemyClanManagement />
-        </section>
+        :active-layout-tab="route.path" title="Guerra Sombría">
+        <router-view :openShareModal="openShareModalHandler" :nextWarDate="nextWarDate" :warTime="warTime"
+          :enemyClanName="enemyClanName" />
       </AppLayout>
     </div>
     <CustomModal v-if="isShareModalOpen" @close="closeShareModal" title="Compartir Alineación">

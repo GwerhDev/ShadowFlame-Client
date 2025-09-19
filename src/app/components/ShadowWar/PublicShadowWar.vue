@@ -90,7 +90,7 @@ const isMemberLinked = (member: ShadowWarInterfaces.Member | undefined) => {
                     <div class="group">
                       <h5>Grupo 1</h5>
                       <div class="member-cards-grid">
-                        <template v-if="loading">
+                        <template v-if="props.loading">
                           <MemberCardSkeleton />
                         </template>
                         <template v-else>
@@ -102,7 +102,7 @@ const isMemberLinked = (member: ShadowWarInterfaces.Member | undefined) => {
                     <div class="group">
                       <h5>Grupo 2</h5>
                       <div class="member-cards-grid">
-                        <template v-if="loading">
+                        <template v-if="props.loading">
                           <MemberCardSkeleton />
                         </template>
                         <template v-else>

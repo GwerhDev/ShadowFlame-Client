@@ -14,19 +14,77 @@ import GuidesPage from '../pages/GuidesPage.vue';
 import GalleryPage from '../pages/GalleryPage.vue';
 import SettingsPage from '../pages/user/SettingsPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
+import ShadowWarManagement from '../components/admin/ShadowWarManagement/ShadowWar.vue';
+import HistoryManagement from '../components/admin/HistoryManagement/HistoryManagement.vue';
+import MemberManagement from '../components/admin/MemberManagement/MemberManagement.vue';
+import UserManagement from '../components/admin/UserManagement/UserManagement.vue';
+import EnemyClanManagement from '../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
 import RequirementsPage from '../pages/RequirementsPage.vue';
 import PublicShadowWarPage from '../pages/PublicShadowWarPage.vue';
+import ExaltedShadowWar from '../components/ShadowWar/ExaltedShadowWar.vue';
+import EminentShadowWar from '../components/ShadowWar/EminentShadowWar.vue';
+import FamedShadowWar from '../components/ShadowWar/FamedShadowWar.vue';
+import ProudShadowWar from '../components/ShadowWar/ProudShadowWar.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/shadow-war',
-    name: 'PublicShadowWarPage',
-    component: PublicShadowWarPage
+    name: 'PublicShadowWar',
+    component: PublicShadowWarPage,
+    children: [
+      {
+        path: 'exalted',
+        name: 'PublicShadowWarExalted',
+        component: ExaltedShadowWar,
+      },
+      {
+        path: 'eminent',
+        name: 'PublicShadowWarEminent',
+        component: EminentShadowWar,
+      },
+      {
+        path: 'famed',
+        name: 'PublicShadowWarFamed',
+        component: FamedShadowWar,
+      },
+      {
+        path: 'proud',
+        name: 'PublicShadowWarProud',
+        component: ProudShadowWar,
+      },
+    ],
   },
   {
     path: '/dashboard',
-    name: 'DashboardPage',
-    component: DashboardPage
+    name: 'Dashboard',
+    component: DashboardPage,
+    children: [
+      {
+        path: 'shadow-war',
+        name: 'DashboardShadowWar',
+        component: ShadowWarManagement,
+      },
+      {
+        path: 'history',
+        name: 'DashboardHistory',
+        component: HistoryManagement,
+      },
+      {
+        path: 'clans',
+        name: 'DashboardClans',
+        component: EnemyClanManagement,
+      },
+      {
+        path: 'members',
+        name: 'DashboardMembers',
+        component: MemberManagement,
+      },
+      {
+        path: 'users',
+        name: 'DashboardUsers',
+        component: UserManagement,
+      },
+    ],
   },
   {
     path: '/requirements',

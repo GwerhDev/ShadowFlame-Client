@@ -1,7 +1,7 @@
 <style scoped lang="scss" src="./SideBar.scss" />
 <script setup lang="ts">
-import { Ref, ref } from 'vue';
 import { useStore, AppStore } from '../../middlewares/store';
+import { useRoute, useRouter } from 'vue-router';
 
 withDefaults(defineProps<{
   logged: Boolean,
@@ -10,22 +10,25 @@ withDefaults(defineProps<{
     name: string;
     icon: string;
     length?: number;
+    path: string;
   }>,
 }>(), {
   tabs: () => []
 });
 
 const store: AppStore = useStore();
-const active: Ref = ref({ backgroundColor: "var(--color-primary)" });
+const route = useRoute();
+const router = useRouter();
 
-function handleType(tab: { id: string; name: string; icon: string; length?: number; }) {
-  store.setTab({ value: tab.id, label: tab.name });
+function handleType(tab: { id: string; name: string; icon: string; length?: number; path: string; }) {
+  router.push(tab.path);
 };
 
-function styleActive(type: string) {
-  if (store.layout.tab.value == type) {
-    return active.value;
+function styleActive(path: string) {
+  if (route.path === path) {
+    return { backgroundColor: "var(--color-primary)" };
   }
+  return {};
 };
 
 </script>
@@ -38,7 +41,7 @@ function styleActive(type: string) {
           :title="tab.name"
           :class="{ 'first': index === 0, 'last': index === tabs.length - 1 }"
           @click="handleType(tab)"
-          :style="styleActive(tab.id)"
+          :style="styleActive(tab.path)"
         >
           <i :class="tab.icon"></i>
           <span>{{ tab.name }}</span>

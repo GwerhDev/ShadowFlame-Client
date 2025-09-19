@@ -17,6 +17,7 @@ defineProps({
     name: string;
     icon: string;
     length?: number;
+    path: string;
   }>,
   title: {
     type: String,

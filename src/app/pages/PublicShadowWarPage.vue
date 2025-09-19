@@ -2,23 +2,23 @@
 import { onMounted, ref, watch } from 'vue';
 import { useStore } from '../../middlewares/store';
 import AppLayout from '../layouts/AppLayout.vue';
-import PublicShadowWar from '../components/ShadowWar/PublicShadowWar.vue';
+import { useRoute } from 'vue-router';
 
 const store: any = useStore();
 const nextWarDate = ref('');
 const warTime = ref('');
 const enemyClanName = ref('');
 const loading = ref(true);
+const route = useRoute();
 
 const sidebarTabs = [
-  { id: 'exalted', name: 'Sublime', icon: 'fas fa-crown' },
-  { id: 'eminent', name: 'Eminente', icon: 'fas fa-trophy' },
-  { id: 'famed', name: 'Célebre', icon: 'fas fa-medal' },
-  { id: 'proud', name: 'Imponente', icon: 'fas fa-fist-raised' },
+  { id: 'exalted', name: 'Sublime', icon: 'fas fa-crown', path: '/shadow-war/exalted' },
+  { id: 'eminent', name: 'Eminente', icon: 'fas fa-trophy', path: '/shadow-war/eminent' },
+  { id: 'famed', name: 'Célebre', icon: 'fas fa-medal', path: '/shadow-war/famed' },
+  { id: 'proud', name: 'Imponente', icon: 'fas fa-fist-raised', path: '/shadow-war/proud' },
 ];
 
 onMounted(async () => {
-  store.setTab({ value: 'exalted', label: 'Sublime' });
   await store.handleGetNextShadowWar();
   if (store.currentUser.shadowWarData && store.currentUser.shadowWarData.date) {
     const warDate = new Date(store.currentUser.shadowWarData.date);
@@ -53,20 +53,12 @@ watch(() => store.currentUser.shadowWarData, (newVal) => {
     enemyClanName.value = '';
   }
 }, { immediate: true });
-
-watch(() => store.layout.tab, async (newTab) => {
-  if (newTab.value) {
-    loading.value = true;
-    await store.handleGetNextShadowWar();
-    loading.value = false;
-  }
-});
 </script>
 
 <template>
   <main class="red-shadow-fx">
     <div class="div-container">
-      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="store.layout.tab.value"
+      <AppLayout :loading="loading" :sidebar-tabs="sidebarTabs" :active-layout-tab="route.path"
         title="Guerra Sombría">
         <span class="info-text">
           <p v-if="!loading">La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las 19:30h (hora del
@@ -75,7 +67,7 @@ watch(() => store.layout.tab, async (newTab) => {
             <h4 class="clan-name">{{ enemyClanName }}</h4>
           </p>
         </span>
-        <PublicShadowWar :active-tab="store.layout.tab" :loading="loading" />
+        <router-view :loading="loading" />
       </AppLayout>
     </div>
   </main>
