@@ -28,6 +28,21 @@ const getMemberName = (member: Member | undefined) => {
   return member ? member.character : 'N/A';
 };
 
+const compareMemberGroups = (groupA: (Member | undefined)[] | undefined, groupB: (Member | undefined)[] | undefined) => {
+  if (!groupA || !groupB) return false;
+  if (groupA.length !== groupB.length) return false;
+
+  const idsA = groupA.map(member => member?._id).filter(Boolean).sort();
+  const idsB = groupB.map(member => member?._id).filter(Boolean).sort();
+
+  if (idsA.length !== idsB.length) return false;
+
+  for (let i = 0; i < idsA.length; i++) {
+    if (idsA[i] !== idsB[i]) return false;
+  }
+  return true;
+};
+
 const updateResult = async () => {
   if (!store.admin.shadowWars || !props.match || !currentShadowWar.value || !currentShadowWar.value.battle) {
     console.error('currentShadowWar or its battle property is undefined.');
@@ -39,7 +54,10 @@ const updateResult = async () => {
   const battleTypes = ['exalted', 'eminent', 'famed', 'proud'] as const;
   let matchFound = false;
   for (const type of battleTypes) {
-    const matchIndex = updatedShadowWar.battle[type].findIndex((m: Match) => m._id === props.match?._id);
+    const matchIndex = updatedShadowWar.battle[type].findIndex((m: Match) => 
+      compareMemberGroups(m.group1.member, props.match?.group1.member) &&
+      compareMemberGroups(m.group2.member, props.match?.group2.member)
+    );
     if (matchIndex !== -1) {
       updatedShadowWar.battle[type][matchIndex].result = editableResult.value;
       matchFound = true;
