@@ -32,12 +32,17 @@ const isAssigned = (memberId: string) => {
 
 <template>
   <CustomModal title="Seleccionar Miembro" @close="$emit('close')">
-      <div class="member-selection-grid">
-        <ShadowWarMemberCard v-for="member in members" :key="member._id" :member="member"
-          @click="handleCardClick(member)" :class="{ 'is-assigned': isAssigned(member._id) }" />
-      </div>
+    <div v-if="members.length" class="member-selection-grid">
+      <ShadowWarMemberCard v-for="member in members" :key="member._id" :member="member" @click="handleCardClick(member)"
+        :class="{ 'is-assigned': isAssigned(member._id) }" />
+    </div>
+    <div class="no-member" v-else>
+      <h1><i class="fas fa-ban"></i></h1>
+      <h4>
+        No hay miembros confirmados
+      </h4>
+    </div>
   </CustomModal>
 </template>
 
 <style scoped lang="scss" src="./MemberSelectionModal.scss" />
-

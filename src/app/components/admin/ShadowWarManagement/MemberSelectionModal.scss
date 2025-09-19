@@ -11,3 +11,11 @@
   cursor: not-allowed;
   pointer-events: none;
 }
+
+.no-member {
+  
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--nav-color-primary);
+  font-size: larger;
+}
