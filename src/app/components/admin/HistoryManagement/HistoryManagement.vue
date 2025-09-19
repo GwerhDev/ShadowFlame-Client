@@ -47,7 +47,7 @@ watch(() => route.name, (newName) => {
   }
 });
 
-const navItems = ['Fecha', 'Enemigo', 'Resultado', 'Acciones'];
+const navItems = ['fecha', 'enemigo', 'resultado', 'acciones'];
 
 </script>
 

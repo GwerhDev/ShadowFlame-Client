@@ -1,11 +1,12 @@
 <style scoped lang="scss" src="./AddEnemyClanModal.scss" />
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { createClan } from '../../../../middlewares/services/clanService';
 import CustomModal from '../../Modals/CustomModal.vue';
+import { useStore } from '../../../../middlewares/store';
 
 const emit = defineEmits(['close', 'clanCreated']);
 
+const store: any = useStore();
 const clanName = ref('');
 const clanStatus = ref('active'); // Default status
 const clanMembers = ref(0); // Default members
@@ -23,7 +24,7 @@ const handleSubmit = async () => {
       status: clanStatus.value,
       members: clanMembers.value,
     };
-    await createClan(newClan);
+    await store.handleCreateClan(newClan);
     emit('clanCreated');
     handleCloseModal();
   }

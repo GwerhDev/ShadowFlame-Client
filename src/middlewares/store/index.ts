@@ -303,6 +303,7 @@ export const useStore = defineStore('store', {
     async handleCreateClan(formData: any) {
       try {
         const response: any = await createClan(formData);
+        this.admin.clans = response;
         return response;
       } catch (error) {
         console.error(error);
@@ -310,11 +311,15 @@ export const useStore = defineStore('store', {
     },
 
     async handleUpdateClan(id: string, formData: any) {
-      await updateClan(id, formData);
+      const response = await updateClan(id, formData);
+      this.admin.clans = response;
+      return response;
     },
 
     async handleDeleteClan(id: string) {
-      await deleteClan(id);
+      const response = await deleteClan(id);
+      this.admin.clans = response;
+      return response;
     },
 
     async handleGetShadowWars(page: number = 1, append: boolean = false) {

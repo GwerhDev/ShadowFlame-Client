@@ -31,13 +31,11 @@ async function handleUpdate(clan: any) {
   };
 
   await store.handleUpdateClan(clan._id, formData);
-  await store.handleGetClans();
   editionActive.value = false;
 };
 
 async function handleDeleteClan(id: string) {
   await store.handleDeleteClan(id);
-  await store.handleGetClans();
 };
 
 function handleCancel() {

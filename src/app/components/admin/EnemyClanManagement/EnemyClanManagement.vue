@@ -1,34 +1,25 @@
 <style scoped lang="scss" src="./EnemyClanManagement.scss" />
 <script setup lang="ts">
 import { useStore } from '../../../../middlewares/store';
-import { Ref, ref, watch } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import EnemyClanListCard from './EnemyClanListCard.vue';
 import AddEnemyClanModal from './AddEnemyClanModal.vue';
-import { getClans } from '../../../../middlewares/services';
-import { Clan } from '../../../../interfaces/shadowWar';
 
 const store: any = useStore();
-const clans: Ref<Clan[]> = ref([]);
 const showModal = ref(false);
 const loading = ref(true);
 
-watch(() => store.currentUser.logged, async (isLoggedIn) => {
-  if (isLoggedIn) {
-    loading.value = true;
-    if (!store.admin.clans) {
-      clans.value = await getClans();
-    }
-    loading.value = false;
-  } else {
-    store.admin.clans = null;
-    loading.value = false;
-  }
-}, { immediate: true });
+const clans = computed(() => store.admin.clans);
 
 function handleAddClan() {
   showModal.value = true;
 };
+
+onMounted(async () => {
+  await store.handleGetClans();
+  loading.value = false;
+});
 
 const navItems = ['nombre', 'status', 'members', 'acciones'];
 
