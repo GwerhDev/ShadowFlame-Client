@@ -36,3 +36,16 @@
     margin: 0;
   }
 }
+
+.result-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  select {
+    border-radius: 0.3rem;
+    background-color: var(--element-color-primary);
+    color: var(--text-color-primary);
+    border: 1px solid var(--border-color-primary);
+  }
+}

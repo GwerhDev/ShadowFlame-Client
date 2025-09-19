@@ -12,7 +12,14 @@
         <p>Fecha: {{ new Date(currentShadowWar.date).toLocaleString() }}</p>
       </small>
       <p>Clan Enemigo: {{ currentShadowWar.enemyClan?.name || 'N/A' }}</p>
-      <p>Resultado: {{ currentShadowWar.result }}</p>
+      <div class="result-section">
+        <p>Resultado:</p>
+        <select v-model="selectedResult" @change="updateShadowWarResult">
+          <option v-for="option in shadowWarResults" :key="option.value" :value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </div>
       <div>
         Miembros confirmados: {{ confirmedMembersCount }}
         <i @click="openMembersModal" class="fas fa-eye icon-button"></i>
@@ -51,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { Match } from '../../../../interfaces/shadowWar';
 import { translateResult } from '../../../../helpers/lists';
@@ -67,6 +74,21 @@ const error = ref(null);
 const showMembersModal = ref(false);
 const showMatchDetailsModal = ref(false); // New state for MatchDetailsModal
 const selectedMatch = ref<Match | null>(null); // New state for selected match
+
+const shadowWarResults = [
+  { value: 'victory', text: 'Victoria' },
+  { value: 'defeat', text: 'Derrota' },
+  { value: 'draw', text: 'Empate' },
+  { value: 'pending', text: 'Pendiente' },
+];
+
+const selectedResult = ref('');
+
+watch(currentShadowWar, (newVal) => {
+  if (newVal) {
+    selectedResult.value = newVal.result;
+  }
+}, { immediate: true });
 
 const confirmedMembersCount = computed(() => {
   return currentShadowWar.value?.confirmed?.length || 0;
@@ -88,6 +110,21 @@ const openMatchDetailsModal = (match: Match) => {
 const closeMatchDetailsModal = () => {
   showMatchDetailsModal.value = false;
   selectedMatch.value = null;
+};
+
+const updateShadowWarResult = async () => {
+  if (currentShadowWar.value?._id && selectedResult.value) {
+    try {
+      await store.handleUpdateShadowWar(currentShadowWar.value._id, { result: selectedResult.value });
+      // Optionally, re-fetch the shadow war details to ensure UI is up-to-date
+      // store.handleGetShadowWar(currentShadowWar.value._id);
+    } catch (err: any) {
+      console.error('Error updating shadow war result:', err);
+      // Revert selectedResult if update fails
+      selectedResult.value = currentShadowWar.value.result;
+      error.value = err.message;
+    }
+  }
 };
 
 onMounted(async () => {

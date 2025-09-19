@@ -1,6 +1,7 @@
 <style scoped lang="scss" src="./HistoryListCard.scss"/>
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { translateResult } from '../../../../helpers/lists';
 
 defineProps(['war']);
 
@@ -25,7 +26,7 @@ const viewDetails = (id: string) => {
       <p>{{ war.enemyClan?.name || "No definido" }}</p>
     </span>
     <span>
-      <p>{{ war.result }}</p>
+      <p>{{ translateResult(war.result) }}</p>
     </span>
     <span>
       <ul class="buttons-container">
