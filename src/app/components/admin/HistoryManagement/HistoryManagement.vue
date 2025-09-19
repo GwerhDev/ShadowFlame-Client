@@ -37,7 +37,6 @@ watch(() => store.currentUser.logged, async (isLoggedIn) => {
   }
 }, { immediate: true });
 
-
 const navItems = ['Fecha', 'Enemigo', 'Resultado', 'Acciones'];
 
 </script>
