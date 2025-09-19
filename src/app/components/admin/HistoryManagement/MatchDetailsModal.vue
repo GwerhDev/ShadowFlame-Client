@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { PropType, ref, watch } from 'vue';
-import { Match, Member, ShadowWar } from '../../../../interfaces/shadowWar';
+import { computed, PropType, ref, watch } from 'vue';
+import { Match, Member } from '../../../../interfaces/shadowWar';
 import CustomModal from '../../Modals/CustomModal.vue';
 import { useStore } from '../../../../middlewares/store';
 
@@ -9,15 +9,12 @@ const props = defineProps({
     type: Object as PropType<Match | null> | null,
     required: true
   }, 
-  currentShadowWar: {
-    type: Object as PropType<ShadowWar | null>,
-    required: true
-  }
 });
 
 const emit = defineEmits(['close']);
 
 const store = useStore();
+const currentShadowWar = computed(() => store.admin.currentShadowWar);
 
 const editableResult = ref('');
 
@@ -32,17 +29,17 @@ const getMemberName = (member: Member | undefined) => {
 };
 
 const updateResult = async () => {
-  if (!store.admin.shadowWars || !props.match) return;
-
-  const updatedShadowWar = JSON.parse(JSON.stringify(props.currentShadowWar));
+  if (!store.admin.shadowWars || !props.match || !currentShadowWar.value || !currentShadowWar.value.battle) {
+    console.error('currentShadowWar or its battle property is undefined.');
+    return;
+  }
   
+  const updatedShadowWar = JSON.parse(JSON.stringify(currentShadowWar.value));
+
   const battleTypes = ['exalted', 'eminent', 'famed', 'proud'] as const;
   let matchFound = false;
   for (const type of battleTypes) {
-    const matchIndex = updatedShadowWar.battle[type].findIndex((m: Match) => 
-      m.group1.member.every((mem, i) => mem?._id === props.match?.group1.member[i]?._id) &&
-      m.group2.member.every((mem, i) => mem?._id === props.match?.group2.member[i]?._id)
-    );
+    const matchIndex = updatedShadowWar.battle[type].findIndex((m: Match) => m._id === props.match?._id);
     if (matchIndex !== -1) {
       updatedShadowWar.battle[type][matchIndex].result = editableResult.value;
       matchFound = true;

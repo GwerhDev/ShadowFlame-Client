@@ -30,6 +30,7 @@ export interface storeState {
     shadowWars: any,
     members: any,
     clans: any,
+    currentShadowWar: ShadowWar | null;
   },
   userToken: string,
   currentCharacter: string | null,

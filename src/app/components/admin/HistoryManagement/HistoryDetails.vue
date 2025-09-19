@@ -7,12 +7,12 @@
     <div v-else-if="error">
       <p>Error al cargar los detalles: {{ error }}</p>
     </div>
-    <div v-else-if="shadowWarDetails">
+    <div v-else-if="currentShadowWar">
       <small>
-        <p>Fecha: {{ new Date(shadowWarDetails.date).toLocaleString() }}</p>
+        <p>Fecha: {{ new Date(currentShadowWar.date).toLocaleString() }}</p>
       </small>
-      <p>Clan Enemigo: {{ shadowWarDetails.enemyClan?.name || 'N/A' }}</p>
-      <p>Resultado: {{ shadowWarDetails.result }}</p>
+      <p>Clan Enemigo: {{ currentShadowWar.enemyClan?.name || 'N/A' }}</p>
+      <p>Resultado: {{ currentShadowWar.result }}</p>
       <div>
         Miembros confirmados: {{ confirmedMembersCount }}
         <i @click="openMembersModal" class="fas fa-eye icon-button"></i>
@@ -22,9 +22,9 @@
       <p>No se encontraron detalles para esta Guerra Sombría.</p>
     </div>
 
-    <div v-if="shadowWarDetails?.battle">
+    <div v-if="currentShadowWar?.battle">
       <h3>Batallas</h3>
-      <div v-for="(matches, battleType) in shadowWarDetails?.battle" :key="battleType" class="battle-section">
+      <div v-for="(matches, battleType) in currentShadowWar?.battle" :key="battleType" class="battle-section">
         <h4>{{ battleType.charAt(0).toUpperCase() + battleType.slice(1) }}</h4>
 
         <div v-for="(match, index) in matches" :key="index" class="match-summary-section">
@@ -39,28 +39,29 @@
       </div>
     </div>
   </div>
-  <div v-if="!shadowWarDetails?.battle">
+  <div v-if="!currentShadowWar?.battle">
     <p>No se encontraron detalles para esta Guerra Sombría.</p>
   </div>
 
-  <ConfirmedMembersModal v-if="showMembersModal" :members="shadowWarDetails?.confirmed || []"
+  <ConfirmedMembersModal v-if="showMembersModal" :members="currentShadowWar?.confirmed || []"
     @close="closeMembersModal" />
 
-  <MatchDetailsModal v-if="showMatchDetailsModal" :currentShadowWar="shadowWarDetails" :match="selectedMatch" @close="closeMatchDetailsModal" />
+  <MatchDetailsModal v-if="showMatchDetailsModal" :match="selectedMatch" @close="closeMatchDetailsModal" />
 
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { getShadowWarById } from '../../../../middlewares/services/shadowWarService';
-import { ShadowWar, Match } from '../../../../interfaces/shadowWar';
+import { Match } from '../../../../interfaces/shadowWar';
 import { translateResult } from '../../../../helpers/lists';
 import MatchDetailsModal from './MatchDetailsModal.vue';
 import ConfirmedMembersModal from './ConfirmedMembersModal.vue';
+import { useStore } from '../../../../middlewares/store';
 
 const route = useRoute();
-const shadowWarDetails = ref<ShadowWar | null>(null);
+const store = useStore();
+const currentShadowWar = computed(() => store.admin.currentShadowWar);
 const loading = ref(true);
 const error = ref(null);
 const showMembersModal = ref(false);
@@ -68,7 +69,7 @@ const showMatchDetailsModal = ref(false); // New state for MatchDetailsModal
 const selectedMatch = ref<Match | null>(null); // New state for selected match
 
 const confirmedMembersCount = computed(() => {
-  return shadowWarDetails.value?.confirmed?.length || 0;
+  return currentShadowWar.value?.confirmed?.length || 0;
 });
 
 const openMembersModal = () => {
@@ -94,8 +95,7 @@ onMounted(async () => {
   if (shadowWarId) {
     try {
       loading.value = true;
-      const response = await getShadowWarById(shadowWarId);
-      shadowWarDetails.value = response;
+      store.handleGetShadowWar(shadowWarId);
     } catch (err: any) {
       error.value = err.message;
     } finally {

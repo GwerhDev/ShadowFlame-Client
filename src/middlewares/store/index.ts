@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan, getShadowWars, updateShadowWar } from '../services';
+import { createTask, deleteUser, getTasks, getUserData, getUsers, signupInner, updateUser, updateUserData, deleteTask, updateTask, chatbotQuery, getAdminNotifications, createCompletedTask, deleteCompletedTask, getChatbotModel, getWarbands, createCharacter, getCharacter, getMembers, createMember, updateMember, deleteMember, getNextShadowWar, getClans, createClan, updateClan, deleteClan, getShadowWars, updateShadowWar, getShadowWarById } from '../services';
 import { setUserToken } from '../../helpers';
 import { API_URL } from '../misc/const';
 import { storeState } from '../../interfaces/storeState';
@@ -34,6 +34,7 @@ export const useStore = defineStore('store', {
       members: null,
       clans: null,
       shadowWars: null,
+      currentShadowWar: null,
     },
 
     userToken: '',
@@ -69,6 +70,7 @@ export const useStore = defineStore('store', {
         members: null,
         clans: null,
         shadowWars: null,
+        currentShadowWar: null,
       };
 
       this.userToken = '';
@@ -100,6 +102,10 @@ export const useStore = defineStore('store', {
 
     setShadowWarError(error: string | null) {
       this.currentUser.shadowWarError = error;
+    },
+
+    setCurrentShadowWarDetails(shadowWar: ShadowWar | null) {
+      this.admin.currentShadowWar = shadowWar;
     },
 
     setUserBattleInfo(battleInfo: { category: string; match: number; group: number }[]) {
@@ -324,15 +330,23 @@ export const useStore = defineStore('store', {
       return false;
     },
 
+    async handleGetShadowWar(id: string) {
+      try {
+        const response = await getShadowWarById(id);
+        this.admin.currentShadowWar = response;
+
+        return response;
+      } catch (error) {
+        console.error('Error fetching shadow war:', error);
+        throw error;
+      }
+    },
+
     async handleUpdateShadowWar(id: string, updatedShadowWar: ShadowWar) {
       try {
         const response = await updateShadowWar(id, updatedShadowWar);
-        if (this.admin.shadowWars) {
-          const index = this.admin.shadowWars.findIndex((sw: ShadowWar) => sw._id === id);
-          if (index !== -1) {
-            this.admin.shadowWars[index] = response;
-          }
-        }
+        this.admin.currentShadowWar = response;
+
         return response;
       } catch (error) {
         console.error('Error updating shadow war:', error);
