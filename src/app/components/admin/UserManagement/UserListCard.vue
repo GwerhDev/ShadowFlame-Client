@@ -61,7 +61,6 @@ function handleModalClose() {
 
 function handleModalSave(selectedIds: string[]) {
   member.value = selectedIds;
-  isModalOpen.value = false;
 }
 
 function styleStatus(status: string) {

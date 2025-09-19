@@ -1,16 +1,12 @@
 <style scoped lang="scss" src="./UserManagement.scss"/>
 <script setup lang="ts">
 import { useStore } from '../../../../middlewares/store';
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import UserListCard from './UserListCard.vue';
 
 const store: any = useStore();
-const loading = ref(true); // New ref for loading state
-
-onMounted(() => {
-  // Data fetching is now handled by the watch effect
-});
+const loading = ref(true);
 
 watch(() => store.currentUser.logged, async (isLoggedIn) => {
   if (isLoggedIn) {

@@ -1,43 +1,35 @@
 <template>
-  <div class="modal-overlay" @click.self="closeModal">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h3>Vincular Miembros a {{ userName }}</h3>
-        <button @click="closeModal" class="close-button">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div v-if="loading" class="loader">Cargando miembros...</div>
-        <div v-else class="members-list">
-          <div v-for="member in allMembers" :key="member._id" class="member-item">
-            <input
-              type="checkbox"
-              :id="member._id"
-              :value="member._id"
-              v-model="selectedMemberIds"
-            />
-            <label :for="member._id">{{ member.character }}</label>
-          </div>
+  <CustomModal :title="`Vincular Miembros a ${userName}`">
+    <div class="modal-body">
+      <div v-if="loading" class="loader">Cargando miembros...</div>
+      <div v-else class="members-list">
+        <div v-for="member in allMembers" :key="member._id" class="member-item">
+          <input
+            type="checkbox"
+            :id="member._id"
+            :value="member._id"
+            v-model="selectedMemberIds"
+            @change="saveSelection"
+          />
+          <label :for="member._id">{{ member.character }}</label>
         </div>
       </div>
-      <div class="modal-footer">
-        <button @click="saveSelection" class="button primary-button">Guardar</button>
-        <button @click="closeModal" class="button secondary-button">Cancelar</button>
-      </div>
     </div>
-  </div>
+  </CustomModal>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, defineProps, defineEmits, watch } from 'vue';
 import { getMembers } from '../../../../middlewares/services';
 import type { Member } from '../../../../interfaces/shadowWar';
+import CustomModal from '../../Modals/CustomModal.vue';
 
 const props = defineProps<{
   initialSelectedIds: string[];
   userName: string;
 }>();
 
-const emits = defineEmits<{'close': [], 'save': [selectedIds: string[]]}>();
+const emits = defineEmits<{'save': [selectedIds: string[]]}>();
 
 const allMembers = ref<Member[]>([]);
 const selectedMemberIds = ref<string[]>([]);
@@ -58,13 +50,8 @@ watch(() => props.initialSelectedIds, (newVal) => {
   selectedMemberIds.value = [...newVal];
 }, { immediate: true });
 
-const closeModal = () => {
-  emits('close');
-};
-
 const saveSelection = () => {
   emits('save', selectedMemberIds.value);
-  closeModal();
 };
 </script>
 
