@@ -7,6 +7,10 @@ defineProps({
     type: Function,
     required: true,
   },
+  openShareModal: {
+    type: Function,
+    required: true,
+  },
   copied: {
     type: Boolean,
     required: true,
@@ -25,6 +29,11 @@ const error: Ref<string | null> = ref(null);
   <div class="shadow-war-container">
     <span class="info-text">
       <h2>Próxima Batalla</h2>
+      <span class="buttons">
+        <i @click="generateWhatsAppMessage()" class="fas fa-copy"></i>
+        <span v-if="copied" class="copied-feedback">¡Mensaje copiado!</span>
+        <i @click="openShareModal()" class="fas fa-share"></i>
+      </span>
       <p>La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las
           19:30h (hora del servidor)</i>.</p>
       <div v-if="error">
@@ -32,11 +41,7 @@ const error: Ref<string | null> = ref(null);
         <pre>{{ error }}</pre>
       </div>
       <div class="button-container">
-        <button type="button" @click="generateWhatsAppMessage()">
-          <i class="fas fa-copy"></i> Generar Mensaje de WhatsApp
-        </button>
-        <span v-if="copied" class="copied-feedback">¡Mensaje copiado!</span>
-        <span v-else class="copied-feedback"></span>
+        <span class="copied-feedback"></span>
       </div>
     </span>
 
@@ -44,4 +49,4 @@ const error: Ref<string | null> = ref(null);
   </div>
 </template>
 
-<style scoped lang="scss" src="./ShadowWar.scss"/>
+<style scoped lang="scss" src="./ShadowWar.scss" />

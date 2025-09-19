@@ -24,13 +24,8 @@
   input[type="text"] {
     width: 100%;
     min-width: none;
-    font-size: 1.1rem;
     font-family: 'Cinzel', serif;
     transition-duration: .4s;
-
-    &:focus {
-      outline: 1px solid #007bff;
-    }
   }
 
   .clear-button {

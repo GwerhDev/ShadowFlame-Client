@@ -74,8 +74,6 @@ const isMemberLinked = (member: ShadowWarInterfaces.Member | undefined) => {
       <pre>{{ error }}</pre>
     </div>
 
-
-
     <div v-if="shadowWarData && shadowWarData.battle" class="main-content-wrapper">
       <div class="content-section">
         <div v-for="(category, categoryName) in shadowWarData.battle" :key="categoryName">

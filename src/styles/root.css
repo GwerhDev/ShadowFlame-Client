@@ -42,6 +42,7 @@ input[type=number] {
   padding: .5rem;
   border: none;
   border-bottom: var(--nav-color-primary) solid 1px;
+  font-family: 'Cinzel', serif;
 
   &:focus,
   &:active {
@@ -81,11 +82,21 @@ input[type="date"] {
   }
 }
 
-input:read-only, input:hover:read-only, input:active:read-only {
+input[type=text]:read-only,
+input[type=text]:focus:read-only,
+input[type=text]:hover:read-only,
+input[type=text]:active:read-only {
+  width: 100%;
+  text-align: center;
   background-color: transparent;
   border: none;
   outline: none;
   text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Cinzel', serif;
+  color: rgb(227, 210, 168);
+  filter: drop-shadow(0 0 4px rgba(255, 0, 0, 0.245));
 }
 
 select {

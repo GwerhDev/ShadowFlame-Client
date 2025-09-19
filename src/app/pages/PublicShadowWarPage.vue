@@ -72,7 +72,7 @@ watch(() => store.layout.tab, async (newTab) => {
           <p v-if="!loading">La próxima <b>Guerra Sombría</b> es el <i>{{ nextWarDate }} a las 19:30h (hora del
               servidor)</i>.
             Enfrentaremos al Clan:
-          <h4 class="clan-name">{{ enemyClanName }}</h4>
+            <h4 class="clan-name">{{ enemyClanName }}</h4>
           </p>
         </span>
         <PublicShadowWar :active-tab="store.layout.tab" :loading="loading" />
