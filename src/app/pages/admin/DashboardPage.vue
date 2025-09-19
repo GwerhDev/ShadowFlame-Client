@@ -2,6 +2,7 @@
 import { onMounted, ref, watch } from 'vue';
 import { useStore } from '../../../middlewares/store';
 import AppLayout from '../../layouts/AppLayout.vue';
+import DeniedAccess from '../../utils/DeniedAccess.vue';
 import { ShadowWar as ShadowWarInterface, Match, Member } from '../../../interfaces/shadowWar';
 import CustomModal from '../../components/Modals/CustomModal.vue';
 import { useRoute } from 'vue-router';
