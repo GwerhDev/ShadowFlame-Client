@@ -11,30 +11,32 @@
       <p>Clan Enemigo:
       <h4 class="featured">{{ currentShadowWar.enemyClan?.name || 'N/A' }}</h4>
       </p>
-      <small>
-        <p>Fecha: {{ new Date(currentShadowWar.date).toLocaleString()?.split(",")?.[0] }}</p>
+      <small class="date-container">
+        <input readonly type="date" :value="formattedDate" >
       </small>
-      <ul class="blocks-section">
-        <li>
-          <p>Resultado:</p>
-          <select v-model="selectedResult" @change="updateShadowWarResult">
-            <option v-for="option in shadowWarResults" :key="option.value" :value="option.value">
-              {{ option.text }}
-            </option>
-          </select>
-        </li>
-        <li>
-          <p>
-            Miembros confirmados:
-          <h4 class="featured">
-            {{ confirmedMembersCount }}
-            <span>
-              <i @click="openMembersModal" class="fas fa-eye icon-button"></i>
-            </span>
-          </h4>
-          </p>
-        </li>
-      </ul>
+      <div class="info-container">
+        <ul class="blocks-section">
+          <li>
+            <p>Resultado:</p>
+            <select v-model="selectedResult" @change="updateShadowWarResult">
+              <option v-for="option in shadowWarResults" :key="option.value" :value="option.value">
+                {{ option.text }}
+              </option>
+            </select>
+          </li>
+          <li>
+            <p>
+              Miembros confirmados:
+            <h4 class="featured">
+              {{ confirmedMembersCount }}
+              <span>
+                <i @click="openMembersModal" class="fas fa-eye icon-button"></i>
+              </span>
+            </h4>
+            </p>
+          </li>
+        </ul>
+      </div>
     </div>
     <div v-else>
       <p>No se encontraron detalles para esta Guerra Sombría.</p>
@@ -104,6 +106,19 @@ const confirmedMembersCount = computed(() => {
   return currentShadowWar.value?.confirmed?.length || 0;
 });
 
+const formattedDate = computed(() => {
+  if (currentShadowWar.value?.date) {
+    const date = new Date(currentShadowWar.value.date);
+    if (!isNaN(date.getTime())) {
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+  }
+  return '';
+});
+
 const openMembersModal = () => {
   showMembersModal.value = true;
 };
@@ -126,11 +141,8 @@ const updateShadowWarResult = async () => {
   if (currentShadowWar.value?._id && selectedResult.value) {
     try {
       await store.handleUpdateShadowWar(currentShadowWar.value._id, { result: selectedResult.value });
-      // Optionally, re-fetch the shadow war details to ensure UI is up-to-date
-      // store.handleGetShadowWar(currentShadowWar.value._id);
     } catch (err: any) {
       console.error('Error updating shadow war result:', err);
-      // Revert selectedResult if update fails
       selectedResult.value = currentShadowWar.value.result;
       error.value = err.message;
     }
