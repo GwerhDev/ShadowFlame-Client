@@ -1,23 +1,33 @@
-<style scoped lang="scss" src="./HistoryManagement.scss"/>
+<style scoped lang="scss" src="./HistoryManagement.scss" />
 <script setup lang="ts">
 import { useStore } from '../../../../middlewares/store';
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import TableComponent from '../../Tables/TableComponent.vue';
 import HistoryListCard from './HistoryListCard.vue';
+
+const currentPage = ref(1);
+const hasMore = ref(true);
+const isFetching = ref(false);
 
 const store: any = useStore();
 const loading = ref(true);
 
-onMounted(() => {
-  // Data fetching is now handled by the watch effect
-});
+const loadMore = async () => {
+  isFetching.value = true;
+  currentPage.value++;
+  const fetchedMore = await store.handleGetShadowWars(currentPage.value, true);
+  hasMore.value = fetchedMore;
+  isFetching.value = false;
+};
 
 watch(() => store.currentUser.logged, async (isLoggedIn) => {
   if (isLoggedIn) {
     loading.value = true;
-    if (!store.admin.shadowWars) {
-      await store.handleGetShadowWars();
-    }
+    currentPage.value = 1;
+    hasMore.value = true;
+    isFetching.value = false;
+    const fetchedInitial = await store.handleGetShadowWars(currentPage.value, false);
+    hasMore.value = fetchedInitial;
     loading.value = false;
   } else {
     store.admin.shadowWars = null;
@@ -37,8 +47,14 @@ const navItems = ['Fecha', 'Enemigo', 'Resultado', 'Acciones'];
         <li v-for="war in store.admin.shadowWars" :key="war._id">
           <HistoryListCard :war="war"></HistoryListCard>
         </li>
+        <li v-if="isFetching && hasMore" class="loading-indicator">
+          Cargando más historiales...
+        </li>
       </TableComponent>
     </ul>
+    <div v-if="hasMore && !loading && !isFetching" class="load-more-container">
+      <button @click="loadMore" :disabled="isFetching">Cargar más</button>
+    </div>
     <div v-else-if="loading" class="skeleton-table-container">
       <div class="skeleton-table-header">
         <div class="skeleton-box skeleton-header-item"></div>

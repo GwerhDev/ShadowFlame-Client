@@ -310,10 +310,17 @@ export const useStore = defineStore('store', {
       await deleteClan(id);
     },
 
-    async handleGetShadowWars() {
+    async handleGetShadowWars(page: number = 1, append: boolean = false) {
       if (this.currentUser.userData?.role === "admin" || this.currentUser.userData?.role === "leader" || this.currentUser.userData?.role === "officer") {
-        this.admin.shadowWars = await getShadowWars();
+        const newShadowWars = await getShadowWars(page);
+        if (append && this.admin.shadowWars) {
+          this.admin.shadowWars = [...this.admin.shadowWars, ...newShadowWars];
+        } else {
+          this.admin.shadowWars = newShadowWars;
+        }
+        return newShadowWars.length > 0; // Return true if more data was fetched, false otherwise
       }
+      return false;
     },
 
     setCurrentCharacter(character: string | null) {
