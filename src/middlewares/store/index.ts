@@ -342,7 +342,7 @@ export const useStore = defineStore('store', {
       }
     },
 
-    async handleUpdateShadowWar(id: string, updatedShadowWar: ShadowWar) {
+    async handleUpdateShadowWar(id: string, updatedShadowWar: Partial<ShadowWar>) {
       try {
         const response = await updateShadowWar(id, updatedShadowWar);
         this.admin.currentShadowWar = response;

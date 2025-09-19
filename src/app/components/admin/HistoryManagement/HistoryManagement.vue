@@ -22,20 +22,30 @@ const loadMore = async () => {
   isFetching.value = false;
 };
 
+const fetchShadowWars = async () => {
+  loading.value = true;
+  currentPage.value = 1;
+  hasMore.value = true;
+  isFetching.value = false;
+  const fetchedInitial = await store.handleGetShadowWars(currentPage.value, false);
+  hasMore.value = fetchedInitial;
+  loading.value = false;
+};
+
 watch(() => store.currentUser.logged, async (isLoggedIn) => {
   if (isLoggedIn) {
-    loading.value = true;
-    currentPage.value = 1;
-    hasMore.value = true;
-    isFetching.value = false;
-    const fetchedInitial = await store.handleGetShadowWars(currentPage.value, false);
-    hasMore.value = fetchedInitial;
-    loading.value = false;
+    fetchShadowWars();
   } else {
     store.admin.shadowWars = null;
     loading.value = false;
   }
 }, { immediate: true });
+
+watch(() => route.name, (newName) => {
+  if (newName === 'DashboardHistory') {
+    fetchShadowWars();
+  }
+});
 
 const navItems = ['Fecha', 'Enemigo', 'Resultado', 'Acciones'];
 
