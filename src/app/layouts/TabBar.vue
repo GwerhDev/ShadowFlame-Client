@@ -11,6 +11,7 @@ withDefaults(defineProps<{
     icon: string;
     length?: number;
     path: string;
+    disabled?: boolean;
   }>,
 }>(), {
   tabs: () => []
@@ -39,9 +40,10 @@ function styleActive(path: string) {
       <li v-for="(tab, index) in tabs" :key="tab.id">
         <button
           :title="tab.name"
-          :class="{ 'first': index === 0, 'last': index === tabs.length - 1 }"
+          :class="{ 'first': index === 0, 'last': index === tabs.length - 1, 'disabled': tab.disabled }"
           @click="handleType(tab)"
           :style="styleActive(tab.path)"
+          :disabled="tab.disabled"
         >
           <i :class="tab.icon"></i>
           <span>{{ tab.name }}</span>

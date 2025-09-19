@@ -9,6 +9,9 @@ const loading = ref(false);
 const sidebarTabs = [
   { id: 'chatbot', name: 'Chatbot', icon: 'fas fa-robot', path: '/guides/chatbot' },
   { id: 'maps', name: 'Mapas', icon: 'fas fa-map-marked-alt', path: '/guides/maps' },
+  { id: 'pages', name: 'Páginas', icon: 'fas fa-globe', path: '/guides/pages', disabled: true },
+  { id: 'streamers', name: 'Streamers', icon: 'fas fa-tower-broadcast', path: '/guides/streamers', disabled: true },
+
 ];
 </script>
 
