@@ -29,13 +29,7 @@ function styleActive(type: string) {
           <span></span>
         </button>
       </li>
-      <li>
-        <button :disabled="!props.logged" @click="handleType('crests')" :style="props.logged && styleActive('crests')">
-          <img src="../../../assets/svg/gem-icon.svg" alt="Cimeras" />
-          <span>Cimeras</span>
-          <span></span>
-        </button>
-      </li>
+
       <li>
         <button :disabled="!props.logged" @click="handleType('maps')" :style="props.logged && styleActive('maps')">
           <img src="../../../assets/svg/map-icon.svg" alt="Mapas" />
