@@ -1,11 +1,18 @@
 <style scoped lang="scss" src="./HistoryListCard.scss"/>
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 
 defineProps(['war']);
+
+const router = useRouter();
 
 const formatDate = (dateString: string) => {
   const options: any = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date(dateString).toLocaleDateString('es-ES', options);
+};
+
+const viewDetails = (id: string) => {
+  router.push(`/dashboard/history/${id}`);
 };
 </script>
 
@@ -22,7 +29,7 @@ const formatDate = (dateString: string) => {
     </span>
     <span>
       <ul class="buttons-container">
-        <button>
+        <button @click="viewDetails(war._id)">
           Ver
         </button>
       </ul>

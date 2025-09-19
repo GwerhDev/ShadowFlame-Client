@@ -16,6 +16,7 @@ import SettingsPage from '../pages/user/SettingsPage.vue';
 import DashboardPage from '../pages/admin/DashboardPage.vue';
 import ShadowWarManagement from '../components/admin/ShadowWarManagement/ShadowWar.vue';
 import HistoryManagement from '../components/admin/HistoryManagement/HistoryManagement.vue';
+import HistoryDetails from '../components/admin/HistoryManagement/HistoryDetails.vue';
 import MemberManagement from '../components/admin/MemberManagement/MemberManagement.vue';
 import UserManagement from '../components/admin/UserManagement/UserManagement.vue';
 import EnemyClanManagement from '../components/admin/EnemyClanManagement/EnemyClanManagement.vue';
@@ -69,6 +70,13 @@ const routes: RouteRecordRaw[] = [
         path: 'history',
         name: 'DashboardHistory',
         component: HistoryManagement,
+        children: [
+          {
+            path: ':shadowwar_id',
+            name: 'DashboardHistoryDetails',
+            component: HistoryDetails,
+          },
+        ],
       },
       {
         path: 'clans',

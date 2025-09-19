@@ -32,12 +32,12 @@ watchEffect(() => {
         const match = category[matchIndex];
 
         const group1Members = match.group1.member || [];
-        if (group1Members.some((m: ShadowWarInterfaces.Member) => loggedInUser.value.member.includes(m._id))) {
+        if (Array.isArray(loggedInUser.value.member) && group1Members.some((m: ShadowWarInterfaces.Member) => m && loggedInUser.value.member.includes(m._id))) {
           battlesSet.add(JSON.stringify({ category: categoryName, match: matchIndex + 1, group: 1 }));
         }
 
         const group2Members = match.group2.member || [];
-        if (group2Members.some((m: ShadowWarInterfaces.Member) => loggedInUser.value.member.includes(m._id))) {
+        if (Array.isArray(loggedInUser.value.member) && group2Members.some((m: ShadowWarInterfaces.Member) => m && loggedInUser.value.member.includes(m._id))) {
           battlesSet.add(JSON.stringify({ category: categoryName, match: matchIndex + 1, group: 2 }));
         }
       }
