@@ -20,3 +20,18 @@ export const translateResult = (result: string | undefined) => {
       return 'Pendiente';
   }
 };
+
+export const translateBattle = (battle: string | undefined) => {
+  switch (battle) {
+    case 'exalted':
+      return 'Sublime';
+    case 'eminent':
+      return 'Eminente';
+    case 'famed':
+      return 'Célebre';
+    case 'proud':
+      return 'Imponente';
+    default:
+      return;
+  }
+};

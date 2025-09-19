@@ -3,12 +3,13 @@ import { computed, PropType, ref, watch } from 'vue';
 import { Match, Member } from '../../../../interfaces/shadowWar';
 import CustomModal from '../../Modals/CustomModal.vue';
 import { useStore } from '../../../../middlewares/store';
+import ShadowWarMemberCard from '../ShadowWarManagement/ShadowWarMemberCard.vue';
 
 const props = defineProps({
   match: {
     type: Object as PropType<Match | null> | null,
     required: true
-  }, 
+  },
 });
 
 const emit = defineEmits(['close']);
@@ -48,13 +49,13 @@ const updateResult = async () => {
     console.error('currentShadowWar or its battle property is undefined.');
     return;
   }
-  
+
   const updatedShadowWar = JSON.parse(JSON.stringify(currentShadowWar.value));
 
   const battleTypes = ['exalted', 'eminent', 'famed', 'proud'] as const;
   let matchFound = false;
   for (const type of battleTypes) {
-    const matchIndex = updatedShadowWar.battle[type].findIndex((m: Match) => 
+    const matchIndex = updatedShadowWar.battle[type].findIndex((m: Match) =>
       compareMemberGroups(m.group1.member, props.match?.group1.member) &&
       compareMemberGroups(m.group2.member, props.match?.group2.member)
     );
@@ -95,7 +96,7 @@ const updateResult = async () => {
           <h5>Grupo 1</h5>
           <ul>
             <li v-for="(member, memberIndex) in match?.group1.member" :key="memberIndex">
-              {{ getMemberName(member) }}
+              <ShadowWarMemberCard :member="member" />
             </li>
           </ul>
         </div>
@@ -103,7 +104,7 @@ const updateResult = async () => {
           <h5>Grupo 2</h5>
           <ul>
             <li v-for="(member, memberIndex) in match?.group2.member" :key="memberIndex">
-              {{ getMemberName(member) }}
+              <ShadowWarMemberCard :member="member" />
             </li>
           </ul>
         </div>

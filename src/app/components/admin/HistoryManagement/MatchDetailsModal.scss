@@ -34,8 +34,6 @@
 
 .team-group {
   flex: 1;
-  background-color: var(--element-color-primary);
-  padding: 0.8rem;
   border-radius: 5px;
 
   h5 {
@@ -54,5 +52,13 @@
     color: #c0c0c0;
     padding: 0.2rem 0;
     text-align: center;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .team-composition {
+    display: flex;
+    flex-direction: column;
   }
 }

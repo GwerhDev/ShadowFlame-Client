@@ -4,8 +4,11 @@ import { useStore } from '../../middlewares/store';
 import SideBar from './SideBar.vue';
 import diabloIcon from "../../assets/svg/diablo-icon.svg";
 import TabBar from './TabBar.vue';
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
 
 const store: any = useStore();
+const route = useRoute();
 
 defineProps({
   loading: {
@@ -19,10 +22,14 @@ defineProps({
     length?: number;
     path: string;
   }>,
-  title: {
-    type: String,
-    required: true
+});
+
+const dynamicTitle = computed(() => {
+  if (route.meta.title) {
+    return route.meta.title;
   }
+  // Fallback to route name if meta.title is not defined
+  return route.name ? String(route.name) : 'Dashboard';
 });
 </script>
 
@@ -38,7 +45,7 @@ defineProps({
         <section class="content-section">
           <span class="title-section">
             <img :src="diabloIcon" alt="icon" />
-            <h1>{{ title }}</h1>
+            <h1>{{ dynamicTitle }}</h1>
           </span>
           <section class="menu-section mobile">
             <TabBar :logged="store.currentUser.logged" :tabs="sidebarTabs" />

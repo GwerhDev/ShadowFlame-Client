@@ -8,37 +8,47 @@
       <p>Error al cargar los detalles: {{ error }}</p>
     </div>
     <div v-else-if="currentShadowWar">
+      <p>Clan Enemigo:
+      <h4 class="featured">{{ currentShadowWar.enemyClan?.name || 'N/A' }}</h4>
+      </p>
       <small>
-        <p>Fecha: {{ new Date(currentShadowWar.date).toLocaleString() }}</p>
+        <p>Fecha: {{ new Date(currentShadowWar.date).toLocaleString()?.split(",")?.[0] }}</p>
       </small>
-      <p>Clan Enemigo: {{ currentShadowWar.enemyClan?.name || 'N/A' }}</p>
-      <div class="result-section">
-        <p>Resultado:</p>
-        <select v-model="selectedResult" @change="updateShadowWarResult">
-          <option v-for="option in shadowWarResults" :key="option.value" :value="option.value">
-            {{ option.text }}
-          </option>
-        </select>
-      </div>
-      <div>
-        Miembros confirmados: {{ confirmedMembersCount }}
-        <i @click="openMembersModal" class="fas fa-eye icon-button"></i>
-      </div>
+      <ul class="blocks-section">
+        <li>
+          <p>Resultado:</p>
+          <select v-model="selectedResult" @change="updateShadowWarResult">
+            <option v-for="option in shadowWarResults" :key="option.value" :value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+        </li>
+        <li>
+          <p>
+            Miembros confirmados:
+          <h4 class="featured">
+            {{ confirmedMembersCount }}
+            <span>
+              <i @click="openMembersModal" class="fas fa-eye icon-button"></i>
+            </span>
+          </h4>
+          </p>
+        </li>
+      </ul>
     </div>
     <div v-else>
       <p>No se encontraron detalles para esta Guerra Sombría.</p>
     </div>
 
     <div v-if="currentShadowWar?.battle">
-      <h3>Batallas</h3>
       <div v-for="(matches, battleType) in currentShadowWar?.battle" :key="battleType" class="battle-section">
-        <h4>{{ battleType.charAt(0).toUpperCase() + battleType.slice(1) }}</h4>
+        <h4>Batalla {{ translateBattle(battleType) }}</h4>
 
         <div v-for="(match, index) in matches" :key="index" class="match-summary-section">
           <h5>Partida {{ index + 1 }}</h5>
           <p>
             Miembros participantes: {{match.group1.member.filter(m => m).length + match.group2.member.filter(m =>
-            m).length}}
+              m).length}}
           </p>
           <p>Resultado: {{ translateResult(match.result) }}</p>
           <i @click="openMatchDetailsModal(match)" class="fas fa-eye icon-button"></i>
@@ -61,7 +71,7 @@
 import { ref, onMounted, computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { Match } from '../../../../interfaces/shadowWar';
-import { translateResult } from '../../../../helpers/lists';
+import { translateBattle, translateResult } from '../../../../helpers/lists';
 import MatchDetailsModal from './MatchDetailsModal.vue';
 import ConfirmedMembersModal from './ConfirmedMembersModal.vue';
 import { useStore } from '../../../../middlewares/store';
