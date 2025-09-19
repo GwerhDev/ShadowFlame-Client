@@ -25,10 +25,6 @@ watch(() => props.match, (newMatch) => {
   }
 }, { immediate: true });
 
-const getMemberName = (member: Member | undefined) => {
-  return member ? member.character : 'N/A';
-};
-
 const compareMemberGroups = (groupA: (Member | undefined)[] | undefined, groupB: (Member | undefined)[] | undefined) => {
   if (!groupA || !groupB) return false;
   if (groupA.length !== groupB.length) return false;
