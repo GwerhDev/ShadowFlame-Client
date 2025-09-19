@@ -118,6 +118,10 @@ select {
   }
 }
 
+select:disabled {
+  background-color: transparent;
+}
+
 option {
   font-size: 15px;
 }
